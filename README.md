@@ -42,6 +42,11 @@ Rules in `.claude/rules/` apply automatically to every session:
 - **progress-tracking-rule** -- maintain a `PHASES-CHECKLIST.md` alongside any workflow; verify artifacts before checking off steps
 - **backlog-reporting-rule** -- append discovered bugs and tech debt to `BACKLOG.md` triage table
 
-## Usage
+## Usage guide
 
-Point Claude Code at this repo. The agents in `.claude/agents/` will be available to invoke by name. Each agent operates with the role definition in its file -- no project-specific context is baked in. Add your own project context by creating a shared context file and referencing it from each agent, or by injecting context directly in your prompt.
+```bash
+bash scripts/sync-agents.sh          # sync latest
+bash scripts/sync-agents.sh v1.2.0   # pin a tag or branch
+```
+
+This clones the upstream repo and overwrites `.claude/agents`, `.claude/rules`, and `.claude/skills` in your project. Commit the result to lock the version
