@@ -1,0 +1,42 @@
+{
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(awk:*)",
+      "Bash(cat:*)",
+      "Bash(chmod +x:*)",
+      "Bash(CLAUDE.md:*)",
+      "Bash(cp:*)",
+      "Bash(do echo:*)",
+      "Bash(done)",
+      "Bash(echo:*)",
+      "Bash(find:*)",
+      "Bash(for f:*)",
+      "Bash(git add:*)",
+      "Bash(grep:*)",
+      "Bash(head:*)",
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(open:*)",
+      "Bash(python3:*)",
+      "Bash(README.md:*)",
+      "Bash(sed:*)",
+      "Bash(tail:*)",
+      "Bash(test:*)",
+      "Bash(touch:*)",
+      "Edit(.claude/**)",
+      "Edit(agents-core/**)",
+      "Read(.claude/**)",
+      "Read(agents-core/**)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "WebFetch(domain:github.com)",
+      "WebSearch",
+      "Write(.claude/**)",
+      "Write(agents-core/**)",
+      "Bash(git commit:*)"
+    ]
+  }
+}
