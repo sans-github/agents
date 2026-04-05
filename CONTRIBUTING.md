@@ -22,7 +22,7 @@ This means: agents reference the `SKILL.md` by name. The `SKILL.md` body referen
 
 ## Adding a skill to an existing role
 
-1. Create a new `.md` file in the role's skill folder, e.g. `.claude/skills/be/my-skill.md`
+1. Create a new `.md` file in the role's skill folder, e.g. `.claude/skills/be/my-skill.md`. If the skill is relevant to more than one role, place it in `.claude/skills/shared/` instead and reference it from each role's `SKILL.md` using a relative path (e.g. `../shared/my-skill.md`).
 
 2. Add frontmatter with a `name` and `description`:
    ```markdown
@@ -100,6 +100,8 @@ Never rename a skill file without also updating the `name` field in its frontmat
 .claude/
 ├── agents/          # one file per role
 ├── skills/
+│   ├── shared/              # skills used by more than one role
+│   │   └── {skill}.md
 │   └── {role}/
 │       ├── SKILL.md         # entrypoint (Level 1 + 2)
 │       ├── commit.md        # commit conventions (Level 3)
