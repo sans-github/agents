@@ -6,3 +6,4 @@ description: Engineering Manager guidance including delivery planning, phase sig
 ## Available skills
 
 - **commit** (`commit.md`) -- commit message conventions for the Engineering Manager role
+- **java-springboot** (`../shared/JAVA-SPRINGBOOT.md`) -- Spring Boot best practices for project setup, layers, testing, and security
