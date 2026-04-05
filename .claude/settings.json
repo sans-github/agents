@@ -36,7 +36,12 @@
       "WebSearch",
       "Write(.claude/**)",
       "Write(agents-core/**)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git remote:*)",
+      "Bash(git status:*)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)"
     ]
   }
 }
