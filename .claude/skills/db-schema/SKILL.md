@@ -137,14 +137,3 @@ Example:
 ```sql
 CREATE UNIQUE INDEX uq_users_email ON users (email);
 ```
-
----
-
-## Commit conventions
-
-Follow [commit.md](commit.md). For DB work:
-
-- Initial schema files: `add initial db schema #42`
-- Each migration: its own commit, e.g. `add phone column to users #55`
-- Each seed file: its own commit, e.g. `seed config settings table #61`
-- Never bundle DB files with application code in the same commit

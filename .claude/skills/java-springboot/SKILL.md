@@ -1,7 +1,8 @@
 ---
 name: java-springboot
 description: Spring Boot project structure, dependency injection, configuration, REST layer, JPA, logging, testing, and security conventions. Use when building, reviewing, or making tech stack decisions for a Spring Boot application.
-source: https://skills.sh/github/awesome-copilot/java-springboot
+metadata: 
+  source: https://skills.sh/github/awesome-copilot/java-springboot
 ---
 
 # Spring Boot Best Practices
