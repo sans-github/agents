@@ -10,7 +10,7 @@ A collection of reusable, generic Claude Code sub-agent definitions for a softwa
 
 - `.claude/agents/` -- agent definition files loaded automatically by Claude Code. Each file is a complete, self-contained role definition (no project-specific content).
 - `.claude/skills/{skill}/` -- standalone domain skills (e.g. `api-design-principles/`, `db-schema/`, `java-springboot/`), each with a `SKILL.md`. Agents reference these directly in their `skills:` frontmatter.
-- `.claude/rules/` -- rules that apply automatically to every session: `workflow-phases-rule.md`, `progress-tracking-rule.md`, `backlog-reporting-rule.md`, `contract-first-rule.md`, `er-diagram-rule.md`.
+- `.claude/rules/` -- rules that apply automatically to every session: `workflow-phases-rule.md`, `progress-tracking-rule.md`, `backlog-reporting-rule.md`, `contract-first-rule.md`, `er-diagram-rule.md`, `api-review-rule.md`.
 
 ## Skill naming
 

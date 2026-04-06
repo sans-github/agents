@@ -43,6 +43,7 @@ Rules in `.claude/rules/` apply automatically to every session:
 - **backlog-reporting-rule** -- append discovered bugs and tech debt to `BACKLOG.md` triage table
 - **contract-first-rule** -- no role may begin work that depends on an upstream artifact (PRD, DB schema, API contract) until it is explicitly approved
 - **er-diagram-rule** -- maintain a current ER diagram at `db/er-diagram.md`; update it in the same commit as any schema change
+- **api-review-rule** -- run through the API design checklist before declaring any REST API design complete
 
 ## Usage guide
 
