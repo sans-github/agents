@@ -24,17 +24,15 @@ Each agent definition covers:
 - **Collaboration** -- how this role works with each other role
 - **Behavior** -- mindset, ownership, decision-making, and communication norms
 - **Hard constraints** -- non-negotiable rules that govern the role
+- **Commit conventions** -- role-specific commit rules, inline in the agent file
 
 ## Skills
 
-Skills live under `.claude/skills/` in two kinds of folders:
+Standalone domain skills live under `.claude/skills/{skill}/`, each with a `SKILL.md`. Currently: `api-design-principles/`, `db-schema/`, `java-springboot/`.
 
-- **Role folders** (`{role}/`) -- one per agent role, containing a `SKILL.md` entrypoint and a `commit.md` with role-specific commit conventions
-- **Standalone folders** (`{skill}/`) -- cross-role or domain skills, each with a `SKILL.md`. Currently: `api-design-principles/`, `db-schema/`, `java-springboot/`
+Agents reference skills directly in their `skills:` frontmatter. Skills load progressively: frontmatter at startup, body when triggered, referenced files on demand.
 
-Role `SKILL.md` files list available skills including references to standalone skills via relative paths (e.g. `../db-schema/SKILL.md`). Skills load progressively: frontmatter at startup, body when triggered, referenced files on demand.
-
-Skill names must be unique across all skill files -- folder organization is for humans, not for Claude Code's resolver.
+Skill names must be unique across all skill files.
 
 ## Rules
 

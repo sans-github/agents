@@ -2,27 +2,19 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Log
-
-Maintain a log at `.claude/claude-log.md`. Update it throughout the session with:
-- What you did and why
-- Files touched and files changed
-- Decisions made and the reasoning behind it
-
 ## Repository purpose
 
-A collection of reusable, generic Claude Code sub-agent definitions for a software engineering team. No application code -- the repo contains only agent definitions, role-specific skills, and session rules.
+A collection of reusable, generic Claude Code sub-agent definitions for a software engineering team. No application code -- the repo contains only agent definitions, domain skills, and session rules.
 
 ## Structure
 
 - `.claude/agents/` -- agent definition files loaded automatically by Claude Code. Each file is a complete, self-contained role definition (no project-specific content).
-- `.claude/skills/{role}/` -- role-specific skills. Each folder has a `SKILL.md` entrypoint and a `commit.md`. Role `SKILL.md` files reference standalone skills via relative paths.
-- `.claude/skills/{skill}/` -- standalone cross-role skills (e.g. `api-design-principles/`, `db-schema/`, `java-springboot/`), each with a `SKILL.md`.
+- `.claude/skills/{skill}/` -- standalone domain skills (e.g. `api-design-principles/`, `db-schema/`, `java-springboot/`), each with a `SKILL.md`. Agents reference these directly in their `skills:` frontmatter.
 - `.claude/rules/` -- rules that apply automatically to every session: `workflow-phases-rule.md`, `progress-tracking-rule.md`, `backlog-reporting-rule.md`, `contract-first-rule.md`, `er-diagram-rule.md`.
 
 ## Skill naming
 
-Skills are resolved by the `name` field in their frontmatter, not by folder path. Skill names must be unique across all skill files. Each agent references its role's `SKILL.md` entrypoint by the role abbreviation (e.g. `be`, `em`). The `SKILL.md` body lists additional skill files (e.g. `commit.md`, `../db-schema/SKILL.md`) which Claude loads as needed.
+Skills are resolved by the `name` field in their frontmatter, not by folder path. Skill names must be unique across all skill files. Agents list skills directly in their `skills:` frontmatter. Commit conventions live in each agent file under `## Commit conventions` -- not in a separate skill file.
 
 ## Sync script
 
@@ -38,8 +30,9 @@ This overwrites `.claude/agents/`, `.claude/rules/`, and `.claude/skills/` in th
 ## Agent conventions
 
 Each agent file follows this section order:
-1. Frontmatter (`name`, `description`, `skills`)
+1. Frontmatter (`name`, `description`, optional `skills`)
 2. One-line identity (`You are a senior X.`)
 3. `## Core expertise` -- qualities and collaboration
 4. `## Behavior` -- mindset, ownership, decision-making, communication
 5. `## Hard constraints`
+6. `## Commit conventions` -- role-specific commit rules
