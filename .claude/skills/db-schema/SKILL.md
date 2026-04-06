@@ -114,6 +114,12 @@ Define these as part of the initial schema so they are consistent across all tab
 
 ---
 
+## Resources
+
+- Load `db-checklist.md` before declaring any schema change complete -- required by `db-review-rule.md`.
+
+---
+
 ## Index naming
 
 Use a consistent naming pattern so indexes are predictable and searchable:
