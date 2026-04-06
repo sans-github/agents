@@ -103,7 +103,7 @@ Every table should include these columns unless there is a specific reason not t
 
 | Column | Type | Purpose |
 |--------|------|---------|
-| `id` | primary key | surrogate key (UUID or auto-increment) |
+| `id` | UUID, primary key | surrogate key -- never auto-increment |
 | `created_at` | timestamp with timezone | set on insert, never updated |
 | `updated_at` | timestamp with timezone | updated on every write |
 | `deleted_at` | timestamp with timezone (nullable) | soft delete -- null means active |
@@ -117,6 +117,12 @@ Define these as part of the initial schema so they are consistent across all tab
 ## Resources
 
 - Load `db-checklist.md` before declaring any schema change complete -- required by `db-review-rule.md`.
+
+---
+
+## Column naming
+
+All column names use snake_case (e.g. `created_at`, `user_id`, `order_total`). Never camelCase or PascalCase.
 
 ---
 

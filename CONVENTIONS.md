@@ -37,6 +37,8 @@ Artifacts that block downstream work until approved. Approval requires both a `S
 |---|---|
 | Migration filename format | `YYYYMMDD_HHMMSS_<description>.sql` |
 | Schema files | Numbered (`01_users.sql`), run once, never modified after first run |
+| Column naming | snake_case (e.g. `created_at`, `user_id`, `order_total`) |
+| ID type | UUID |
 | Audit columns | `id`, `created_at`, `updated_at`, `deleted_at` on every table |
 | Index naming | `idx_{table}_{column}`, unique: `uq_{table}_{column}` |
 
@@ -45,6 +47,16 @@ Artifacts that block downstream work until approved. Approval requires both a `S
 ## ER diagram format
 
 Mermaid `erDiagram` syntax. Must be updated in the same commit as any schema change.
+
+---
+
+## Code style
+
+| Convention | Value |
+|---|---|
+| Linter | Checkstyle with `google_checks.xml` |
+| Maven phase | `verify` -- `mvn verify` fails on violations |
+| CI gate | GitHub Actions runs `mvn verify` on every PR, blocks merge on failure |
 
 ---
 

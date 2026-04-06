@@ -65,3 +65,28 @@ Your goal is to help me write high-quality Spring Boot applications by following
 - **Spring Security:** Use Spring Security for authentication and authorization.
 - **Password Encoding:** Always encode passwords using a strong hashing algorithm like BCrypt.
 - **Input Sanitization:** Prevent SQL injection by using Spring Data JPA or parameterized queries. Prevent Cross-Site Scripting (XSS) by properly encoding output.
+
+## Code Style
+
+- **Ruleset:** Google Java Style Guide enforced via Checkstyle.
+- **Maven phase:** Checkstyle is bound to the `verify` phase -- `mvn verify` will fail on violations. Run it locally before pushing.
+- **CI gate:** A GitHub Actions workflow runs `mvn verify` on every PR and blocks merge on Checkstyle failure.
+- **Config:** Use the official `google_checks.xml` from the Checkstyle distribution. Reference it in `pom.xml` via the `maven-checkstyle-plugin`:
+
+```xml
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-checkstyle-plugin</artifactId>
+    <configuration>
+        <configLocation>google_checks.xml</configLocation>
+        <failsOnError>true</failsOnError>
+        <consoleOutput>true</consoleOutput>
+    </configuration>
+    <executions>
+        <execution>
+            <phase>verify</phase>
+            <goals><goal>check</goal></goals>
+        </execution>
+    </executions>
+</plugin>
+```
