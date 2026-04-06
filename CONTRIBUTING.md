@@ -108,3 +108,18 @@ Never rename a skill file without also updating the `name` field in its frontmat
 │       └── {other}.md       # additional skills (Level 3)
 └── rules/           # auto-loaded rules for every session
 ```
+
+---
+
+## Overriding default paths and conventions
+
+Default file locations (e.g. `db/er-diagram.md`, `BACKLOG.md`) are defined in `CONVENTIONS.md` and enforced by the rules. If your project uses different paths, override them in your project's `CLAUDE.md`:
+
+```markdown
+## Conventions overrides
+
+- ER diagram: `docs/er-diagram.md` (not `db/er-diagram.md`)
+- Backlog: `docs/BACKLOG.md` (not `BACKLOG.md`)
+```
+
+Claude Code loads your project `CLAUDE.md` on every session, so agents will follow the overrides automatically. You do not need to modify the synced rule files.

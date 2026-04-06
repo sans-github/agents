@@ -1,0 +1,53 @@
+# Conventions Reference
+
+One-stop reference for key decisions baked into this repo's rules and skills. When you adopt this library, these are the paths and conventions your project inherits.
+
+---
+
+## File locations
+
+| Artifact | Path | Owner | Source |
+|---|---|---|---|
+| ER diagram | `db/er-diagram.md` | BE writes, EM verifies | `er-diagram-rule.md` |
+| DB schema files | `db/schema/` | BE | `db-schema.md` |
+| DB migrations | `db/migrations/` | BE | `db-schema.md` |
+| DB seeds (all envs) | `db/seeds/common/` | BE | `db-schema.md` |
+| DB seeds (dev only) | `db/seeds/dev/` | BE | `db-schema.md` |
+| Tech debt / bug backlog | `BACKLOG.md` | EM triages | `backlog-reporting-rule.md` |
+| Phase progress tracker | `workflow/PHASES-CHECKLIST.md` | All roles | `progress-tracking-rule.md` |
+| Workflow definition | `workflow/` (alongside checklist) | EM | `workflow-phases-rule.md` |
+
+---
+
+## Contract approvals
+
+Artifacts that block downstream work until approved. Approval requires both a `Status: Approved` header in the file and a checked-off step in `PHASES-CHECKLIST.md`.
+
+| Artifact | Approver | Blocks |
+|---|---|---|
+| PRD | PM | Designer (mocks, flows) |
+| DB schema | EM + BE | BE data layer, migrations, queries |
+| API contract | EM + BE + FE | BE endpoint implementation, FE integration |
+
+---
+
+## DB conventions
+
+| Convention | Value |
+|---|---|
+| Migration filename format | `YYYYMMDD_HHMMSS_<description>.sql` |
+| Schema files | Numbered (`01_users.sql`), run once, never modified after first run |
+| Audit columns | `id`, `created_at`, `updated_at`, `deleted_at` on every table |
+| Index naming | `idx_{table}_{column}`, unique: `uq_{table}_{column}` |
+
+---
+
+## ER diagram format
+
+Mermaid `erDiagram` syntax. Must be updated in the same commit as any schema change.
+
+---
+
+## Backlog
+
+All agents append to the Triage table in `BACKLOG.md`. ID and priority are assigned by EM at triage -- never self-assigned.

@@ -50,4 +50,6 @@ bash scripts/sync-agents.sh          # sync latest
 bash scripts/sync-agents.sh v1.2.0   # pin a tag or branch
 ```
 
-This clones the upstream repo and overwrites `.claude/agents`, `.claude/rules`, and `.claude/skills` in your project. Commit the result to lock the version
+This clones the upstream repo and overwrites `.claude/agents`, `.claude/rules`, and `.claude/skills` in your project. Commit the result to lock the version.
+
+Default file locations (e.g. `db/er-diagram.md`, `BACKLOG.md`) can be overridden in your project's `CLAUDE.md`. See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
