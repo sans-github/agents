@@ -1,6 +1,6 @@
 # Rule: Test Review
 
-Before merging any test code -- new tests, modified tests, or test infrastructure changes -- run through the checklist at `.claude/skills/java-junit/test-checklist.md`.
+Before merging any test code -- new tests, modified tests, or test infrastructure changes -- run through the checklist at `.claude/skills/java-testing/test-checklist.md`.
 
 ## When this applies
 

@@ -1,13 +1,13 @@
 ---
-name: java-junit
-description: JUnit 5 unit testing -- test structure, naming conventions, parameterized tests, assertions, and mocking with Mockito. Use when writing or reviewing unit tests for Java applications.
+name: java-testing
+description: Java testing with JUnit 5 -- unit and integration tests, naming conventions, parameterized tests, assertions, and mocking with Mockito. Use when writing or reviewing any Java tests.
 metadata:
   source: https://skills.sh/github/awesome-copilot/java-junit
 ---
 
-# JUnit 5 Best Practices
+# Java Testing Best Practices
 
-Covers unit testing with JUnit 5: test structure, naming, data-driven tests, assertions, mocking, and test organization.
+Covers unit and integration testing with JUnit 5: test structure, naming, data-driven tests, assertions, mocking, and test organization.
 
 ## When to use
 
@@ -28,6 +28,10 @@ Covers unit testing with JUnit 5: test structure, naming, data-driven tests, ass
 **Mocking** -- use Mockito with `@Mock` and `@InjectMocks`. Mock dependencies at boundaries; avoid mocking what you own. Prefer interfaces to enable clean substitution.
 
 **Organization** -- group by feature using packages. Use `@Tag` to separate fast and slow tests. Use `@Nested` to cluster related scenarios within a class. Use `@Disabled` with a reason, never silently.
+
+## Code Style
+
+Test code is subject to the same Checkstyle rules as production code. `mvn verify` will fail on violations in `src/test/java`. See `java-springboot` for the Checkstyle configuration.
 
 ## Resources
 

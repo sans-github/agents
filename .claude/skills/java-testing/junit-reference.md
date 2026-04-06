@@ -122,6 +122,79 @@ class OrderServiceTest {
 
 ---
 
+## Integration Tests
+
+### Naming
+
+- IT class: `{ClassName}IT` (e.g. `OrderControllerIT`). Maven Failsafe picks up `*IT.java` automatically and runs them in the `integration-test` phase, separate from unit tests.
+- Test methods follow the same `methodName_should_expectedBehavior_when_scenario` convention.
+
+### Spring Boot setup
+
+```java
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@AutoConfigureMockMvc
+@ActiveProfiles("test")
+@Tag("integration")
+class OrderControllerIT {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @Test
+    void createOrder_should_return201_when_requestIsValid() throws Exception {
+        mockMvc.perform(post("/api/v1/orders")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"item\": \"book\"}"))
+            .andExpect(status().isCreated());
+    }
+}
+```
+
+### Testcontainers (real database)
+
+```java
+@SpringBootTest
+@ActiveProfiles("test")
+@Tag("integration")
+class OrderRepositoryIT {
+
+    @Container
+    static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:16");
+
+    @DynamicPropertySource
+    static void configureProperties(DynamicPropertyRegistry registry) {
+        registry.add("spring.datasource.url", postgres::getJdbcUrl);
+        registry.add("spring.datasource.username", postgres::getUsername);
+        registry.add("spring.datasource.password", postgres::getPassword);
+    }
+
+    @BeforeAll
+    static void beforeAll() {
+        postgres.start();
+    }
+
+    @AfterAll
+    static void afterAll() {
+        postgres.stop();
+    }
+}
+```
+
+### No mocking in ITs
+
+ITs exist to verify the system works with real dependencies. Do not use `@Mock`, `@MockBean`, or Mockito in IT classes. If you find yourself needing to mock something in an IT, it is a sign the test should be a unit test instead.
+
+### Running ITs separately
+
+```bash
+mvn test                     # unit tests only (Test suffix)
+mvn failsafe:integration-test # ITs only (IT suffix)
+mvn verify                   # both + Checkstyle
+```
+
+---
+
 ## Test Organization
 
 ```java

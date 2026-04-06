@@ -8,7 +8,8 @@
 
 ## Naming
 
-- [ ] Test class has `Test` suffix (e.g. `OrderServiceTest`)
+- [ ] Unit test class has `Test` suffix (e.g. `OrderServiceTest`)
+- [ ] Integration test class has `IT` suffix (e.g. `OrderControllerIT`)
 - [ ] Test methods follow `methodName_should_expectedBehavior_when_scenario`
 - [ ] `@DisplayName` used for human-readable output
 
@@ -25,11 +26,21 @@
 - [ ] Exception cases use `assertThrows` or `assertDoesNotThrow`
 - [ ] Assertion messages are descriptive on failure
 
-## Mocking
+## Mocking (unit tests only)
 
 - [ ] Only external dependencies are mocked (repositories, HTTP clients)
 - [ ] No mocking of classes you own
 - [ ] `@Mock` and `@InjectMocks` used via `@ExtendWith(MockitoExtension.class)`
+
+## Integration Tests
+
+- [ ] Class name ends in `IT`
+- [ ] `@SpringBootTest` and `@ActiveProfiles("test")` present
+- [ ] `@Tag("integration")` applied
+- [ ] No `@Mock` or `@MockBean` -- real dependencies only
+- [ ] Testcontainers used for DB (not an in-memory substitute)
+- [ ] `@DynamicPropertySource` wires container config to Spring context
+- [ ] `@BeforeAll` / `@AfterAll` manage container lifecycle
 
 ## Organization
 

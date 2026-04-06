@@ -5,6 +5,7 @@ skills:
   - db-schema
   - java-springboot
   - api-design-principles
+  - java-testing
 ---
 
 # Senior Backend Engineer
