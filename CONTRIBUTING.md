@@ -14,17 +14,17 @@ Skills use three levels of loading so Claude only consumes context it actually n
 |-------|-----------|------|
 | 1 -- Metadata | `name` + `description` from `SKILL.md` frontmatter | Always, at startup |
 | 2 -- Instructions | Body of `SKILL.md` | When the skill is triggered |
-| 3 -- Resources | Individual files referenced in the body (e.g. `commit.md`) | On demand, as needed |
+| 3 -- Resources | Individual files referenced in the body (e.g. `rest-reference.md`) | On demand, as needed |
 
-This means: agents reference the `SKILL.md` by name. The `SKILL.md` body references additional files. Claude reads those files only when relevant.
+This means: agents reference skills by name in their `skills:` frontmatter. The `SKILL.md` body references additional files. Claude reads those files only when relevant.
 
 ---
 
-## Adding a skill to an existing role
+## Adding a domain skill
 
-1. Create a new `.md` file in the role's skill folder, e.g. `.claude/skills/be/my-skill.md`. If the skill is relevant to more than one role, give it its own top-level folder (e.g. `.claude/skills/my-skill/SKILL.md`) and reference it from each role's `SKILL.md` using a relative path (e.g. `../my-skill/SKILL.md`).
+1. Create a folder: `.claude/skills/{skill-name}/`
 
-2. Add frontmatter with a `name` and `description`. The description is what Claude reads at startup to decide whether to trigger the skill -- end it with "Use when ..." so the trigger condition is explicit:
+2. Add a `SKILL.md` with frontmatter and orientation content. The description is what Claude reads at startup -- end it with "Use when ..." so the trigger condition is explicit:
    ```markdown
    ---
    name: my-skill
@@ -32,15 +32,22 @@ This means: agents reference the `SKILL.md` by name. The `SKILL.md` body referen
    ---
 
    # My Skill
-   ...content...
+
+   Brief orientation -- concepts, when to reach for sub-files.
+
+   ## Resources
+
+   - Load `my-reference.md` when actively working on X.
+   - Load `my-checklist.md` before declaring work done.
    ```
 
-3. Register it in the role's `SKILL.md` under `## Available skills`:
-   ```markdown
-   - **my-skill** (`my-skill.md`) -- one-line description
-   ```
+3. Add any Level 3 resource files as siblings (e.g. `my-reference.md`, `my-checklist.md`).
 
-That's it. No changes to the agent file needed.
+4. Register the skill in the relevant agent files under `skills:` frontmatter:
+   ```yaml
+   skills:
+     - my-skill
+   ```
 
 ### Naming conventions
 
@@ -61,12 +68,12 @@ Never rename a skill file without also updating the `name` field in its frontmat
 ## Adding a new agent role
 
 1. Create `.claude/agents/{role-name}.md` following the section order:
-   ```
+   ```markdown
    ---
    name: {role-name}
    description: {one-line role description and when to use this agent}
-   skills:
-     - {role-abbrev}
+   skills:              # omit if no domain skills needed
+     - {skill-name}
    ---
 
    You are a senior X.
@@ -74,23 +81,16 @@ Never rename a skill file without also updating the `name` field in its frontmat
    ## Core expertise
    ## Behavior
    ## Hard constraints
+
+   ## Commit conventions
+
+   - Commit after each discrete unit of work; no batching unrelated changes
+   - No WIP commits -- every commit must leave [artifacts] in a [state]
+   - Short, specific subject in imperative mood with issue reference
+   - {role-specific rules}
    ```
 
-2. Create a skill folder: `.claude/skills/{role-abbrev}/`
-
-3. Add a `SKILL.md` in that folder (Level 1/2 entrypoint):
-   ```markdown
-   ---
-   name: {role-abbrev}
-   description: {role} guidance including ... Use when ...
-   ---
-
-   ## Available skills
-
-   - **commit** (`commit.md`) -- commit conventions for the {role} role
-   ```
-
-4. Add at minimum a `commit.md` skill file for the role.
+2. Add any domain skills the role needs to its `skills:` frontmatter (see "Adding a domain skill" above).
 
 ---
 
@@ -98,15 +98,12 @@ Never rename a skill file without also updating the `name` field in its frontmat
 
 ```
 .claude/
-├── agents/          # one file per role
+├── agents/               # one file per role (self-contained: identity + commit conventions + skills ref)
 ├── skills/
-│   ├── {skill}/             # standalone skills (cross-role or standalone)
-│   │   └── SKILL.md
-│   └── {role}/
-│       ├── SKILL.md         # entrypoint (Level 1 + 2)
-│       ├── commit.md        # commit conventions (Level 3)
-│       └── {other}.md       # additional skills (Level 3)
-└── rules/           # auto-loaded rules for every session
+│   └── {skill}/          # one folder per domain skill
+│       ├── SKILL.md      # entrypoint (Level 1 + 2)
+│       └── {other}.md    # reference/checklist files (Level 3)
+└── rules/                # auto-loaded rules for every session
 ```
 
 ---
