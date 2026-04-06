@@ -27,12 +27,14 @@ Each agent definition covers:
 
 ## Skills
 
-Each role has a folder under `.claude/skills/{role}/` containing:
+Skills live under `.claude/skills/` in two kinds of folders:
 
-- `SKILL.md` -- entrypoint listing available skills for the role
-- `commit.md` -- commit message conventions specific to the role (and any future skills)
+- **Role folders** (`{role}/`) -- one per agent role, containing a `SKILL.md` entrypoint and a `commit.md` with role-specific commit conventions
+- **Standalone folders** (`{skill}/`) -- cross-role or domain skills, each with a `SKILL.md`. Currently: `api-design-principles/`, `db-schema/`, `java-springboot/`
 
-Agent frontmatter references skills by the `name` field in the skill file's frontmatter (e.g. `skills: - commit-em`), not by folder path. Skill names must be unique across all skill files -- folder organization is for humans, not for Claude Code's resolver.
+Role `SKILL.md` files list available skills including references to standalone skills via relative paths (e.g. `../db-schema/SKILL.md`). Skills load progressively: frontmatter at startup, body when triggered, referenced files on demand.
+
+Skill names must be unique across all skill files -- folder organization is for humans, not for Claude Code's resolver.
 
 ## Rules
 
@@ -41,6 +43,7 @@ Rules in `.claude/rules/` apply automatically to every session:
 - **workflow-phases-rule** -- multi-step work must be defined as a phased workflow with numbered steps, responsible roles, and concrete artifacts
 - **progress-tracking-rule** -- maintain a `PHASES-CHECKLIST.md` alongside any workflow; verify artifacts before checking off steps
 - **backlog-reporting-rule** -- append discovered bugs and tech debt to `BACKLOG.md` triage table
+- **contract-first-rule** -- no role may begin work that depends on an upstream artifact (PRD, DB schema, API contract) until it is explicitly approved
 - **er-diagram-rule** -- maintain a current ER diagram at `db/er-diagram.md`; update it in the same commit as any schema change
 
 ## Usage guide

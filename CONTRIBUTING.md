@@ -22,13 +22,13 @@ This means: agents reference the `SKILL.md` by name. The `SKILL.md` body referen
 
 ## Adding a skill to an existing role
 
-1. Create a new `.md` file in the role's skill folder, e.g. `.claude/skills/be/my-skill.md`. If the skill is relevant to more than one role, place it in `.claude/skills/shared/` instead and reference it from each role's `SKILL.md` using a relative path (e.g. `../shared/my-skill.md`).
+1. Create a new `.md` file in the role's skill folder, e.g. `.claude/skills/be/my-skill.md`. If the skill is relevant to more than one role, give it its own top-level folder (e.g. `.claude/skills/my-skill/SKILL.md`) and reference it from each role's `SKILL.md` using a relative path (e.g. `../my-skill/SKILL.md`).
 
-2. Add frontmatter with a `name` and `description`:
+2. Add frontmatter with a `name` and `description`. The description is what Claude reads at startup to decide whether to trigger the skill -- end it with "Use when ..." so the trigger condition is explicit:
    ```markdown
    ---
    name: my-skill
-   description: What this skill covers and when Claude should use it.
+   description: What this skill covers. Use when <conditions>.
    ---
 
    # My Skill
@@ -100,8 +100,8 @@ Never rename a skill file without also updating the `name` field in its frontmat
 .claude/
 ├── agents/          # one file per role
 ├── skills/
-│   ├── shared/              # skills used by more than one role
-│   │   └── {skill}.md
+│   ├── {skill}/             # standalone skills (cross-role or standalone)
+│   │   └── SKILL.md
 │   └── {role}/
 │       ├── SKILL.md         # entrypoint (Level 1 + 2)
 │       ├── commit.md        # commit conventions (Level 3)

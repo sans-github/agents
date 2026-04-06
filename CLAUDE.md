@@ -16,12 +16,13 @@ A collection of reusable, generic Claude Code sub-agent definitions for a softwa
 ## Structure
 
 - `.claude/agents/` -- agent definition files loaded automatically by Claude Code. Each file is a complete, self-contained role definition (no project-specific content).
-- `.claude/skills/{role}/` -- skills available to each agent. Each role folder has a `SKILL.md` (entrypoint listing available skills) and one or more skill files (e.g. `commit.md`).
+- `.claude/skills/{role}/` -- role-specific skills. Each folder has a `SKILL.md` entrypoint and a `commit.md`. Role `SKILL.md` files reference standalone skills via relative paths.
+- `.claude/skills/{skill}/` -- standalone cross-role skills (e.g. `api-design-principles/`, `db-schema/`, `java-springboot/`), each with a `SKILL.md`.
 - `.claude/rules/` -- rules that apply automatically to every session: `workflow-phases-rule.md`, `progress-tracking-rule.md`, `backlog-reporting-rule.md`, `contract-first-rule.md`, `er-diagram-rule.md`.
 
 ## Skill naming
 
-Skills are resolved by the `name` field in their frontmatter, not by folder path. Skill names must be unique across all skill files. Each agent references its role's `SKILL.md` entrypoint by the role abbreviation (e.g. `be`, `em`). The `SKILL.md` body lists additional skill files (e.g. `commit.md`, `db-schema.md`) which Claude loads as needed.
+Skills are resolved by the `name` field in their frontmatter, not by folder path. Skill names must be unique across all skill files. Each agent references its role's `SKILL.md` entrypoint by the role abbreviation (e.g. `be`, `em`). The `SKILL.md` body lists additional skill files (e.g. `commit.md`, `../db-schema/SKILL.md`) which Claude loads as needed.
 
 ## Sync script
 
