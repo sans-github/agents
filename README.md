@@ -28,11 +28,32 @@ Each agent definition covers:
 
 ## Skills
 
-Standalone domain skills live under `.claude/skills/{skill}/`, each with a `SKILL.md`. Currently: `api-design-principles/`, `db-schema/`, `java-springboot/`.
-
-Agents reference skills directly in their `skills:` frontmatter. Skills load progressively: frontmatter at startup, body when triggered, referenced files on demand.
+Standalone domain skills live under `.claude/skills/{skill}/`, each with a `SKILL.md`. Agents reference skills in their `skills:` frontmatter. Skills load progressively: frontmatter at startup, body when triggered, referenced files on demand.
 
 Skill names must be unique across all skill files.
+
+```mermaid
+mindmap
+  root((Agents))
+    [Backend Engineer]
+      )db-schema(
+      )java-springboot(
+      )api-design-principles(
+      )java-testing(
+    [Engineering Manager]
+      )db-schema(
+      )java-springboot(
+      )api-design-principles(
+    [Product Manager]
+    [Software Architect]
+      )api-design-principles(
+    [Frontend Engineer]
+      )api-design-principles(
+    [DevOps Engineer]
+    [QA Engineer]
+      )api-design-principles(
+    [UX Designer]
+```
 
 ## Rules
 
@@ -45,6 +66,7 @@ Rules in `.claude/rules/` apply automatically to every session:
 - **er-diagram-rule** -- maintain a current ER diagram at `db/er-diagram.md`; update it in the same commit as any schema change
 - **api-review-rule** -- run through the API design checklist before declaring any REST API design complete
 - **db-review-rule** -- run through the DB schema checklist before declaring any schema change complete
+- **test-review-rule** -- run through the test checklist before merging any test code
 
 ## Usage guide
 
