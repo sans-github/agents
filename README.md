@@ -8,10 +8,13 @@ See [GETTING-STARTED.md](.claude/GETTING-STARTED.md) to install and run your fir
 
 ```
 projects/
+├── master/                     # consolidated product baseline
+│   ├── prd.md                  # full PRD merged across all shipped features
+│   └── mockups/                # current UI mocks
 └── YYYYMMDD-feature-name/
-    ├── docs/           # all artifacts, flat, kebab-case
-    │   └── mockups/    # design mockups
-    ├── requirements/   # raw inputs
+    ├── docs/                   # all artifacts, flat, kebab-case
+    │   └── mockups/            # design mockups
+    ├── requirements/           # raw inputs
     └── workflow/
         ├── project-brief.md    # human fills in at kickoff
         ├── phases.md           # EM generates; human approves
@@ -243,6 +246,7 @@ Rules in `.claude/rules/` apply automatically to every session:
 - **api-review-rule** -- run through the API design checklist before declaring any REST API design complete
 - **db-review-rule** -- run through the DB schema checklist before declaring any schema change complete
 - **test-review-rule** -- run through the test checklist before merging any test code
+- **master-prd-rule** -- maintain a consolidated master PRD and mocks at `projects/master/`; PM and Designer are blocked from starting a new feature until it is current
 
 ## Usage guide
 

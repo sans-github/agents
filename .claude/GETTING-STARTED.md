@@ -19,6 +19,9 @@ Each feature or initiative gets its own folder under `projects/`. Use the date +
 
 ```
 projects/
+├── master/                     # consolidated product baseline -- always current
+│   ├── prd.md                  # full PRD merged across all shipped features
+│   └── mockups/                # current UI mocks
 └── YYYYMMDD-feature-name/
     ├── docs/           # all artifacts, flat, kebab-case (e.g. be-plan.md, api-contract.md)
     │   └── mockups/    # design mockups (HTML, images, Excalidraw)
