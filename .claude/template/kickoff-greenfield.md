@@ -29,4 +29,10 @@ Then enter plan mode and produce `workflow/kickoff-plan.md` covering:
 
 5. **Human-in-the-loop checkpoints** -- list every point where I need to review, approve, or make a decision before agents can proceed. Be specific: what artifact, who produces it, what I'm reviewing.
 
+6. **Open questions** -- a numbered list of questions that need my answers before agents can proceed. Do not make assumptions; surface the gaps here.
+
+7. **Risks and unknowns** -- anything you spotted that could slow the project down: unclear requirements, missing design decisions, external dependencies, or anything that needs resolution before work starts.
+
+8. **Out of scope** -- explicitly state what is NOT being built in this project run, based on the brief and requirements.
+
 Do not begin any work until I have reviewed and approved `workflow/kickoff-plan.md`.
