@@ -2,7 +2,7 @@
 
 A collection of reusable, generic Claude Code sub-agent definitions for a software engineering team. Each agent represents a distinct engineering or product role with well-defined expertise, collaboration style, and hard constraints.
 
-See [GETTING-STARTED.md](GETTING-STARTED.md) to install and run your first project.
+See [GETTING-STARTED.md](.claude/GETTING-STARTED.md) to install and run your first project.
 
 ## Project folder structure
 
@@ -18,7 +18,7 @@ projects/
         └── phases-checklist.md # agent progress tracker
 ```
 
-Copy `template/` as your starting point. See GETTING-STARTED.md for the full walkthrough.
+Copy `.claude/template/` as your starting point. See `.claude/GETTING-STARTED.md` for the full walkthrough.
 
 ---
 

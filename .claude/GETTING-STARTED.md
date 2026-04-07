@@ -9,7 +9,7 @@ bash scripts/sync-agents.sh          # pull from main
 bash scripts/sync-agents.sh v1.2.0   # pin a specific tag or branch
 ```
 
-This overwrites `.claude/agents/`, `.claude/rules/`, and `.claude/skills/` in your project. Commit the result to lock the version.
+This overwrites everything under `.claude/` (agents, rules, skills, template, guide docs) except your `settings.json`. Commit the result to lock the version.
 
 ---
 
@@ -29,10 +29,10 @@ projects/
         └── phases-checklist.md # agent progress tracker
 ```
 
-Copy the `template/` folder as your starting point:
+Copy the `.claude/template/` folder as your starting point:
 
 ```bash
-cp -r template projects/YYYYMMDD-feature-name
+cp -r .claude/template projects/YYYYMMDD-feature-name
 ```
 
 ---

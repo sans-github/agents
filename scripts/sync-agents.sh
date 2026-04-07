@@ -10,23 +10,17 @@ echo "Syncing agents from $REPO@$REF..."
 
 git clone --depth=1 --branch "$REF" "$REPO" "$TMP" -q
 
-for dir in agents rules skills; do
-  if [ -d "$TMP/.claude/$dir" ]; then
-    rm -rf "$ROOT/.claude/$dir"
-    cp -r "$TMP/.claude/$dir" "$ROOT/.claude/$dir"
-    echo "  $dir -> .claude/$dir"
+for item in agents rules skills template GETTING-STARTED.md CONVENTIONS.md; do
+  src="$TMP/.claude/$item"
+  dst="$ROOT/.claude/$item"
+  if [ -e "$src" ]; then
+    rm -rf "$dst"
+    cp -r "$src" "$dst"
+    echo "  $item -> .claude/$item"
   else
-    echo "  WARN: .claude/$dir not found in upstream, skipping"
+    echo "  WARN: .claude/$item not found in upstream, skipping"
   fi
 done
-
-if [ -d "$TMP/template" ]; then
-  rm -rf "$ROOT/template"
-  cp -r "$TMP/template" "$ROOT/template"
-  echo "  template -> template/"
-else
-  echo "  WARN: template/ not found in upstream, skipping"
-fi
 
 rm -rf "$TMP"
 echo "Done."
