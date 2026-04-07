@@ -1,5 +1,72 @@
 # JUnit 5 Reference
 
+## Test Factories
+
+Use factories to build test objects. Never construct domain objects inline across multiple tests -- a single required field change will break them all.
+
+### Location and naming
+
+```
+src/test/java/.../factory/
+├── UserFactory.java
+├── OrderFactory.java
+```
+
+### Pattern
+
+Factories use the builder pattern with sensible defaults. Tests override only what is relevant to their scenario.
+
+```java
+public class UserFactory {
+
+    public static User build() {
+        return User.builder()
+            .id(UUID.randomUUID())
+            .email("user@example.com")
+            .name("Test User")
+            .createdAt(Instant.now())
+            .build();
+    }
+
+    public static User build(Consumer<User.UserBuilder> overrides) {
+        User.UserBuilder builder = User.builder()
+            .id(UUID.randomUUID())
+            .email("user@example.com")
+            .name("Test User")
+            .createdAt(Instant.now());
+        overrides.accept(builder);
+        return builder.build();
+    }
+
+    public static User persist(UserRepository repository) {
+        return repository.save(build());
+    }
+
+    public static User persist(UserRepository repository, Consumer<User.UserBuilder> overrides) {
+        return repository.save(build(overrides));
+    }
+}
+```
+
+### Usage
+
+```java
+// Unit test -- in-memory, only override what matters
+User user = UserFactory.build(u -> u.email("custom@example.com"));
+
+// Integration test -- persisted to real DB
+User user = UserFactory.persist(userRepository, u -> u.name("Jane"));
+```
+
+### Rules
+
+- `build()` never touches the database -- safe for unit tests
+- `persist()` requires a real repository -- use in ITs only
+- Defaults must be valid enough to pass bean validation
+- One factory per entity, in the `factory` package
+
+---
+
 ## Project Setup
 
 - Place tests in `src/test/java` mirroring the main source package structure.

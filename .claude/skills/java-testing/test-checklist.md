@@ -1,5 +1,12 @@
 # Test Review Checklist
 
+## Factories
+
+- [ ] Test objects built via `{Entity}Factory`, not inline constructors
+- [ ] Factories live in `src/test/java/.../factory/`
+- [ ] `build()` used in unit tests (no DB), `persist()` used in ITs
+- [ ] Only relevant fields overridden per test -- defaults handle the rest
+
 ## Structure
 
 - [ ] Tests follow Arrange-Act-Assert (AAA) pattern
@@ -54,3 +61,4 @@
 - [ ] Happy path tested
 - [ ] Validation and error cases tested
 - [ ] Boundary values tested (nulls, empty, min/max)
+- [ ] 100% line coverage enforced -- `mvn verify` fails below this threshold
