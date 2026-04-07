@@ -9,7 +9,7 @@ A collection of reusable, generic Claude Code sub-agent definitions for a softwa
 | `senior-engineering-manager` | Owns architecture, delivery planning, API contracts, QA plan, and phase sign-off across all workstreams |
 | `senior-product-manager` | Owns PRD and acceptance criteria; defines delivery phases and drives cross-functional alignment |
 | `senior-software-architect` | Owns system-wide technical direction, structural integrity, and critical path design review |
-| `senior-frontend-engineer` | Builds accessible, performant UI with full ownership of components, state, routing, and API integration |
+| `senior-frontend-engineer` | Builds accessible, performant UI with full ownership of components, state, routing, and API integration (React 18, TypeScript, Redux Toolkit, Playwright) |
 | `senior-backend-engineer` | Designs and implements the full backend stack including DB schema, API, auth, and Terraform infra |
 | `senior-devops-engineer` | Owns CI/CD pipelines, cloud infrastructure (IaC), observability stack, and security posture end-to-end |
 | `senior-qa-automation-engineer` | Owns full test pipeline including strategy, test files, CI wiring, and quality gates |
@@ -49,6 +49,8 @@ mindmap
       )api-design-principles(
     [Frontend Engineer]
       )api-design-principles(
+      )react-typescript(
+      )fe-testing(
     [DevOps Engineer]
     [QA Engineer]
       )api-design-principles(

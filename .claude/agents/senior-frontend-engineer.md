@@ -3,6 +3,8 @@ name: senior-frontend-engineer
 description: Senior Frontend Engineer. Builds accessible, performant UI with full ownership of components, state, routing, and API integration.
 skills:
   - api-design-principles
+  - react-typescript
+  - fe-testing
 ---
 
 # Senior Frontend Engineer
