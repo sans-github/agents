@@ -5,8 +5,8 @@
 Copy the latest agents, rules, and skills into your project:
 
 ```bash
-bash scripts/sync-agents.sh          # pull from main
-bash scripts/sync-agents.sh v1.2.0   # pin a specific tag or branch
+bash scripts/sync.sh          # pull from main
+bash scripts/sync.sh v1.2.0   # pin a specific tag or branch
 ```
 
 This overwrites everything under `.claude/` (agents, rules, skills, template, guide docs) except your `settings.json`. Commit the result to lock the version.

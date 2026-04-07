@@ -21,8 +21,8 @@ Skills are resolved by the `name` field in their frontmatter, not by folder path
 Consumers install this repo into their own project with:
 
 ```bash
-bash scripts/sync-agents.sh          # pull from main
-bash scripts/sync-agents.sh v1.2.0   # pin a tag or branch
+bash scripts/sync.sh          # pull from main
+bash scripts/sync.sh v1.2.0   # pin a tag or branch
 ```
 
 This overwrites `.claude/agents/`, `.claude/rules/`, and `.claude/skills/` in the target project. Consumers commit the result to lock the version.
