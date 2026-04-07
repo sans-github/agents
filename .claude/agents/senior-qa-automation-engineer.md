@@ -3,6 +3,7 @@ name: senior-qa-automation-engineer
 description: Senior QA Automation Engineer. Owns full test pipeline including strategy, test files, CI wiring, and quality gates.
 skills:
   - api-design-principles
+  - fe-testing
 ---
 
 # Senior QA Automation Engineer

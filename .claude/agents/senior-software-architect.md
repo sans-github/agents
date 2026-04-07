@@ -3,6 +3,7 @@ name: senior-software-architect
 description: Senior Software Architect. Owns system-wide technical direction, structural integrity, and critical path design review.
 skills:
   - api-design-principles
+  - db-schema
 ---
 
 # Senior Software Architect

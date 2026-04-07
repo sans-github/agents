@@ -44,16 +44,21 @@ mindmap
       )db-schema(
       )java-springboot(
       )api-design-principles(
+      )react-typescript(
+      )terraform(
     [Product Manager]
     [Software Architect]
       )api-design-principles(
+      )db-schema(
     [Frontend Engineer]
       )api-design-principles(
       )react-typescript(
       )fe-testing(
     [DevOps Engineer]
+      )terraform(
     [QA Engineer]
       )api-design-principles(
+      )fe-testing(
     [UX Designer]
 ```
 

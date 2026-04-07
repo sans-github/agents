@@ -5,6 +5,8 @@ skills:
   - db-schema
   - java-springboot
   - api-design-principles
+  - react-typescript
+  - terraform
 ---
 
 # Senior Engineering Manager
