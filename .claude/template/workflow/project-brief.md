@@ -13,11 +13,15 @@ purpose: >
 List the roles that are in play for this project. Unlisted roles are inactive and must not be engaged.
 
 ```
-# Example -- small internal tool, no design or infra work needed:
+# Full roster -- comment out or remove roles that are inactive for this project:
 - PM
 - EM
+- Arch
+- Designer
 - BE
 - FE
+- DevOps
+- QA
 ```
 
 ---
