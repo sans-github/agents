@@ -22,5 +22,12 @@ for item in agents rules skills template GETTING-STARTED.md CONVENTIONS.md; do
   fi
 done
 
+if [ -f "$TMP/README.md" ]; then
+  cp "$TMP/README.md" "$ROOT/.claude/agents-guide.md"
+  echo "  README.md -> .claude/agents-guide.md"
+else
+  echo "  WARN: README.md not found in upstream, skipping"
+fi
+
 rm -rf "$TMP"
 echo "Done."
