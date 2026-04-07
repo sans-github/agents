@@ -59,20 +59,149 @@ mindmap
 
 Agents collaborate by exchanging artifacts. The Gatekeeper is the role with final say -- they review, raise concerns, and resolve with the owner before downstream work proceeds.
 
-| Artifact | Owner | Who Does What | When Produced | Gatekeeper |
-|---|---|---|---|---|
-| Req | User | **PM**: gathers via User<>PM session, uses as input to PRD | Before project starts | -- |
-| PRD, AC | PM | **PM**: sends to Design to generate Mocks<br>**PM**: sends PRD, Req, Mocks, AC to EM to kick off Eng planning<br>**PM**: collaborates with FE, BE, QA on scope and AC | After req gathering | EM |
-| Mocks | Design | **Design**: creates from PRD<br>**PM**: reviews and refines jointly with Design | After PRD | PM |
-| Sys Arch | Arch | **Arch**: authors based on PRD and constraints<br>**EM**: contributes and co-reviews<br>**BE**: contributes domain input | After PRD | Arch |
-| Eng Plans (HLD) | EM | **EM**: authors DB Schema, IAC, Core API, BE<>FE API contract, Feature sys design -- all high-level<br>**Arch**: contributes<br>**FE, BE**: receive and align on scope | After Sys Arch | EM |
-| BE Detailed Design | BE | **BE**: authors detailed DB Schema, IAC, BE API, BE<>FE API contract from HLD<br>**EM**: monitors, intercepts on red flag | After Eng Plans | EM |
-| FE Detailed Design | FE | **FE**: authors detailed component design, state, routing, API integration from HLD<br>**EM**: monitors, intercepts on red flag | After Eng Plans | EM |
-| API Contract | FE + BE | **FE + BE**: jointly author, aligned on Detailed Designs<br>**EM**: monitors, intercepts on red flag | After Detailed Designs | EM |
-| Test Plan / Acceptance | QA | **QA**: authors based on PRD, Mocks, AC<br>**EM**: monitors, intercepts on red flag | After Eng Plans | EM |
-| FE Artifacts | FE | **FE**: implements per Detailed Design and API Contract<br>**QA**: reviews and tests<br>**EM**: monitors, intercepts on red flag | During implementation | EM |
-| BE Artifacts | BE | **BE**: implements per Detailed Design and API Contract<br>**QA**: reviews and tests<br>**Arch**: reviews structural decisions<br>**EM**: monitors, intercepts on red flag | During implementation | EM |
-| Automation | QA | **QA**: authors test suite against FE/BE artifacts<br>**EM**: monitors, intercepts on red flag | After implementation | EM |
+---
+
+**Timeline** (phases and artifacts at a glance)
+
+```mermaid
+timeline
+    title Collaboration Flow
+    Discovery          : Reqs
+                       : PRD & ACs
+                       : Mocks
+    System Design      : Sys Arch
+                       : Eng Plans (HLD)
+    Engineering Design : BE Detailed Design
+                       : FE Arch
+                       : API Contract
+    Implementation Planning : Test Plan
+                       : Issues List
+    Implementation     : BE Artifacts
+                       : FE Artifacts
+                       : BE & FE Test Docs
+    Validation         : Automation
+```
+
+<details>
+<summary>Sequence diagram (who hands what to whom, in order)</summary>
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant PM
+    participant Design
+    participant EM
+    participant Arch
+    participant BE
+    participant FE
+    participant QA
+
+    User->>PM: Reqs
+    loop Review
+        PM->>Design: PRD, ACs
+        Design-->>PM: Mocks
+    end
+    PM->>EM: PRD, Reqs, Mocks, ACs
+    loop Sys Arch
+        EM->>Arch: collaborate
+        Arch-->>EM: Sys Arch
+    end
+    rect rgb(220, 230, 255)
+        EM->>BE: HLD
+        BE-->>EM: BE Detailed Design
+    end
+    rect rgb(220, 230, 255)
+        EM->>FE: HLD
+        FE-->>EM: FE Detailed Design
+    end
+    loop API Contract
+        BE->>FE: draft
+        FE-->>BE: feedback
+    end
+    QA->>EM: Test Plan
+    rect rgb(220, 255, 220)
+        BE->>EM: Issues List
+        EM-->>BE: Approved
+        BE->>BE: Create GH Issues → Implement
+    end
+    rect rgb(220, 255, 220)
+        FE->>EM: Issues List
+        EM-->>FE: Approved
+        FE->>FE: Create GH Issues → Implement
+    end
+    rect rgb(220, 255, 220)
+        QA->>EM: Issues List
+        EM-->>QA: Approved
+        QA->>QA: Create GH Issues → Implement
+    end
+    BE->>QA: BE Test Docs
+    FE->>QA: FE Test Docs
+    QA->>QA: Automation
+```
+
+</details>
+
+### Discovery
+| Artifact | Owner | Key collaborators | Gatekeeper |
+|---|---|---|---|
+| Reqs | User | PM gathers | -- |
+| PRD, ACs | PM | EM reviews | PM |
+| Mocks | Design | PM refines jointly | PM |
+
+### System Design
+| Artifact | Owner | Key collaborators | Gatekeeper |
+|---|---|---|---|
+| Sys Arch | Arch | EM drives, Arch authors | Arch |
+| Eng Plans (HLD) | EM | Arch contributes, FE+BE align | EM |
+
+### Engineering Design
+| Artifact | Owner | Key collaborators | Gatekeeper |
+|---|---|---|---|
+| BE Detailed Design | BE | EM monitors; intercepts and collaborates to resolve on red flag | EM |
+| FE Arch | FE | EM monitors; intercepts and collaborates to resolve on red flag | EM |
+| API Contract | FE + BE | EM monitors; intercepts and collaborates to resolve on red flag | EM |
+
+### Implementation Planning
+| Artifact | Owner | Key collaborators | Gatekeeper |
+|---|---|---|---|
+| Test Plan | QA | EM monitors; intercepts and collaborates to resolve on red flag | EM |
+| Issues List | BE / FE / QA | EM signs off each list | EM |
+
+### Implementation
+| Artifact | Owner | Key collaborators | Gatekeeper |
+|---|---|---|---|
+| CI/CD Pipeline + IaC | DevOps | EM monitors; intercepts and collaborates to resolve on red flag | EM |
+| BE Artifacts | BE | QA tests, Arch reviews, EM monitors; intercepts and collaborates to resolve on red flag | EM |
+| FE Artifacts | FE | QA tests, EM monitors; intercepts and collaborates to resolve on red flag | EM |
+| BE Test Docs | BE | QA consumes | EM |
+| FE Test Docs | FE | QA consumes | EM |
+
+### Validation
+| Artifact | Owner | Key collaborators | Gatekeeper |
+|---|---|---|---|
+| Automation | QA | EM monitors; intercepts and collaborates to resolve on red flag | EM |
+---
+
+<details>
+<summary>Step-by-step flow</summary>
+
+1. **User** shares requirements with **PM**.
+2. **PM** gathers requirements and produces the PRD and ACs.
+3. **PM** sends PRD to **Design**, who creates Mocks. PM reviews and refines jointly with Design.
+4. **PM** sends PRD, Reqs, Mocks, and ACs to **EM** to kick off engineering planning.
+5. **EM** engages **Arch** and collaborates to produce Sys Arch based on PRD and system constraints.
+6. **EM** authors Eng Plans (HLD) -- DB Schema, IAC, Core API, BE<>FE API contract, Feature sys design -- based on Sys Arch and PRD. Arch contributes; FE and BE align on scope.
+7. **BE** authors BE Detailed Design (DB Schema, IAC, BE API, BE<>FE API contract) from the HLD.
+8. **FE** authors FE Arch (component design, state, routing, API integration) from the HLD.
+9. **FE and BE** jointly author the API Contract, aligned on their Detailed Designs.
+10. **QA** authors the Test Plan based on PRD, Mocks, and ACs.
+11. **BE**, **FE**, and **QA** each independently author their own Issues List -- a hierarchical document breaking down their scope into individual GitHub issues, organized for human review. Each submits to **EM** for sign-off.
+12. **EM** reviews and signs off on each Issues List. Once approved, each role creates the actual GH Issues and begins implementation.
+13. **FE** implements FE Artifacts per FE Arch and API Contract. **BE** implements BE Artifacts per Detailed Design and API Contract.
+14. **FE** and **BE** each produce Test Docs for QA to use in automation.
+15. **QA** authors the automation suite against FE/BE artifacts and test docs.
+
+</details>
 
 ## Rules
 
@@ -81,7 +210,7 @@ Rules in `.claude/rules/` apply automatically to every session:
 - **workflow-phases-rule** -- multi-step work must be defined as a phased workflow with numbered steps, responsible roles, and concrete artifacts
 - **progress-tracking-rule** -- maintain a `PHASES-CHECKLIST.md` alongside any workflow; verify artifacts before checking off steps
 - **backlog-reporting-rule** -- append discovered bugs and tech debt to `BACKLOG.md` triage table
-- **contract-first-rule** -- no role may begin work that depends on an upstream artifact (PRD, DB schema, API contract) until it is explicitly approved
+- **contract-first-rule** -- no role may begin work that depends on an upstream artifact until it is explicitly approved; covers all artifacts in the collaboration map
 - **er-diagram-rule** -- maintain a current ER diagram at `db/er-diagram.md`; update it in the same commit as any schema change
 - **api-review-rule** -- run through the API design checklist before declaring any REST API design complete
 - **db-review-rule** -- run through the DB schema checklist before declaring any schema change complete
