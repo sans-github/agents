@@ -2,6 +2,26 @@
 
 A collection of reusable, generic Claude Code sub-agent definitions for a software engineering team. Each agent represents a distinct engineering or product role with well-defined expertise, collaboration style, and hard constraints.
 
+See [GETTING-STARTED.md](GETTING-STARTED.md) to install and run your first project.
+
+## Project folder structure
+
+```
+projects/
+└── YYYYMMDD-feature-name/
+    ├── docs/           # all artifacts, flat, kebab-case
+    │   └── mockups/    # design mockups
+    ├── requirements/   # raw inputs
+    └── workflow/
+        ├── project-brief.md    # human fills in at kickoff
+        ├── phases.md           # EM generates; human approves
+        └── phases-checklist.md # agent progress tracker
+```
+
+Copy `template/` as your starting point. See GETTING-STARTED.md for the full walkthrough.
+
+---
+
 ## Agents
 
 | Agent | Description |
@@ -60,6 +80,7 @@ mindmap
       )api-design-principles(
       )fe-testing(
     [UX Designer]
+      )frontend-design(
 ```
 
 ## Collaboration map
@@ -215,7 +236,7 @@ sequenceDiagram
 Rules in `.claude/rules/` apply automatically to every session:
 
 - **workflow-phases-rule** -- multi-step work must be defined as a phased workflow with numbered steps, responsible roles, and concrete artifacts
-- **progress-tracking-rule** -- maintain a `PHASES-CHECKLIST.md` alongside any workflow; verify artifacts before checking off steps
+- **progress-tracking-rule** -- maintain a `phases-checklist.md` alongside any workflow; verify artifacts before checking off steps
 - **backlog-reporting-rule** -- append discovered bugs and tech debt to `BACKLOG.md` triage table
 - **contract-first-rule** -- no role may begin work that depends on an upstream artifact until it is explicitly approved; covers all artifacts in the collaboration map
 - **er-diagram-rule** -- maintain a current ER diagram at `db/er-diagram.md`; update it in the same commit as any schema change

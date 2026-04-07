@@ -33,6 +33,7 @@
       "Read(agents-core/**)",
       "WebFetch(domain:docs.anthropic.com)",
       "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
       "WebFetch(domain:skills.sh)",
       "WebSearch",
       "Write(.claude/**)",

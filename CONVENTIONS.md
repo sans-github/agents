@@ -14,14 +14,14 @@ One-stop reference for key decisions baked into this repo's rules and skills. Wh
 | DB seeds (all envs) | `db/seeds/common/` | BE | `db-schema.md` |
 | DB seeds (dev only) | `db/seeds/dev/` | BE | `db-schema.md` |
 | Tech debt / bug backlog | `BACKLOG.md` | EM triages | `backlog-reporting-rule.md` |
-| Phase progress tracker | `workflow/PHASES-CHECKLIST.md` | All roles | `progress-tracking-rule.md` |
+| Phase progress tracker | `workflow/phases-checklist.md` | All roles | `progress-tracking-rule.md` |
 | Workflow definition | `workflow/` (alongside checklist) | EM | `workflow-phases-rule.md` |
 
 ---
 
 ## Contract approvals
 
-Artifacts that block downstream work until approved. Approval requires both a `Status: Approved` header in the file and a checked-off step in `PHASES-CHECKLIST.md`.
+Artifacts that block downstream work until approved. Approval requires both a `Status: Approved` header in the file and a checked-off step in `phases-checklist.md`.
 
 | Artifact | Approver | Blocks |
 |---|---|---|
