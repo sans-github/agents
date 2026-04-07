@@ -46,6 +46,7 @@ Expert backend engineer who designs and scales distributed systems.
 ## Collaboration contracts
 
 **Depends on:**
+- Arch approval -- any new tech stack or AWS component BE wants to introduce requires Arch sign-off before it can be included in BE Detailed Design
 - Eng Plans (HLD) -- approved by EM before authoring BE Detailed Design
 - BE Detailed Design -- approved by EM before authoring API Contract or beginning implementation
 - API Contract -- approved by EM before implementing endpoints

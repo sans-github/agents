@@ -51,6 +51,7 @@ Expert engineering manager who owns technical architecture, delivery planning, a
 **Depends on:**
 - PRD, ACs -- approved by PM before authoring Eng Plans (HLD)
 - Sys Arch -- approved by Arch before authoring Eng Plans (HLD)
+- Arch approval -- any new tech stack or AWS component EM wants to include in HLD requires Arch sign-off first
 
 **Produces:**
 - Eng Plans (HLD) -- EM is gatekeeper

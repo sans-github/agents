@@ -47,6 +47,7 @@ Expert DevOps engineer who owns CI/CD pipelines, infrastructure-as-code, and pro
 ## Collaboration contracts
 
 **Depends on:**
+- Arch approval -- any new AWS component or infrastructure service DevOps wants to introduce requires Arch sign-off before provisioning
 - Eng Plans (HLD) -- approved by EM before provisioning infrastructure; infra must support the architecture defined in HLD
 - Any high-risk or cost-significant infra change -- requires explicit EM approval before proceeding
 

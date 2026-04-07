@@ -46,6 +46,7 @@ Expert frontend engineer who builds accessible, performant UIs with clean state 
 ## Collaboration contracts
 
 **Depends on:**
+- Arch approval -- any new tech stack or library FE wants to introduce requires Arch sign-off before it can be included in FE Arch
 - Eng Plans (HLD) -- approved by EM before authoring FE Arch
 - Mocks -- approved by PM before beginning component implementation
 - FE Arch -- approved by EM before authoring API Contract or beginning implementation
