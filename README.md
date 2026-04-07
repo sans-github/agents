@@ -246,7 +246,7 @@ Rules in `.claude/rules/` apply automatically to every session:
 - **api-review-rule** -- run through the API design checklist before declaring any REST API design complete
 - **db-review-rule** -- run through the DB schema checklist before declaring any schema change complete
 - **test-review-rule** -- run through the test checklist before merging any test code
-- **master-prd-rule** -- maintain a consolidated master PRD and mocks at `projects/master/`; PM and Designer are blocked from starting a new feature until it is current
+- **product-baseline-rule** -- maintain a consolidated master PRD and mocks at `projects/master/`; PM and Designer are blocked from starting a new feature until it is current
 
 ## Usage guide
 
