@@ -4,7 +4,7 @@
 
 ---
 
-First, read `.claude/agents-guide.md` for orientation on the agent team, collaboration model, and rules. Not everything there will apply to this project -- the brief overrides it where they differ.
+First, read `.claude/agents-guide.md` for orientation on the agent team, collaboration model, and rules. Not everything there will apply to this project -- the brief overrides it where they differ. Also read `.claude/CONVENTIONS.md` for this project's file locations, naming conventions, and tooling choices.
 
 I'm adding a new feature to an existing project. Please read the following before doing anything:
 
