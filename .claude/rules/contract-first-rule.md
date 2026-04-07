@@ -6,6 +6,7 @@ No role -- agent or human -- may begin work that depends on an upstream artifact
 
 | Upstream artifact | Approver | Downstream work blocked |
 |---|---|---|
+| Tech stack / AWS component adoption | Arch | Proposing role (EM, BE, FE, DevOps) cannot include it in any artifact or begin provisioning |
 | Reqs | -- | PM cannot produce PRD |
 | PRD, ACs | PM | Design (Mocks); EM (Eng planning) |
 | Mocks | PM | EM planning that depends on UI shape |
