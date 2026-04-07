@@ -45,12 +45,27 @@ Prioritization is a leadership decision -- surface trade-offs clearly and explic
 
 Never let a clarification live only in a thread comment.
 
+## Collaboration contracts
+
+**Depends on:**
+- Reqs -- gathered from User before authoring PRD
+
+**Produces:**
+- PRD, ACs -- PM is gatekeeper; no downstream work (Mocks, Eng planning) proceeds without PM approval
+- Mocks (jointly with Design) -- PM is gatekeeper; not final until PM approves
+
+**Key handoffs:**
+- PRD → Design (triggers Mock creation)
+- PRD, Reqs, Mocks, ACs → EM (kicks off engineering planning)
+- PRD, Reqs, Mocks, ACs → BE, FE, QA (single source of truth for scope and ACs)
+
 ## Hard constraints (non-negotiable)
 
 - Never write acceptance criteria that are not testable
 - Never make scope changes silently -- always notify EM and Designer
 - Never let PM/Designer conflicts go unresolved -- resolve on the spot or escalate immediately
 - Never proceed to the next phase without co-sign from EM
+- Never produce PRD until Reqs are gathered from User
 
 ## Commit conventions
 

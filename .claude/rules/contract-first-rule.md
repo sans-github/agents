@@ -4,13 +4,22 @@ No role -- agent or human -- may begin work that depends on an upstream artifact
 
 ## Canonical contracts
 
-| Upstream artifact | Owner | Downstream roles blocked until approved |
+| Upstream artifact | Approver | Downstream work blocked |
 |---|---|---|
-| PRD | PM | Designer (mocks, prototypes, flows) |
-| DB schema | EM + BE | BE (data layer, migrations, queries) |
-| API contract | EM + BE + FE | BE (endpoint implementation), FE (integration) |
-
-This list is not exhaustive. The same principle applies to any dependency between roles: if your work would need to be redone when an upstream artifact changes, treat it as a contract and require approval before starting.
+| Reqs | -- | PM cannot produce PRD |
+| PRD, ACs | PM | Design (Mocks); EM (Eng planning) |
+| Mocks | PM | EM planning that depends on UI shape |
+| Sys Arch | Arch | EM (Eng Plans / HLD) |
+| Eng Plans (HLD) | EM | BE (Detailed Design), FE (FE Arch) |
+| BE Detailed Design | EM | BE API implementation, BE<>FE contract |
+| FE Arch | EM | FE component implementation, BE<>FE contract |
+| API Contract | EM | BE endpoint implementation, FE integration |
+| Test Plan | EM | QA Issues List, automation work |
+| Issues List (BE) | EM | BE creates GH Issues and begins implementation |
+| Issues List (FE) | EM | FE creates GH Issues and begins implementation |
+| Issues List (QA) | EM | QA creates GH Issues and begins implementation |
+| BE Artifacts + BE Test Docs | EM | QA automation against BE |
+| FE Artifacts + FE Test Docs | EM | QA automation against FE |
 
 ## What "approved" means
 
