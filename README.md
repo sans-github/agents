@@ -55,6 +55,25 @@ mindmap
     [UX Designer]
 ```
 
+## Collaboration map
+
+Agents collaborate by exchanging artifacts. The Gatekeeper is the role with final say -- they review, raise concerns, and resolve with the owner before downstream work proceeds.
+
+| Artifact | Owner | Who Does What | When Produced | Gatekeeper |
+|---|---|---|---|---|
+| Req | User | **PM**: gathers via User<>PM session, uses as input to PRD | Before project starts | -- |
+| PRD, AC | PM | **PM**: sends to Design to generate Mocks<br>**PM**: sends PRD, Req, Mocks, AC to EM to kick off Eng planning<br>**PM**: collaborates with FE, BE, QA on scope and AC | After req gathering | EM |
+| Mocks | Design | **Design**: creates from PRD<br>**PM**: reviews and refines jointly with Design | After PRD | PM |
+| Sys Arch | Arch | **Arch**: authors based on PRD and constraints<br>**EM**: contributes and co-reviews<br>**BE**: contributes domain input | After PRD | Arch |
+| Eng Plans (HLD) | EM | **EM**: authors DB Schema, IAC, Core API, BE<>FE API contract, Feature sys design -- all high-level<br>**Arch**: contributes<br>**FE, BE**: receive and align on scope | After Sys Arch | EM |
+| BE Detailed Design | BE | **BE**: authors detailed DB Schema, IAC, BE API, BE<>FE API contract from HLD<br>**EM**: monitors, intercepts on red flag | After Eng Plans | EM |
+| FE Detailed Design | FE | **FE**: authors detailed component design, state, routing, API integration from HLD<br>**EM**: monitors, intercepts on red flag | After Eng Plans | EM |
+| API Contract | FE + BE | **FE + BE**: jointly author, aligned on Detailed Designs<br>**EM**: monitors, intercepts on red flag | After Detailed Designs | EM |
+| Test Plan / Acceptance | QA | **QA**: authors based on PRD, Mocks, AC<br>**EM**: monitors, intercepts on red flag | After Eng Plans | EM |
+| FE Artifacts | FE | **FE**: implements per Detailed Design and API Contract<br>**QA**: reviews and tests<br>**EM**: monitors, intercepts on red flag | During implementation | EM |
+| BE Artifacts | BE | **BE**: implements per Detailed Design and API Contract<br>**QA**: reviews and tests<br>**Arch**: reviews structural decisions<br>**EM**: monitors, intercepts on red flag | During implementation | EM |
+| Automation | QA | **QA**: authors test suite against FE/BE artifacts<br>**EM**: monitors, intercepts on red flag | After implementation | EM |
+
 ## Rules
 
 Rules in `.claude/rules/` apply automatically to every session:
