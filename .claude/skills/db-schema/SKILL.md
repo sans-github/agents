@@ -124,6 +124,20 @@ Define these as part of the initial schema so they are consistent across all tab
 
 All column names use snake_case (e.g. `created_at`, `user_id`, `order_total`). Never camelCase or PascalCase.
 
+## Foreign key naming
+
+Default: `{referenced_table}_id` (e.g. `user_id` references `users.id`, `order_id` references `orders.id`).
+
+Exception: when a table has two FKs pointing to the same table, use role-based naming that makes the relationship intent clear:
+
+```sql
+-- Two FKs to users -- use role-based names
+ALTER TABLE orders ADD COLUMN customer_id UUID NOT NULL REFERENCES users(id);
+ALTER TABLE orders ADD COLUMN shipping_contact_id UUID REFERENCES users(id);
+```
+
+Never use ambiguous names like `user_id_1` / `user_id_2`.
+
 ---
 
 ## Index naming

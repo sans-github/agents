@@ -41,6 +41,7 @@ Artifacts that block downstream work until approved. Approval requires both a `S
 | ID type | UUID |
 | Audit columns | `id`, `created_at`, `updated_at`, `deleted_at` on every table |
 | Index naming | `idx_{table}_{column}`, unique: `uq_{table}_{column}` |
+| FK naming | `{referenced_table}_id` by default; role-based (e.g. `customer_id`) when two FKs reference the same table |
 
 ---
 
@@ -55,7 +56,8 @@ Mermaid `erDiagram` syntax. Must be updated in the same commit as any schema cha
 | Convention | Value |
 |---|---|
 | Linter | Checkstyle with `google_checks.xml` |
-| Maven phase | `verify` -- `mvn verify` fails on violations |
+| Coverage | 100% line coverage enforced via JaCoCo |
+| Maven phase | `verify` -- `mvn verify` fails on Checkstyle violations or coverage below 100% |
 | CI gate | GitHub Actions runs `mvn verify` on every PR, blocks merge on failure |
 
 ---
