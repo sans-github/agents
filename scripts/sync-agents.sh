@@ -20,5 +20,13 @@ for dir in agents rules skills; do
   fi
 done
 
+if [ -d "$TMP/template" ]; then
+  rm -rf "$ROOT/template"
+  cp -r "$TMP/template" "$ROOT/template"
+  echo "  template -> template/"
+else
+  echo "  WARN: template/ not found in upstream, skipping"
+fi
+
 rm -rf "$TMP"
 echo "Done."
