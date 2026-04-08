@@ -4,7 +4,7 @@ For any task that follows a phased workflow, maintain a progress tracker through
 
 ## Setup
 
-Before starting any work, create a `phases-checklist.md` file (location: alongside the workflow document, e.g. `workflow/phases-checklist.md`). Populate it by listing every step from the workflow as an unchecked checkbox.
+Before starting any work, create a `implementation-plan-tracker.md` file (location: alongside the workflow document, e.g. `workflow/implementation-plan-tracker.md`). Populate it by listing every step from the workflow as an unchecked checkbox.
 
 ## During execution
 
@@ -14,7 +14,7 @@ Before starting any work, create a `phases-checklist.md` file (location: alongsi
 
 ## On resume (interrupted session)
 
-1. Read `phases-checklist.md` first.
+1. Read `implementation-plan-tracker.md` first.
 2. Find the last checked step.
 3. Verify that step's output actually exists (file, artifact, commit). If it does not, uncheck it and redo it.
 4. Continue from the first unchecked step.

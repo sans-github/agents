@@ -17,8 +17,8 @@ projects/
     ├── requirements/           # raw inputs
     └── workflow/
         ├── project-brief.md    # human fills in at kickoff
-        ├── phases.md           # EM generates; human approves
-        └── phases-checklist.md # agent progress tracker
+        ├── implementation-plan.md           # EM generates; human approves
+        └── implementation-plan-tracker.md # agent progress tracker
 ```
 
 Copy `.claude/template/` as your starting point. See `.claude/GETTING-STARTED.md` for the full walkthrough.
@@ -239,7 +239,7 @@ sequenceDiagram
 Rules in `.claude/rules/` apply automatically to every session:
 
 - **workflow-phases-rule** -- multi-step work must be defined as a phased workflow with numbered steps, responsible roles, and concrete artifacts
-- **progress-tracking-rule** -- maintain a `phases-checklist.md` alongside any workflow; verify artifacts before checking off steps
+- **progress-tracking-rule** -- maintain a `implementation-plan-tracker.md` alongside any workflow; verify artifacts before checking off steps
 - **backlog-reporting-rule** -- append discovered bugs and tech debt to `BACKLOG.md` triage table
 - **contract-first-rule** -- no role may begin work that depends on an upstream artifact until it is explicitly approved; covers all artifacts in the collaboration map
 - **er-diagram-rule** -- maintain a current ER diagram at `db/er-diagram.md`; update it in the same commit as any schema change

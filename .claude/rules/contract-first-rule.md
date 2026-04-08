@@ -27,7 +27,7 @@ No role -- agent or human -- may begin work that depends on an upstream artifact
 An artifact is approved when:
 
 1. It has a `Status: Approved` line in its frontmatter or at the top of the file, with the approving role noted (e.g. `Status: Approved — EM`).
-2. The corresponding approval step in `phases-checklist.md` is checked off.
+2. The corresponding approval step in `implementation-plan-tracker.md` is checked off.
 
 Both must be present. One without the other is not sufficient.
 
@@ -42,7 +42,7 @@ Approved: 2026-04-01
 
 ## Adding an approval step to the checklist
 
-Every contract must have an explicit approval step in `phases-checklist.md`:
+Every contract must have an explicit approval step in `implementation-plan-tracker.md`:
 
 ```markdown
 - [ ] 3. EM approves DB schema (`db/schema.md` Status set to Approved)

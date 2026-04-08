@@ -1,4 +1,4 @@
-<!-- Agent progress tracker. Populate from phases.md before starting work. -->
+<!-- Agent progress tracker. Populate from implementation-plan.md before starting work. -->
 <!-- Check off each step only after verifying the artifact exists. -->
 <!-- On resume: read this first, verify the last checked step, continue from the first unchecked. -->
 

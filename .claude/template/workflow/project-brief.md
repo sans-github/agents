@@ -3,7 +3,7 @@ purpose: >
   Filled in by the human before any agent begins work.
   Configures which agents are active, which phases are skipped,
   and any deviations from the default collaboration pattern.
-  Agents must read this before doing anything and factor it into phases.md.
+  Agents must read this before doing anything and factor it into implementation-plan.md.
 ---
 
 # Project Brief
@@ -54,7 +54,7 @@ List any deviations from the default agent collaboration behavior defined in the
 
 ## Additional context
 
-Include anything that should inform phases.md -- handwritten notes, whiteboard photos, Excalidraw diagrams, sketches, or rough ideas. Agents must respect and factor all of this in when generating phases.md.
+Include anything that should inform implementation-plan.md -- handwritten notes, whiteboard photos, Excalidraw diagrams, sketches, or rough ideas. Agents must respect and factor all of this in when generating implementation-plan.md.
 
 ```
 # Example:
