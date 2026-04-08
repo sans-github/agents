@@ -15,12 +15,12 @@ This overwrites everything under `.claude/` (agents, rules, skills, template, gu
 
 ## 2. Tailor conventions
 
-Open `.claude/CONVENTIONS.md` and update it to match your project -- folder paths, naming conventions, tooling choices, and team norms. Do this once after first install, and revisit whenever your project's conventions change.
+Open `.claude/tech-custom-config.md` and update it to match your project -- folder paths, naming conventions, tooling choices, and team norms. Do this once after first install, and revisit whenever your project's conventions change.
 
 Then add it to your project's `CLAUDE.md` so agents load it automatically every session:
 
 ```markdown
-@.claude/CONVENTIONS.md
+@.claude/tech-custom-config.md
 ```
 
 ---
