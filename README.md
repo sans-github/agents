@@ -70,6 +70,7 @@ mindmap
       )react-typescript(
       )terraform(
     [Product Manager]
+      )prd-craft(
     [Software Architect]
       )api-design-principles(
       )db-schema(
