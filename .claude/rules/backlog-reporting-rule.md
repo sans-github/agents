@@ -1,6 +1,6 @@
 # Rule: Backlog Reporting
 
-All agents must report tech debt and non-feature bugs discovered during any session by appending to the Triage section of `BACKLOG.md`. Use the `/backlog` skill for format and conventions.
+All agents must report tech debt and non-feature bugs discovered during any session by appending to the Triage section of `BACKLOG.md` in the repo root.
 
 ## When to report
 
@@ -8,16 +8,51 @@ All agents must report tech debt and non-feature bugs discovered during any sess
 - A shortcut or workaround was taken that should be revisited
 - An implementation reveals a structural weakness not caused by the current task
 
-## How to report
+## BACKLOG.md format
 
-Append a row to the Triage table in `BACKLOG.md`:
+Two sections.
 
+### For stakeholders
+
+| | Layer | What | Why it matters | Action |
+|--|-------|------|----------------|--------|
+| 🔴 | Data | ... | ... | ... |
+
+Layer labels: `Data`, `Interface`, `Reliability`, `Infrastructure`, `Quality`
+
+Severity: 🔴 P0 broken/affects users now -- 🟡 P1 degrades quality or blocks future work -- 🟢 P2 polish/cleanup
+
+### For engineers
+
+**Triage:**
 | ID | Area | Type | Summary | Source | Date |
 |----|------|------|---------|--------|------|
-| (leave blank) | BE/FE/DB/Infra/Design/QA | bug/debt/ux | One-line description | Agent | today's date |
+
+**Active:**
+| ID | Summary | Blocks | Ready? | Since |
+|----|---------|--------|--------|-------|
+
+**Resolved** (audit trail, never delete):
+| ID | Summary | Resolved in | Date |
+|----|---------|-------------|------|
+
+## Field conventions
+
+- `ID` -- sequential, never reused: B-001, B-002, ... (leave blank -- EM assigns at triage)
+- `Area` -- BE, FE, DB, Infra, Design, QA
+- `Type` -- `bug` (observable defect), `debt` (internal quality), `ux` (usability without a crash)
+- `Source` -- `User`, `Agent`, `Retro`
+- `Since` -- date item moved to Active; used for staleness tracking
+- Priority (P0/P1/P2) -- assigned by EM+PM at triage only, never by agents
 
 ## Rules
 
 - Never self-assign priority. Leave ID blank -- EM assigns at triage.
 - Never move an item to Active. Triage only.
 - Report even if the item seems minor. EM+PM decide what matters.
+- After 2 iterations in Active with no milestone, prefix with 🟠 to flag for re-triage.
+- When items must ship together, add below the Active table: `_B-001 + B-002 ship together. No stopgap._`
+
+## Triage process (EM + PM)
+
+Before every iteration kickoff: assign ID and priority, move to Active or drop, update the stakeholder section for P0/P1 items, update `_Last triaged_` date.
