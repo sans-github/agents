@@ -17,6 +17,10 @@ I'm starting a new software project from scratch. Please read the following befo
 
 Then enter plan mode and produce `[feature-folder]/workflow/kickoff-plan.md` covering:
 
+Use these emoji conventions inline throughout the plan -- on the heading, row, or bullet where the action is needed:
+- 👀 Human must review and explicitly confirm before work proceeds
+- ❓ Human input is missing and required -- agents cannot proceed without it
+
 1. **What I understood** -- summarize the PRD and project config in your own words. Call out anything ambiguous or missing that I should clarify before work begins.
 
    **Input quality check:** Flag any of the following before proceeding:
