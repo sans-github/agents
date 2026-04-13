@@ -22,6 +22,14 @@ Then enter plan mode and produce `[feature-folder]/workflow/kickoff-plan.md` cov
 
 1. **What I understood** -- summarize the PRD and project config in your own words. Call out anything ambiguous or missing that I should clarify before work begins.
 
+   **Input quality check:** Flag any of the following before proceeding:
+   - Unfilled placeholders (e.g. `[YYYYMMDD-feature-name]`, `TODO`, `TBD`, placeholder text left from the template)
+   - Sections that appear untouched or still contain template defaults
+   - Content in `project-config.md` or `product-specs/prd.md` that contradicts or does not match the project description
+   - Sparse or vague entries where detail is needed to proceed (e.g. "active agents: all" with no rationale, or a one-line PRD)
+
+   Do not proceed if critical inputs are missing or stale. Surface them explicitly and wait for the human to update.
+
 2. **Existing stack** -- confirm the stack you found in `CLAUDE.md`. List the key technologies for BE, FE, infra, and QA. If anything in the PRD cannot be addressed with the existing stack, flag it explicitly -- any new technology requires Arch approval before it is adopted.
 
    Regardless, flag any mismatch between stack weight and feature scope -- e.g. if the feature is a simple form or read-only list, call out whether the existing stack complexity is justified for this scope. Do not silently confirm.
@@ -42,6 +50,8 @@ Then enter plan mode and produce `[feature-folder]/workflow/kickoff-plan.md` cov
    - Risk level (low / medium / high) and reasoning
    - Estimated extent of refactor (e.g. "touches 3 files" vs "affects all API endpoints")
    - Whether it could introduce regressions in live features
+
+   If the change introduces a new dependency or technology, apply the same stack philosophy as greenfield: prefer proven, widely adopted libraries over novel or obscure ones; prefer the smallest addition that covers the need. If a simpler alternative exists, propose it with rationale before accepting the proposed change.
 
    Do not proceed past this flag without explicit human sign-off.
 

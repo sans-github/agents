@@ -19,6 +19,14 @@ Then enter plan mode and produce `[feature-folder]/workflow/kickoff-plan.md` cov
 
 1. **What I understood** -- summarize the PRD and project config in your own words. Call out anything ambiguous or missing that I should clarify before work begins.
 
+   **Input quality check:** Flag any of the following before proceeding:
+   - Unfilled placeholders (e.g. `[YYYYMMDD-feature-name]`, `TODO`, `TBD`, placeholder text left from the template)
+   - Sections that appear untouched or still contain template defaults
+   - Content in `project-config.md` or `product-specs/prd.md` that contradicts or does not match the project description
+   - Sparse or vague entries where detail is needed to proceed (e.g. "active agents: all" with no rationale, or a one-line PRD)
+
+   Do not proceed if critical inputs are missing or stale. Surface them explicitly and wait for the human to update.
+
 2. **Software stack** -- the default stack for this project is:
    - BE: Java 21 + Spring Boot (REST API, JPA, PostgreSQL)
    - FE: React 18 + TypeScript (Redux Toolkit, TanStack Query, React Router v6, Vite)
@@ -27,7 +35,12 @@ Then enter plan mode and produce `[feature-folder]/workflow/kickoff-plan.md` cov
 
    If anything in the PRD suggests a different stack, propose the change and explain why. Otherwise confirm the default. Any stack change requires Arch approval before it is adopted.
 
-   Regardless of confirmation, flag any mismatch between stack weight and project scope -- e.g. if the PRD describes a simple CRUD app, call out whether Redux Toolkit, TanStack Query, or Terraform on AWS are justified. Do not silently confirm if the scope is small.
+   Regardless of confirmation, flag any mismatch between stack weight and project scope. For each concern, call out:
+   - What is too broad, unnecessary, missing, or potentially wrong
+   - Why it is a concern given the project scope
+   - A concrete alternative with rationale (e.g. "consider Zustand instead of Redux Toolkit for a single-page app with no complex shared state")
+
+   Stack philosophy: prefer proven, widely adopted libraries and frameworks over novel or obscure ones. Prefer the smallest stack that covers the requirements -- every dependency added is a maintenance burden. Do not silently confirm if the scope is small or if any layer looks mismatched. Any stack change requires Arch approval -- but surface the concern regardless.
 
 3. **Agent collaboration plan** -- based on the project config (active agents, skipped phases, overrides), describe how the agents will collaborate for this project. Reference the workflow defined in `[feature-folder]/workflow/project-config.md`.
 
