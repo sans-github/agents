@@ -24,6 +24,8 @@ Then enter plan mode and produce `[feature-folder]/workflow/kickoff-plan.md` cov
 
 2. **Existing stack** -- confirm the stack you found in `CLAUDE.md`. List the key technologies for BE, FE, infra, and QA. If anything in the PRD cannot be addressed with the existing stack, flag it explicitly -- any new technology requires Arch approval before it is adopted.
 
+   Regardless, flag any mismatch between stack weight and feature scope -- e.g. if the feature is a simple form or read-only list, call out whether the existing stack complexity is justified for this scope. Do not silently confirm.
+
 3. **Agent collaboration plan** -- based on the project config (active agents, skipped phases, overrides), describe how the agents will collaborate for this project. Reference the workflow defined in `[feature-folder]/workflow/project-config.md`.
 
 4. **Big picture** -- one short paragraph describing what will be built and how it fits into the existing product.

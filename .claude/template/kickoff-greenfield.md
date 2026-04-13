@@ -27,6 +27,8 @@ Then enter plan mode and produce `[feature-folder]/workflow/kickoff-plan.md` cov
 
    If anything in the PRD suggests a different stack, propose the change and explain why. Otherwise confirm the default. Any stack change requires Arch approval before it is adopted.
 
+   Regardless of confirmation, flag any mismatch between stack weight and project scope -- e.g. if the PRD describes a simple CRUD app, call out whether Redux Toolkit, TanStack Query, or Terraform on AWS are justified. Do not silently confirm if the scope is small.
+
 3. **Agent collaboration plan** -- based on the project config (active agents, skipped phases, overrides), describe how the agents will collaborate for this project. Reference the workflow defined in `[feature-folder]/workflow/project-config.md`.
 
 4. **Big picture** -- one short paragraph describing what will be built and how the pieces fit together.
