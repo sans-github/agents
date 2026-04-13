@@ -10,7 +10,7 @@ Update this to match your project. The kickoff prompt reads this section to eval
 
 | Layer | Technology |
 |-------|------------|
-| BE | Java 21 + Spring Boot (REST API, JPA, PostgreSQL) |
+| BE | Java 21 + Spring Boot (REST API, Spring Data JPA + Hibernate 6, H2 for dev/test, PostgreSQL/MySQL for prod) |
 | FE | React 18 + TypeScript (Redux Toolkit, TanStack Query, React Router v6, Vite) |
 | Infra | Terraform on AWS |
 | QA | Playwright (E2E + API) |
