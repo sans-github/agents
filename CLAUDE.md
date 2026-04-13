@@ -11,8 +11,7 @@ Consumers install this repo into their own project via `scripts/sync.sh`. They d
 ## How consumers use it
 
 1. Run `scripts/sync.sh` to copy `.claude/agents/`, `.claude/rules/`, `.claude/skills/`, `.claude/template/`, `.claude/GETTING-STARTED.md`, and `.claude/tech-config.md` into their project.
-2. Copy `template/master/` once to `projects/master/` -- the shared product baseline (PRD + mocks), maintained across all features.
-3. Per feature: copy `template/feature/` to `projects/YYYYMMDD-feature-name/`.
+2. Run `scripts/new-feature.sh` -- scaffolds `projects/master/` (once) and `projects/YYYYMMDD-feature-name/` (per feature) from the template.
 4. Fill in `projects/[feature]/workflow/project-config.md` -- which agents are active, phases to skip, overrides.
 5. Fill in `projects/[feature]/product-specs/prd.md` -- the feature PRD.
 6. Edit the appropriate kickoff file (`template/kickoff-greenfield.md` or `template/kickoff-brownfield.md`), set the feature folder variable at the top, then tell Claude to read and execute it.

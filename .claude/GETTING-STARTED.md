@@ -3,10 +3,10 @@
 ```mermaid
 flowchart LR
   subgraph once["🔧 One-time setup"]
-    s1["1. Install<br/>(Eng)"] --> s2["2. Configure stack*<br/>(Eng)"]
+    s1["1. Install<br/>(Eng · use script)"] --> s2["2. Configure stack*<br/>(Eng)"]
   end
   subgraph feat["🔁 Per feature"]
-    s3["3. Create project folder<br/>(Eng)"] --> s4["4. Fill project config<br/>(Eng & Product)"] --> s5["5. Write PRD<br/>(Product)"] --> s6["6. Kick off<br/>(Eng → Claude)"]
+    s3["3. Create project folder<br/>(Eng · use script)"] --> s4["4. Fill project config<br/>(Eng & Product)"] --> s5["5. Write PRD<br/>(Product)"] --> s6["6. Kick off<br/>(Eng → Claude)"]
   end
   once --> feat
 ```
@@ -39,15 +39,13 @@ Then add it to your project's `CLAUDE.md` so agents load it automatically every 
 
 ## 3. Create a project folder
 
-Run these once when setting up a new project, then per feature:
+Run the setup script -- it handles both:
 
 ```bash
-# once -- set up the shared product baseline
-cp -r .claude/template/master/ projects/master
-
-# per feature
-cp -r .claude/template/feature/ projects/YYYYMMDD-feature-name
+bash scripts/new-feature.sh
 ```
+
+It will create `projects/master/` from the template if it doesn't exist, prompt you for a feature name, and scaffold `projects/YYYYMMDD-feature-name/`. Aborts if the feature folder already exists.
 
 This produces:
 
