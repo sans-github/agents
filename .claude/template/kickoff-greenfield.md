@@ -23,6 +23,13 @@ Use these emoji conventions inline throughout the plan -- on the heading, row, o
 
 1. **What I understood** -- summarize the PRD and project config in your own words. Call out anything ambiguous or missing that I should clarify before work begins.
 
+   **Folder structure check:** Verify the feature folder exists and contains the expected structure:
+   - `[feature-folder]/workflow/project-config.md`
+   - `[feature-folder]/product-specs/prd.md`
+   - `[feature-folder]/generated-docs/mocks/`
+
+   If any are missing, stop and tell the human exactly what is missing before proceeding.
+
    **Input quality check:** Flag any of the following before proceeding:
    - Unfilled placeholders (e.g. `[YYYYMMDD-feature-name]`, `TODO`, `TBD`, placeholder text left from the template)
    - Sections that appear untouched or still contain template defaults
@@ -31,13 +38,9 @@ Use these emoji conventions inline throughout the plan -- on the heading, row, o
 
    Do not proceed if critical inputs are missing or stale. Surface them explicitly and wait for the human to update.
 
-2. **Software stack** -- the default stack for this project is:
-   - BE: Java 21 + Spring Boot (REST API, JPA, PostgreSQL)
-   - FE: React 18 + TypeScript (Redux Toolkit, TanStack Query, React Router v6, Vite)
-   - Infra: Terraform on AWS
-   - QA: Playwright (E2E + API)
+2. **Software stack** -- read the stack from `.claude/tech-config.md` (Tech stack section). Confirm each layer against the PRD scope.
 
-   If anything in the PRD suggests a different stack, propose the change and explain why. Otherwise confirm the default. Any stack change requires Arch approval before it is adopted.
+   If anything in the PRD suggests a different stack, propose the change and explain why. Otherwise confirm the stack as defined. Any stack change requires Arch approval before it is adopted.
 
    Regardless of confirmation, flag any mismatch between stack weight and project scope. For each concern, call out:
    - What is too broad, unnecessary, missing, or potentially wrong
