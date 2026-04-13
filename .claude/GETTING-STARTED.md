@@ -27,29 +27,33 @@ Then add it to your project's `CLAUDE.md` so agents load it automatically every 
 
 ## 3. Create a project folder
 
-Each feature or initiative gets its own folder under `projects/`. Use the date + a short name:
+Run these once when setting up a new project, then per feature:
+
+```bash
+# once -- set up the shared product baseline
+cp -r .claude/template/master projects/master
+
+# per feature
+cp -r .claude/template/feature projects/YYYYMMDD-feature-name
+```
+
+This produces:
 
 ```
 projects/
-├── master/                     # consolidated product baseline -- always current
-│   └── product-specs/
-│       └── prd.md              # full PRD merged across all shipped features
-│   └── mocks/                # current UI mocks
+├── master/                             # consolidated product baseline -- always current
+│   ├── product-specs/
+│   │   └── prd.md                      # full PRD merged across all shipped features
+│   └── mocks/                          # current UI mocks
 └── YYYYMMDD-feature-name/
-    ├── generated-docs/ # all artifacts, flat, kebab-case (e.g. be-plan.md, api-contract.md)
-    │   └── mocks/    # design mocks (HTML, images, Excalidraw)
-    ├── product-specs/  # PRD and other product artifacts
+    ├── generated-docs/                 # all artifacts, flat, kebab-case (e.g. be-plan.md, api-contract.md)
+    │   └── mocks/                      # design mocks (HTML, images, Excalidraw)
+    ├── product-specs/                  # PRD and other product artifacts
     └── workflow/
-        ├── project-config.md               # you fill this in before kicking off
-        ├── kickoff-plan.md                 # agent generates at kickoff; you review and approve
-        ├── implementation-plan.md          # EM generates; you review and approve
+        ├── project-config.md           # you fill this in before kicking off
+        ├── kickoff-plan.md             # agent generates at kickoff; you review and approve
+        ├── implementation-plan.md      # EM generates; you review and approve
         └── implementation-plan-tracker.md # agent progress tracker
-```
-
-Copy the `.claude/template/` folder as your starting point:
-
-```bash
-cp -r .claude/template projects/YYYYMMDD-feature-name
 ```
 
 ---
@@ -66,6 +70,13 @@ See the template for a complete example.
 
 ## 5. Kick off
 
-With `project-config.md` and `product-specs/` in place, engage the starting agent defined in your brief -- typically PM for a new feature, EM for a tech-debt or refactor initiative. Point it at both files; it will read the brief, understand the workflow configuration, and begin from there.
+Pick the right kickoff file from `template/`:
 
-The EM will generate `implementation-plan.md` once the PRD is ready. Review and approve it before agents proceed.
+- **Greenfield** (new project from scratch): `template/kickoff-greenfield.md`
+- **Brownfield** (new feature on existing codebase): `template/kickoff-brownfield.md`
+
+Open the file, fill in any `[placeholders]`, then tell Claude:
+
+> Read and execute `template/kickoff-greenfield.md` (or `kickoff-brownfield.md`).
+
+Claude will read your `project-config.md` and `product-specs/prd.md`, then produce `workflow/kickoff-plan.md` for your review before any work begins.

@@ -8,22 +8,22 @@ See [GETTING-STARTED.md](.claude/GETTING-STARTED.md) to install and run your fir
 
 ```
 projects/
-├── master/                     # consolidated product baseline
-│   └── product-specs/
-│       └── prd.md              # full PRD merged across all shipped features
-│   └── mocks/                # current UI mocks
-└── YYYYMMDD-feature-name/
-    ├── generated-docs/         # all artifacts, flat, kebab-case
-    │   └── mocks/            # design mocks
-    ├── product-specs/          # PRD and other product artifacts
+├── master/                             # consolidated product baseline (copy once from template/master)
+│   ├── product-specs/
+│   │   └── prd.md                      # full PRD merged across all shipped features
+│   └── mocks/                          # current UI mocks
+└── YYYYMMDD-feature-name/              # copy per feature from template/feature
+    ├── generated-docs/                 # all artifacts, flat, kebab-case
+    │   └── mocks/                      # design mocks
+    ├── product-specs/                  # PRD and other product artifacts
     └── workflow/
-        ├── project-config.md               # human fills in at kickoff
-        ├── kickoff-plan.md                 # agent generates at kickoff; human approves
-        ├── implementation-plan.md          # EM generates; human approves
+        ├── project-config.md           # human fills in at kickoff
+        ├── kickoff-plan.md             # agent generates at kickoff; human approves
+        ├── implementation-plan.md      # EM generates; human approves
         └── implementation-plan-tracker.md # agent progress tracker
 ```
 
-Copy `.claude/template/` as your starting point. See `.claude/GETTING-STARTED.md` for the full walkthrough.
+See `.claude/GETTING-STARTED.md` for the full walkthrough.
 
 ---
 
