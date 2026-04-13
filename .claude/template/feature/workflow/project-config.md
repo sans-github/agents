@@ -6,7 +6,7 @@ purpose: >
   Agents must read this before doing anything and factor it into implementation-plan.md.
 ---
 
-# Project Brief
+# Project Config
 
 ## Active agents
 
