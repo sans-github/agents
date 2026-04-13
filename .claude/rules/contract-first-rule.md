@@ -6,6 +6,7 @@ No role -- agent or human -- may begin work that depends on an upstream artifact
 
 | Upstream artifact | Approver | Downstream work blocked |
 |---|---|---|
+| Kickoff plan (`workflow/kickoff-plan.md`) | Human | No agent may begin any work -- no PRD, no mocks, no planning, nothing -- until the human explicitly approves the kickoff plan |
 | Tech stack / AWS component adoption | Arch | Proposing role (EM, BE, FE, DevOps) cannot include it in any artifact or begin provisioning |
 | Reqs | -- | PM cannot produce PRD |
 | PRD, ACs | PM | Design (Mocks); EM (Eng planning) |
@@ -49,6 +50,16 @@ Every contract must have an explicit approval step in `implementation-plan-track
 ```
 
 This step must appear before any downstream implementation steps that depend on it.
+
+## Kickoff plan checkpoints are contracts
+
+Every checkpoint listed in section 5 of the kickoff plan (`workflow/kickoff-plan.md`) is a binding contract. When an agent completes work that produces a checkpoint artifact, it must:
+
+1. Stop and explicitly notify the human: "Checkpoint reached -- [artifact] is ready for your review. No work will proceed until you approve."
+2. Wait for the human to set `Status: Approved` on the artifact and confirm.
+3. Only then proceed to the next step.
+
+Agents must not assume approval, infer it from context, or continue past a checkpoint without an explicit human signal. If the human has not responded, the agent stays stopped.
 
 ## When a contract is not yet approved
 
