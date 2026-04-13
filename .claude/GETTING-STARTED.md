@@ -31,10 +31,10 @@ Run these once when setting up a new project, then per feature:
 
 ```bash
 # once -- set up the shared product baseline
-cp -r .claude/template/master projects/master
+cp -r .claude/template/master/ projects/master
 
 # per feature
-cp -r .claude/template/feature projects/YYYYMMDD-feature-name
+cp -r .claude/template/feature/ projects/YYYYMMDD-feature-name
 ```
 
 This produces:
