@@ -32,7 +32,7 @@ List any phases from the default workflow that are skipped for this project, and
 
 ```
 # Example:
-- Phase 2 (Design): skip -- no mockups needed, internal tool with no new UI patterns
+- Phase 2 (Design): skip -- no mocks needed, internal tool with no new UI patterns
 - DevOps / IaC: skip -- deploying to existing infrastructure, no new AWS components
 ```
 
@@ -58,7 +58,7 @@ Include anything that should inform implementation-plan.md -- handwritten notes,
 
 ```
 # Example:
-- See requirements/whiteboard-sketch.jpg for a rough flow diagram
+- See product-specs/whiteboard-sketch.jpg for a rough flow diagram
 - The team discussed keeping the data model flat -- avoid joins where possible
 - The PM has a strong preference for shipping Phase 1 without auth; add auth in Phase 2
 - Excalidraw collaboration diagram is at workflow/collaboration-map.excalidraw

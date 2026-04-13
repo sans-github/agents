@@ -9,15 +9,17 @@ See [GETTING-STARTED.md](.claude/GETTING-STARTED.md) to install and run your fir
 ```
 projects/
 ├── master/                     # consolidated product baseline
-│   ├── prd.md                  # full PRD merged across all shipped features
-│   └── mockups/                # current UI mocks
+│   └── product-specs/
+│       └── prd.md              # full PRD merged across all shipped features
+│   └── mocks/                # current UI mocks
 └── YYYYMMDD-feature-name/
-    ├── docs/                   # all artifacts, flat, kebab-case
-    │   └── mockups/            # design mockups
-    ├── requirements/           # raw inputs
+    ├── generated-docs/         # all artifacts, flat, kebab-case
+    │   └── mocks/            # design mocks
+    ├── product-specs/          # PRD and other product artifacts
     └── workflow/
-        ├── project-brief.md    # human fills in at kickoff
-        ├── implementation-plan.md           # EM generates; human approves
+        ├── project-config.md               # human fills in at kickoff
+        ├── kickoff-plan.md                 # agent generates at kickoff; human approves
+        ├── implementation-plan.md          # EM generates; human approves
         └── implementation-plan-tracker.md # agent progress tracker
 ```
 

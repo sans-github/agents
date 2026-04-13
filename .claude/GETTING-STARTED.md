@@ -32,15 +32,17 @@ Each feature or initiative gets its own folder under `projects/`. Use the date +
 ```
 projects/
 ├── master/                     # consolidated product baseline -- always current
-│   ├── prd.md                  # full PRD merged across all shipped features
-│   └── mockups/                # current UI mocks
+│   └── product-specs/
+│       └── prd.md              # full PRD merged across all shipped features
+│   └── mocks/                # current UI mocks
 └── YYYYMMDD-feature-name/
-    ├── docs/           # all artifacts, flat, kebab-case (e.g. be-plan.md, api-contract.md)
-    │   └── mockups/    # design mockups (HTML, images, Excalidraw)
-    ├── requirements/   # raw inputs (Requirements.md, spreadsheets, sketches)
+    ├── generated-docs/ # all artifacts, flat, kebab-case (e.g. be-plan.md, api-contract.md)
+    │   └── mocks/    # design mocks (HTML, images, Excalidraw)
+    ├── product-specs/  # PRD and other product artifacts
     └── workflow/
-        ├── project-brief.md    # you fill this in before kicking off
-        ├── implementation-plan.md           # EM generates; you review and approve
+        ├── project-config.md               # you fill this in before kicking off
+        ├── kickoff-plan.md                 # agent generates at kickoff; you review and approve
+        ├── implementation-plan.md          # EM generates; you review and approve
         └── implementation-plan-tracker.md # agent progress tracker
 ```
 
@@ -52,9 +54,9 @@ cp -r .claude/template projects/YYYYMMDD-feature-name
 
 ---
 
-## 4. Fill in project-brief.md
+## 4. Fill in project-config.md
 
-Before any agent starts work, fill in `workflow/project-brief.md`. This is the single place where you configure how the project runs -- which agents are active, which phases to skip, and any deviations from the default collaboration pattern.
+Before any agent starts work, fill in `workflow/project-config.md`. This is the single place where you configure how the project runs -- which agents are active, which phases to skip, and any deviations from the default collaboration pattern.
 
 You can also include handwritten notes, photos of whiteboard sketches, or links to Excalidraw diagrams in the **Additional context** section. Agents must respect and factor all of this into `implementation-plan.md`.
 
@@ -64,6 +66,6 @@ See the template for a complete example.
 
 ## 5. Kick off
 
-With `project-brief.md` and `requirements/` in place, engage the starting agent defined in your brief -- typically PM for a new feature, EM for a tech-debt or refactor initiative. Point it at both files; it will read the brief, understand the workflow configuration, and begin from there.
+With `project-config.md` and `product-specs/` in place, engage the starting agent defined in your brief -- typically PM for a new feature, EM for a tech-debt or refactor initiative. Point it at both files; it will read the brief, understand the workflow configuration, and begin from there.
 
 The EM will generate `implementation-plan.md` once the PRD is ready. Review and approve it before agents proceed.
