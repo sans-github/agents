@@ -4,6 +4,19 @@ One-stop reference for key decisions baked into this repo's rules and skills. Wh
 
 ---
 
+## Tech stack
+
+Update this to match your project. The kickoff prompt reads this section to evaluate stack fit.
+
+| Layer | Technology |
+|-------|------------|
+| BE | Java 21 + Spring Boot (REST API, JPA, PostgreSQL) |
+| FE | React 18 + TypeScript (Redux Toolkit, TanStack Query, React Router v6, Vite) |
+| Infra | Terraform on AWS |
+| QA | Playwright (E2E + API) |
+
+---
+
 ## File locations
 
 | Artifact | Path | Owner | Source |
