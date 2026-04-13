@@ -10,7 +10,7 @@ Consumers install this repo into their own project via `scripts/sync.sh`. They d
 
 ## How consumers use it
 
-1. Run `scripts/sync.sh` to copy `.claude/agents/`, `.claude/rules/`, `.claude/skills/`, `.claude/template/`, `.claude/GETTING-STARTED.md`, and `.claude/tech-custom-config.md` into their project.
+1. Run `scripts/sync.sh` to copy `.claude/agents/`, `.claude/rules/`, `.claude/skills/`, `.claude/template/`, `.claude/GETTING-STARTED.md`, and `.claude/tech-config.md` into their project.
 2. Copy `template/master/` once to `projects/master/` -- the shared product baseline (PRD + mocks), maintained across all features.
 3. Per feature: copy `template/feature/` to `projects/YYYYMMDD-feature-name/`.
 4. Fill in `projects/[feature]/workflow/project-config.md` -- which agents are active, phases to skip, overrides.
@@ -35,7 +35,7 @@ Consumers install this repo into their own project via `scripts/sync.sh`. They d
 │   ├── kickoff-greenfield.md       -- prompt for new projects (stays at template root, not copied per feature)
 │   └── kickoff-brownfield.md       -- prompt for new features on existing codebase
 ├── GETTING-STARTED.md
-└── tech-custom-config.md           -- stack/conventions consumers tailor once after install
+└── tech-config.md           -- stack/conventions consumers tailor once after install
 ```
 
 Key distinctions:
@@ -80,4 +80,4 @@ bash scripts/sync.sh          # pull from main
 bash scripts/sync.sh v1.2.0   # pin a tag or branch
 ```
 
-Copies `.claude/agents/`, `.claude/rules/`, `.claude/skills/`, `.claude/template/`, `.claude/GETTING-STARTED.md`, and `.claude/tech-custom-config.md` into the consumer project. Also scaffolds `BACKLOG.md` in the consumer root if it doesn't exist. Consumers commit the result to lock the version.
+Copies `.claude/agents/`, `.claude/rules/`, `.claude/skills/`, `.claude/template/`, `.claude/GETTING-STARTED.md`, and `.claude/tech-config.md` into the consumer project. Also scaffolds `BACKLOG.md` in the consumer root if it doesn't exist. Consumers commit the result to lock the version.
