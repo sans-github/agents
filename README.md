@@ -71,6 +71,8 @@ mindmap
       )api-design-principles(
       )react-typescript(
       )terraform(
+    [UX Designer]
+      )frontend-design(
     [Product Manager]
       )prd-craft(
     [Software Architect]
@@ -85,9 +87,8 @@ mindmap
     [QA Engineer]
       )api-design-principles(
       )fe-testing(
-    [UX Designer]
-      )frontend-design(
 ```
+
 
 ## Collaboration map
 
