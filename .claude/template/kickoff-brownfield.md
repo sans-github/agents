@@ -6,7 +6,7 @@
 
 ---
 
-First, read `.claude/agents-guide.md` for orientation on the agent team, collaboration model, and rules. Not everything there will apply to this project -- the config overrides it where they differ. Also read `.claude/tech-custom-config.md` for this project's file locations, naming conventions, and tooling choices.
+First, read `.claude/agents-guide.md` for orientation on the agent team, collaboration model, and rules. Not everything there will apply to this project -- the config overrides it where they differ. Also read `.claude/tech-config.md` for this project's file locations, naming conventions, and tooling choices.
 
 The feature folder for this project is `projects/[YYYYMMDD-feature-name]`.
 
@@ -35,6 +35,15 @@ Then enter plan mode and produce `[feature-folder]/workflow/kickoff-plan.md` cov
 6. **Open questions** -- a numbered list of questions that need my answers before agents can proceed. Do not make assumptions; surface the gaps here.
 
 7. **Risks and unknowns** -- anything you spotted that could slow the project down: unclear requirements, missing design decisions, external dependencies, integration risks with the existing codebase, or anything that needs resolution before work starts.
+
+   **Tech-config risk:** If `.claude/tech-config.md` has changed since the last feature (or if this feature requires a change to it), assess the impact on the live codebase. For each change, call out:
+   - What changed and why
+   - Which parts of the existing codebase are affected
+   - Risk level (low / medium / high) and reasoning
+   - Estimated extent of refactor (e.g. "touches 3 files" vs "affects all API endpoints")
+   - Whether it could introduce regressions in live features
+
+   Do not proceed past this flag without explicit human sign-off.
 
 8. **Out of scope** -- explicitly state what is NOT being built in this project run, based on the project config and PRD.
 

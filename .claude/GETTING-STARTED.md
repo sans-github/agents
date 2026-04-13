@@ -1,5 +1,17 @@
 # Getting Started
 
+```mermaid
+flowchart LR
+  subgraph once["🔧 One-time setup"]
+    s1["1. Install<br/>(Eng)"] --> s2["2. Configure stack*<br/>(Eng)"]
+  end
+  subgraph feat["🔁 Per feature"]
+    s3["3. Create project folder<br/>(Eng)"] --> s4["4. Fill project config<br/>(Eng & Product)"] --> s5["5. Write PRD<br/>(Product)"] --> s6["6. Kick off<br/>(Eng → Claude)"]
+  end
+  once --> feat
+```
+_* revisit when stack changes_
+
 ## 1. Install
 
 Copy the latest agents, rules, and skills into your project:
@@ -13,14 +25,14 @@ This overwrites everything under `.claude/` (agents, rules, skills, template, gu
 
 ---
 
-## 2. Tailor conventions
+## 2. Configure your stack
 
-Open `.claude/tech-custom-config.md` and update it to match your project -- folder paths, naming conventions, tooling choices, and team norms. Do this once after first install, and revisit whenever your project's conventions change.
+Open `.claude/tech-config.md` and update it to match your project -- folder paths, naming conventions, tooling choices, and team norms. Do this once after first install, and revisit whenever your project's conventions change.
 
 Then add it to your project's `CLAUDE.md` so agents load it automatically every session:
 
 ```markdown
-@.claude/tech-custom-config.md
+@.claude/tech-config.md
 ```
 
 ---
@@ -68,7 +80,15 @@ See the template for a complete example.
 
 ---
 
-## 5. Kick off
+## 5. Fill in product-specs/prd.md
+
+Write the PRD for this feature in `product-specs/prd.md`. This is the PM's input -- what to build and why. The kickoff prompt reads it directly, so agents will not proceed correctly without it.
+
+If you are starting greenfield with no PRD yet, you can engage the PM agent first to help write it before running the kickoff.
+
+---
+
+## 6. Kick off
 
 Pick the right kickoff file from `template/`:
 

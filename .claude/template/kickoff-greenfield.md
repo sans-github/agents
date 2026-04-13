@@ -6,7 +6,7 @@
 
 ---
 
-First, read `.claude/agents-guide.md` for orientation on the agent team, collaboration model, and rules. Not everything there will apply to this project -- the config overrides it where they differ. Also read `.claude/tech-custom-config.md` for this project's file locations, naming conventions, and tooling choices.
+First, read `.claude/agents-guide.md` for orientation on the agent team, collaboration model, and rules. Not everything there will apply to this project -- the config overrides it where they differ. Also read `.claude/tech-config.md` for this project's file locations, naming conventions, and tooling choices.
 
 The feature folder for this project is `projects/[YYYYMMDD-feature-name]`.
 
