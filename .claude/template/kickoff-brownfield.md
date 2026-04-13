@@ -49,7 +49,11 @@ Use these emoji conventions inline throughout the plan -- on the heading, row, o
 
 4. **Big picture** -- one short paragraph describing what will be built and how it fits into the existing product.
 
-5. **Human-in-the-loop checkpoints** -- list every point where I need to review, approve, or make a decision before agents can proceed. Be specific: what artifact, who produces it, what I'm reviewing.
+5. **Human-in-the-loop checkpoints** -- produce this as a checklist. Each item is a blocking gate: the human must explicitly approve before the next step proceeds. Format each item as:
+
+   `- [ ] [Who] produces [artifact] -- Human reviews and approves before [what is unblocked]`
+
+   Be specific and complete. Every checkpoint from the collaboration plan must appear here.
 
 6. **Open questions** -- a numbered list of questions that need my answers before agents can proceed. Do not make assumptions; surface the gaps here.
 
@@ -67,5 +71,7 @@ Use these emoji conventions inline throughout the plan -- on the heading, row, o
    Do not proceed past this flag without explicit human sign-off.
 
 8. **Out of scope** -- explicitly state what is NOT being built in this project run, based on the project config and PRD.
+
+9. **Next step** -- one sentence only. State exactly what happens after I approve this plan: who does what, and what artifact they produce. This must match the sequence in section 5 exactly. Example: "Once approved, Designer produces mocks for `[feature-folder]/generated-docs/mocks/` before any engineering work begins."
 
 Do not begin any work until I have reviewed and approved `[feature-folder]/workflow/kickoff-plan.md`.
