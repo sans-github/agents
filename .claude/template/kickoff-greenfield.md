@@ -1,17 +1,21 @@
 # Kickoff Prompt -- Greenfield
 
-> Copy this file, fill in any [placeholders], and paste it into Claude Code to kick off a new project with no existing codebase.
+> Fill in the variable below, then tell Claude: "Read and execute `.claude/template/kickoff-greenfield.md`."
+
+**Feature folder:** `projects/[YYYYMMDD-feature-name]`
 
 ---
 
 First, read `.claude/agents-guide.md` for orientation on the agent team, collaboration model, and rules. Not everything there will apply to this project -- the config overrides it where they differ. Also read `.claude/tech-custom-config.md` for this project's file locations, naming conventions, and tooling choices.
 
+The feature folder for this project is `projects/[YYYYMMDD-feature-name]`.
+
 I'm starting a new software project from scratch. Please read the following before doing anything:
 
-- Project config: `workflow/project-config.md`
-- PRD: `product-specs/prd.md`
+- Project config: `[feature-folder]/workflow/project-config.md`
+- PRD: `[feature-folder]/product-specs/prd.md`
 
-Then enter plan mode and produce `workflow/kickoff-plan.md` covering:
+Then enter plan mode and produce `[feature-folder]/workflow/kickoff-plan.md` covering:
 
 1. **What I understood** -- summarize the PRD and project config in your own words. Call out anything ambiguous or missing that I should clarify before work begins.
 
@@ -23,7 +27,7 @@ Then enter plan mode and produce `workflow/kickoff-plan.md` covering:
 
    If anything in the PRD suggests a different stack, propose the change and explain why. Otherwise confirm the default. Any stack change requires Arch approval before it is adopted.
 
-3. **Agent collaboration plan** -- based on the project config (active agents, skipped phases, overrides), describe how the agents will collaborate for this project. Reference the workflow defined in `workflow/project-config.md`.
+3. **Agent collaboration plan** -- based on the project config (active agents, skipped phases, overrides), describe how the agents will collaborate for this project. Reference the workflow defined in `[feature-folder]/workflow/project-config.md`.
 
 4. **Big picture** -- one short paragraph describing what will be built and how the pieces fit together.
 
@@ -35,4 +39,4 @@ Then enter plan mode and produce `workflow/kickoff-plan.md` covering:
 
 8. **Out of scope** -- explicitly state what is NOT being built in this project run, based on the project config and PRD.
 
-Do not begin any work until I have reviewed and approved `workflow/kickoff-plan.md`.
+Do not begin any work until I have reviewed and approved `[feature-folder]/workflow/kickoff-plan.md`.
