@@ -14,7 +14,9 @@ EM is the central feedback and approval hub for all engineering loops. Every BE,
 2. Designer produces initial mocks and returns them to PM for review.
 3. PM and Designer iterate -- PM raises product/scope concerns, Designer raises design/feasibility concerns -- until both are satisfied.
 4. Designer finalizes mocks.
-**Exit:** PM sets `Status: Approved` on the mocks. Human reviews and approves before EM begins eng planning.
+5. PM reviews the final mocks and sets `Status: Approved`. Loop ends here.
+**Loop exit:** PM sets `Status: Approved` on the mocks.
+**Followed by (separate checkpoint):** Human reviews PM-approved mocks and confirms before EM begins eng planning. This is a kickoff plan checkpoint, not part of the loop itself.
 
 ---
 
@@ -62,9 +64,11 @@ EM is the central feedback and approval hub for all engineering loops. Every BE,
 **Trigger:** BE Detailed Design and FE Arch are both approved.
 **Steps:**
 1. BE produces a draft API contract (endpoints, request/response shapes, error codes).
-2. BE and FE iterate on the contract -- FE raises integration concerns, BE raises implementation constraints.
-3. Both parties align and submit to EM for approval.
-**Exit:** EM sets `Status: Approved` on the API contract. Downstream: BE endpoint implementation, FE integration.
+2. BE and FE iterate on the contract -- FE raises integration concerns, BE raises implementation constraints -- until both are aligned.
+3. Both parties submit the agreed contract to EM for review.
+4. EM reviews and provides feedback -- missing cases, structural concerns, phase alignment -- BE/FE incorporate and resubmit if needed.
+5. Repeat step 4 until EM is satisfied.
+**Loop exit:** EM sets `Status: Approved` on the API contract. Downstream: BE endpoint implementation, FE integration.
 
 ---
 
@@ -86,9 +90,10 @@ EM is the central feedback and approval hub for all engineering loops. Every BE,
 **Trigger:** FE begins implementing a screen that has approved mocks.
 **Steps:**
 1. FE flags any mock element that cannot be implemented as specified (technical constraint, accessibility issue, missing state).
-2. Designer and FE resolve the deviation -- FE adapts or Designer revises the mock.
-3. Any mock revision goes back through PM approval before FE finalizes.
-**Exit:** All deviations resolved. No screen ships with an unresolved fidelity gap.
+2. Designer and FE agree on a resolution -- either FE adapts the implementation or Designer revises the mock.
+3. If Designer revises the mock: the revised mock re-enters the PM<>Design loop. PM must review and set `Status: Approved` on the revision before FE proceeds. This is not optional.
+4. If FE adapts the implementation: FE documents the deviation and both parties sign off.
+**Loop exit:** All deviations resolved with explicit sign-off. No screen ships with an unresolved fidelity gap.
 
 ---
 
