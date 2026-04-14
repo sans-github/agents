@@ -56,7 +56,7 @@ This step must appear before any downstream implementation steps that depend on 
 Every checkpoint listed in section 5 of the kickoff plan (`workflow/kickoff-plan.md`) is a binding contract. When an agent completes work that produces a checkpoint artifact, it must:
 
 1. Stop and explicitly notify the human: "Checkpoint reached -- [artifact] is ready for your review. No work will proceed until you approve."
-2. Wait for the human to set `Status: Approved` on the artifact and confirm.
+2. Wait for the human to verbally confirm (e.g. "looks good", "approved", "proceed"). The human does not edit files. After the human confirms, the orchestrating agent writes `Status: Approved — [role]` and `Approved: YYYY-MM-DD` into the artifact file before proceeding.
 3. Run `git diff --stat HEAD` to see what has changed. Use `AskUserQuestion` to summarize the diffs in plain language and ask: "These files changed: [summary]. Want to commit before we move on?" If yes, invoke the `/my-git-commit` skill and wait for it to complete.
 4. Only then proceed to the next step.
 

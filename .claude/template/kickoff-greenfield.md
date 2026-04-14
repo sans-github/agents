@@ -70,3 +70,7 @@ Use these emoji conventions inline throughout the plan -- on the heading, row, o
 9. **Next step** -- one sentence only. State exactly what happens after I approve this plan: who does what, and what artifact they produce. This must match the sequence in section 5 exactly. Example: "Once approved, Designer produces mocks for `[feature-folder]/generated-docs/mocks/` before any engineering work begins."
 
 Do not begin any work until I have reviewed and approved `[feature-folder]/workflow/kickoff-plan.md`.
+
+Once I approve, before any agent begins work:
+1. Write `Status: Approved — Human` and `Approved: YYYY-MM-DD` at the top of `kickoff-plan.md`.
+2. Create `[feature-folder]/workflow/implementation-plan-tracker.md` with every step from section 5 as an unchecked checkbox. This is required by `progress-tracking-rule.md` and must exist before the first agent acts.
