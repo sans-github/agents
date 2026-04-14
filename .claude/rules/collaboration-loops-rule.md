@@ -11,6 +11,7 @@ EM is the central feedback and approval hub for all engineering loops. Every BE,
 **Trigger:** PM's PRD is approved.
 **Steps:**
 1. PM hands off approved PRD to Designer with a written summary of key flows and edge cases.
+   Designer reads `brand-guidelines` before producing anything. All mocks must use brand tokens only.
 2. Designer produces initial mocks and returns them to PM for review.
 3. PM and Designer iterate -- PM raises product/scope concerns, Designer raises design/feasibility concerns -- until both are satisfied.
 4. Designer finalizes mocks.

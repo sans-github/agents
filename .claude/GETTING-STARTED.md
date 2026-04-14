@@ -37,6 +37,14 @@ Then add it to your project's `CLAUDE.md` so agents load it automatically every 
 
 ---
 
+## 2b. Define your brand guidelines
+
+Open `.claude/skills/brand-guidelines/SKILL.md` and fill in your product's color palette, typography, spacing system, and component states. The Designer, FE, PM, and QA agents all load this -- it's what keeps mocks and implementations visually consistent across features.
+
+Do this once after first install. Even a partial definition (colors + fonts) is better than none.
+
+---
+
 ## 3. Create a project folder
 
 Run the setup script -- it handles both:

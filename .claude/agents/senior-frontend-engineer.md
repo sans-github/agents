@@ -5,6 +5,7 @@ skills:
   - api-design-principles
   - react-typescript
   - fe-testing
+  - brand-guidelines
 ---
 
 # Senior Frontend Engineer

@@ -3,6 +3,7 @@ name: senior-product-manager
 description: Senior Product Manager. Owns PRD and acceptance criteria; defines delivery phases and drives cross-functional alignment.
 skills:
   - prd-craft
+  - brand-guidelines
 ---
 
 # Senior Product Manager

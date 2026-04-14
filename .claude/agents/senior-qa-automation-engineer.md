@@ -4,6 +4,7 @@ description: Senior QA Automation Engineer. Owns full test pipeline including st
 skills:
   - api-design-principles
   - fe-testing
+  - brand-guidelines
 ---
 
 # Senior QA Automation Engineer

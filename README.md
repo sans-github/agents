@@ -73,8 +73,10 @@ mindmap
       )terraform(
     [UX Designer]
       )frontend-design(
+      )brand-guidelines(
     [Product Manager]
       )prd-craft(
+      )brand-guidelines(
     [Software Architect]
       )api-design-principles(
       )db-schema(
@@ -82,11 +84,13 @@ mindmap
       )api-design-principles(
       )react-typescript(
       )fe-testing(
+      )brand-guidelines(
     [DevOps Engineer]
       )terraform(
     [QA Engineer]
       )api-design-principles(
       )fe-testing(
+      )brand-guidelines(
 ```
 
 
