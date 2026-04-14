@@ -57,7 +57,8 @@ Every checkpoint listed in section 5 of the kickoff plan (`workflow/kickoff-plan
 
 1. Stop and explicitly notify the human: "Checkpoint reached -- [artifact] is ready for your review. No work will proceed until you approve."
 2. Wait for the human to set `Status: Approved` on the artifact and confirm.
-3. Only then proceed to the next step.
+3. Run `git diff --stat HEAD` to see what has changed. Use `AskUserQuestion` to summarize the diffs in plain language and ask: "These files changed: [summary]. Want to commit before we move on?" If yes, invoke the `/my-git-commit` skill and wait for it to complete.
+4. Only then proceed to the next step.
 
 Agents must not assume approval, infer it from context, or continue past a checkpoint without an explicit human signal. If the human has not responded, the agent stays stopped.
 
