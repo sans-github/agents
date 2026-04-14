@@ -12,6 +12,7 @@ No role -- agent or human -- may begin work that depends on an upstream artifact
 | PRD, ACs | PM | Design (Mocks); EM (Eng planning) |
 | Mocks | PM | EM planning that depends on UI shape |
 | Sys Arch (`sys-arch.md` + `sys-arch.html`) | Arch | EM (Eng Plans / HLD) |
+| Implementation Plan (`workflow/implementation-plan.md`) | Human | No phase execution, no detailed design, no agent begins work until human approves |
 | Eng Plans (HLD) (`hld.md` + `hld.html`) | EM | BE (Detailed Design), FE (FE Arch) |
 | BE Detailed Design | EM | BE API implementation, BE<>FE contract |
 | FE Arch | EM | FE component implementation, BE<>FE contract |

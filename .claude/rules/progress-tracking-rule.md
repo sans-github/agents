@@ -4,7 +4,7 @@ For any task that follows a phased workflow, maintain a progress tracker through
 
 ## Setup
 
-Before starting any work, create a `implementation-plan-tracker.md` file (location: alongside the workflow document, e.g. `workflow/implementation-plan-tracker.md`). Populate it by listing every step from the workflow as an unchecked checkbox.
+Before starting any work, create `workflow/implementation-plan-tracker.md` by listing every step from `workflow/implementation-plan.md` as an unchecked checkbox. The tracker derives from the implementation plan -- not the kickoff plan. Do not create the tracker until `implementation-plan.md` exists and is approved.
 
 ## During execution
 

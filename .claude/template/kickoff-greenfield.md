@@ -71,6 +71,8 @@ Use these emoji conventions inline throughout the plan -- on the heading, row, o
 
 Do not begin any work until I have reviewed and approved `[feature-folder]/workflow/kickoff-plan.md`.
 
+Once the kickoff plan is approved, EM produces `[feature-folder]/workflow/implementation-plan.md` before any detailed design or phase work begins. Human must approve the implementation plan before agents proceed to phase execution.
+
 Once I approve, before any agent begins work:
 1. Write `Status: Approved — Human` and `Approved: YYYY-MM-DD` at the top of `kickoff-plan.md`.
 2. Create `[feature-folder]/workflow/implementation-plan-tracker.md` with every step from section 5 as an unchecked checkbox. This is required by `progress-tracking-rule.md` and must exist before the first agent acts.
