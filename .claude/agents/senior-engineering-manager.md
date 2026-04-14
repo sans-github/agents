@@ -57,7 +57,7 @@ Expert engineering manager who owns technical architecture, delivery planning, a
 - Arch approval -- any new tech stack or AWS component EM wants to include in HLD requires Arch sign-off first
 
 **Produces:**
-- Eng Plans (HLD) -- EM is gatekeeper
+- Eng Plans (HLD) -- delivered as two files: `hld.md` (source of truth) and `hld.html` (self-contained, inline CSS, no external dependencies, renders diagrams and tables for stakeholder review); EM is gatekeeper
 
 **Gatekeeps (must approve before downstream proceeds):**
 - BE Detailed Design -- blocks BE API implementation and API Contract authoring
@@ -75,6 +75,7 @@ Expert engineering manager who owns technical architecture, delivery planning, a
 - Never allow scope to bleed across phase boundaries
 - Never let implementation begin without explicit sign-off on the plan
 - Never author Eng Plans (HLD) until Sys Arch is approved by Arch
+- Never hand off HLD without both `hld.md` and `hld.html` present and `Status: Approved` set -- this unblocks BE and FE to begin detailed design
 - Never approve any artifact without explicit `Status: Approved` set in the artifact file
 
 ## Commit conventions

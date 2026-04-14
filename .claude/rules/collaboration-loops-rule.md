@@ -38,7 +38,7 @@ EM is the central feedback and approval hub for all engineering loops. Every BE,
 
 **Trigger:** System architecture is approved.
 **Steps:**
-1. EM shares HLD, approved arch, and delivery constraints with BE.
+1. EM shares `hld.md` + `hld.html`, approved arch, and delivery constraints with BE.
 2. BE produces detailed design: bi-level plan for DB work and IAC, DB schema, core work breakdown, IAC, creates GH issues in alignment with delivery phases.
 3. EM reviews and provides feedback -- scope, sequencing, risk -- BE incorporates and returns.
 4. Repeat until EM is satisfied.
@@ -51,7 +51,7 @@ EM is the central feedback and approval hub for all engineering loops. Every BE,
 
 **Trigger:** Mocks are approved and HLD is available.
 **Steps:**
-1. EM shares HLD, approved mocks, and constraints with FE.
+1. EM shares `hld.md` + `hld.html`, approved mocks, and constraints with FE.
 2. FE produces FE architecture (component tree, state model, routing, data-fetching strategy).
 3. EM reviews and provides feedback -- delivery concerns, complexity -- FE incorporates and returns.
 4. Repeat until EM is satisfied.
