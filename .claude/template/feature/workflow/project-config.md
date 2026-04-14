@@ -40,7 +40,7 @@ List any phases from the default workflow that are skipped for this project, and
 
 ## Collaboration overrides
 
-List any deviations from the default agent collaboration behavior defined in the agent files.
+List any deviations from the default collaboration loops defined in `collaboration-loops-rule.md`.
 
 ```
 # Example:

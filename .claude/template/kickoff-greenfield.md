@@ -59,6 +59,8 @@ Use these emoji conventions inline throughout the plan -- on the heading, row, o
 
    Be specific and complete. Every checkpoint from the collaboration plan must appear here.
 
+   For any active collaboration loop (see `collaboration-loops-rule.md`), expand it into its discrete steps -- do not collapse a multi-role loop into a single checkpoint line. Inactive loops must be noted as skipped.
+
 6. **Open questions** -- a numbered list of questions that need my answers before agents can proceed. Do not make assumptions; surface the gaps here.
 
 7. **Risks and unknowns** -- anything you spotted that could slow the project down: unclear requirements, missing design decisions, external dependencies, or anything that needs resolution before work starts.
