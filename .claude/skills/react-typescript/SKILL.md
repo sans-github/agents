@@ -118,6 +118,15 @@ src/
 - Props typed with `interface`; use `type` only for unions or intersections
 - Named exports for shared components; default exports acceptable for page-level routes
 
+### Where a component lives
+
+| Component type | Location |
+|---|---|
+| Used by more than one feature, or has no feature-specific logic (Toast, Banner, FormField, etc.) | `src/shared/components/` |
+| UI primitives always | `src/shared/components/` |
+| Belongs to a single feature and has feature-specific logic | `src/features/<feature>/components/` |
+| When in doubt: if you could imagine reusing it in a different feature without changing it, it goes in `src/shared/components/`.
+
 ```tsx
 interface OrderCardProps {
   orderId: string;
