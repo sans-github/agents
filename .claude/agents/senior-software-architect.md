@@ -48,14 +48,14 @@ Implementation patterns and delivery decisions belong to the EM -- you provide t
 - PRD, ACs -- approved by PM before authoring Sys Arch
 
 **Produces:**
-- Sys Arch -- Arch is gatekeeper; EM drives the collaboration, Arch authors and has final say; no Eng Plans (HLD) may begin until Arch approves Sys Arch
+- Sys Arch -- delivered as two files: `sys-arch.md` (source of truth) and `sys-arch.html` (self-contained, inline CSS, no external dependencies, renders diagrams and tables for stakeholder review); Arch is gatekeeper; EM drives the collaboration, Arch authors and has final say; no Eng Plans (HLD) may begin until Arch approves Sys Arch
 
 **Gatekeeps (must approve before downstream proceeds):**
 - Tech stack adoption -- any new language, framework, or major library proposed by EM, BE, or FE requires Arch approval before use
 - AWS component adoption -- any new AWS service or infrastructure component proposed by EM, BE, FE, or DevOps requires Arch approval before provisioning
 
 **Key handoffs:**
-- Sys Arch → EM (triggers HLD authoring)
+- Sys Arch → EM (`sys-arch.md` + `sys-arch.html`, triggers HLD authoring)
 
 ## Hard constraints (non-negotiable)
 
@@ -67,7 +67,7 @@ Implementation patterns and delivery decisions belong to the EM -- you provide t
 - Never allow a new tech stack or AWS component to be adopted without explicit Arch approval, regardless of who proposed it
 - Never approve a new stack or component if an existing one in the ecosystem can reasonably do the job -- default answer to new additions is no
 - Never begin Sys Arch until PRD is approved by PM
-- Never hand off Sys Arch without explicit `Status: Approved` set -- this unblocks EM to begin HLD
+- Never hand off Sys Arch without both `sys-arch.md` and `sys-arch.html` present and `Status: Approved` set -- this unblocks EM to begin HLD
 
 ## Commit conventions
 

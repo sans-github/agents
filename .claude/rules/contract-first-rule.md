@@ -11,7 +11,7 @@ No role -- agent or human -- may begin work that depends on an upstream artifact
 | Reqs | -- | PM cannot produce PRD |
 | PRD, ACs | PM | Design (Mocks); EM (Eng planning) |
 | Mocks | PM | EM planning that depends on UI shape |
-| Sys Arch | Arch | EM (Eng Plans / HLD) |
+| Sys Arch (`sys-arch.md` + `sys-arch.html`) | Arch | EM (Eng Plans / HLD) |
 | Eng Plans (HLD) | EM | BE (Detailed Design), FE (FE Arch) |
 | BE Detailed Design | EM | BE API implementation, BE<>FE contract |
 | FE Arch | EM | FE component implementation, BE<>FE contract |

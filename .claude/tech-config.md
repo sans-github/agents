@@ -21,6 +21,7 @@ Update this to match your project. The kickoff prompt reads this section to eval
 
 | Artifact | Path | Owner | Source |
 |---|---|---|---|
+| System architecture | `docs/sys-arch.md` + `docs/sys-arch.html` | Arch writes, EM approves | `senior-software-architect.md` |
 | ER diagram | `db/er-diagram.md` | BE writes, EM verifies | `er-diagram-rule.md` |
 | DB schema files | `db/schema/` | BE | `db-schema.md` |
 | DB migrations | `db/migrations/` | BE | `db-schema.md` |

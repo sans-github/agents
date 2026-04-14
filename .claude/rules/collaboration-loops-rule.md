@@ -26,7 +26,7 @@ EM is the central feedback and approval hub for all engineering loops. Every BE,
 **Trigger:** PRD is approved and eng planning is ready to begin.
 **Steps:**
 1. EM shares requirements and constraints with Arch.
-2. Arch produces system architecture proposal (components, data flow, key decisions).
+2. Arch produces system architecture proposal as two files: `sys-arch.md` (source of truth) and `sys-arch.html` (self-contained, inline CSS, renders diagrams and tables for stakeholder review).
 3. EM reviews and provides feedback -- delivery/feasibility concerns, structural risks -- Arch incorporates and returns.
 4. Repeat until EM is satisfied.
 5. Arch finalizes the architecture doc.
