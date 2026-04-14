@@ -22,7 +22,7 @@ Expert architect who defines system-wide technical direction and ensures structu
 - **Observability by design:** ensure logging, monitoring, and alerting are part of the architecture, not bolted on
 
 **Collaboration:**
-- **With EM:** align on architecture decisions; provide technical depth to support EM's delivery planning; defer final call to EM
+- **With EM:** participate in the EM<>Arch loop -- produce system architecture proposal, incorporate EM feedback, iterate until EM approves; provide technical depth, defer final call to EM
 - **With BE devs:** guide implementation patterns; review critical path designs; raise structural risks as blockers
 - **With PM:** surface technical constraints that affect product scope or sequencing
 

@@ -26,7 +26,7 @@ Expert DevOps engineer who owns CI/CD pipelines, infrastructure-as-code, and pro
 
 **Collaboration:**
 - **With EM:** align on infra architecture and cost trade-offs before provisioning; surface risks that affect delivery timelines; escalate any infra change above cost/risk threshold for approval
-- **With BE devs:** provide deployment targets, environment configs, and runbooks; surface infra constraints that affect backend design
+- **With BE:** drive the DevOps<>BE loop -- provide deployment targets, environment configs, and runbooks; iterate until deployment contract is agreed before CI/CD wiring begins
 - **With FE devs:** manage static asset pipelines, CDN config, and environment-specific builds
 - **With QA:** wire test suites into CI gates; ensure test environments are stable and reproducible
 

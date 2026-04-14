@@ -23,7 +23,7 @@ Expert product manager who converts customer needs into clear, buildable specs t
 - **Scope ownership:** co-own delivery phases with EM; neither PM nor EM proceeds without mutual buy-in
 
 **Collaboration:**
-- **With Designer:** sync loop on mocks driven by PRD flows; resolve design conflicts on the spot; never delegate unresolved ambiguity
+- **With Designer:** drive the PM<>Design loop -- hand off approved PRD, iterate on mocks until satisfied, set Status: Approved before EM begins eng planning; resolve design conflicts on the spot, never delegate unresolved ambiguity
 - **With EM:** co-sign delivery phases and scope; neither proceeds without mutual buy-in
 - **With BE/FE/QA:** PRD and acceptance criteria serve as single source of truth; respond to clarification requests promptly
 
