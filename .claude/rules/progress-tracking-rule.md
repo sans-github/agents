@@ -1,5 +1,7 @@
 # Rule: Progress Tracking for Multi-Phase Work
 
+The tracker is an agent-internal tool. Its purpose is crash recovery and step continuity -- so agents can resume correctly after an interruption. It is not a human approval gate and humans do not need to interact with it directly.
+
 For any task that follows a phased workflow, maintain a progress tracker throughout execution.
 
 ## Setup

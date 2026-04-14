@@ -36,7 +36,7 @@ Update this to match your project. The kickoff prompt reads this section to eval
 
 ## Contract approvals
 
-Artifacts that block downstream work until approved. Approval requires both a `Status: Approved` header in the file and a checked-off step in `implementation-plan-tracker.md`.
+Agent-to-agent technical contracts that block downstream work until approved. Approval requires a `Status: Approved — [role]` header at the top of the file. Human milestone gates (PRD, Mocks, Sys Arch, Implementation Plan) are defined in section 5 of the kickoff plan.
 
 | Artifact | Approver | Blocks |
 |---|---|---|

@@ -249,7 +249,7 @@ Rules in `.claude/rules/` apply automatically to every session:
 - **workflow-phases-rule** -- multi-step work must be defined as a phased workflow with numbered steps, responsible roles, and concrete artifacts
 - **progress-tracking-rule** -- maintain a `implementation-plan-tracker.md` alongside any workflow; verify artifacts before checking off steps
 - **backlog-reporting-rule** -- append discovered bugs and tech debt to `BACKLOG.md` triage table
-- **contract-first-rule** -- no role may begin work that depends on an upstream artifact until it is explicitly approved; covers all artifacts in the collaboration map
+- **contract-first-rule** -- governs agent-to-agent technical contracts (HLD, DB Schema, BE Detailed Design, FE Arch, API Contract, Test Plan, Issues Lists); human milestone gates are defined in section 5 of the kickoff plan
 - **er-diagram-rule** -- maintain a current ER diagram at `db/er-diagram.md`; update it in the same commit as any schema change
 - **api-review-rule** -- run through the API design checklist before declaring any REST API design complete
 - **db-review-rule** -- run through the DB schema checklist before declaring any schema change complete
