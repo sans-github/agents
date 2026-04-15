@@ -37,15 +37,17 @@ Then add it to your project's `CLAUDE.md` so agents load it automatically every 
 
 ---
 
-## 2b. Define your brand guidelines
+## 2b. Brand guidelines (optional)
 
-Open `.claude/skills/brand-guidelines/SKILL.md` and fill in your product's color palette, typography, spacing system, and component states. The Designer, FE, PM, and QA agents all load this -- it's what keeps mocks and implementations visually consistent across features.
+A default brand is already included at `.claude/skills/brand-guidelines/SKILL.md` -- Off-White + Deep Teal, Plus Jakarta Sans, full light/dark token set. You can use it as-is or replace it with your own.
 
-Do this once after first install. Even a partial definition (colors + fonts) is better than none.
+To preview it, open `.claude/skills/brand-guidelines/previews/default-brand.html` in a browser.
+
+To update: edit `SKILL.md` with your product's color palette, typography, spacing, and component states. The Designer, FE, PM, and QA agents all read it before producing any UI work -- changes take effect immediately on the next session.
 
 ---
 
-## 3. Create a project folder
+## 3. Create a project folder (`scripts/new-feature.sh`)
 
 Run the setup script -- it handles both:
 
