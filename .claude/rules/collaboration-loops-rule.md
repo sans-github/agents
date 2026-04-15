@@ -4,6 +4,28 @@ Every role-pair loop below is a named, bounded process with a clear initiator, a
 
 EM is the central feedback and approval hub for all engineering loops. Every BE, FE, and QA/SDET loop routes through EM -- not directly between peers -- for sign-off before proceeding.
 
+## Collaboration map
+
+```mermaid
+flowchart TD
+    A([PRD approved]) --> PD[PM<>Design loop]
+    PD --> B([Mocks approved])
+    B --> EA[EM<>Arch loop]
+    EA --> C([Sys Arch approved])
+    C --> EB[EM<>BE loop]
+    C --> EF[EM<>FE loop]
+    EB --> BF[BE<>FE loop]
+    EF --> BF
+    BF --> D([API Contract approved])
+    D --> EQ[EM<>QA loop]
+    D --> FD[FE<>Design loop]
+    D --> QB[QA<>BE loop]
+    D --> QF[QA<>FE loop]
+    D --> DB[DevOps<>BE loop]
+```
+
+---
+
 ## Loop definitions
 
 ### PM<>Design loop
