@@ -3,34 +3,54 @@ name: brand-guidelines
 description: Brand guidelines for the product -- color palette, typography, spacing, component states, and voice. Loaded by the Designer agent when producing mocks to ensure visual consistency across features.
 ---
 
-# Brand Guidelines
+# Brand Guidelines — Agent Stack
 
-**Keywords**: brand, branding, visual identity, design tokens, color palette, typography, spacing, component states, voice and tone, brand compliance, style guide, design system
-
-This file is the single source of truth for visual consistency. The Designer reads it before producing any mocks. Fill in each section after install -- even partial definitions (just colors + typography) are better than none.
+**Identity:** Off-White + Deep Teal. Quiet authority, slightly Nordic. Near-achromatic base with a single deep teal accent.
+**Preview:** `.claude/skills/brand-guidelines/previews/default-brand.html`
 
 ---
 
 ## Color palette
 
-Define all colors as tokens. Use these token names in mocks and CSS -- never raw hex values.
+All tokens defined for both light and dark mode. Use token names in mocks and CSS -- never raw hex values.
+
+### Light mode
 
 | Token | Hex | Usage |
 |---|---|---|
-| `color-primary` | `#______` | Primary actions, links, active states |
-| `color-primary-hover` | `#______` | Hover state for primary |
-| `color-primary-subtle` | `#______` | Backgrounds, badges using primary color |
-| `color-secondary` | `#______` | Secondary actions |
-| `color-neutral-900` | `#______` | Body text, headings |
-| `color-neutral-600` | `#______` | Secondary text, labels |
-| `color-neutral-300` | `#______` | Borders, dividers |
-| `color-neutral-100` | `#______` | Subtle backgrounds |
-| `color-neutral-0` | `#ffffff` | White / card backgrounds |
-| `color-success` | `#______` | Success states, confirmations |
-| `color-warning` | `#______` | Warnings, caution states |
-| `color-error` | `#______` | Errors, destructive actions |
-| `color-info` | `#______` | Informational states |
-| `color-surface` | `#______` | Page background |
+| `color-primary` | `#2A6872` | Primary actions, links, active states |
+| `color-primary-hover` | `#1A4E58` | Hover state for primary |
+| `color-primary-subtle` | `#E4EFF0` | Backgrounds, badges using primary color |
+| `color-secondary` | `#4A7880` | Secondary actions |
+| `color-neutral-900` | `#161E20` | Body text, headings |
+| `color-neutral-600` | `#526870` | Secondary text, labels |
+| `color-neutral-300` | `#B8CACF` | Borders, dividers |
+| `color-neutral-100` | `#EAF0F2` | Subtle backgrounds |
+| `color-neutral-0` | `#FFFFFF` | White / card backgrounds |
+| `color-success` | `#2A6A52` | Success states, confirmations |
+| `color-warning` | `#806030` | Warnings, caution states |
+| `color-error` | `#783040` | Errors, destructive actions |
+| `color-info` | `#2A4A78` | Informational states |
+| `color-surface` | `#F5F8F9` | Page background |
+
+### Dark mode
+
+| Token | Hex | Usage |
+|---|---|---|
+| `color-primary` | `#4AA8B8` | Primary actions, links, active states |
+| `color-primary-hover` | `#60C0D0` | Hover state for primary |
+| `color-primary-subtle` | `#182830` | Backgrounds, badges using primary color |
+| `color-secondary` | `#70A8B4` | Secondary actions |
+| `color-neutral-900` | `#E8F0F2` | Body text, headings |
+| `color-neutral-600` | `#7898A0` | Secondary text, labels |
+| `color-neutral-300` | `#2E4850` | Borders, dividers |
+| `color-neutral-100` | `#1C3038` | Subtle backgrounds |
+| `color-neutral-0` | `#162028` | White / card backgrounds |
+| `color-success` | `#50A880` | Success states, confirmations |
+| `color-warning` | `#C8A050` | Warnings, caution states |
+| `color-error` | `#C06070` | Errors, destructive actions |
+| `color-info` | `#50A0C8` | Informational states |
+| `color-surface` | `#111820` | Page background |
 
 ---
 
@@ -38,34 +58,35 @@ Define all colors as tokens. Use these token names in mocks and CSS -- never raw
 
 | Token | Font family | Weight | Size | Line height | Usage |
 |---|---|---|---|---|---|
-| `text-display` | ________ | __ | __px | __ | Hero headings |
-| `text-h1` | ________ | __ | __px | __ | Page titles |
-| `text-h2` | ________ | __ | __px | __ | Section headings |
-| `text-h3` | ________ | __ | __px | __ | Card headings, subsections |
-| `text-body-lg` | ________ | __ | __px | __ | Primary body text |
-| `text-body` | ________ | __ | __px | __ | Default body text |
-| `text-body-sm` | ________ | __ | __px | __ | Secondary body, captions |
-| `text-label` | ________ | __ | __px | __ | Form labels, tags |
-| `text-code` | ________ | __ | __px | __ | Code snippets |
+| `text-display` | Plus Jakarta Sans | 700 | 44px | 1.1 | Hero headings |
+| `text-h1` | Plus Jakarta Sans | 700 | 30px | 1.2 | Page titles |
+| `text-h2` | Plus Jakarta Sans | 600 | 22px | 1.3 | Section headings |
+| `text-h3` | Plus Jakarta Sans | 600 | 17px | 1.4 | Card headings, subsections |
+| `text-body-lg` | Plus Jakarta Sans | 400 | 17px | 1.6 | Primary body text |
+| `text-body` | Plus Jakarta Sans | 400 | 15px | 1.6 | Default body text |
+| `text-body-sm` | Plus Jakarta Sans | 400 | 13px | 1.5 | Secondary body, captions |
+| `text-label` | Plus Jakarta Sans | 600 | 12px | 1.4 | Form labels, tags (uppercase, +0.2px tracking) |
+| `text-code` | JetBrains Mono | 400 | 13px | 1.6 | Code snippets |
 
-Font stack: `________` (primary), `________` (fallback)
+Font stack: `'Plus Jakarta Sans', sans-serif` (primary), `'JetBrains Mono', monospace` (code)
+Google Fonts import: `https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500`
 
 ---
 
 ## Spacing system
 
-Base unit: `__px` (typically 4px or 8px)
+Base unit: `4px`
 
 | Token | Value | Usage |
 |---|---|---|
-| `space-1` | __px | Tight gaps (icon + label) |
-| `space-2` | __px | Inner padding (compact) |
-| `space-3` | __px | Inner padding (default) |
-| `space-4` | __px | Component gaps |
-| `space-6` | __px | Section gaps (small) |
-| `space-8` | __px | Section gaps (medium) |
-| `space-12` | __px | Layout gaps |
-| `space-16` | __px | Page sections |
+| `space-1` | 4px | Tight gaps (icon + label) |
+| `space-2` | 8px | Inner padding (compact) |
+| `space-3` | 12px | Inner padding (default) |
+| `space-4` | 16px | Component gaps |
+| `space-6` | 24px | Section gaps (small) |
+| `space-8` | 32px | Section gaps (medium) |
+| `space-12` | 48px | Layout gaps |
+| `space-16` | 64px | Page sections |
 
 ---
 
@@ -73,30 +94,30 @@ Base unit: `__px` (typically 4px or 8px)
 
 | Token | Value | Usage |
 |---|---|---|
-| `radius-sm` | __px | Inputs, tags |
-| `radius-md` | __px | Cards, buttons, modals |
-| `radius-lg` | __px | Sheets, large surfaces |
+| `radius-sm` | 4px | Tags, badges |
+| `radius-md` | 7px | Inputs, buttons, cards |
+| `radius-lg` | 12px | Modals, sheets, large surfaces |
 | `radius-full` | 9999px | Pills, avatars |
-| `shadow-sm` | ________ | Subtle lift (dropdowns) |
-| `shadow-md` | ________ | Cards, popovers |
-| `shadow-lg` | ________ | Modals, dialogs |
+| `shadow-sm` | `0 1px 3px rgba(22,30,32,0.07)` | Subtle lift (dropdowns) |
+| `shadow-md` | `0 4px 12px rgba(22,30,32,0.09)` | Cards, popovers |
+| `shadow-lg` | `0 12px 32px rgba(22,30,32,0.13)` | Modals, dialogs |
+
+Dark mode shadow: replace rgba with `rgba(0,0,0,0.30/0.36/0.46)` at the same offsets.
 
 ---
 
 ## Core component states
 
-Every interactive component must handle all states. Use the color tokens above -- do not introduce new colors.
-
 | State | Visual treatment |
 |---|---|
-| Default | ________ |
-| Hover | ________ |
-| Active / pressed | ________ |
-| Focus (keyboard) | `color-primary` outline, 2px offset |
-| Disabled | 40% opacity, no pointer events |
+| Default | Base token colors, no decoration |
+| Hover | `color-primary-hover` for primary; `color-primary-subtle` background for secondary/ghost |
+| Active / pressed | No translateY; shadow removed |
+| Focus (keyboard) | `color-primary` outline, 2px, 2px offset |
+| Disabled | `color-neutral-100` background, `color-neutral-300` text, no pointer events, no shadow |
 | Loading | Skeleton or spinner using `color-neutral-300` |
-| Error | `color-error` border + message below field |
-| Success | `color-success` indicator |
+| Error | `color-error` border + message below field in `color-error` |
+| Success | `color-success` indicator or border-left accent |
 
 ---
 
@@ -105,8 +126,8 @@ Every interactive component must handle all states. Use the color tokens above -
 | Variant | When to use | Background | Text | Border |
 |---|---|---|---|---|
 | Primary | Main CTA, one per view | `color-primary` | white | none |
-| Secondary | Supporting action | white | `color-primary` | `color-primary` |
-| Tertiary / ghost | Low-emphasis action | transparent | `color-primary` | none |
+| Secondary | Supporting action | `color-neutral-0` | `color-primary` | 1.5px `color-primary` |
+| Ghost | Low-emphasis action | transparent | `color-primary` | none |
 | Destructive | Irreversible action | `color-error` | white | none |
 | Disabled | Any unavailable action | `color-neutral-100` | `color-neutral-300` | none |
 
@@ -114,8 +135,8 @@ Every interactive component must handle all states. Use the color tokens above -
 
 ## Iconography
 
-Icon library: `________` (e.g. Lucide, Heroicons, Material Icons)
-Default size: `__px`
+Icon library: Lucide or Heroicons (outline set)
+Default size: 16px inline, 20px standalone
 Color: inherits from text color unless specified
 
 Rules:
@@ -128,10 +149,10 @@ Rules:
 
 | Situation | Tone | Example |
 |---|---|---|
-| Empty state | Helpful, action-oriented | "No items yet. [Create your first one]" |
-| Error message | Clear, non-blaming | "Something went wrong. Try again or contact support." |
-| Success confirmation | Brief, positive | "Saved." / "Changes applied." |
-| Destructive confirmation | Direct, consequence-first | "Delete this item? This can't be undone." |
+| Empty state | Helpful, action-oriented | "No agents configured yet. Add your first agent to get started." |
+| Error message | Clear, non-blaming | "Sync failed. Check your network connection and try again." |
+| Success confirmation | Brief, positive | "Changes saved." / "Config applied." |
+| Destructive confirmation | Direct, consequence-first | "Remove this agent? All associated plans and contracts will be permanently deleted. This cannot be undone." |
 | Loading | Minimal | "Loading..." or no text if under 1s |
 
 Writing rules:
