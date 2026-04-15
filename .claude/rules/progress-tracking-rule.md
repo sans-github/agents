@@ -1,12 +1,12 @@
 # Rule: Progress Tracking for Multi-Phase Work
 
-The tracker is an agent-internal tool. Its purpose is crash recovery and step continuity -- so agents can resume correctly after an interruption. It is not a human approval gate and humans do not need to interact with it directly.
+`workflow/implementation-plan.md` is the single source of truth for phase progress. It is authored as a checkbox checklist from the start -- no separate tracker file is created from it.
 
-For any task that follows a phased workflow, maintain a progress tracker throughout execution.
+For any task that follows a phased workflow, maintain `implementation-plan.md` throughout execution.
 
 ## Setup
 
-Before starting any work, create `workflow/implementation-plan-tracker.md` by listing every step from `workflow/implementation-plan.md` as an unchecked checkbox. The tracker derives from the implementation plan -- not the kickoff plan. Do not create the tracker until `implementation-plan.md` exists and is approved.
+`implementation-plan.md` is authored by EM as a checkbox checklist before any phase work begins. Do not begin work until it exists and is approved by the human.
 
 ## During execution
 
@@ -16,7 +16,7 @@ Before starting any work, create `workflow/implementation-plan-tracker.md` by li
 
 ## On resume (interrupted session)
 
-1. Read `implementation-plan-tracker.md` first.
+1. Read `implementation-plan.md` first.
 2. Find the last checked step.
 3. Verify that step's output actually exists (file, artifact, commit). If it does not, uncheck it and redo it.
 4. Continue from the first unchecked step.

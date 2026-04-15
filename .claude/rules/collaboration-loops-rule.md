@@ -166,6 +166,6 @@ flowchart TD
 
 ## How to use this in a kickoff plan
 
-In section 3 (Agent collaboration plan) and section 5 (Checkpoints), identify which loops are active for this feature. For each active loop, expand it into its discrete steps. Do not reference a loop by name only -- spell out the steps.
+In section 3 (Agent collaboration plan) of the kickoff plan, identify which loops are active for this feature and describe each one. Active loops must also appear as discrete steps in `human-checkpoints.md` -- do not collapse a multi-role loop into one line. Do not reference a loop by name only -- spell out the steps.
 
 Inactive loops (roles not in scope for this feature) must be noted as skipped, not silently omitted.

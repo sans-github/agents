@@ -70,8 +70,8 @@ projects/
     └── workflow/
         ├── project-config.md           # you fill this in before kicking off
         ├── kickoff-plan.md             # agent generates at kickoff; you review and approve
-        ├── implementation-plan.md      # EM generates; you review and approve
-        └── implementation-plan-tracker.md # agent progress tracker
+        ├── human-checkpoints.md        # seeded at kickoff; you check off milestone gates
+        └── implementation-plan.md      # EM generates as checklist; agents check off steps
 ```
 
 ---

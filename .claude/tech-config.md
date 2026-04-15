@@ -29,14 +29,15 @@ Update this to match your project. The kickoff prompt reads this section to eval
 | DB seeds (all envs) | `db/seeds/common/` | BE | `db-schema.md` |
 | DB seeds (dev only) | `db/seeds/dev/` | BE | `db-schema.md` |
 | Tech debt / bug backlog | `BACKLOG.md` | EM triages | `backlog-reporting-rule.md` |
-| Phase progress tracker | `workflow/implementation-plan-tracker.md` | All roles | `progress-tracking-rule.md` |
-| Workflow definition | `workflow/` (alongside checklist) | EM | `workflow-phases-rule.md` |
+| Human milestone gates | `workflow/human-checkpoints.md` | Seeded at kickoff; human checks off | `contract-first-rule.md` |
+| Phase progress / agent checklist | `workflow/implementation-plan.md` | EM authors; agents check off steps | `progress-tracking-rule.md` |
+| Workflow definition | `workflow/` | EM | `workflow-phases-rule.md` |
 
 ---
 
 ## Contract approvals
 
-Agent-to-agent technical contracts that block downstream work until approved. Approval requires a `Status: Approved — [role]` header at the top of the file. Human milestone gates (PRD, Mocks, Sys Arch, Implementation Plan) are defined in section 5 of the kickoff plan.
+Agent-to-agent technical contracts that block downstream work until approved. Approval requires a `Status: Approved — [role]` header at the top of the file. Human milestone gates (PRD, Mocks, Sys Arch, Implementation Plan) are defined per-project in `workflow/human-checkpoints.md`.
 
 | Artifact | Approver | Blocks |
 |---|---|---|
