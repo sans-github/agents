@@ -111,7 +111,7 @@ timeline
     System Design      : Sys Arch
                        : Eng Plans (HLD)
     Engineering Design : BE Detailed Design
-                       : FE Arch
+                       : FE Detailed Design
                        : API Contract
     Implementation Planning : Test Plan
                        : Issues List
@@ -197,7 +197,7 @@ sequenceDiagram
 | Artifact | Owner | Key collaborators | Gatekeeper |
 |---|---|---|---|
 | BE Detailed Design | BE | EM monitors; intercepts and collaborates to resolve on red flag | EM |
-| FE Arch | FE | EM monitors; intercepts and collaborates to resolve on red flag | EM |
+| FE Detailed Design | FE | EM monitors; intercepts and collaborates to resolve on red flag | EM |
 | API Contract | FE + BE | EM monitors; intercepts and collaborates to resolve on red flag | EM |
 
 ### Implementation Planning
@@ -231,12 +231,12 @@ sequenceDiagram
 5. **EM** engages **Arch** and collaborates to produce Sys Arch based on PRD and system constraints.
 6. **EM** authors Eng Plans (HLD) -- DB Schema, IAC, Core API, BE<>FE API contract, Feature sys design -- based on Sys Arch and PRD. Arch contributes; FE and BE align on scope.
 7. **BE** authors BE Detailed Design (DB Schema, IAC, BE API, BE<>FE API contract) from the HLD.
-8. **FE** authors FE Arch (component design, state, routing, API integration) from the HLD.
+8. **FE** authors FE Detailed Design (component design, state, routing, API integration) from the HLD.
 9. **FE and BE** jointly author the API Contract, aligned on their Detailed Designs.
 10. **QA** authors the Test Plan based on PRD, Mocks, and ACs.
 11. **BE**, **FE**, and **QA** each independently author their own Issues List -- a hierarchical document breaking down their scope into individual GitHub issues, organized for human review. Each submits to **EM** for sign-off.
 12. **EM** reviews and signs off on each Issues List. Once approved, each role creates the actual GH Issues and begins implementation.
-13. **FE** implements FE Artifacts per FE Arch and API Contract. **BE** implements BE Artifacts per Detailed Design and API Contract.
+13. **FE** implements FE Artifacts per FE Detailed Design and API Contract. **BE** implements BE Artifacts per BE Detailed Design and API Contract.
 14. **FE** and **BE** each produce Test Docs for QA to use in automation.
 15. **QA** authors the automation suite against FE/BE artifacts and test docs.
 
@@ -249,7 +249,7 @@ Rules in `.claude/rules/` apply automatically to every session:
 - **workflow-phases-rule** -- multi-step work must be defined as a phased workflow with numbered steps, responsible roles, and concrete artifacts
 - **progress-tracking-rule** -- `implementation-plan.md` is authored as a checklist; agents check off steps and resume from it directly
 - **backlog-reporting-rule** -- append discovered bugs and tech debt to `BACKLOG.md` triage table
-- **contract-first-rule** -- governs agent-to-agent technical contracts (HLD, DB Schema, BE Detailed Design, FE Arch, API Contract, Test Plan, Issues Lists); human milestone gates are tracked in `workflow/human-checkpoints.md`
+- **contract-first-rule** -- governs agent-to-agent technical contracts (HLD, DB Schema, BE Detailed Design, FE Detailed Design, API Contract, Test Plan, Issues Lists); human milestone gates are tracked in `workflow/human-checkpoints.md`
 - **er-diagram-rule** -- maintain a current ER diagram at `db/er-diagram.md`; update it in the same commit as any schema change
 - **api-review-rule** -- run through the API design checklist before declaring any REST API design complete
 - **db-review-rule** -- run through the DB schema checklist before declaring any schema change complete

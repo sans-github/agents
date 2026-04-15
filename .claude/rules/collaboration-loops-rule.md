@@ -52,7 +52,7 @@ flowchart TD
 3. EM reviews and provides feedback -- delivery/feasibility concerns, structural risks -- Arch incorporates and returns.
 4. Repeat until EM is satisfied.
 5. Arch finalizes the architecture doc.
-**Exit:** EM sets `Status: Approved` on the arch doc. Downstream: BE Detailed Design, FE Arch, DevOps infra planning.
+**Exit:** EM sets `Status: Approved` on the arch doc. Downstream: BE Detailed Design, FE Detailed Design, DevOps infra planning.
 
 ---
 
@@ -74,17 +74,17 @@ flowchart TD
 **Trigger:** Mocks are approved and HLD is available.
 **Steps:**
 1. EM shares `hld.md` + `hld.html`, approved mocks, and constraints with FE.
-2. FE produces FE architecture (component tree, state model, routing, data-fetching strategy).
+2. FE produces FE Detailed Design (component tree, state model, routing, data-fetching strategy).
 3. EM reviews and provides feedback -- delivery concerns, complexity -- FE incorporates and returns.
 4. Repeat until EM is satisfied.
-5. FE finalizes the FE arch doc.
-**Exit:** EM sets `Status: Approved` on the FE arch doc. Downstream: FE component implementation, API contract.
+5. FE finalizes the FE Detailed Design doc.
+**Exit:** EM sets `Status: Approved` on the FE Detailed Design doc. Downstream: FE component implementation, API contract.
 
 ---
 
 ### BE<>FE loop
 
-**Trigger:** BE Detailed Design and FE Arch are both approved.
+**Trigger:** BE Detailed Design and FE Detailed Design are both approved.
 **Steps:**
 1. BE produces a draft API contract (endpoints, request/response shapes, error codes).
 2. BE and FE iterate on the contract -- FE raises integration concerns, BE raises implementation constraints -- until both are aligned.

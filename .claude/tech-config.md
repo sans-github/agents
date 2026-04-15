@@ -23,6 +23,8 @@ Update this to match your project. The kickoff prompt reads this section to eval
 |---|---|---|---|
 | System architecture | `docs/sys-arch.md` + `docs/sys-arch.html` | Arch writes, EM approves | `senior-software-architect.md` |
 | Eng Plans (HLD) | `docs/hld.md` + `docs/hld.html` | EM writes, EM approves | `senior-engineering-manager.md` |
+| BE Detailed Design | `generated-docs/be-detailed-design.md` | BE writes, EM approves | `senior-backend-engineer.md` |
+| FE Detailed Design | `generated-docs/fe-detailed-design.md` | FE writes, EM approves | `senior-frontend-engineer.md` |
 | ER diagram | `db/er-diagram.md` | BE writes, EM verifies | `er-diagram-rule.md` |
 | DB schema files | `db/schema/` | BE | `db-schema.md` |
 | DB migrations | `db/migrations/` | BE | `db-schema.md` |

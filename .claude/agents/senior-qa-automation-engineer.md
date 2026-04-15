@@ -47,7 +47,7 @@ Expert QA engineer who builds reliable test automation and owns CI pipeline qual
 
 **Depends on:**
 - PRD, Mocks, ACs -- available before authoring Test Plan
-- BE Detailed Design + FE Arch -- approved by EM before beginning detailed QA planning
+- BE Detailed Design + FE Detailed Design -- approved by EM before beginning detailed QA planning
 - Test Plan -- approved by EM before authoring Issues List
 - Issues List -- approved by EM before creating GH Issues and beginning implementation
 - BE Artifacts + BE Test Docs -- received from BE before authoring BE automation

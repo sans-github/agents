@@ -9,10 +9,10 @@ This rule governs **agent-to-agent technical contracts** only. Human milestone g
 | Upstream artifact | Approver | Downstream work blocked |
 |---|---|---|
 | Tech stack / AWS component adoption | Arch | Proposing role (EM, BE, FE, DevOps) cannot include it in any artifact or begin provisioning |
-| Eng Plans (HLD) (`hld.md` + `hld.html`) | EM | BE (Detailed Design), FE (FE Arch) |
+| Eng Plans (HLD) (`hld.md` + `hld.html`) | EM | BE (Detailed Design), FE (Detailed Design) |
 | DB Schema | EM | BE data layer, migrations, queries |
-| BE Detailed Design | EM | BE API implementation, BE<>FE contract |
-| FE Arch | EM | FE component implementation, BE<>FE contract |
+| BE Detailed Design (`be-detailed-design.md`) | EM | BE API implementation, BE<>FE contract |
+| FE Detailed Design (`fe-detailed-design.md`) | EM | FE component implementation, BE<>FE contract |
 | API Contract | EM | BE endpoint implementation, FE integration |
 | Test Plan | EM | QA Issues List, automation work |
 | Issues List (BE) | EM | BE creates GH Issues and begins implementation |
