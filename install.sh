@@ -34,5 +34,15 @@ if [ ! -f "$ROOT/BACKLOG.md" ] && [ -f "$TMP/BACKLOG.md" ]; then
   echo "  BACKLOG.md -> BACKLOG.md (scaffolded)"
 fi
 
+if [ -f "$ROOT/CLAUDE.md" ]; then
+  if ! grep -q "@.claude/tech-config.md" "$ROOT/CLAUDE.md"; then
+    printf "\n@.claude/tech-config.md\n" >> "$ROOT/CLAUDE.md"
+    echo "  @.claude/tech-config.md -> appended to CLAUDE.md"
+  fi
+else
+  printf "@.claude/tech-config.md\n" > "$ROOT/CLAUDE.md"
+  echo "  CLAUDE.md created with @.claude/tech-config.md"
+fi
+
 rm -rf "$TMP"
 echo "Done."

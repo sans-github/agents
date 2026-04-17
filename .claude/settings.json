@@ -12,6 +12,12 @@
       "Bash(find:*)",
       "Bash(for f:*)",
       "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git push:*)",
+      "Bash(git remote:*)",
+      "Bash(git status:*)",
       "Bash(grep:*)",
       "Bash(head:*)",
       "Bash(ls:*)",
@@ -34,13 +40,7 @@
       "WebFetch(domain:skills.sh)",
       "WebSearch",
       "Write(.claude/**)",
-      "Write(agents-core/**)",
-      "Bash(git commit:*)",
-      "Bash(git push:*)",
-      "Bash(git remote:*)",
-      "Bash(git status:*)",
-      "Bash(git log:*)",
-      "Bash(git diff:*)"
+      "Write(agents-core/**)"
     ]
   }
 }
