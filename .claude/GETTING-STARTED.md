@@ -3,14 +3,28 @@
 ```mermaid
 flowchart LR
   subgraph once["🔧 One-time setup"]
-    s1["1. Install<br/>(Eng · use script)"] --> s2["2. Configure stack*<br/>(Eng)"]
+    s1["1. Install<br/>(Eng · use script)"] --> s2["2. Review tech stack*<br/>(Eng)"] --> s3["3. Brand guidelines†<br/>(Design · PM)"]
   end
   subgraph feat["🔁 Per feature"]
-    s3["3. Create project folder<br/>(Eng · /feature-init)"] --> s4["4. Fill project config<br/>(Eng & Product)"] --> s5["5. Write PRD<br/>(Product)"] --> s6["6. Kick off<br/>(Eng → Claude)"]
+    s4["4. Create project folder<br/>(Eng · /feature-init)"] --> s5["5. Fill project config<br/>(Eng & Product)"] --> s6["6. Write PRD<br/>(Product)"] --> s7["7. Kick off<br/>(Eng → Claude)"]
   end
   once --> feat
 ```
-_* revisit when stack changes_
+_* revisit when stack changes · † default included, replace to match your brand_
+
+---
+
+| Step | What | How |
+|------|------|-----|
+| 1. Install | Pull agents, rules, skills into `.claude/` | `bash install.sh` |
+| 2. Review tech stack | Folder paths, naming, tooling | Review default [tech-config.md](tech-config.md) |
+| 3. Review brand guidelines | Color, typography, component tokens | Review default [brand-guidelines/SKILL.md](skills/brand-guidelines/SKILL.md) |
+| 4. Create project folder | Scaffold `projects/master/` + feature folder | `/feature-init` in Claude Code |
+| 5. Fill project config | Active agents, phases, overrides | Review default [workflow/project-config.md](template/feature/workflow/project-config.md) |
+| 6. Write PRD ✍️ | **Feature requirements -- the agent's primary input** | Edit [product-specs/prd.md](template/feature/product-specs/prd.md) |
+| 7. Kick off | Start agent collaboration | Tell Claude: _read and execute [kickoff-greenfield.md](template/kickoff-greenfield.md)_ (or [brownfield](template/kickoff-brownfield.md)) |
+
+---
 
 ## 1. Install
 
@@ -25,19 +39,15 @@ This overwrites everything under `.claude/` (agents, rules, skills, template, gu
 
 ---
 
-## 2. Configure your stack
+## 2. Review tech stack (optional)
 
 Open `.claude/tech-config.md` and update it to match your project -- folder paths, naming conventions, tooling choices, and team norms. Do this once after first install, and revisit whenever your project's conventions change.
 
-Then add it to your project's `CLAUDE.md` so agents load it automatically every session:
-
-```markdown
-@.claude/tech-config.md
-```
+`install.sh` automatically wires it into your `CLAUDE.md` so agents load it every session.
 
 ---
 
-## 2b. Brand guidelines (optional)
+## 3. Brand guidelines (optional)
 
 A default brand is already included at `.claude/skills/brand-guidelines/SKILL.md` -- Off-White + Deep Teal, Plus Jakarta Sans, full light/dark token set. You can use it as-is or replace it with your own.
 
@@ -47,7 +57,7 @@ To update: edit `SKILL.md` with your product's color palette, typography, spacin
 
 ---
 
-## 3. Create a project folder (`/feature-init`)
+## 4. Create a project folder (`/feature-init`)
 
 Run the feature-init skill in Claude Code:
 
@@ -78,7 +88,7 @@ projects/
 
 ---
 
-## 4. Fill in project-config.md
+## 5. Fill in project-config.md (optional)
 
 Before any agent starts work, fill in `workflow/project-config.md`. This is the single place where you configure how the project runs -- which agents are active, which phases to skip, and any deviations from the default collaboration pattern.
 
@@ -88,7 +98,7 @@ See the template for a complete example.
 
 ---
 
-## 5. Fill in product-specs/prd.md
+## 6. Fill in product-specs/prd.md
 
 Write the PRD for this feature in `product-specs/prd.md`. This is the PM's input -- what to build and why. The kickoff prompt reads it directly, so agents will not proceed correctly without it.
 
@@ -96,7 +106,7 @@ If you are starting greenfield with no PRD yet, you can engage the PM agent firs
 
 ---
 
-## 6. Kick off
+## 7. Kick off
 
 Pick the right kickoff file from `template/`:
 
