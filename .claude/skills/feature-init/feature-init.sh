@@ -10,9 +10,13 @@ echo ""
 echo "New feature setup"
 echo "-----------------"
 
-# Prompt for feature name
-read -rp "Feature name [${TODAY}-sample-feature]: " FEATURE_NAME
-FEATURE_NAME="${FEATURE_NAME:-${TODAY}-sample-feature}"
+# Accept feature name as argument or prompt interactively
+if [ -n "${1:-}" ]; then
+  FEATURE_NAME="$1"
+else
+  read -rp "Feature name [${TODAY}-sample-feature]: " FEATURE_NAME
+  FEATURE_NAME="${FEATURE_NAME:-${TODAY}-sample-feature}"
+fi
 
 FEATURE_DIR="$PROJECTS/$FEATURE_NAME"
 
