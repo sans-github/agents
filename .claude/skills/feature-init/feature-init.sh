@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
 TODAY=$(date +%Y%m%d)
 TEMPLATE="$ROOT/.claude/template"
 PROJECTS="$ROOT/projects"
@@ -40,5 +40,19 @@ cp -r "$TEMPLATE/feature/" "$FEATURE_DIR"
 echo "  projects/$FEATURE_NAME created from template."
 
 echo ""
-echo "See .claude/GETTING-STARTED.md for next steps."
+echo "Created:"
+echo ""
+echo "  projects/"
+echo "  ├── master/                     (consolidated product baseline)"
+echo "  │   ├── product-specs/prd.md"
+echo "  │   └── mocks/"
+echo "  └── $FEATURE_NAME/"
+echo "      ├── generated-docs/mocks/"
+echo "      ├── product-specs/prd.md"
+echo "      └── workflow/"
+echo "          ├── project-config.md"
+echo "          ├── human-checkpoints.md"
+echo "          └── implementation-plan.md"
+echo ""
+echo "Next steps: see .claude/GETTING-STARTED.md"
 echo ""

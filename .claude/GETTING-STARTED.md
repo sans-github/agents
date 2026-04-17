@@ -6,7 +6,7 @@ flowchart LR
     s1["1. Install<br/>(Eng · use script)"] --> s2["2. Configure stack*<br/>(Eng)"]
   end
   subgraph feat["🔁 Per feature"]
-    s3["3. Create project folder<br/>(Eng · use script)"] --> s4["4. Fill project config<br/>(Eng & Product)"] --> s5["5. Write PRD<br/>(Product)"] --> s6["6. Kick off<br/>(Eng → Claude)"]
+    s3["3. Create project folder<br/>(Eng · /feature-init)"] --> s4["4. Fill project config<br/>(Eng & Product)"] --> s5["5. Write PRD<br/>(Product)"] --> s6["6. Kick off<br/>(Eng → Claude)"]
   end
   once --> feat
 ```
@@ -17,8 +17,8 @@ _* revisit when stack changes_
 Copy the latest agents, rules, and skills into your project:
 
 ```bash
-bash scripts/sync.sh          # pull from main
-bash scripts/sync.sh v1.2.0   # pin a specific tag or branch
+bash install.sh          # pull from main
+bash install.sh v1.2.0   # pin a specific tag or branch
 ```
 
 This overwrites everything under `.claude/` (agents, rules, skills, template, guide docs) except your `settings.json`. Commit the result to lock the version.
@@ -47,12 +47,12 @@ To update: edit `SKILL.md` with your product's color palette, typography, spacin
 
 ---
 
-## 3. Create a project folder (`scripts/new-feature.sh`)
+## 3. Create a project folder (`/feature-init`)
 
-Run the setup script -- it handles both:
+Run the feature-init skill in Claude Code:
 
-```bash
-bash scripts/new-feature.sh
+```
+/feature-init
 ```
 
 It will create `projects/master/` from the template if it doesn't exist, prompt you for a feature name, and scaffold `projects/YYYYMMDD-feature-name/`. Aborts if the feature folder already exists.

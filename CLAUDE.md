@@ -4,14 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-A collection of reusable Claude Code sub-agent definitions for a software engineering team. There is no application code here. The repo contains only agent definitions, domain skills, session rules, and project scaffolding templates.
+A collection of reusable Claude Code agent definitions for a software engineering team. There is no application code here. The repo contains only agent definitions, domain skills, session rules, and project scaffolding templates.
 
-Consumers install this repo into their own project via `scripts/sync.sh`. They do not fork or modify this repo -- they pull it as a versioned dependency and commit the result.
+Consumers install this repo into their own project via `install.sh`. They do not fork or modify this repo -- they pull it as a versioned dependency and commit the result.
 
 ## How consumers use it
 
-1. Run `scripts/sync.sh` to copy `.claude/agents/`, `.claude/rules/`, `.claude/skills/`, `.claude/template/`, `.claude/GETTING-STARTED.md`, and `.claude/tech-config.md` into their project.
-2. Run `scripts/new-feature.sh` -- scaffolds `projects/master/` (once) and `projects/YYYYMMDD-feature-name/` (per feature) from the template.
+1. Run `install.sh` to copy `.claude/agents/`, `.claude/rules/`, `.claude/skills/`, `.claude/template/`, `.claude/GETTING-STARTED.md`, and `.claude/tech-config.md` into their project.
+2. Run `/feature-init` in Claude Code -- scaffolds `projects/master/` (once) and `projects/YYYYMMDD-feature-name/` (per feature) from the template.
 4. Fill in `projects/[feature]/workflow/project-config.md` -- which agents are active, phases to skip, overrides.
 5. Fill in `projects/[feature]/product-specs/prd.md` -- the feature PRD.
 6. Edit the appropriate kickoff file (`template/kickoff-greenfield.md` or `template/kickoff-brownfield.md`), set the feature folder variable at the top, then tell Claude to read and execute it.
@@ -72,11 +72,11 @@ Each agent file follows this section order:
 
 Skills are resolved by the `name` field in their frontmatter, not by folder path. Skill names must be unique. Agents list skills in their `skills:` frontmatter. Commit conventions live in each agent file, not in a separate skill.
 
-## Sync script
+## Install script
 
 ```bash
-bash scripts/sync.sh          # pull from main
-bash scripts/sync.sh v1.2.0   # pin a tag or branch
+bash install.sh          # pull from main
+bash install.sh v1.2.0   # pin a tag or branch
 ```
 
 Copies `.claude/agents/`, `.claude/rules/`, `.claude/skills/`, `.claude/template/`, `.claude/GETTING-STARTED.md`, and `.claude/tech-config.md` into the consumer project. Also scaffolds `BACKLOG.md` in the consumer root if it doesn't exist. Consumers commit the result to lock the version.

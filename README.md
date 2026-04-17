@@ -1,6 +1,6 @@
-# Claude Sub-Agent Team
+# Introduction
 
-A collection of reusable, generic Claude Code sub-agent definitions for a software engineering team. Each agent represents a distinct engineering or product role with well-defined expertise, collaboration style, and hard constraints.
+A collection of reusable, generic Claude Code agent definitions for a software engineering team. Each agent represents a distinct engineering or product role with well-defined expertise, collaboration style, and hard constraints.
 
 See [GETTING-STARTED.md](.claude/GETTING-STARTED.md) to install and run your first project.
 
@@ -259,8 +259,8 @@ Rules in `.claude/rules/` apply automatically to every session:
 ## Usage guide
 
 ```bash
-bash scripts/sync.sh          # sync latest
-bash scripts/sync.sh v1.2.0   # pin a tag or branch
+bash install.sh          # sync latest
+bash install.sh v1.2.0   # pin a tag or branch
 ```
 
 This clones the upstream repo and overwrites everything under `.claude/` (agents, rules, skills, template, guide docs) except your `settings.json`. Commit the result to lock the version.
