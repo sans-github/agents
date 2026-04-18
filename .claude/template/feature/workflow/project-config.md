@@ -52,6 +52,17 @@ List any deviations from the default collaboration loops defined in `collaborati
 
 ---
 
+## Deployment target
+
+Declare the deployment intent for this project. Agents use this to determine whether DevOps/IaC work is in scope.
+
+```
+# Options: local | existing AWS infra | new AWS infra | TBD
+local
+```
+
+---
+
 ## Additional context
 
 Include anything that should inform implementation-plan.md -- handwritten notes, whiteboard photos, Excalidraw diagrams, sketches, or rough ideas. Agents must respect and factor all of this in when generating implementation-plan.md.

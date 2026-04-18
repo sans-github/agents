@@ -8,6 +8,8 @@ One-stop reference for key decisions baked into this repo's rules and skills. Wh
 
 Update this to match your project. The kickoff prompt reads this section to evaluate stack fit.
 
+These are available technology choices per layer, not a mandatory full stack. Each project uses the minimum subset that covers its requirements.
+
 | Layer | Technology |
 |-------|------------|
 | BE | Java 21 + Spring Boot (REST API, Spring Data JPA + Hibernate 6, H2 for dev/test, PostgreSQL/MySQL for prod) |
