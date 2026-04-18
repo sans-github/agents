@@ -15,11 +15,12 @@ I'm starting a new software project from scratch. Please read the following befo
 - Project config: `[feature-folder]/workflow/project-config.md`
 - PRD: `[feature-folder]/product-specs/prd.md`
 
-Then enter plan mode and produce `[feature-folder]/workflow/kickoff-plan.md` covering:
+Then produce `[feature-folder]/workflow/kickoff-plan.md` covering:
 
 Use these emoji conventions inline throughout the plan -- on the heading, row, or bullet where the action is needed:
 - 👀 Human must review and explicitly confirm before work proceeds
 - ❓ Human input is missing and required -- agents cannot proceed without it
+- 👤 Human gate within a collaboration loop -- human must approve before downstream work is unblocked
 
 1. **What I understood** -- summarize the PRD and project config in your own words. Call out anything ambiguous or missing that I should clarify before work begins.
 
@@ -40,16 +41,16 @@ Use these emoji conventions inline throughout the plan -- on the heading, row, o
 
 2. **Software stack** -- read the stack from `.claude/tech-config.md` (Tech stack section). Confirm each layer against the PRD scope.
 
-   If anything in the PRD suggests a different stack, propose the change and explain why. Otherwise confirm the stack as defined. Any stack change requires Arch approval before it is adopted.
+   For each layer, select the minimum subset of listed technologies that covers the project requirements -- do not default to the full list. Choosing a lighter option already on the list does not require Arch approval. Arch approval is required only when adopting a technology not listed in `tech-config.md`.
 
    Regardless of confirmation, flag any mismatch between stack weight and project scope. For each concern, call out:
    - What is too broad, unnecessary, missing, or potentially wrong
    - Why it is a concern given the project scope
    - A concrete alternative with rationale (e.g. "consider Zustand instead of Redux Toolkit for a single-page app with no complex shared state")
 
-   Stack philosophy: prefer proven, widely adopted libraries and frameworks over novel or obscure ones. Prefer the smallest stack that covers the requirements -- every dependency added is a maintenance burden. Do not silently confirm if the scope is small or if any layer looks mismatched. Any stack change requires Arch approval -- but surface the concern regardless.
+   Stack philosophy: prefer proven, widely adopted libraries and frameworks over novel or obscure ones. Prefer the smallest stack that covers the requirements -- every dependency added is a maintenance burden. Do not silently confirm if the scope is small or if any layer looks mismatched. Adopting a technology not in `tech-config.md` requires Arch approval -- surface the concern regardless.
 
-3. **Agent collaboration plan** -- based on the project config (active agents, skipped phases, overrides), describe how the agents will collaborate for this project. Reference the workflow defined in `[feature-folder]/workflow/project-config.md`. Human milestone gates are tracked separately in `[feature-folder]/workflow/human-checkpoints.md` -- do not list them here.
+3. **Agent collaboration plan** -- based on the project config (active agents, skipped phases, overrides), describe how the agents will collaborate for this project. Reference the workflow defined in `[feature-folder]/workflow/project-config.md`. Human milestone gates are tracked separately in `[feature-folder]/workflow/human-checkpoints.md` -- do not list them here. Prefix each human gate step within a loop description with 👤 (e.g. `👤 Human gate: Human reviews and approves mocks before EM begins eng planning`).
 
 4. **Big picture** -- one short paragraph describing what will be built and how the pieces fit together.
 
