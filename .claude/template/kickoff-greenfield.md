@@ -76,8 +76,9 @@ Do not begin any work until I have reviewed and approved the kickoff plan.
 2. Seed `[feature-folder]/workflow/plan-with-human-gates.md` based on active agents and phases from `project-config.md`:
    - Format agent steps as: `- [ ] N. **[ROLE]** → what they do → artifact path`
    - Format human gates as: `- [ ] N. 👤 **[HUMAN]** → what they review and approve before work continues`
-   - The last step in the initial seed must always be: `- [ ] N. **[EM]** → PM→EM handoff, evaluate arch engagement, add next steps to this doc`
-   - Do not add implementation steps beyond this point -- EM will progressively fill them after arch engagement is decided.
+   - Seed only the steps that are known at kickoff: PRD review (if not yet approved), mocks production and review, and the PM→EM handoff. Stop there -- do not seed arch, HLD, or implementation steps.
+   - The last seeded step must be: `- [ ] N. **[EM]** → PM→EM handoff, evaluate arch engagement, add next steps to this doc`
+   - EM will progressively add steps after this point: arch engagement (if needed), HLD, detailed implementation plan, and a human gate before execution begins.
    - For active collaboration loops (see `collaboration-loops-rule.md`), include only the human-facing gate at the end of each loop.
    - Inactive loops: note as skipped.
 
