@@ -10,7 +10,10 @@ EM is the central feedback and approval hub for all engineering loops. Every BE,
 flowchart TD
     A([PRD approved]) --> PD[PM<>Design loop]
     PD --> B([Mocks approved])
-    B --> EA[EM<>Arch loop]
+    B --> EH[PM→EM handoff]
+    EH --> ED{EM: Arch needed?}
+    ED -- Yes --> EA[EM<>Arch loop]
+    ED -- No --> C
     EA --> C([Sys Arch approved])
     C --> EB[EM<>BE loop]
     C --> EF[EM<>FE loop]
@@ -43,15 +46,28 @@ flowchart TD
 
 ---
 
+### PM→EM handoff
+
+**Trigger:** Human approves mocks and confirms the checkpoint.
+**Steps:**
+1. PM hands off approved PRD and approved mocks to EM with a written summary of scope, key flows, and any open questions.
+2. EM reviews the PRD and mocks and decides whether Arch engagement is needed:
+   - **Arch needed** (new infra, unfamiliar tech, significant scale or security concerns, cross-system impact) → proceed to EM<>Arch loop.
+   - **Arch not needed** (well-understood domain, no new infra, incremental feature on existing stack) → EM proceeds directly to HLD and eng planning.
+3. EM records the decision and rationale in `workflow/project-config.md` under `Collaboration overrides` (if skipping Arch) or leaves Arch active in the roster (if engaging).
+**Exit:** EM has made and recorded the arch engagement decision.
+
+---
+
 ### EM<>Arch loop
 
-**Trigger:** PRD is approved and eng planning is ready to begin.
+**Trigger:** PM→EM handoff complete and EM has determined Arch engagement is needed.
 **Steps:**
-1. EM shares requirements and constraints with Arch.
+1. EM shares the PRD, approved mocks, and constraints with Arch.
 2. Arch produces system architecture proposal as two files: `sys-arch.md` (source of truth) and `sys-arch.html` (self-contained, inline CSS, renders diagrams and tables for stakeholder review).
 3. EM reviews and provides feedback -- delivery/feasibility concerns, structural risks -- Arch incorporates and returns.
 4. Repeat until EM is satisfied.
-5. Arch finalizes the architecture doc.
+5. Arch finalizes the architecture doc and hands it back to EM.
 **Exit:** EM sets `Status: Approved` on the arch doc. Downstream: BE Detailed Design, FE Detailed Design, DevOps infra planning.
 
 ---
