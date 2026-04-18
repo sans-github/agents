@@ -50,6 +50,7 @@ Rules in `.claude/rules/` are loaded automatically. Key ones to know:
 - `product-baseline-rule.md` -- `projects/master/` must stay current. PM and Designer are blocked from starting new features until it is.
 - `backlog-reporting-rule.md` -- agents append discovered bugs/debt to `BACKLOG.md` in the repo root. Never self-assign priority.
 - `progress-tracking-rule.md` -- `implementation-plan.md` is authored as a checklist; agents check off steps directly and resume from it after interruption.
+- `delegation-rule.md` -- when a step names a specific role, the orchestrator must delegate to that agent, never self-execute on its behalf.
 
 ## What NOT to do
 
