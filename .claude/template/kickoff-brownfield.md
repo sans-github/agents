@@ -18,7 +18,7 @@ I'm adding a new feature to an existing project. Please read the following befor
 
 Read `CLAUDE.md` to understand the existing software stack, conventions, and project structure. Do not propose stack changes unless the project config explicitly calls for them -- this is an existing codebase and the stack is already decided.
 
-Then enter plan mode and produce `[feature-folder]/workflow/kickoff-plan.md` covering:
+Then produce `[feature-folder]/workflow/kickoff-plan.md` covering:
 
 Use these emoji conventions inline throughout the plan -- on the heading, row, or bullet where the action is needed:
 - 👀 Human must review and explicitly confirm before work proceeds
