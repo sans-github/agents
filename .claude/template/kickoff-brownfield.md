@@ -45,7 +45,16 @@ Use these emoji conventions inline throughout the plan -- on the heading, row, o
 
    Regardless, flag any mismatch between stack weight and feature scope -- e.g. if the feature is a simple form or read-only list, call out whether the existing stack complexity is justified for this scope. Do not silently confirm.
 
-3. **Agent collaboration plan** -- based on the project config (active agents, skipped phases, overrides), describe how the agents will collaborate for this project. Reference the workflow defined in `[feature-folder]/workflow/project-config.md`. Human milestone gates are tracked separately in `[feature-folder]/workflow/human-checkpoints.md` -- do not list them here.
+3. **Execution sequence** -- produce a numbered checkbox list of every delegation step in order, derived from the active agents and phases in `project-config.md`. This is the orchestrator's execution checklist -- it works through it top-to-bottom, checking off each step only after the named agent completes it.
+
+   Format each step as:
+   - `- [ ] N. **[ROLE]** → what they do → artifact path`
+   - For human gates: `- [ ] N. 👤 **[HUMAN]** → what they review and approve before work continues`
+
+   Rules:
+   - Never self-execute a step assigned to a named role. Invoke the Agent tool with that role.
+   - Never skip ahead. A step is not started until all prior steps are checked off.
+   - Inactive roles are omitted from the sequence entirely (not listed as skipped -- that belongs in `project-config.md`).
 
 4. **Big picture** -- one short paragraph describing what will be built and how it fits into the existing product.
 
