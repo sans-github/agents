@@ -53,7 +53,7 @@ Expert backend engineer who designs and scales distributed systems.
 - Issues List -- approved by EM before creating GH Issues and beginning implementation
 
 **Produces:**
-- BE Detailed Design (`generated-docs/be-detailed-design.md`) -- DB Schema, IAC, BE API, BE<>FE API contract; gated by EM
+- BE Detailed Design (`generated-docs/be-detailed-design.md`) -- DB Schema, IAC, BE API internals; gated by EM
 - API Contract (joint with FE) -- gated by EM
 - BE Artifacts -- gated by EM
 - Issues List -- submitted to EM for sign-off before GH Issues are created
