@@ -113,7 +113,7 @@ Pick the right kickoff file from `template/`:
 - **Greenfield** (new project from scratch): `template/kickoff-greenfield.md`
 - **Brownfield** (new feature on existing codebase): `template/kickoff-brownfield.md`
 
-Open the file, fill in any `[placeholders]`, then tell Claude:
+Open the file and set the **Feature folder** variable at the top (e.g. `projects/20260418-my-feature`), then tell Claude:
 
 > Read and execute `template/kickoff-greenfield.md` (or `kickoff-brownfield.md`).
 
