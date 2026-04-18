@@ -82,8 +82,7 @@ projects/
     └── workflow/
         ├── project-config.md           # you fill this in before kicking off
         ├── kickoff-plan.md             # agent generates at kickoff; you review and approve
-        ├── human-checkpoints.md        # seeded at kickoff; you check off milestone gates
-        └── implementation-plan.md      # EM generates as checklist; agents check off steps
+        └── plan-with-human-gates.md    # seeded at kickoff; progressively filled by EM; human gates + agent steps
 ```
 
 ---
@@ -92,7 +91,7 @@ projects/
 
 Before any agent starts work, fill in `workflow/project-config.md`. This is the single place where you configure how the project runs -- which agents are active, which phases to skip, and any deviations from the default collaboration pattern.
 
-You can also include handwritten notes, photos of whiteboard sketches, or links to Excalidraw diagrams in the **Additional context** section. Agents must respect and factor all of this into `implementation-plan.md`.
+You can also include handwritten notes, photos of whiteboard sketches, or links to Excalidraw diagrams in the **Additional context** section. Agents must respect and factor all of this into `plan-with-human-gates.md`.
 
 See the template for a complete example.
 

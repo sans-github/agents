@@ -6,78 +6,87 @@
 
 ---
 
-First, read `.claude/agents-guide.md` for orientation on the agent team, collaboration model, and rules. Not everything there will apply to this project -- the config overrides it where they differ. Also read `.claude/tech-config.md` for this project's file locations, naming conventions, and tooling choices.
+## Required reading
 
-The feature folder for this project is `projects/[YYYYMMDD-feature-name]`.
+Read these before doing anything:
 
-I'm starting a new software project from scratch. Please read the following before doing anything:
+1. `.claude/agents-guide.md` -- agent team orientation, collaboration model, rules. The project config overrides where they differ.
+2. `.claude/tech-config.md` -- file locations, naming conventions, tooling choices.
+3. `[feature-folder]/workflow/project-config.md` -- active agents, skipped phases, overrides.
+4. `[feature-folder]/product-specs/prd.md` -- the feature PRD.
 
-- Project config: `[feature-folder]/workflow/project-config.md`
-- PRD: `[feature-folder]/product-specs/prd.md`
+This is a new project from scratch.
 
-Then produce `[feature-folder]/workflow/kickoff-plan.md` covering:
+---
 
-Use these emoji conventions inline throughout the plan -- on the heading, row, or bullet where the action is needed:
+## Produce the kickoff plan
+
+Write `[feature-folder]/workflow/kickoff-plan.md` with the sections below.
+
+Emoji conventions -- use inline on the heading, row, or bullet where the action is needed:
 - 👀 Human must review and explicitly confirm before work proceeds
 - ❓ Human input is missing and required -- agents cannot proceed without it
-- 👤 Human gate within a collaboration loop -- human must approve before downstream work is unblocked
+- 👤 Human gate -- human must approve before downstream work is unblocked
 
-1. **What I understood** -- summarize the PRD and project config in your own words. Call out anything ambiguous or missing that I should clarify before work begins.
+### 1. What I understood
 
-   **Folder structure check:** Verify the feature folder exists and contains the expected structure:
-   - `[feature-folder]/workflow/project-config.md`
-   - `[feature-folder]/product-specs/prd.md`
-   - `[feature-folder]/generated-docs/mocks/`
+Start with a one-paragraph big picture: what will be built and how the pieces fit together. Then summarize the PRD and project config in your own words. Call out anything ambiguous or missing that I should clarify before work begins.
 
-   If any are missing, stop and tell the human exactly what is missing before proceeding.
+**Folder structure check:** Verify the feature folder contains:
+- `[feature-folder]/workflow/project-config.md`
+- `[feature-folder]/product-specs/prd.md`
+- `[feature-folder]/generated-docs/mocks/`
 
-   **Input quality check:** Flag any of the following before proceeding:
-   - Unfilled placeholders (e.g. `[YYYYMMDD-feature-name]`, `TODO`, `TBD`, placeholder text left from the template)
-   - Sections that appear untouched or still contain template defaults
-   - Content in `project-config.md` or `product-specs/prd.md` that contradicts or does not match the project description
-   - Sparse or vague entries where detail is needed to proceed (e.g. "active agents: all" with no rationale, or a one-line PRD)
+If any are missing, stop and tell the human exactly what is missing.
 
-   Do not proceed if critical inputs are missing or stale. Surface them explicitly and wait for the human to update.
+**Input quality check:** Flag any of:
+- Unfilled placeholders (`[YYYYMMDD-feature-name]`, `TODO`, `TBD`, template defaults)
+- Sections untouched or still containing template defaults
+- Content in `project-config.md` or `prd.md` that contradicts the project description
+- Sparse or vague entries (e.g. "active agents: all" with no rationale, one-line PRD)
 
-2. **Software stack** -- read the stack from `.claude/tech-config.md` (Tech stack section). Confirm each layer against the PRD scope.
+Do not proceed if critical inputs are missing or stale. Surface them and wait for the human.
 
-   For each layer, select the minimum subset of listed technologies that covers the project requirements -- do not default to the full list. Choosing a lighter option already on the list does not require Arch approval. Arch approval is required only when adopting a technology not listed in `tech-config.md`.
+**Risks and unknowns:** Anything that could slow the project down: unclear requirements, missing design decisions, external dependencies, or anything needing resolution before work starts.
 
-   Regardless of confirmation, flag any mismatch between stack weight and project scope. For each concern, call out:
-   - What is too broad, unnecessary, missing, or potentially wrong
-   - Why it is a concern given the project scope
-   - A concrete alternative with rationale (e.g. "consider Zustand instead of Redux Toolkit for a single-page app with no complex shared state")
+**Out of scope:** Explicitly state what is NOT being built, based on the project config and PRD.
 
-   Stack philosophy: prefer proven, widely adopted libraries and frameworks over novel or obscure ones. Prefer the smallest stack that covers the requirements -- every dependency added is a maintenance burden. Do not silently confirm if the scope is small or if any layer looks mismatched. Adopting a technology not in `tech-config.md` requires Arch approval -- surface the concern regardless.
+**Software stack:** Select the minimum subset from the Tech stack section of `tech-config.md` that covers the project requirements per layer -- do not default to the full list. Choosing a lighter option already on the list does not require Arch approval. Arch approval is required only when adopting an unlisted technology -- surface the concern regardless. Flag any mismatch between stack weight and project scope: what is too broad, unnecessary, missing, or potentially wrong; why it is a concern; and a concrete alternative with rationale (e.g. "consider Zustand instead of Redux Toolkit for a single-page app with no complex shared state"). Prefer proven, widely adopted libraries. Prefer the smallest stack that covers the requirements. Do not silently confirm if the scope is small or any layer looks mismatched.
 
-3. **Execution sequence** -- produce a numbered checkbox list of every delegation step in order, derived from the active agents and phases in `project-config.md`. This is the orchestrator's execution checklist -- it works through it top-to-bottom, checking off each step only after the named agent completes it.
+### 2. Open questions
 
-   Format each step as:
-   - `- [ ] N. **[ROLE]** → what they do → artifact path`
-   - For human gates: `- [ ] N. 👤 **[HUMAN]** → what they review and approve before work continues`
+Numbered list of questions that need my answers before agents can proceed. Do not make assumptions.
 
-   Rules:
-   - Never self-execute a step assigned to a named role. Invoke the Agent tool with that role.
-   - Never skip ahead. A step is not started until all prior steps are checked off.
-   - Inactive roles are omitted from the sequence entirely (not listed as skipped -- that belongs in `project-config.md`).
+### 3. Next step
 
-4. **Big picture** -- one short paragraph describing what will be built and how the pieces fit together.
+One sentence only. State exactly what happens after I approve: who does what, and what artifact they produce. Must match the first unchecked step in `plan-with-human-gates.md`.
 
-5. **Open questions** -- a numbered list of questions that need my answers before agents can proceed. Do not make assumptions; surface the gaps here.
+Example: "Once approved, Designer produces mocks for `[feature-folder]/generated-docs/mocks/` before any engineering work begins."
 
-6. **Risks and unknowns** -- anything you spotted that could slow the project down: unclear requirements, missing design decisions, external dependencies, or anything that needs resolution before work starts.
+---
 
-7. **Out of scope** -- explicitly state what is NOT being built in this project run, based on the project config and PRD.
+## After approval
 
-8. **Next step** -- one sentence only. State exactly what happens after I approve this plan: who does what, and what artifact they produce. This must match the first gate in `human-checkpoints.md`. Example: "Once approved, Designer produces mocks for `[feature-folder]/generated-docs/mocks/` before any engineering work begins."
+Do not begin any work until I have reviewed and approved the kickoff plan.
 
-Do not begin any work until I have reviewed and approved `[feature-folder]/workflow/kickoff-plan.md`.
+### When I approve the kickoff plan:
 
-Once I approve the kickoff plan:
 1. Write `Status: Approved — Human` and `Approved: YYYY-MM-DD` at the top of `kickoff-plan.md`.
-2. Seed `[feature-folder]/workflow/human-checkpoints.md` with the full human gate list based on active agents and phases from `project-config.md`. Format each item as: `- [ ] [Who] produces [artifact] -- Human reviews and approves before [what is unblocked]`. Must include at minimum: PRD approved by PM, Mocks approved by PM (after PM<>Design loop), Sys Arch approved (after EM<>Arch loop), Implementation Plan approved by Human. Add any project-specific gates. For active collaboration loops (see `collaboration-loops-rule.md`), include only the human-facing gate at the end of each loop -- the point where the human must stop, review, and approve before downstream work is unblocked. Do not list internal agent-to-agent steps within a loop; those belong in `implementation-plan.md` only. Inactive loops must be noted as skipped.
-3. EM produces `[feature-folder]/workflow/implementation-plan.md` as a checkbox checklist of all phases and numbered steps before any detailed design begins.
 
-Once I approve both `human-checkpoints.md` and `implementation-plan.md`:
-1. Write `Status: Approved — Human` and `Approved: YYYY-MM-DD` at the top of each file.
-2. Phase execution begins. No tracker file is created -- `implementation-plan.md` is the checklist agents use directly (see `progress-tracking-rule.md`).
+2. Seed `[feature-folder]/workflow/plan-with-human-gates.md` based on active agents and phases from `project-config.md`:
+   - Format agent steps as: `- [ ] N. **[ROLE]** → what they do → artifact path`
+   - Format human gates as: `- [ ] N. 👤 **[HUMAN]** → what they review and approve before work continues`
+   - The last step in the initial seed must always be: `- [ ] N. **[EM]** → PM→EM handoff, evaluate arch engagement, add next steps to this doc`
+   - Do not add implementation steps beyond this point -- EM will progressively fill them after arch engagement is decided.
+   - For active collaboration loops (see `collaboration-loops-rule.md`), include only the human-facing gate at the end of each loop.
+   - Inactive loops: note as skipped.
+
+3. Begin execution: work through `plan-with-human-gates.md` top-to-bottom.
+
+### Execution rules
+
+- Never self-execute a step assigned to a named role. Invoke the Agent tool with that role.
+- Never skip ahead. A step is not started until all prior steps are checked off.
+- When the orchestrator reaches the end of the list, stop and wait -- EM will add the next batch of steps.
+- When a 👤 human gate is reached, stop and ask the human for approval. Check the box only after human confirms.
+- After human confirms a gate, run `git diff --stat HEAD` and ask: "These files changed: [summary]. Want to commit before we move on?" If yes, invoke `/my-git-commit`.

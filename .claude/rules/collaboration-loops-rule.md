@@ -182,6 +182,6 @@ flowchart TD
 
 ## How to use this in a kickoff plan
 
-In section 3 (Agent collaboration plan) of the kickoff plan, identify which loops are active for this feature and describe each one -- spell out the steps, do not reference a loop by name only. For `human-checkpoints.md`, include only the human-facing gate at the end of each loop (the point where a human must approve before downstream work is unblocked). Internal agent-to-agent steps within a loop belong in `implementation-plan.md` only.
+When seeding `plan-with-human-gates.md`, include only the human-facing gate at the end of each active loop (the point where a human must approve before downstream work is unblocked). Internal agent-to-agent steps within a loop are added by EM progressively as the plan evolves -- not upfront at kickoff.
 
 Inactive loops (roles not in scope for this feature) must be noted as skipped, not silently omitted.

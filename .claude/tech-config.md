@@ -33,15 +33,14 @@ These are available technology choices per layer, not a mandatory full stack. Ea
 | DB seeds (all envs) | `db/seeds/common/` | BE | `db-schema.md` |
 | DB seeds (dev only) | `db/seeds/dev/` | BE | `db-schema.md` |
 | Tech debt / bug backlog | `BACKLOG.md` | EM triages | `backlog-reporting-rule.md` |
-| Human milestone gates | `workflow/human-checkpoints.md` | Seeded at kickoff; human checks off | `contract-first-rule.md` |
-| Phase progress / agent checklist | `workflow/implementation-plan.md` | EM authors; agents check off steps | `progress-tracking-rule.md` |
+| Plan with human gates | `workflow/plan-with-human-gates.md` | Seeded at kickoff; progressively filled by EM; human gates + agent steps in one doc | `contract-first-rule.md`, `progress-tracking-rule.md` |
 | Workflow definition | `workflow/` | EM | `workflow-phases-rule.md` |
 
 ---
 
 ## Contract approvals
 
-Agent-to-agent technical contracts that block downstream work until approved. Approval requires a `Status: Approved — [role]` header at the top of the file. Human milestone gates (PRD, Mocks, Sys Arch, Implementation Plan) are defined per-project in `workflow/human-checkpoints.md`.
+Agent-to-agent technical contracts that block downstream work until approved. Approval requires a `Status: Approved — [role]` header at the top of the file. Human milestone gates (PRD, Mocks, Sys Arch, Implementation Plan) are defined per-project in `workflow/plan-with-human-gates.md`.
 
 | Artifact | Approver | Blocks |
 |---|---|---|

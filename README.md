@@ -19,8 +19,7 @@ projects/
     └── workflow/
         ├── project-config.md           # human fills in at kickoff
         ├── kickoff-plan.md             # agent generates at kickoff; human approves
-        ├── human-checkpoints.md        # seeded at kickoff; human checks off milestone gates
-        └── implementation-plan.md      # EM generates as checklist; agents check off steps
+        └── plan-with-human-gates.md    # seeded at kickoff; progressively filled by EM; human gates + agent steps
 ```
 
 See `.claude/GETTING-STARTED.md` for the full walkthrough.
@@ -247,9 +246,9 @@ sequenceDiagram
 Rules in `.claude/rules/` apply automatically to every session:
 
 - **workflow-phases-rule** -- multi-step work must be defined as a phased workflow with numbered steps, responsible roles, and concrete artifacts
-- **progress-tracking-rule** -- `implementation-plan.md` is authored as a checklist; agents check off steps and resume from it directly
+- **progress-tracking-rule** -- `plan-with-human-gates.md` is the single source of truth for human gates and phase progress; agents check off steps and resume from it directly
 - **backlog-reporting-rule** -- append discovered bugs and tech debt to `BACKLOG.md` triage table
-- **contract-first-rule** -- governs agent-to-agent technical contracts (HLD, DB Schema, BE Detailed Design, FE Detailed Design, API Contract, Test Plan, Issues Lists); human milestone gates are tracked in `workflow/human-checkpoints.md`
+- **contract-first-rule** -- governs agent-to-agent technical contracts (HLD, DB Schema, BE Detailed Design, FE Detailed Design, API Contract, Test Plan, Issues Lists); human milestone gates are tracked in `workflow/plan-with-human-gates.md`
 - **er-diagram-rule** -- maintain a current ER diagram at `db/er-diagram.md`; update it in the same commit as any schema change
 - **api-review-rule** -- run through the API design checklist before declaring any REST API design complete
 - **db-review-rule** -- run through the DB schema checklist before declaring any schema change complete

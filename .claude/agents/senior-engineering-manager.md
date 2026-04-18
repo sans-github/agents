@@ -57,7 +57,7 @@ Expert engineering manager who owns technical architecture, delivery planning, a
 - Arch approval -- any new tech stack or AWS component EM wants to include in HLD requires Arch sign-off first
 
 **Produces:**
-- Implementation Plan (`workflow/implementation-plan.md`) -- produced after kickoff plan is approved by human and before any detailed design begins; authored as a checkbox checklist of all phases and numbered steps, reflecting active agents, skipped phases, and collaboration overrides; serves as the progress tracker agents check off during execution; human must approve before phase execution begins
+- Plan with Human Gates (`workflow/plan-with-human-gates.md`) -- progressively filled by EM; seeded at kickoff with initial steps and human gates; EM adds detailed implementation steps after arch engagement is decided and after detailed design; serves as both the human milestone tracker and the agent execution checklist; the orchestrator works through it top-to-bottom and stops when it reaches the end, waiting for EM to add the next batch
 - Eng Plans (HLD) -- delivered as two files: `hld.md` (source of truth) and `hld.html` (self-contained, inline CSS, no external dependencies, renders diagrams and tables for stakeholder review); EM is gatekeeper
 
 **Gatekeeps (must approve before downstream proceeds):**

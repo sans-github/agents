@@ -3,7 +3,7 @@ purpose: >
   Filled in by the human before any agent begins work.
   Configures which agents are active, which phases are skipped,
   and any deviations from the default collaboration pattern.
-  Agents must read this before doing anything and factor it into implementation-plan.md.
+  Agents must read this before doing anything and factor it into plan-with-human-gates.md.
 ---
 
 # Project Config
@@ -65,7 +65,7 @@ local
 
 ## Additional context
 
-Include anything that should inform implementation-plan.md -- handwritten notes, whiteboard photos, Excalidraw diagrams, sketches, or rough ideas. Agents must respect and factor all of this in when generating implementation-plan.md.
+Include anything that should inform plan-with-human-gates.md -- handwritten notes, whiteboard photos, Excalidraw diagrams, sketches, or rough ideas. Agents must respect and factor all of this in when generating plan-with-human-gates.md.
 
 ```
 # Example:
