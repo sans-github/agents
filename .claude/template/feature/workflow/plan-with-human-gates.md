@@ -3,7 +3,7 @@
 <!-- 👤 = human gate. Human approves verbally, orchestrator checks the box. -->
 <!-- **[ROLE]** = agent step. Named agent executes, orchestrator checks the box when complete. -->
 
-## Discovery
+## Kickoff
 
 - [ ] 1. **[DESIGNER]** → produce mocks → `generated-docs/mocks/`
 - [ ] 2. 👤 **[HUMAN]** → review and approve mocks before EM begins eng planning
