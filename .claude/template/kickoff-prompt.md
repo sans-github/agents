@@ -1,6 +1,6 @@
-# Kickoff Prompt -- Greenfield
+# Kickoff Prompt
 
-> Fill in the variable below, then tell Claude: "Read and execute `.claude/template/kickoff-greenfield.md`."
+> Fill in the variable below, then tell Claude: "Read and execute `.claude/template/kickoff-prompt.md`."
 
 **Feature folder:** `projects/[YYYYMMDD-feature-name]`
 
@@ -10,12 +10,11 @@
 
 Read these before doing anything:
 
-1. `.claude/agents-guide.md` -- agent team orientation, collaboration model, rules. The project config overrides where they differ.
-2. `.claude/tech-config.md` -- file locations, naming conventions, tooling choices.
-3. `[feature-folder]/workflow/project-config.md` -- active agents, skipped phases, overrides.
-4. `[feature-folder]/product-specs/prd.md` -- the feature PRD.
-
-This is a new project from scratch.
+1. `CLAUDE.md` (if present) -- existing software stack, conventions, project structure.
+2. `.claude/agents-guide.md` -- agent team orientation, collaboration model, rules. The project config overrides where they differ.
+3. `.claude/tech-config.md` -- file locations, naming conventions, tooling choices.
+4. `[feature-folder]/workflow/project-config.md` -- active agents, skipped phases, overrides.
+5. `[feature-folder]/product-specs/prd.md` -- the feature PRD.
 
 ---
 
@@ -47,11 +46,11 @@ If any are missing, stop and tell the human exactly what is missing.
 
 Do not proceed if critical inputs are missing or stale. Surface them and wait for the human.
 
-**Risks and unknowns:** Anything that could slow the project down: unclear requirements, missing design decisions, external dependencies, or anything needing resolution before work starts.
+**Risks and unknowns:** Anything that could slow the project down: unclear requirements, missing design decisions, external dependencies, integration risks with existing code, or anything needing resolution before work starts. If `tech-config.md` has changed since the last feature (or this feature requires a change), assess the impact: what changed, which parts of the codebase are affected, risk level with reasoning, extent of refactor, and whether it could introduce regressions. Do not proceed past tech-config risks without explicit human sign-off.
 
 **Out of scope:** Explicitly state what is NOT being built, based on the project config and PRD.
 
-**Software stack:** Select the minimum subset from the Tech stack section of `tech-config.md` that covers the project requirements per layer -- do not default to the full list. Choosing a lighter option already on the list does not require Arch approval. Arch approval is required only when adopting an unlisted technology -- surface the concern regardless. Flag any mismatch between stack weight and project scope: what is too broad, unnecessary, missing, or potentially wrong; why it is a concern; and a concrete alternative with rationale (e.g. "consider Zustand instead of Redux Toolkit for a single-page app with no complex shared state"). Prefer proven, widely adopted libraries. Prefer the smallest stack that covers the requirements. Do not silently confirm if the scope is small or any layer looks mismatched.
+**Software stack:** Inspect `src/` to determine whether an existing stack is in place. If a stack exists, confirm it and list the key technologies per layer. If no stack exists, select the minimum subset from the Tech stack section of `tech-config.md` that covers the project requirements per layer -- do not default to the full list. Choosing a lighter option already on the list does not require Arch approval. Arch approval is required only when adopting an unlisted technology -- surface the concern regardless. If anything in the PRD cannot be addressed with the current or selected stack, flag it explicitly. Flag any mismatch between stack weight and project scope: what is too broad, unnecessary, missing, or potentially wrong; why it is a concern; and a concrete alternative with rationale (e.g. "consider Zustand instead of Redux Toolkit for a single-page app with no complex shared state"). Prefer proven, widely adopted libraries. Prefer the smallest stack that covers the requirements. Do not silently confirm if the scope is small or any layer looks mismatched.
 
 ### 2. Open questions
 

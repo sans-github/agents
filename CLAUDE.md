@@ -10,11 +10,11 @@ Consumers install this repo into their own project via `install.sh`. They do not
 
 ## How consumers use it
 
-1. Run `install.sh` to copy `.claude/agents/`, `.claude/rules/`, `.claude/skills/`, `.claude/template/`, `.claude/GETTING-STARTED.md`, and `.claude/tech-config.md` into their project.
+1. Run `install.sh` to copy `.claude/agents/`, `.claude/rules/`, `.claude/skills/`, `.claude/template/`, `.claude/SETUP-GUIDE.md`, and `.claude/tech-config.md` into their project.
 2. Run `/feature-init` in Claude Code -- scaffolds `projects/master/` (once) and `projects/YYYYMMDD-feature-name/` (per feature) from the template.
 4. Fill in `projects/[feature]/workflow/project-config.md` -- which agents are active, phases to skip, overrides.
 5. Fill in `projects/[feature]/product-specs/prd.md` -- the feature PRD.
-6. Edit the appropriate kickoff file (`template/kickoff-greenfield.md` or `template/kickoff-brownfield.md`), set the feature folder variable at the top, then tell Claude to read and execute it.
+6. Edit `template/kickoff-prompt.md`, set the feature folder variable at the top, then tell Claude to read and execute it.
 
 ## Folder structure and the reasoning behind it
 
@@ -31,9 +31,8 @@ Consumers install this repo into their own project via `install.sh`. They do not
 │   ├── master/       -- copied once to projects/master/ (shared product baseline)
 │   │   ├── product-specs/prd.md    -- full PRD merged across all shipped features
 │   │   └── mocks/                  -- current UI mocks reflecting live product
-│   ├── kickoff-greenfield.md       -- prompt for new projects (stays at template root, not copied per feature)
-│   └── kickoff-brownfield.md       -- prompt for new features on existing codebase
-├── GETTING-STARTED.md
+│   └── kickoff-prompt.md                  -- kickoff prompt (stays at template root, not copied per feature)
+├── SETUP-GUIDE.md
 └── tech-config.md           -- stack/conventions consumers tailor once after install
 projects/             -- per-feature scaffolding and product specs (managed by /feature-init)
 src/                  -- all production artifacts: source code, db schema, migrations, seeds, IaC
@@ -83,4 +82,4 @@ bash install.sh          # pull from main
 bash install.sh v1.2.0   # pin a tag or branch
 ```
 
-Copies `.claude/agents/`, `.claude/rules/`, `.claude/skills/`, `.claude/template/`, `.claude/GETTING-STARTED.md`, and `.claude/tech-config.md` into the consumer project. Also scaffolds `BACKLOG.md` in the consumer root if it doesn't exist. Consumers commit the result to lock the version.
+Copies `.claude/agents/`, `.claude/rules/`, `.claude/skills/`, `.claude/template/`, `.claude/SETUP-GUIDE.md`, and `.claude/tech-config.md` into the consumer project. Also scaffolds `BACKLOG.md` in the consumer root if it doesn't exist. Consumers commit the result to lock the version.

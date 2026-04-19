@@ -22,7 +22,7 @@ _* revisit when stack changes · † default included, replace to match your bra
 | 4. Create project folder | Scaffold `projects/master/` + feature folder | `/feature-init` in Claude Code |
 | 5. Fill project config | Active agents, phases, overrides | Review default [workflow/project-config.md](template/feature/workflow/project-config.md) |
 | 6. Write PRD ✍️ | **Feature requirements -- the agent's primary input** | Edit [product-specs/prd.md](template/feature/product-specs/prd.md) |
-| 7. Kick off | Start agent collaboration | Tell Claude: _read and execute [kickoff-greenfield.md](template/kickoff-greenfield.md)_ (or [brownfield](template/kickoff-brownfield.md)) |
+| 7. Kick off | Start agent collaboration | Tell Claude: _read and execute [kickoff-prompt.md](template/kickoff-prompt.md)_ |
 
 ---
 
@@ -107,13 +107,8 @@ If you are starting greenfield with no PRD yet, you can engage the PM agent firs
 
 ## 7. Kick off
 
-Pick the right kickoff file from `template/`:
+Open `template/kickoff-prompt.md` and set the **Feature folder** variable at the top (e.g. `projects/20260419-my-feature`), then tell Claude:
 
-- **Greenfield** (new project from scratch): `template/kickoff-greenfield.md`
-- **Brownfield** (new feature on existing codebase): `template/kickoff-brownfield.md`
-
-Open the file and set the **Feature folder** variable at the top (e.g. `projects/20260418-my-feature`), then tell Claude:
-
-> Read and execute `template/kickoff-greenfield.md` (or `kickoff-brownfield.md`).
+> Read and execute `template/kickoff-prompt.md`.
 
 Claude will read your `project-config.md` and `product-specs/prd.md`, then produce `workflow/kickoff-plan.md` for your review before any work begins.

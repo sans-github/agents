@@ -2,7 +2,7 @@
 
 A collection of reusable, generic Claude Code agent definitions for a software engineering team. Each agent represents a distinct engineering or product role with well-defined expertise, collaboration style, and hard constraints.
 
-See [GETTING-STARTED.md](.claude/GETTING-STARTED.md) to install and run your first project.
+See [SETUP-GUIDE.md](.claude/SETUP-GUIDE.md) to install and run your first project.
 
 ## Project folder structure
 
@@ -23,7 +23,7 @@ projects/
 src/                                    # all production artifacts (source code, db, migrations, seeds, IaC)
 ```
 
-See `.claude/GETTING-STARTED.md` for the full walkthrough.
+See `.claude/SETUP-GUIDE.md` for the full walkthrough.
 
 ---
 
