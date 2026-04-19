@@ -54,7 +54,7 @@ flowchart TD
 2. EM reviews the PRD and mocks and decides whether Arch engagement is needed:
    - **Arch needed** (new infra, unfamiliar tech, significant scale or security concerns, cross-system impact) → proceed to EM<>Arch loop.
    - **Arch not needed** (well-understood domain, no new infra, incremental feature on existing stack) → EM proceeds directly to HLD and eng planning.
-3. EM records the decision and rationale in `workflow/project-config.md` under `Collaboration overrides` (if skipping Arch) or leaves Arch active in the roster (if engaging).
+3. EM records the decision and rationale in `workflow/feature-workflow-config.md` under `Collaboration overrides` (if skipping Arch) or leaves Arch active in the roster (if engaging).
 **Exit:** EM has made and recorded the arch engagement decision.
 
 ---

@@ -18,7 +18,7 @@ projects/
     │   └── mocks/                      # design mocks
     ├── product-specs/                  # PRD and other product artifacts (PM input)
     └── workflow/
-        ├── project-config.md           # human fills in at kickoff
+        ├── feature-workflow-config.md           # human fills in at kickoff
         └── plan-with-human-gates.md    # seeded at kickoff; progressively filled by EM; human gates + agent steps
 src/                                    # all production artifacts (source code, db, migrations, seeds, IaC)
 ```

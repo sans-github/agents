@@ -13,7 +13,7 @@ Read these before doing anything:
 1. `CLAUDE.md` (if present) -- existing software stack, conventions, project structure.
 2. `.claude/agents-guide.md` -- agent team orientation, collaboration model, rules. The project config overrides where they differ.
 3. `.claude/tech-config.md` -- file locations, naming conventions, tooling choices.
-4. `[feature-folder]/workflow/project-config.md` -- active agents, skipped phases, overrides.
+4. `[feature-folder]/workflow/feature-workflow-config.md` -- active agents, skipped phases, overrides.
 5. `[feature-folder]/product-specs/prd.md` -- the feature PRD.
 
 ---
@@ -32,7 +32,7 @@ Emoji conventions -- use inline on the heading, row, or bullet where the action 
 Start with a one-paragraph big picture: what will be built and how the pieces fit together. Then summarize the PRD and project config in your own words. Call out anything ambiguous or missing that I should clarify before work begins.
 
 **Folder structure check:** Verify the feature folder contains:
-- `[feature-folder]/workflow/project-config.md`
+- `[feature-folder]/workflow/feature-workflow-config.md`
 - `[feature-folder]/product-specs/prd.md`
 - `[feature-folder]/generated-docs/mocks/`
 
@@ -41,7 +41,7 @@ If any are missing, stop and tell the human exactly what is missing.
 **Input quality check:** Flag any of:
 - Unfilled placeholders (`[YYYYMMDD-feature-name]`, `TODO`, `TBD`, template defaults)
 - Sections untouched or still containing template defaults
-- Content in `project-config.md` or `prd.md` that contradicts the project description
+- Content in `feature-workflow-config.md` or `prd.md` that contradicts the project description
 - Sparse or vague entries (e.g. "active agents: all" with no rationale, one-line PRD)
 
 Do not proceed if critical inputs are missing or stale. Surface them and wait for the human.
@@ -75,7 +75,7 @@ Do not begin any work until I have reviewed and approved the kickoff plan.
 2. Seed `[feature-folder]/workflow/plan-with-human-gates.md` with these steps in order:
    - `**[DESIGNER]** → produce mocks → generated-docs/mocks/`
    - `👤 **[HUMAN]** → review and approve mocks before EM begins eng planning`
-   - `**[EM]** → PM→EM handoff, evaluate arch engagement, record decision in workflow/project-config.md`
+   - `**[EM]** → PM→EM handoff, evaluate arch engagement, record decision in workflow/feature-workflow-config.md`
    - `**[ARCH]** → produce system architecture → generated-docs/sys-arch.md + generated-docs/sys-arch.html` ← mark SKIPPED with rationale if arch not engaged
    - `👤 **[HUMAN]** → review and approve sys-arch before HLD begins` ← mark SKIPPED if arch not engaged
    - `**[EM]** → produce HLD → generated-docs/hld.md + generated-docs/hld.html`

@@ -20,7 +20,7 @@ _* revisit when stack changes · † default included, replace to match your bra
 | 2. Review tech stack | Folder paths, naming, tooling | Review default [tech-config.md](tech-config.md) |
 | 3. Review brand guidelines | Color, typography, component tokens | Review default [brand-guidelines/SKILL.md](skills/brand-guidelines/SKILL.md) |
 | 4. Create project folder | Scaffold `projects/master/` + feature folder | `/feature-init` in Claude Code |
-| 5. Fill project config | Active agents, phases, overrides | Review default [workflow/project-config.md](template/feature/workflow/project-config.md) |
+| 5. Fill project config | Active agents, phases, overrides | Review default [workflow/feature-workflow-config.md](template/feature/workflow/feature-workflow-config.md) |
 | 6. Write PRD ✍️ | **Feature requirements -- the agent's primary input** | Edit [product-specs/prd.md](template/feature/product-specs/prd.md) |
 | 7. Kick off | Start agent collaboration | Tell Claude: _read and execute [kickoff-prompt.md](template/kickoff-prompt.md)_ |
 
@@ -80,16 +80,16 @@ projects/
     │   └── mocks/                      # design mocks (HTML, images, Excalidraw)
     ├── product-specs/                  # PRD and other product artifacts
     └── workflow/
-        ├── project-config.md           # you fill this in before kicking off
+        ├── feature-workflow-config.md           # you fill this in before kicking off
         ├── kickoff-plan.md             # agent generates at kickoff; you review and approve
         └── plan-with-human-gates.md    # seeded at kickoff; progressively filled by EM; human gates + agent steps
 ```
 
 ---
 
-## 5. Fill in project-config.md (optional)
+## 5. Fill in feature-workflow-config.md (optional)
 
-Before any agent starts work, fill in `workflow/project-config.md`. This is the single place where you configure how the project runs -- which agents are active, which phases to skip, and any deviations from the default collaboration pattern.
+Before any agent starts work, fill in `workflow/feature-workflow-config.md`. This is the single place where you configure how the project runs -- which agents are active, which phases to skip, and any deviations from the default collaboration pattern.
 
 You can also include handwritten notes, photos of whiteboard sketches, or links to Excalidraw diagrams in the **Additional context** section. Agents must respect and factor all of this into `plan-with-human-gates.md`.
 
@@ -111,4 +111,4 @@ Open `template/kickoff-prompt.md` and set the **Feature folder** variable at the
 
 > Read and execute `template/kickoff-prompt.md`.
 
-Claude will read your `project-config.md` and `product-specs/prd.md`, then produce `workflow/kickoff-plan.md` for your review before any work begins.
+Claude will read your `feature-workflow-config.md` and `product-specs/prd.md`, then produce `workflow/kickoff-plan.md` for your review before any work begins.

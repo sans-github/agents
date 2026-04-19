@@ -12,7 +12,7 @@ Consumers install this repo into their own project via `install.sh`. They do not
 
 1. Run `install.sh` to copy `.claude/agents/`, `.claude/rules/`, `.claude/skills/`, `.claude/template/`, `.claude/SETUP-GUIDE.md`, and `.claude/tech-config.md` into their project.
 2. Run `/feature-init` in Claude Code -- scaffolds `projects/master/` (once) and `projects/YYYYMMDD-feature-name/` (per feature) from the template.
-4. Fill in `projects/[feature]/workflow/project-config.md` -- which agents are active, phases to skip, overrides.
+4. Fill in `projects/[feature]/workflow/feature-workflow-config.md` -- which agents are active, phases to skip, overrides.
 5. Fill in `projects/[feature]/product-specs/prd.md` -- the feature PRD.
 6. Edit `template/kickoff-prompt.md`, set the feature folder variable at the top, then tell Claude to read and execute it.
 
