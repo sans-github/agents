@@ -27,13 +27,13 @@ For any task that follows a phased workflow, maintain `plan-with-human-gates.md`
 ```markdown
 ## Kickoff
 
-- [x] 1. **[PM]** → produce PRD → `product-specs/prd.md`
-- [x] 2. 👤 **[HUMAN]** → review and approve PRD
-- [ ] 3. **[DESIGNER]** → produce mocks → `generated-docs/mocks/`
+1. [x] **[PM]** produce PRD → `product-specs/prd.md`
+2. [x] 👤 **[HUMAN]** review and approve PRD
+3. [ ] **[DESIGNER]** produce mocks → `generated-docs/mocks/`
 ```
 
 Skipped steps (e.g. out of scope for current delivery phase) should be marked with a note rather than left blank:
 
 ```markdown
-- [ ] 5. **[SDET]** → X -- SKIPPED (Phase 1: SDET inactive)
+5. [ ] **[SDET]** X -- SKIPPED (Phase 1: SDET inactive)
 ```

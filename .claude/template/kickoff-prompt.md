@@ -72,17 +72,22 @@ Do not begin any work until I have reviewed and approved the kickoff plan.
 
 1. Write `Status: Approved — Human` and `Approved: YYYY-MM-DD` at the top of `kickoff-plan.md`.
 
-2. Seed `[feature-folder]/workflow/plan-with-human-gates.md` with these steps in order:
-   - `**[DESIGNER]** → produce mocks → generated-docs/mocks/`
-   - `👤 **[HUMAN]** → review and approve mocks before EM begins eng planning`
-   - `**[EM]** → PM→EM handoff, evaluate arch engagement, record decision in workflow/feature-workflow-config.md`
-   - `**[ARCH]** → produce system architecture → generated-docs/sys-arch.md + generated-docs/sys-arch.html` ← mark SKIPPED with rationale if arch not engaged
-   - `👤 **[HUMAN]** → review and approve sys-arch before HLD begins` ← mark SKIPPED if arch not engaged
-   - `**[EM]** → produce HLD → generated-docs/hld.md + generated-docs/hld.html`
-   - `👤 **[HUMAN]** → review and approve HLD before detailed design begins`
-   - `**[EM]** → produce detailed implementation plan, add remaining phases to this doc`
-   - `👤 **[HUMAN]** → review and approve implementation plan before execution begins`
-   - Stop here. EM adds detailed design, API contract, implementation, and QA steps progressively after human approves the implementation plan.
+2. Seed `[feature-folder]/workflow/plan-with-human-gates.md` with a numbered checkbox list:
+   - Format each step as: `N. [ ] **[ROLE]** what they do → artifact path`
+   - Format each human gate as: `N. [ ] 👤 **[HUMAN]** what they review and approve`
+   - Steps in order:
+     1. `**[PM]** review PRD with human, surface open questions, confirm scope → product-specs/prd.md`
+     2. `👤 **[HUMAN]** review and approve PRD`
+     3. `**[DESIGNER]** produce mocks → generated-docs/mocks/`
+     4. `👤 **[HUMAN]** review and approve mocks before EM begins eng planning`
+     5. `**[EM]** PM→EM handoff, evaluate arch engagement, record decision in workflow/feature-workflow-config.md`
+     6. `**[ARCH]** produce system architecture → generated-docs/sys-arch.md + generated-docs/sys-arch.html` ← mark SKIPPED with rationale if arch not engaged
+     7. `👤 **[HUMAN]** review and approve sys-arch before HLD begins` ← mark SKIPPED if arch not engaged
+     8. `**[EM]** produce HLD → generated-docs/hld.md + generated-docs/hld.html`
+     9. `👤 **[HUMAN]** review and approve HLD before detailed design begins`
+     10. `**[EM]** produce detailed implementation plan, add remaining phases to this doc`
+     11. `👤 **[HUMAN]** review and approve implementation plan before execution begins`
+   - Stop here. EM adds remaining phases progressively after step 11.
    - Inactive roles or loops: note as skipped with rationale.
 
 3. Begin execution: work through `plan-with-human-gates.md` top-to-bottom.
