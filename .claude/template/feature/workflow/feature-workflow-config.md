@@ -13,7 +13,7 @@ The orchestrator reads this to seed `plan-with-human-gates.md`.
 
 Toggle rules:
 - `[ ]` -- active, include in the plan
-- `[-]` -- skip. Apply to a stage to exclude all its steps -- no need to mark individual steps inside it.
+- `[-]` -- skip. Apply to a stage to exclude all its steps -- no need to mark individual steps inside it. `[-]` is final: no agent may add, restore, or modify steps in a `[-]` stage. Only the human can change it.
 
 ---
 
@@ -53,8 +53,7 @@ Toggle rules:
 ---
 
 ### Stage 4: Engineering
-> Skeleton -- EM replaces these steps with artifact-specific tasks during Implementation Planning.
-> EM may reorder, split, or merge phases. This structure is a starting point only.
+> Skeleton -- EM fills in these steps during Implementation Planning, only if this stage is `[ ]`. If `[-]`, skip entirely and do not revisit.
 
 - [ ] **API Contract**
   - [ ] **BE + FE:** align on API contract → `generated-docs/api-contract.md` + `generated-docs/api-contract.html`
@@ -79,7 +78,7 @@ Toggle rules:
 ---
 
 ### Stage 5: Quality Assurance
-> Skeleton -- EM refines these steps during Implementation Planning.
+> Skeleton -- EM fills in these steps during Implementation Planning, only if this stage is `[ ]`. If `[-]`, skip entirely and do not revisit.
 
 - [ ] **Test Planning**
   - [ ] **QA:** produce test plan aligned to API contract and implementation → `generated-docs/test-plan.md` + `generated-docs/test-plan.html`
