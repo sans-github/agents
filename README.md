@@ -7,19 +7,20 @@ See [GETTING-STARTED.md](.claude/GETTING-STARTED.md) to install and run your fir
 ## Project folder structure
 
 ```
+.claude/                                # agent definitions, rules, skills, templates (managed by install.sh)
 projects/
 ├── master/                             # consolidated product baseline (copy once from template/master)
 │   ├── product-specs/
 │   │   └── prd.md                      # full PRD merged across all shipped features
 │   └── mocks/                          # current UI mocks
 └── YYYYMMDD-feature-name/              # copy per feature from template/feature
-    ├── generated-docs/                 # all artifacts, flat, kebab-case
+    ├── generated-docs/                 # all design/planning artifacts (Designer + EM output)
     │   └── mocks/                      # design mocks
-    ├── product-specs/                  # PRD and other product artifacts
+    ├── product-specs/                  # PRD and other product artifacts (PM input)
     └── workflow/
         ├── project-config.md           # human fills in at kickoff
-        ├── kickoff-plan.md             # agent generates at kickoff; human approves
         └── plan-with-human-gates.md    # seeded at kickoff; progressively filled by EM; human gates + agent steps
+src/                                    # all production artifacts (source code, db, migrations, seeds, IaC)
 ```
 
 See `.claude/GETTING-STARTED.md` for the full walkthrough.
@@ -249,7 +250,7 @@ Rules in `.claude/rules/` apply automatically to every session:
 - **progress-tracking-rule** -- `plan-with-human-gates.md` is the single source of truth for human gates and phase progress; agents check off steps and resume from it directly
 - **backlog-reporting-rule** -- append discovered bugs and tech debt to `BACKLOG.md` triage table
 - **contract-first-rule** -- governs agent-to-agent technical contracts (HLD, DB Schema, BE Detailed Design, FE Detailed Design, API Contract, Test Plan, Issues Lists); human milestone gates are tracked in `workflow/plan-with-human-gates.md`
-- **er-diagram-rule** -- maintain a current ER diagram at `db/er-diagram.md`; update it in the same commit as any schema change
+- **er-diagram-rule** -- maintain a current ER diagram at `src/db/er-diagram.md`; update it in the same commit as any schema change
 - **api-review-rule** -- run through the API design checklist before declaring any REST API design complete
 - **db-review-rule** -- run through the DB schema checklist before declaring any schema change complete
 - **test-review-rule** -- run through the test checklist before merging any test code
@@ -264,4 +265,4 @@ bash install.sh v1.2.0   # pin a tag or branch
 
 This clones the upstream repo and overwrites everything under `.claude/` (agents, rules, skills, template, guide docs) except your `settings.json`. Commit the result to lock the version.
 
-Default file locations (e.g. `db/er-diagram.md`, `BACKLOG.md`) can be overridden in your project's `CLAUDE.md`. See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+Default file locations (e.g. `src/db/er-diagram.md`, `BACKLOG.md`) can be overridden in your project's `CLAUDE.md`. See [CONTRIBUTING.md](CONTRIBUTING.md) for details.

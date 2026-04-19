@@ -35,6 +35,8 @@ Consumers install this repo into their own project via `install.sh`. They do not
 │   └── kickoff-brownfield.md       -- prompt for new features on existing codebase
 ├── GETTING-STARTED.md
 └── tech-config.md           -- stack/conventions consumers tailor once after install
+projects/             -- per-feature scaffolding and product specs (managed by /feature-init)
+src/                  -- all production artifacts: source code, db schema, migrations, seeds, IaC
 ```
 
 Key distinctions:
@@ -42,6 +44,7 @@ Key distinctions:
 - `template/feature/` contains things that become part of a feature folder. Kickoff files are one-time prompts, so they stay at `template/` root.
 - `master/` is a shared baseline, not per-feature. It mirrors the `feature/` structure (product-specs, mocks) but is copied once, not per feature.
 - `generated-docs/` uses subfolders (e.g. `mocks/`) so future artifact types can be added without clutter.
+- `src/` is a sibling to `.claude/`, `projects/`, and `scripts/` at the consumer project root. All production artifacts go here (source code, db schema, migrations, seeds, IaC). Agent-generated design docs go under `generated-docs/`, never under `src/`.
 
 ## Rules
 

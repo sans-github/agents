@@ -30,6 +30,12 @@ fi
 # Create projects/ if needed
 mkdir -p "$PROJECTS"
 
+# Create src/ at project root if it doesn't exist yet (greenfield first run)
+if [ ! -d "$ROOT/src" ]; then
+  mkdir -p "$ROOT/src"
+  echo "  src/ created (production artifacts root)."
+fi
+
 # Copy master only if it doesn't exist yet
 if [ -d "$PROJECTS/master" ]; then
   echo ""
@@ -53,6 +59,8 @@ echo "  │   └── mocks/"
 echo "  └── $FEATURE_NAME/"
 echo "      ├── generated-docs/mocks/"
 echo "      ├── product-specs/prd.md"
+echo "  src/                        (production artifacts -- db, migrations, source code)"
+echo "  └── $FEATURE_NAME/"
 echo "      └── workflow/"
 echo "          ├── project-config.md"
 echo "          └── plan-with-human-gates.md"

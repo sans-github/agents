@@ -21,17 +21,19 @@ These are available technology choices per layer, not a mandatory full stack. Ea
 
 ## File locations
 
+Design docs and plans live under `generated-docs/`. Production artifacts (code, migrations, seeds) live under `src/`. Agent-to-agent handoffs always pass the `.md` file only. The `.html` file is for stakeholder and human review.
+
 | Artifact | Path | Owner | Source |
 |---|---|---|---|
-| System architecture | `docs/sys-arch.md` + `docs/sys-arch.html` | Arch writes, EM approves | `senior-software-architect.md` |
-| Eng Plans (HLD) | `docs/hld.md` + `docs/hld.html` | EM writes, EM approves | `senior-engineering-manager.md` |
-| BE Detailed Design | `generated-docs/be-detailed-design.md` | BE writes, EM approves | `senior-backend-engineer.md` |
-| FE Detailed Design | `generated-docs/fe-detailed-design.md` | FE writes, EM approves | `senior-frontend-engineer.md` |
-| ER diagram | `db/er-diagram.md` | BE writes, EM verifies | `er-diagram-rule.md` |
-| DB schema files | `db/schema/` | BE | `db-schema.md` |
-| DB migrations | `db/migrations/` | BE | `db-schema.md` |
-| DB seeds (all envs) | `db/seeds/common/` | BE | `db-schema.md` |
-| DB seeds (dev only) | `db/seeds/dev/` | BE | `db-schema.md` |
+| System architecture | `generated-docs/sys-arch.md` + `generated-docs/sys-arch.html` | Arch writes, EM approves | `senior-software-architect.md` |
+| Eng Plans (HLD) | `generated-docs/hld.md` + `generated-docs/hld.html` | EM writes, EM approves | `senior-engineering-manager.md` |
+| BE Detailed Design | `generated-docs/be-detailed-design.md` + `generated-docs/be-detailed-design.html` | BE writes, EM approves | `senior-backend-engineer.md` |
+| FE Detailed Design | `generated-docs/fe-detailed-design.md` + `generated-docs/fe-detailed-design.html` | FE writes, EM approves | `senior-frontend-engineer.md` |
+| ER diagram | `src/db/er-diagram.md` | BE writes, EM verifies | `er-diagram-rule.md` |
+| DB schema files | `src/db/schema/` | BE | `db-schema.md` |
+| DB migrations | `src/db/migrations/` | BE | `db-schema.md` |
+| DB seeds (all envs) | `src/db/seeds/common/` | BE | `db-schema.md` |
+| DB seeds (dev only) | `src/db/seeds/dev/` | BE | `db-schema.md` |
 | Tech debt / bug backlog | `BACKLOG.md` | EM triages | `backlog-reporting-rule.md` |
 | Plan with human gates | `workflow/plan-with-human-gates.md` | Seeded at kickoff; progressively filled by EM; human gates + agent steps in one doc | `contract-first-rule.md`, `progress-tracking-rule.md` |
 | Workflow definition | `workflow/` | EM | `workflow-phases-rule.md` |

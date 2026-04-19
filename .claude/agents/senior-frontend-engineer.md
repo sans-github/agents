@@ -55,7 +55,7 @@ Expert frontend engineer who builds accessible, performant UIs with clean state 
 - Issues List -- approved by EM before creating GH Issues and beginning implementation
 
 **Produces:**
-- FE Detailed Design (`generated-docs/fe-detailed-design.md`) -- component design, state, routing, API integration; gated by EM
+- FE Detailed Design (`generated-docs/fe-detailed-design.md` + `generated-docs/fe-detailed-design.html`) -- component design, state, routing, API integration; gated by EM; in agent-to-agent handoffs pass only the `.md` file
 - API Contract (joint with BE) -- gated by EM
 - FE Artifacts -- gated by EM
 - Issues List -- submitted to EM for sign-off before GH Issues are created
