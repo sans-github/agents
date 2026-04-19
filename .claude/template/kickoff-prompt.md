@@ -43,6 +43,7 @@ If any are missing, stop and tell the human exactly what is missing.
 - Sections untouched or still containing template defaults
 - Content in `feature-workflow-config.md` or `prd.md` that contradicts the project description
 - Sparse or vague entries (e.g. "active agents: all" with no rationale, one-line PRD)
+- A phase in `## Project phases` marked `[ ]` whose role is absent from `## Active agents` -- contradiction, must be resolved before work begins
 
 Do not proceed if critical inputs are missing or stale. Surface them and wait for the human.
 
@@ -72,23 +73,13 @@ Do not begin any work until I have reviewed and approved the kickoff plan.
 
 1. Write `Status: Approved — Human` and `Approved: YYYY-MM-DD` at the top of `kickoff-plan.md`.
 
-2. Seed `[feature-folder]/workflow/plan-with-human-gates.md` with a numbered checkbox list:
-   - Format each step as: `N. [ ] **[ROLE]** what they do → artifact path`
-   - Format each human gate as: `N. [ ] 👤 **[HUMAN]** what they review and approve`
-   - Steps in order:
-     1. `**[PM]** review PRD with human, surface open questions, confirm scope → product-specs/prd.md`
-     2. `👤 **[HUMAN]** review and approve PRD`
-     3. `**[DESIGNER]** produce mocks → generated-docs/mocks/`
-     4. `👤 **[HUMAN]** review and approve mocks before EM begins eng planning`
-     5. `**[EM]** PM→EM handoff, evaluate arch engagement, record decision in workflow/feature-workflow-config.md`
-     6. `**[ARCH]** produce system architecture → generated-docs/sys-arch.md + generated-docs/sys-arch.html` ← mark SKIPPED with rationale if arch not engaged
-     7. `👤 **[HUMAN]** review and approve sys-arch before HLD begins` ← mark SKIPPED if arch not engaged
-     8. `**[EM]** produce HLD → generated-docs/hld.md + generated-docs/hld.html`
-     9. `👤 **[HUMAN]** review and approve HLD before detailed design begins`
-     10. `**[EM]** produce detailed implementation plan, add remaining phases to this doc`
-     11. `👤 **[HUMAN]** review and approve implementation plan before execution begins`
-   - Stop here. EM adds remaining phases progressively after step 11.
-   - Inactive roles or loops: note as skipped with rationale.
+2. Seed `[feature-folder]/workflow/plan-with-human-gates.md` from `## Project phases` in `feature-workflow-config.md`:
+   - Work through each phase in order.
+   - Phase `[x]`: mark all its steps SKIPPED.
+   - Phase `[ ]` + step `[x]`: mark that step SKIPPED, include the rest.
+   - Phase `[ ]` + step `[ ]`: include as an active numbered checkbox.
+   - Append the reason from the config to any SKIPPED step.
+   - Do not resolve contradictions here -- they must be caught during the input quality check before this step is reached.
 
 3. Begin execution: work through `plan-with-human-gates.md` top-to-bottom.
 

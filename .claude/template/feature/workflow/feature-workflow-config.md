@@ -1,9 +1,9 @@
 ---
 purpose: >
   Filled in by the human before any agent begins work.
-  Configures which agents are active, which phases are skipped,
+  Configures which agents are active, which phases to include or skip,
   and any deviations from the default collaboration pattern.
-  Agents must read this before doing anything and factor it into plan-with-human-gates.md.
+  Agents must read this before doing anything and use it to seed plan-with-human-gates.md.
 ---
 
 # Project Config
@@ -26,15 +26,39 @@ List the roles that are in play for this project. Unlisted roles are inactive an
 
 ---
 
-## Skipped phases
+## Project phases
 
-List any phases from the default workflow that are skipped for this project, and the reason.
+The orchestrator reads this to seed `plan-with-human-gates.md`.
 
-```
-# Example:
-- Phase 2 (Design): skip -- no mocks needed, internal tool with no new UI patterns
-- DevOps / IaC: skip -- deploying to existing infrastructure, no new AWS components
-```
+Toggle rules:
+- Phase `[ ]` + step `[ ]` -- active, include in the plan
+- Phase `[ ]` + step `[x]` -- skip this step only, include the rest
+- Phase `[x]` -- skip all steps in this phase regardless of step-level markers
+
+---
+
+- [ ] **prd**
+  - [ ] **PM:** review PRD with human, surface open questions, confirm scope → `product-specs/prd.md`
+  - [ ] 👤 **HUMAN:** review and approve PRD
+
+- [ ] **mocks**
+  - [ ] **DESIGNER:** produce mocks → `generated-docs/mocks/`
+  - [ ] 👤 **HUMAN:** review and approve mocks before EM begins eng planning
+
+- [ ] **handoff**
+  - [ ] **EM:** PM→EM handoff, evaluate arch engagement, record decision in `workflow/feature-workflow-config.md`
+
+- [ ] **arch**
+  - [ ] **ARCH:** produce system architecture → `generated-docs/sys-arch.md` + `generated-docs/sys-arch.html`
+  - [ ] 👤 **HUMAN:** review and approve sys-arch before HLD begins
+
+- [ ] **hld**
+  - [ ] **EM:** produce HLD → `generated-docs/hld.md` + `generated-docs/hld.html`
+  - [ ] 👤 **HUMAN:** review and approve HLD before detailed design begins
+
+- [ ] **impl-plan**
+  - [ ] **EM:** produce detailed implementation plan, add remaining phases to this doc
+  - [ ] 👤 **HUMAN:** review and approve implementation plan before execution begins
 
 ---
 
