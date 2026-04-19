@@ -1,7 +1,5 @@
 # Kickoff Prompt
 
-> Fill in the variable below, then tell Claude: "Read and execute `.claude/template/kickoff-prompt.md`."
-
 **Feature folder:** `projects/[YYYYMMDD-feature-name]`
 
 ---

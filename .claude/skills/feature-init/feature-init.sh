@@ -49,6 +49,10 @@ fi
 cp -r "$TEMPLATE/feature/" "$FEATURE_DIR"
 echo "  projects/$FEATURE_NAME created from template."
 
+# Pre-fill the feature folder path in kickoff-prompt.md
+sed -i '' "s|projects/\[YYYYMMDD-feature-name\]|projects/$FEATURE_NAME|" "$TEMPLATE/kickoff-prompt.md"
+echo "  kickoff-prompt.md updated with feature folder path."
+
 echo ""
 echo "Created:"
 echo ""
