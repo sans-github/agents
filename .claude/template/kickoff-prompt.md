@@ -55,6 +55,15 @@ Do not proceed if critical inputs are missing or stale. Surface them and wait fo
 
 Numbered list of questions that need my answers before agents can proceed. Do not make assumptions.
 
+When the human answers a question, update that line in `kickoff-plan.md`: add ✅ after ❓ and append a short resolution note inline. Unanswered questions stay as ❓ only. Example:
+
+```
+1. ❓✅ Will auth be included in Phase 1? -- No, auth ships in Phase 2.
+2. ❓ Which cloud region should the infra target?
+```
+
+Do not remove the original question text. Mark all questions resolved before proceeding to approval.
+
 ### 3. Next step
 
 One sentence only. State exactly what happens after I approve: who does what, and what artifact they produce. Must match the first unchecked step in `plan-with-human-gates.md`.
