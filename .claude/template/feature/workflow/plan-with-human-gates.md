@@ -2,4 +2,6 @@
 <!-- Progressively filled by EM after the implementation plan is approved. -->
 <!-- The orchestrator works through this top-to-bottom. When it runs out of steps, it stops. -->
 
-## Kickoff
+## Delivery Plan
+
+[ ]  not started   |   [-]  skipped   |   [x]  done

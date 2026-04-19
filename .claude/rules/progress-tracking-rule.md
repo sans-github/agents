@@ -24,12 +24,14 @@ For any task that follows a phased workflow, maintain `plan-with-human-gates.md`
 
 ## Format
 
+Every step must include a done condition so the orchestrator can verify completion, not infer it.
+
 ```markdown
 ## Kickoff
 
-1. [x] **PM:** produce PRD → `product-specs/prd.md`
-2. [x] 👤 **HUMAN:** review and approve PRD
-3. [ ] **DESIGNER:** produce mocks → `generated-docs/mocks/`
+1. [x] **PM:** review PRD with human, confirm scope → `product-specs/prd.md` -- done when: human approves verbally
+2. [x] 👤 **HUMAN:** review and approve PRD -- done when: human confirms
+3. [ ] **DESIGNER:** produce mocks → `generated-docs/mocks/` -- done when: mocks present and PM satisfied
 ```
 
 Skipped steps (e.g. out of scope for current delivery phase) should be marked with a note rather than left blank:

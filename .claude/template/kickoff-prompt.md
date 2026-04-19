@@ -74,11 +74,10 @@ Do not begin any work until I have reviewed and approved the kickoff plan.
 1. Write `Status: Approved — Human` and `Approved: YYYY-MM-DD` at the top of `kickoff-plan.md`.
 
 2. Seed `[feature-folder]/workflow/plan-with-human-gates.md` from `## Project phases` in `feature-workflow-config.md`:
+   - First line after the heading: `[ ]  not started   |   [-]  skipped   |   [x]  done`
    - Work through each phase in order.
-   - Phase `[x]`: mark all its steps SKIPPED.
-   - Phase `[ ]` + step `[x]`: mark that step SKIPPED, include the rest.
-   - Phase `[ ]` + step `[ ]`: include as an active numbered checkbox.
-   - Append the reason from the config to any SKIPPED step.
+   - Phase or step `[-]`: mark SKIPPED, append any inline reason if present.
+   - Phase or step `[ ]`: include as an active numbered checkbox.
    - Do not resolve contradictions here -- they must be caught during the input quality check before this step is reached.
 
 3. Begin execution: work through `plan-with-human-gates.md` top-to-bottom.
