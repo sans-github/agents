@@ -29,7 +29,7 @@ The orchestrator reads this to seed `plan-with-human-gates.md`.
 
 Toggle rules:
 - `[ ]` -- active, include in the plan
-- `[-]` -- skip (phase or step); orchestrator marks it SKIPPED
+- `[-]` -- skip. Apply to a stage to exclude all its steps -- no need to mark individual steps inside it.
 
 ---
 
