@@ -73,14 +73,18 @@ Do not begin any work until I have reviewed and approved the kickoff plan.
 
 1. Write `Status: Approved — Human` and `Approved: YYYY-MM-DD` at the top of `kickoff-plan.md`.
 
-2. Seed `[feature-folder]/workflow/plan-with-human-gates.md` based on active agents and phases from `project-config.md`:
-   - Format agent steps as: `- [ ] N. **[ROLE]** → what they do → artifact path`
-   - Format human gates as: `- [ ] N. 👤 **[HUMAN]** → what they review and approve before work continues`
-   - Seed only the steps that are known at kickoff: PRD review (if not yet approved), mocks production and review, and the PM→EM handoff. Stop there -- do not seed arch, HLD, or implementation steps.
-   - The last seeded step must be: `- [ ] N. **[EM]** → PM→EM handoff, evaluate arch engagement, add next steps to this doc`
-   - EM will progressively add steps after this point: arch engagement (if needed), HLD, detailed implementation plan, and a human gate before execution begins.
-   - For active collaboration loops (see `collaboration-loops-rule.md`), include only the human-facing gate at the end of each loop.
-   - Inactive loops: note as skipped.
+2. Seed `[feature-folder]/workflow/plan-with-human-gates.md` with these steps in order:
+   - `**[DESIGNER]** → produce mocks → generated-docs/mocks/`
+   - `👤 **[HUMAN]** → review and approve mocks before EM begins eng planning`
+   - `**[EM]** → PM→EM handoff, evaluate arch engagement, record decision in workflow/project-config.md`
+   - `**[ARCH]** → produce system architecture → generated-docs/sys-arch.md + generated-docs/sys-arch.html` ← mark SKIPPED with rationale if arch not engaged
+   - `👤 **[HUMAN]** → review and approve sys-arch before HLD begins` ← mark SKIPPED if arch not engaged
+   - `**[EM]** → produce HLD → generated-docs/hld.md + generated-docs/hld.html`
+   - `👤 **[HUMAN]** → review and approve HLD before detailed design begins`
+   - `**[EM]** → produce detailed implementation plan, add remaining phases to this doc`
+   - `👤 **[HUMAN]** → review and approve implementation plan before execution begins`
+   - Stop here. EM adds detailed design, API contract, implementation, and QA steps progressively after human approves the implementation plan.
+   - Inactive roles or loops: note as skipped with rationale.
 
 3. Begin execution: work through `plan-with-human-gates.md` top-to-bottom.
 
