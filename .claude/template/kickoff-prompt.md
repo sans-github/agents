@@ -41,7 +41,6 @@ If any are missing, stop and tell the human exactly what is missing.
 - Sections untouched or still containing template defaults
 - Content in `feature-workflow-config.md` or `prd.md` that contradicts the project description
 - Sparse or vague entries (e.g. "active agents: all" with no rationale, one-line PRD)
-- A phase in `## Project phases` marked `[ ]` whose role is absent from `## Active agents` -- contradiction, must be resolved before work begins
 - A stage marked as active whose upstream dependency is skipped -- flag the broken dependency and block until resolved. Dependencies: Design requires Discovery; Technical Planning requires Discovery and Design; Engineering requires Technical Planning; QA requires Engineering; Release requires QA
 
 Do not proceed if critical inputs are missing or stale. Surface them and wait for the human.

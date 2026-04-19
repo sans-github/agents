@@ -1,27 +1,11 @@
 ---
 purpose: >
   Filled in by the human before any agent begins work.
-  Configures which agents are active, which phases to include or skip,
-  and any deviations from the default collaboration pattern.
+  Configures which phases to include or skip and any deviations from the default collaboration pattern.
   Agents must read this before doing anything and use it to seed plan-with-human-gates.md.
 ---
 
 # Project Config
-
-## Active agents
-
-All roles below are active. Mark `[-]` to exclude a role from this project.
-
-- [ ] PM
-- [ ] EM
-- [ ] Arch
-- [ ] Designer
-- [ ] BE
-- [ ] FE
-- [ ] DevOps
-- [ ] QA
-
----
 
 ## Project phases
 
