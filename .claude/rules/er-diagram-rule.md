@@ -1,10 +1,10 @@
 # Rule: ER Diagram Snapshot
 
-A current ER diagram must be maintained at `db/er-diagram.md`. It is the authoritative snapshot of the live schema -- not a design artifact, not a draft.
+A current ER diagram must be maintained at `src/db/er-diagram.md`. It is the authoritative snapshot of the live schema -- not a design artifact, not a draft.
 
 ## When to update
 
-Update `db/er-diagram.md` in the same commit as any schema change:
+Update `src/db/er-diagram.md` in the same commit as any schema change:
 
 - New table added
 - Table renamed or dropped

@@ -25,7 +25,7 @@ Schema files define the baseline structure. They run once to create the initial 
 Files are numbered to enforce load order (important when tables reference each other via foreign keys):
 
 ```
-db/schema/
+src/db/schema/
 ├── 01_users.sql
 ├── 02_roles.sql
 ├── 03_orders.sql
@@ -51,7 +51,7 @@ YYYYMMDD_HHMMSS_<description>.sql
 
 Examples:
 ```
-db/migrations/
+src/db/migrations/
 ├── 20240315_143022_add_email_index_to_users.sql
 ├── 20240316_091500_add_phone_to_users.sql
 ```
@@ -65,15 +65,15 @@ The timestamp ensures global ordering and avoids conflicts when multiple branche
 Seeds populate configuration or reference data the system needs to operate. Like schema files, they are numbered and run once -- the migration tool tracks them separately so they are not re-applied on subsequent starts.
 
 ```
-db/seeds/
+src/db/seeds/
 ├── 01_config_settings.sql
 ├── 02_lookup_codes.sql
 ```
 
 Seeds are split by environment:
 
-- `db/seeds/common/` -- config and reference data the system needs to operate in every environment (e.g. permission types, status codes, default settings). Always runs.
-- `db/seeds/dev/` -- richer fixture data for local development and staging (e.g. sample users, demo content). **Never runs in production.**
+- `src/db/seeds/common/` -- config and reference data the system needs to operate in every environment (e.g. permission types, status codes, default settings). Always runs.
+- `src/db/seeds/dev/` -- richer fixture data for local development and staging (e.g. sample users, demo content). **Never runs in production.**
 
 The app (or migration tool) determines which folders to apply based on the current environment. Production applies `common/` only.
 

@@ -110,12 +110,12 @@ Never rename a skill file without also updating the `name` field in its frontmat
 
 ## Overriding default paths and conventions
 
-Default file locations (e.g. `db/er-diagram.md`, `BACKLOG.md`) are defined in `.claude/tech-config.md` and enforced by the rules. If your project uses different paths, override them in your project's `CLAUDE.md`:
+Default file locations (e.g. `src/db/er-diagram.md`, `BACKLOG.md`) are defined in `.claude/tech-config.md` and enforced by the rules. If your project uses different paths, override them in your project's `CLAUDE.md`:
 
 ```markdown
 ## Conventions overrides
 
-- ER diagram: `docs/er-diagram.md` (not `db/er-diagram.md`)
+- ER diagram: `docs/er-diagram.md` (not `src/db/er-diagram.md`)
 - Backlog: `docs/BACKLOG.md` (not `BACKLOG.md`)
 ```
 
