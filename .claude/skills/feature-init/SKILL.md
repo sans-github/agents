@@ -6,12 +6,56 @@ argument-hint: 20260417-sample-feature
 
 # Feature Init
 
-Scaffolds a new feature workspace. Run when a consumer is ready to begin a new feature.
+Scaffolds a new feature workspace and guides the user through config, requirements, and kickoff interactively. One command -- no manual file editing required.
 
 ## Steps
 
-1. Run `bash .claude/skills/feature-init/feature-init.sh FEATURE_NAME` using Bash, substituting the feature name argument. If no name was provided by the user, ask for one before running. IMPORTANT: always use this relative path exactly -- never expand it to an absolute path.
-2. Show the user the output (folder tree) from the script.
-3. Tell the user: "See `.claude/SETUP-GUIDE.md` for next steps (stack config, brand guidelines, filling in feature-workflow-config and prd, kickoff)."
+### 1. Scaffold
 
-Do not proceed further. The user takes over from here.
+Run `bash .claude/skills/feature-init/feature-init.sh FEATURE_NAME` using Bash, substituting the feature name argument. If no name was provided by the user, ask for one before running. IMPORTANT: always use this relative path exactly -- never expand it to an absolute path.
+
+Show the user the folder tree from the script output. Extract the feature folder path from the output (format: `projects/YYYYMMDD-feature-name`) -- you will need it in every subsequent step.
+
+---
+
+### 2. Configure (CC)
+
+Use `AskUserQuestion` to gather the following in a single call (3 questions):
+
+**Q1 -- Phases (multiSelect):** "Which phases should be active for this feature?" Read the stage names from `[feature-folder]/workflow/feature-workflow-config.md` (lines starting with `### Stage`) and present each as an option. Default is all selected.
+
+**Q2 -- Deployment target (single select):** "Where will this feature be deployed?"
+- local
+- existing AWS infra
+- new AWS infra
+- TBD
+
+**Q3 -- Additional context (single select):** "Any additional context for the agents? (whiteboard notes, sketches, constraints, preferences)"
+- No additional context
+- Yes, I'll add it now (user provides free text via Other)
+
+Then write the answers into `[feature-folder]/workflow/feature-workflow-config.md`:
+- Stages the user did NOT select: change their `[ ]` to `[-]` at the stage level
+- Deployment target: replace the `local` default in the `## Deployment target` block with the user's choice
+- Additional context: if provided, replace the example block in `## Additional context` with the user's text; if none, leave the block as-is
+
+---
+
+### 3. Requirements (PM agent)
+
+Check if `[feature-folder]/product-specs/prd.md` is non-empty.
+
+**If non-empty:** Read the first ~20 lines. Show the user a 1-2 line summary and ask: "A PRD already exists. Use it or start fresh?" If reuse, skip to Step 4. If discard, truncate the file to empty and proceed.
+
+**If empty:** Invoke the PM agent with this instruction:
+> "The feature folder is `[feature-folder]`. Gather requirements from the user via interview and write the completed PRD to `[feature-folder]/product-specs/prd.md`. Additional context from the user: [paste any additional context from Step 2, or 'none']."
+
+Wait for PM to complete before proceeding.
+
+---
+
+### 4. Kick off
+
+Ask the user: "Config and PRD are ready. Ready to kick off?" Offer "Yes, proceed" and "Not yet".
+
+If yes: read `.claude/template/kickoff-prompt.md`, replace every occurrence of `[YYYYMMDD-feature-name]` with the actual feature folder path (e.g. `projects/20260420-my-feature`), then execute the resulting prompt as if the user had sent it. The kickoff prompt handles everything from here.

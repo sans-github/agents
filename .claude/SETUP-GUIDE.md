@@ -2,12 +2,14 @@
 
 ## Every feature
 
-1. Run `/feature-init` in Claude Code. It scaffolds `projects/master/` on the first run and `projects/YYYYMMDD-feature-name/` each time.
-2. Fill in two files inside the new feature folder. `workflow/feature-workflow-config.md` sets the active agents, phases to skip, and any overrides. `product-specs/prd.md` is the PRD: what to build and why.
-3. Open [kickoff-prompt.md](template/kickoff-prompt.md), set the Feature folder path at the top, then tell Claude:
-   > Read and execute `template/kickoff-prompt.md`.
+Run `/feature-init` in Claude Code. Claude will guide you through:
+- Toggling phases on/off
+- Setting the deployment target
+- Capturing any additional context
+- Gathering requirements (via PM agent) and writing the PRD
+- Kicking off the workflow automatically
 
-Claude reads your config and PRD, produces `workflow/kickoff-plan.md` for your review, and waits for your approval before any work begins.
+No manual file editing required. Claude produces `workflow/kickoff-plan.md` for your review and waits for your approval before any work begins.
 
 ---
 
@@ -44,7 +46,7 @@ flowchart LR
     s1["1. Install<br/>(Eng · use script)"] --> s2["2. Review tech stack*<br/>(Eng)"] --> s3["3. Brand guidelines†<br/>(Design · PM)"]
   end
   subgraph feat["🔁 Per feature"]
-    s4["4. /feature-init<br/>(Eng)"] --> s5["5. Fill config + PRD<br/>(Eng & Product)"] --> s6["6. Kick off<br/>(Eng → Claude)"]
+    s4["4. /feature-init<br/>(Claude guides config, PRD + kickoff)"]
   end
   once --> feat
 ```
