@@ -58,10 +58,23 @@ Then ask: "Does this look right before we continue?" with options "Yes, continue
 
 Check if `[feature-folder]/product-specs/prd.md` is non-empty.
 
-**If non-empty:** Read the first ~20 lines. Show the user a 1-2 line summary and ask: "A PRD already exists. Use it or start fresh?" If reuse, skip to Step 4. If discard, truncate the file to empty and proceed.
+**If non-empty:** Read the first ~20 lines. Show the user a 1-2 line summary and ask: "A PRD already exists. Use it or start fresh?" If discard, truncate the file to empty and proceed as if empty. If reuse, invoke the PM agent with: "The feature folder is `[feature-folder]`. A PRD already exists at `product-specs/prd.md`. Review it with the user, confirm scope, and refine if needed." Then wait for PM to complete before proceeding to Step 4.
 
-**If empty:** Invoke the PM agent with this instruction:
-> "The feature folder is `[feature-folder]`. Gather requirements from the user via interview and write the completed PRD to `[feature-folder]/product-specs/prd.md`. Additional context from the user: [paste any additional context from Step 2, or 'none']."
+**If empty:** Adopt the PM role inline and run a short requirements interview with the user directly in this conversation thread. Ask one clarifying question at a time until you have enough to summarize. When done, write the collected requirements as a frontmatter block at the top of `[feature-folder]/product-specs/prd.md`:
+
+```
+---
+requirements:
+  summary: <one paragraph>
+  key_points:
+    - <bullet>
+    - <bullet>
+  additional_context: <from Step 2, or none>
+  gathered_by: orchestrator-inline
+---
+```
+
+Then invoke the PM agent with: "The feature folder is `[feature-folder]`. Requirements have already been gathered and are in the frontmatter of `product-specs/prd.md`. Skip the interview and proceed directly to writing the PRD."
 
 Wait for PM to complete before proceeding.
 
