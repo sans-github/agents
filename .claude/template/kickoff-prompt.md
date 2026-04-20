@@ -42,6 +42,7 @@ If any are missing, stop and tell the human exactly what is missing.
 - Content in `feature-workflow-config.md` or `prd.md` that contradicts the project description
 - Sparse or vague entries (e.g. "active agents: all" with no rationale, one-line PRD)
 - A stage marked as active whose upstream dependency is skipped -- flag the broken dependency and block until resolved. Dependencies: Design requires Discovery; Technical Planning requires Discovery and Design; Engineering requires Technical Planning; QA requires Engineering; Release requires QA
+- `prd.md` is empty -- do not flag this as an open question. Invoke the PM agent to gather requirements from the user and write the PRD, then resume. Stage 1 being `[-]` does not exempt this: a PRD is required for kickoff regardless of stage config.
 
 Do not proceed if critical inputs are missing or stale. Surface them and wait for the human.
 

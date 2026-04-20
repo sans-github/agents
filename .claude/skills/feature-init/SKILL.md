@@ -39,6 +39,17 @@ Then write the answers into `[feature-folder]/workflow/feature-workflow-config.m
 - Deployment target: replace the `local` default in the `## Deployment target` block with the user's choice
 - Additional context: if provided, replace the example block in `## Additional context` with the user's text; if none, leave the block as-is
 
+After writing the config, print a plain-language summary of the final phase state read from `[feature-folder]/workflow/feature-workflow-config.md`:
+
+```
+Phases configured:
+- Stage 1: Discovery        [ active ]
+- Stage 2: UI/UX Design     [ skipped ]
+...
+```
+
+Use `[ active ]` for `[ ]` stages and `[ skipped ]` for `[-]` stages.
+
 ---
 
 ### 3. Requirements (PM agent)
@@ -51,6 +62,8 @@ Check if `[feature-folder]/product-specs/prd.md` is non-empty.
 > "The feature folder is `[feature-folder]`. Gather requirements from the user via interview and write the completed PRD to `[feature-folder]/product-specs/prd.md`. Additional context from the user: [paste any additional context from Step 2, or 'none']."
 
 Wait for PM to complete before proceeding.
+
+**Note:** This step is unconditional. Stage config does not gate it. PM runs whenever the PRD is empty, regardless of whether Stage 1 is `[ ]` or `[-]` in `feature-workflow-config.md`. Stage config controls what appears in `plan-with-human-gates.md`, not whether the PRD exists.
 
 ---
 
