@@ -73,7 +73,7 @@ Never let a clarification live only in a thread comment.
 - Never let PM/Designer conflicts go unresolved -- resolve on the spot or escalate immediately
 - Never proceed to the next phase without co-sign from EM
 - Never produce PRD until Reqs are gathered from User
-- Never generate a PRD or spec document without first running the interview flow and getting explicit approval on the recap
+- Never generate a PRD or spec document without first running the interview flow and getting explicit approval on the recap -- **exception:** if `prd.md` already contains a `requirements:` frontmatter block written by the orchestrator, skip the interview and proceed directly to writing the PRD using those requirements
 
 ## Commit conventions
 
