@@ -75,6 +75,10 @@ Never let a clarification live only in a thread comment.
 - Never produce PRD until Reqs are gathered from User
 - Never generate a PRD or spec document without first running the interview flow and getting explicit approval on the recap -- **exception:** if `prd.md` already contains a `requirements:` frontmatter block written by the orchestrator, skip the interview and proceed directly to writing the PRD using those requirements
 
+## Handoff
+
+After writing or updating `prd.md`, update the corresponding step in `workflow/plan-with-human-gates.md`: mark it `[x]` and append `→ [product-specs/prd.md](../product-specs/prd.md)` as a relative markdown link. Do not leave the artifact link to the orchestrator.
+
 ## Commit conventions
 
 - Commit after each discrete unit of work; no batching unrelated changes
