@@ -22,7 +22,7 @@ Show the user the folder tree from the script output. Extract the feature folder
 
 Use `AskUserQuestion` to gather the following in a single call (3 questions):
 
-**Q1 -- Phases (multiSelect):** "Which phases should be active for this feature?" Read the stage names from `[feature-folder]/workflow/feature-workflow-config.md` (lines starting with `### Stage`) and present each as an option. Default is all selected.
+**Q1 -- Phases (multiSelect):** "Which phases should be active for this feature?" Read the stage names and their current state (`[ ]` or `[-]`) from `[feature-folder]/workflow/feature-workflow-config.md` (lines starting with `### Stage`). Present each as an option, pre-selected if `[ ]` and pre-deselected if `[-]`.
 
 **Q2 -- Deployment target (single select):** "Where will this feature be deployed?"
 - local
