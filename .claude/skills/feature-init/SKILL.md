@@ -50,6 +50,8 @@ Phases configured:
 
 Use `[ active ]` for `[ ]` stages and `[ skipped ]` for `[-]` stages.
 
+Then ask: "Does this look right before we continue?" with options "Yes, continue" and "No, let me adjust". If the user chooses to adjust, re-run the `AskUserQuestion` configure block from Step 2 and rewrite the config before showing the summary again. Repeat until the user confirms.
+
 ---
 
 ### 3. Requirements (PM agent)
