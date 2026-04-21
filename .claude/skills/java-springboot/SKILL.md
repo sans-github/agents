@@ -47,11 +47,6 @@ Your goal is to help me write high-quality Spring Boot applications by following
 - **Custom Queries:** For complex queries, use `@Query` or the JPA Criteria API.
 - **Projections:** Use DTO projections to fetch only the necessary data from the database.
 
-## Logging
-
-- **SLF4J:** Use the SLF4J API for logging.
-- **Logger Declaration:** `private static final Logger logger = LoggerFactory.getLogger(MyClass.class);`
-- **Parameterized Logging:** Use parameterized messages (`logger.info("Processing user {}...", userId);`) instead of string concatenation to improve performance.
 
 ## Testing
 
