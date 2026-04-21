@@ -66,10 +66,14 @@ Rules in `.claude/rules/` are loaded automatically. Key ones to know:
 Each agent file follows this section order:
 1. Frontmatter (`name`, `description`, optional `skills`)
 2. One-line identity (`You are a senior X.`)
-3. `## Core expertise` -- qualities and collaboration
-4. `## Behavior` -- mindset, ownership, decision-making, communication
-5. `## Hard constraints`
-6. `## Commit conventions` -- role-specific commit rules
+3. `## Qualities` -- intro line, mindset, and role-specific quality bullets
+4. `## Collaboration` -- who this role works with and how
+5. `## Ownership` -- what this role owns end-to-end
+6. `## Decision-making` -- how this role makes and escalates decisions
+7. `## Communication` -- how this role communicates blockers, reviews, and handoffs
+8. `## Collaboration contracts` -- depends-on, produces, gatekeeps, key handoffs
+9. `## Hard constraints` -- non-negotiable rules
+10. `## Commit conventions` -- role-specific commit rules
 
 ## Skill naming
 

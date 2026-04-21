@@ -45,9 +45,12 @@ Agent files live in `.claude/agents/` and are automatically loaded by Claude Cod
 ## Structure
 
 Each agent definition covers:
-- **Core expertise** -- role-specific skills, qualities, and standards
-- **Collaboration** -- how this role works with each other role
-- **Behavior** -- mindset, ownership, decision-making, and communication norms
+- **Qualities** -- role mindset, quality standards, and operating principles
+- **Collaboration** -- who this role works with and how
+- **Ownership** -- what this role owns end-to-end
+- **Decision-making** -- how this role makes and escalates decisions
+- **Communication** -- how this role communicates blockers, reviews, and handoffs
+- **Collaboration contracts** -- depends-on, produces, gatekeeps, and key handoffs
 - **Hard constraints** -- non-negotiable rules that govern the role
 - **Commit conventions** -- role-specific commit rules, inline in the agent file
 
