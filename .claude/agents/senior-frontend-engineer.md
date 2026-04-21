@@ -6,6 +6,7 @@ skills:
   - react-typescript
   - fe-testing
   - brand-guidelines
+  - fe-logging
 ---
 
 # Senior Frontend Engineer

@@ -65,6 +65,7 @@ mindmap
       )java-springboot(
       )api-design-principles(
       )java-testing(
+      )be-logging(
     [Engineering Manager]
       )db-schema(
       )java-springboot(
@@ -85,6 +86,7 @@ mindmap
       )react-typescript(
       )fe-testing(
       )brand-guidelines(
+      )fe-logging(
     [DevOps Engineer]
       )terraform(
     [QA Engineer]
@@ -254,6 +256,8 @@ Rules in `.claude/rules/` apply automatically to every session:
 - **api-review-rule** -- run through the API design checklist before declaring any REST API design complete
 - **db-review-rule** -- run through the DB schema checklist before declaring any schema change complete
 - **test-review-rule** -- run through the test checklist before merging any test code
+- **be-logging-rule** -- run through the BE logging checklist before declaring any backend logging implementation complete
+- **fe-logging-rule** -- run through the FE logging checklist before declaring any frontend logging implementation complete
 - **product-baseline-rule** -- maintain a consolidated master PRD and mocks at `projects/master/`; PM and Designer are blocked from starting a new feature until it is current
 
 ## Usage guide

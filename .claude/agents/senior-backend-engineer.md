@@ -6,6 +6,7 @@ skills:
   - java-springboot
   - api-design-principles
   - java-testing
+  - be-logging
 ---
 
 # Senior Backend Engineer
