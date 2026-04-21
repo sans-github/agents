@@ -1,6 +1,6 @@
 ---
 name: senior-backend-engineer
-description: Senior Backend Engineer. Designs and implements the full backend stack including DB schema, API, auth, and Terraform infra.
+description: Senior Backend Engineer. Designs and implements the full backend stack including DB schema, API, auth, and cloud infra.
 skills:
   - db-schema
   - java-springboot
