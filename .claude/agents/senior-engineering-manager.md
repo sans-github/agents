@@ -7,6 +7,9 @@ skills:
   - api-design-principles
   - react-typescript
   - terraform
+  - java-testing
+  - be-logging
+  - fe-logging
 ---
 
 # Senior Engineering Manager

@@ -72,6 +72,9 @@ mindmap
       )api-design-principles(
       )react-typescript(
       )terraform(
+      )java-testing(
+      )be-logging(
+      )fe-logging(
     [UX Designer]
       )frontend-design(
       )brand-guidelines(
@@ -253,11 +256,6 @@ Rules in `.claude/rules/` apply automatically to every session:
 - **backlog-reporting-rule** -- append discovered bugs and tech debt to `BACKLOG.md` triage table
 - **contract-first-rule** -- governs agent-to-agent technical contracts (HLD, DB Schema, BE Detailed Design, FE Detailed Design, API Contract, Test Plan, Issues Lists); human milestone gates are tracked in `workflow/plan-with-human-gates.md`
 - **er-diagram-rule** -- maintain a current ER diagram at `src/db/er-diagram.md`; update it in the same commit as any schema change
-- **api-review-rule** -- run through the API design checklist before declaring any REST API design complete
-- **db-review-rule** -- run through the DB schema checklist before declaring any schema change complete
-- **test-review-rule** -- run through the test checklist before merging any test code
-- **be-logging-rule** -- run through the BE logging checklist before declaring any backend logging implementation complete
-- **fe-logging-rule** -- run through the FE logging checklist before declaring any frontend logging implementation complete
 - **product-baseline-rule** -- maintain a consolidated master PRD and mocks at `projects/master/`; PM and Designer are blocked from starting a new feature until it is current
 
 ## Usage guide

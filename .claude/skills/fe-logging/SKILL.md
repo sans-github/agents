@@ -146,3 +146,7 @@ logger.warn('auth_token_refresh_failed', { reason: error.message });
 - **Never use `console.log` outside local dev.** It does not ship to any collector.
 - **Never log Redux state snapshots** -- they typically contain PII and secrets.
 - Truncate any error message that might echo user input to 500 chars max.
+
+## When to apply
+
+Load `logging-checklist.md` before declaring any frontend logging implementation complete -- new pages, new API calls, or changes to the logger module. Items that genuinely do not apply must be noted as out of scope, not silently skipped. EM verifies the checklist was run during PR approval.

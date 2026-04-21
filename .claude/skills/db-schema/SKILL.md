@@ -116,7 +116,7 @@ Define these as part of the initial schema so they are consistent across all tab
 
 ## Resources
 
-- Load `db-checklist.md` before declaring any schema change complete -- required by `db-review-rule.md`.
+- Load `db-checklist.md` before declaring any schema change complete. Items that genuinely do not apply must be noted as out of scope, not silently skipped. EM verifies the checklist was run during schema approval.
 
 ---
 

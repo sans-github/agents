@@ -36,4 +36,4 @@ Test code is subject to the same Checkstyle rules as production code. `mvn verif
 ## Resources
 
 - Load `junit-reference.md` when writing or reviewing tests -- it covers project setup, naming, lifecycle hooks, parameterized test sources, assertions, mocking patterns, and organization annotations.
-- Load `test-checklist.md` before declaring any test code merge-ready -- required by `test-review-rule.md`.
+- Load `test-checklist.md` before declaring any test code merge-ready. Items that genuinely do not apply must be noted as out of scope, not silently skipped. EM verifies the checklist was run during PR approval.

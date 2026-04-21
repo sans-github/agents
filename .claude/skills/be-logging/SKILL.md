@@ -164,3 +164,7 @@ Log `ERROR` on non-2xx responses or timeouts, with response status and body exce
 - **Never log full request/response bodies** unless behind a `TRACE` guard and explicitly opt-in per endpoint.
 - `MDC.clear()` must always run in a `finally` block -- failure to clear leaks context across thread pool reuse.
 - Do not construct log strings with `+` concatenation. Use SLF4J parameterized logging (`{}`) to avoid string allocation when the level is disabled.
+
+## When to apply
+
+Load `logging-checklist.md` before declaring any backend logging implementation complete -- new endpoints, new service layers, or changes to existing logging config. Items that genuinely do not apply must be noted as out of scope, not silently skipped. EM verifies the checklist was run during PR approval.

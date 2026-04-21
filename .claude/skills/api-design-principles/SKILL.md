@@ -32,4 +32,4 @@ Covers REST API design: resource modeling, HTTP semantics, versioning, paginatio
 ## Resources
 
 - Load `rest-reference.md` when actively designing or reviewing an API -- it covers URL rules, HTTP method semantics, pagination patterns, auth, rate limiting, caching, and more.
-- Load `api-checklist.md` before declaring an API design complete -- required by `api-review-rule.md`.
+- Load `api-checklist.md` before declaring an API design complete. Items that genuinely do not apply must be noted as out of scope, not silently skipped. EM verifies the checklist was run during API contract approval.
