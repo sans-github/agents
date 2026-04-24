@@ -50,6 +50,34 @@ When you hit a blocker or design ambiguity, write a design doc with the problem 
 
 ## Collaboration contracts
 
+```mermaid
+flowchart LR
+  classDef disc fill:#dbeafe,stroke:#3b82f6
+  classDef des  fill:#ede9fe,stroke:#7c3aed
+  classDef ep   fill:#fef9c3,stroke:#ca8a04
+  classDef impl fill:#dcfce7,stroke:#16a34a
+  classDef test fill:#fee2e2,stroke:#dc2626
+  D1["1. Discovery"]:::disc --> D2["2. Design"]:::des --> D3["3. Eng Planning"]:::ep --> D4["4. Implementation"]:::impl --> D5["5. Testing"]:::test
+```
+
+```mermaid
+flowchart LR
+  subgraph ep["3. Eng Planning"]
+    direction TB
+    b1["HLD (from EM)<br/>(to author BE Detailed Design)"] --> B1(( ))
+    B1 --> b2["BE Detailed Design"]
+  end
+  subgraph impl["4. Implementation"]
+    direction TB
+    b3["API Contract + Issues List (approved)<br/>(to implement and begin build)"] --> B2(( ))
+    B2 --> b4["BE Artifacts"]
+    B2 --> b5["BE Test Docs"]
+  end
+  ep --> impl
+  style ep   fill:#fef9c3,stroke:#ca8a04
+  style impl fill:#dcfce7,stroke:#16a34a
+```
+
 **Depends on:**
 - Arch approval -- any new tech stack or AWS component BE wants to introduce requires Arch sign-off before it can be included in BE Detailed Design
 - Eng Plans (HLD) -- approved by EM before authoring BE Detailed Design

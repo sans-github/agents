@@ -48,6 +48,26 @@ Deliver recommendations as written documents (ADR format) with 2-3 options, expl
 
 ## Collaboration contracts
 
+```mermaid
+flowchart LR
+  classDef disc fill:#dbeafe,stroke:#3b82f6
+  classDef des  fill:#ede9fe,stroke:#7c3aed
+  classDef ep   fill:#fef9c3,stroke:#ca8a04
+  classDef impl fill:#dcfce7,stroke:#16a34a
+  classDef test fill:#fee2e2,stroke:#dc2626
+  D1["1. Discovery"]:::disc --> D2["2. Design"]:::des --> D3["3. Eng Planning"]:::ep --> D4["4. Implementation"]:::impl --> D5["5. Testing"]:::test
+```
+
+```mermaid
+flowchart LR
+  subgraph ep["3. Eng Planning"]
+    direction TB
+    a1["PRD + ACs (from PM)<br/>(to author Sys Arch)"] --> A1(( ))
+    A1 --> a2["Sys Arch"]
+  end
+  style ep fill:#fef9c3,stroke:#ca8a04
+```
+
 **Depends on:**
 - PRD, ACs -- approved by PM before authoring Sys Arch
 
@@ -57,6 +77,23 @@ Deliver recommendations as written documents (ADR format) with 2-3 options, expl
 **Gatekeeps (must approve before downstream proceeds):**
 - Tech stack adoption -- any new language, framework, or major library proposed by EM, BE, or FE requires Arch approval before use
 - AWS component adoption -- any new AWS service or infrastructure component proposed by EM, BE, FE, or DevOps requires Arch approval before provisioning
+
+```mermaid
+flowchart LR
+  subgraph ep["3. Eng Planning"]
+    direction TB
+    g1["Tech stack proposals (EM, BE, FE)<br/>(to approve before use)"] --> GA(( ))
+    GA --> g2["Approved for adoption"]
+  end
+  subgraph impl["4. Implementation"]
+    direction TB
+    g3["AWS component proposals (any role)<br/>(to approve before provisioning)"] --> GB(( ))
+    GB --> g4["Approved for provisioning"]
+  end
+  ep --> impl
+  style ep   fill:#fef9c3,stroke:#ca8a04
+  style impl fill:#dcfce7,stroke:#16a34a
+```
 
 ## Hard constraints (non-negotiable)
 

@@ -58,6 +58,38 @@ Reviews are direct and specific -- issue explicit approval or rejection with a c
 
 ## Collaboration contracts
 
+```mermaid
+flowchart LR
+  classDef disc fill:#dbeafe,stroke:#3b82f6
+  classDef des  fill:#ede9fe,stroke:#7c3aed
+  classDef ep   fill:#fef9c3,stroke:#ca8a04
+  classDef impl fill:#dcfce7,stroke:#16a34a
+  classDef test fill:#fee2e2,stroke:#dc2626
+  D1["1. Discovery"]:::disc --> D2["2. Design"]:::des --> D3["3. Eng Planning"]:::ep --> D4["4. Implementation"]:::impl --> D5["5. Testing"]:::test
+```
+
+```mermaid
+flowchart LR
+  subgraph disc["1. Discovery"]
+    direction TB
+    d1["PRD + ACs (PM)<br/>(to scope delivery phases)"] --> D(( ))
+  end
+  subgraph des["2. Design"]
+    direction TB
+    de1["Mocks (Designer)<br/>(to validate technical feasibility)"] --> DE(( ))
+  end
+  subgraph ep["3. Eng Planning"]
+    direction TB
+    e1["Sys Arch (Arch)<br/>(to author HLD)"] --> E(( ))
+    E --> e2["HLD"]
+    E --> e3["Plan w/ Human Gates"]
+  end
+  disc --> des --> ep
+  style disc fill:#dbeafe,stroke:#3b82f6
+  style des  fill:#ede9fe,stroke:#7c3aed
+  style ep   fill:#fef9c3,stroke:#ca8a04
+```
+
 **Depends on:**
 - PRD, ACs -- approved by PM before authoring Eng Plans (HLD)
 - Sys Arch -- approved by Arch before authoring Eng Plans (HLD)
@@ -75,6 +107,30 @@ Reviews are direct and specific -- issue explicit approval or rejection with a c
 - Issues List (BE, FE, QA separately) -- blocks each role from creating GH Issues and beginning implementation
 - BE Artifacts + BE Test Docs -- blocks QA automation against BE
 - FE Artifacts + FE Test Docs -- blocks QA automation against FE
+
+```mermaid
+flowchart LR
+  subgraph ep["3. Eng Planning"]
+    direction TB
+    g1["BE + FE Detailed Designs"] --> GEP(( ))
+    GEP --> g2["API Contract<br/>(unblocks BE + FE implementation)"]
+  end
+  subgraph impl["4. Implementation"]
+    direction TB
+    g3["Issues Lists (BE, FE, QA)"] --> GIMPL(( ))
+    GIMPL --> g4["GH Issues creation<br/>(unblocks build start)"]
+  end
+  subgraph test["5. Testing"]
+    direction TB
+    g5["Test Plan"] --> GTEST(( ))
+    GTEST --> g6["QA automation<br/>(unblocks test suite)"]
+    g7["BE + FE Artifacts + Test Docs"] --> GTEST
+  end
+  ep --> impl --> test
+  style ep   fill:#fef9c3,stroke:#ca8a04
+  style impl fill:#dcfce7,stroke:#16a34a
+  style test fill:#fee2e2,stroke:#dc2626
+```
 
 ## Hard constraints (non-negotiable)
 

@@ -47,6 +47,26 @@ Before finalizing any mock, raise feasibility concerns directly with the fronten
 
 ## Collaboration contracts
 
+```mermaid
+flowchart LR
+  classDef disc fill:#dbeafe,stroke:#3b82f6
+  classDef des  fill:#ede9fe,stroke:#7c3aed
+  classDef ep   fill:#fef9c3,stroke:#ca8a04
+  classDef impl fill:#dcfce7,stroke:#16a34a
+  classDef test fill:#fee2e2,stroke:#dc2626
+  D1["1. Discovery"]:::disc --> D2["2. Design"]:::des --> D3["3. Eng Planning"]:::ep --> D4["4. Implementation"]:::impl --> D5["5. Testing"]:::test
+```
+
+```mermaid
+flowchart LR
+  subgraph des["2. Design"]
+    direction TB
+    d1["PRD + ACs (from PM)<br/>(to produce Mocks)"] --> D1(( ))
+    D1 --> d2["Mocks"]
+  end
+  style des fill:#ede9fe,stroke:#7c3aed
+```
+
 **Depends on:**
 - PRD, ACs -- approved by PM before beginning Mocks
 

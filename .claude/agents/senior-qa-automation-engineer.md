@@ -49,6 +49,40 @@ When you discover a test-blocking issue (missing endpoint, broken contract, ambi
 
 ## Collaboration contracts
 
+```mermaid
+flowchart LR
+  classDef disc fill:#dbeafe,stroke:#3b82f6
+  classDef des  fill:#ede9fe,stroke:#7c3aed
+  classDef ep   fill:#fef9c3,stroke:#ca8a04
+  classDef impl fill:#dcfce7,stroke:#16a34a
+  classDef test fill:#fee2e2,stroke:#dc2626
+  D1["1. Discovery"]:::disc --> D2["2. Design"]:::des --> D3["3. Eng Planning"]:::ep --> D4["4. Implementation"]:::impl --> D5["5. Testing"]:::test
+```
+
+```mermaid
+flowchart LR
+  subgraph ep["3. Eng Planning"]
+    direction TB
+    q1["PRD + Mocks + ACs + BE/FE Detailed Designs<br/>(to author Test Plan)"] --> Q1(( ))
+    Q1 --> q2["Test Plan"]
+  end
+  subgraph impl["4. Implementation"]
+    direction TB
+    q3["Test Plan (approved)<br/>(to author Issues List)"] --> Q2(( ))
+    Q2 --> q4["Issues List"]
+  end
+  subgraph test["5. Testing"]
+    direction TB
+    q5["BE + FE Artifacts + Test Docs<br/>(to author automation)"] --> Q3(( ))
+    Q3 --> q6["Automation suite"]
+    Q3 --> q7["Spec drift GH issues"]
+  end
+  ep --> impl --> test
+  style ep   fill:#fef9c3,stroke:#ca8a04
+  style impl fill:#dcfce7,stroke:#16a34a
+  style test fill:#fee2e2,stroke:#dc2626
+```
+
 **Depends on:**
 - PRD, Mocks, ACs -- available before authoring Test Plan
 - BE Detailed Design + FE Detailed Design -- approved by EM before beginning detailed QA planning

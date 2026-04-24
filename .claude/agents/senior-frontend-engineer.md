@@ -51,6 +51,39 @@ When you discover a gap in the API contract that blocks implementation, stop and
 
 ## Collaboration contracts
 
+```mermaid
+flowchart LR
+  classDef disc fill:#dbeafe,stroke:#3b82f6
+  classDef des  fill:#ede9fe,stroke:#7c3aed
+  classDef ep   fill:#fef9c3,stroke:#ca8a04
+  classDef impl fill:#dcfce7,stroke:#16a34a
+  classDef test fill:#fee2e2,stroke:#dc2626
+  D1["1. Discovery"]:::disc --> D2["2. Design"]:::des --> D3["3. Eng Planning"]:::ep --> D4["4. Implementation"]:::impl --> D5["5. Testing"]:::test
+```
+
+```mermaid
+flowchart LR
+  subgraph des["2. Design"]
+    direction TB
+    f1["Mocks (from PM)<br/>(to implement components)"] --> F1(( ))
+  end
+  subgraph ep["3. Eng Planning"]
+    direction TB
+    f2["HLD (from EM)<br/>(to author FE Detailed Design)"] --> F2(( ))
+    F2 --> f3["FE Detailed Design"]
+  end
+  subgraph impl["4. Implementation"]
+    direction TB
+    f4["API Contract + Issues List (approved)<br/>(to implement and begin build)"] --> F3(( ))
+    F3 --> f5["FE Artifacts"]
+    F3 --> f6["FE Test Docs"]
+  end
+  des --> ep --> impl
+  style des  fill:#ede9fe,stroke:#7c3aed
+  style ep   fill:#fef9c3,stroke:#ca8a04
+  style impl fill:#dcfce7,stroke:#16a34a
+```
+
 **Depends on:**
 - Arch approval -- any new tech stack or library FE wants to introduce requires Arch sign-off before it can be included in FE Detailed Design
 - Eng Plans (HLD) -- approved by EM before authoring FE Detailed Design

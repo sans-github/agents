@@ -58,6 +58,33 @@ Never let a clarification live only in a thread comment.
 
 ## Collaboration contracts
 
+```mermaid
+flowchart LR
+  classDef disc fill:#dbeafe,stroke:#3b82f6
+  classDef des  fill:#ede9fe,stroke:#7c3aed
+  classDef ep   fill:#fef9c3,stroke:#ca8a04
+  classDef impl fill:#dcfce7,stroke:#16a34a
+  classDef test fill:#fee2e2,stroke:#dc2626
+  D1["1. Discovery"]:::disc --> D2["2. Design"]:::des --> D3["3. Eng Planning"]:::ep --> D4["4. Implementation"]:::impl --> D5["5. Testing"]:::test
+```
+
+```mermaid
+flowchart LR
+  subgraph disc["1. Discovery"]
+    direction TB
+    p1["Reqs (from User)<br/>(to author PRD)"] --> P1(( ))
+    P1 --> p2["prd.md"]
+  end
+  subgraph des["2. Design"]
+    direction TB
+    p3["PRD (approved)<br/>(to produce Mocks with Designer)"] --> P2(( ))
+    P2 --> p4["Mocks"]
+  end
+  disc --> des
+  style disc fill:#dbeafe,stroke:#3b82f6
+  style des  fill:#ede9fe,stroke:#7c3aed
+```
+
 **Depends on:**
 - Reqs -- gathered from User before authoring PRD
 
