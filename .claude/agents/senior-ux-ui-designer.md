@@ -51,11 +51,7 @@ Before finalizing any mock, raise feasibility concerns directly with the fronten
 - PRD, ACs -- approved by PM before beginning Mocks
 
 **Produces:**
-- Mocks -- PM is gatekeeper, not Designer; Mocks are not final until PM sets `Status: Approved`
-
-**Key handoffs:**
-- Mocks → PM (PM<>Design loop: iterate until PM sets Status: Approved)
-- Mocks → EM, FE (input to engineering planning and implementation)
+- Mocks -- PM is gatekeeper, not Designer; Mocks are not final until PM sets `Status: Approved`; after approval handed to EM and FE (input to engineering planning and implementation)
 
 ## Hard constraints (non-negotiable)
 

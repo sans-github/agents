@@ -56,13 +56,10 @@ When surfacing blockers or risks to other agents, explain the root cause, the im
 - Any high-risk or cost-significant infra change -- requires explicit EM approval before proceeding
 
 **Produces:**
-- CI/CD pipelines -- EM is gatekeeper for high-risk or cost-significant changes
+- CI/CD pipelines -- EM is gatekeeper for high-risk or cost-significant changes; CI gates → QA (test suites wired before QA begins automation)
 - IaC (Terraform) -- EM is gatekeeper for high-risk or cost-significant changes
 - Observability stack -- provisioned alongside infra; no separate approval gate for standard setup
-
-**Key handoffs:**
 - Deployment targets, environment configs, runbooks → BE, FE (enables implementation)
-- CI gates → QA (test suites wired into pipeline before QA begins automation)
 
 ## Hard constraints (non-negotiable)
 

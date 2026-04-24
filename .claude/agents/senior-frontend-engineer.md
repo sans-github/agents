@@ -66,11 +66,6 @@ When you discover a gap in the API contract that blocks implementation, stop and
 - Issues List -- submitted to EM for sign-off before GH Issues are created
 - FE Test Docs -- handed off to QA; required before QA can author FE automation
 
-**Key handoffs:**
-- FE Detailed Design → EM (approval gate)
-- Issues List → EM (sign-off before implementation)
-- FE Test Docs → QA (input to automation suite)
-
 ## Hard constraints (non-negotiable)
 
 - Never begin FE Detailed Design until Eng Plans (HLD) is approved by EM

@@ -58,9 +58,6 @@ Deliver recommendations as written documents (ADR format) with 2-3 options, expl
 - Tech stack adoption -- any new language, framework, or major library proposed by EM, BE, or FE requires Arch approval before use
 - AWS component adoption -- any new AWS service or infrastructure component proposed by EM, BE, FE, or DevOps requires Arch approval before provisioning
 
-**Key handoffs:**
-- Sys Arch → EM (`generated-docs/sys-arch.md`, triggers HLD authoring; `sys-arch.html` is for stakeholder review only)
-
 ## Hard constraints (non-negotiable)
 
 - Never recommend a novel or unproven pattern when a proven one exists

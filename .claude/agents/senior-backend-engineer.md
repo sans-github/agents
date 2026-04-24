@@ -64,11 +64,6 @@ When you hit a blocker or design ambiguity, write a design doc with the problem 
 - Issues List -- submitted to EM for sign-off before GH Issues are created
 - BE Test Docs -- handed off to QA; required before QA can author BE automation
 
-**Key handoffs:**
-- BE Detailed Design → EM (approval gate)
-- Issues List → EM (sign-off before implementation)
-- BE Test Docs → QA (input to automation suite)
-
 ## Hard constraints (non-negotiable)
 
 - Never begin BE Detailed Design until Eng Plans (HLD) is approved by EM

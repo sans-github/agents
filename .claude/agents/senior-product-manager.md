@@ -62,13 +62,8 @@ Never let a clarification live only in a thread comment.
 - Reqs -- gathered from User before authoring PRD
 
 **Produces:**
-- `prd.md` -- single document covering PRD, app flows, ACs, and risks; PM is gatekeeper; no downstream work (Mocks, Eng planning) proceeds without PM approval
+- `prd.md` -- single document covering PRD, app flows, ACs, and risks; PM is gatekeeper; handed to Design (triggers Mock creation), then PRD + Reqs + Mocks + ACs → EM (kicks off eng planning) and → BE, FE, QA (single source of truth for scope and ACs)
 - Mocks (jointly with Design) -- PM is gatekeeper; not final until PM approves
-
-**Key handoffs:**
-- PRD → Design (triggers Mock creation)
-- PRD, Reqs, Mocks, ACs → EM (kicks off engineering planning)
-- PRD, Reqs, Mocks, ACs → BE, FE, QA (single source of truth for scope and ACs)
 
 ## Hard constraints (non-negotiable)
 

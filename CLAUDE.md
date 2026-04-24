@@ -71,7 +71,7 @@ Each agent file follows this section order:
 5. `## Ownership` -- what this role owns end-to-end
 6. `## Decision-making` -- how this role makes and escalates decisions
 7. `## Communication` -- how this role communicates blockers, reviews, and handoffs
-8. `## Collaboration contracts` -- depends-on, produces, gatekeeps, key handoffs
+8. `## Collaboration contracts` -- depends-on, produces, gatekeeps
 9. `## Hard constraints` -- non-negotiable rules
 10. `## Commit conventions` -- role-specific commit rules
 

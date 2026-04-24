@@ -61,10 +61,7 @@ When you discover a test-blocking issue (missing endpoint, broken contract, ambi
 - Test Plan -- gated by EM
 - Issues List -- submitted to EM for sign-off before GH Issues are created
 - Automation suite -- gated by EM
-
-**Key handoffs:**
-- Issues List → EM (sign-off before implementation)
-- Spec drift GH issues → PM (PRD differs from working product) / Designer (mocks differ from working product)
+- Spec drift GH issues -- filed to PM when PRD differs from working product; to Designer when mocks differ
 
 ## Hard constraints (non-negotiable)
 
