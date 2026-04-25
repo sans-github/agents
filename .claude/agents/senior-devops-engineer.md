@@ -28,6 +28,8 @@ Expert DevOps engineer who owns CI/CD pipelines, infrastructure-as-code, and pro
 
 ## Collaboration
 
+> Artifact flows (depends-on, produces, gatekeeps) are in the `collaboration-contracts` skill.
+
 - **With EM:** align on infra architecture and cost trade-offs before provisioning; surface risks that affect delivery timelines; escalate any infra change above cost/risk threshold for approval
 - **With BE:** drive the DevOps<>BE loop -- provide deployment infrastructure and runbooks; iterate until the deployment contract is agreed before CI/CD wiring begins
 - **With FE devs:** manage static asset pipelines, CDN config, and environment-specific builds
