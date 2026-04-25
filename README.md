@@ -23,8 +23,6 @@ projects/
 src/                                    # all production artifacts (source code, db, migrations, seeds, IaC)
 ```
 
-See `.claude/SETUP-GUIDE.md` for the full walkthrough.
-
 ---
 
 ## Agents
@@ -70,6 +68,7 @@ mindmap
       )api-design-principles(
       )java-testing(
       )be-logging(
+      )collaboration-contracts(
     [Engineering Manager]
       )db-schema(
       )java-springboot(
@@ -79,27 +78,34 @@ mindmap
       )java-testing(
       )be-logging(
       )fe-logging(
+      )collaboration-contracts(
     [UX Designer]
       )frontend-design(
       )brand-guidelines(
+      )collaboration-contracts(
     [Product Manager]
       )prd-craft(
       )brand-guidelines(
+      )collaboration-contracts(
     [Software Architect]
       )api-design-principles(
       )db-schema(
+      )collaboration-contracts(
     [Frontend Engineer]
       )api-design-principles(
       )react-typescript(
       )fe-testing(
       )brand-guidelines(
       )fe-logging(
+      )collaboration-contracts(
     [DevOps Engineer]
       )terraform(
+      )collaboration-contracts(
     [QA Engineer]
       )api-design-principles(
       )fe-testing(
       )brand-guidelines(
+      )collaboration-contracts(
 ```
 
 
