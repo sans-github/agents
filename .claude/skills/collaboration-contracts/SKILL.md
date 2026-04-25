@@ -7,6 +7,10 @@ description: Single source of truth for all agent collaboration contracts -- wha
 
 This is the single source of truth for artifact flows across the team. When a collaboration model changes, update this file only -- do not update individual agent files.
 
+## How to use this skill
+
+When this skill is loaded, treat every contract in this file as a hard constraint. Before any handoff, approval, or phase transition, re-read the relevant section and verify your action is permitted. Do not rely on memory of a prior read.
+
 ---
 
 ## PM <> User
