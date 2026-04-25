@@ -50,9 +50,10 @@ Each agent definition covers:
 - **Ownership** -- what this role owns end-to-end
 - **Decision-making** -- how this role makes and escalates decisions
 - **Communication** -- how this role communicates blockers, reviews, and handoffs
-- **Collaboration contracts** -- phase diagrams, depends-on, produces, and gatekeeps
 - **Hard constraints** -- non-negotiable rules that govern the role
 - **Commit conventions** -- role-specific commit rules, inline in the agent file
+
+Collaboration contracts (depends-on, produces, gatekeeps per pair) live in `.claude/skills/collaboration-contracts/SKILL.md` -- the single source of truth for artifact flows. All agents load this skill at runtime.
 
 ## Skills
 

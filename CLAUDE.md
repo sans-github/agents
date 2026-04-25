@@ -64,16 +64,17 @@ Rules in `.claude/rules/` are loaded automatically. Key ones to know:
 ## Agent conventions
 
 Each agent file follows this section order:
-1. Frontmatter (`name`, `description`, optional `skills`)
+1. Frontmatter (`name`, `description`, optional `skills`) -- all agents include `collaboration-contracts` skill
 2. One-line identity (`You are a senior X.`)
 3. `## Qualities` -- intro line, mindset, and role-specific quality bullets
-4. `## Collaboration` -- who this role works with and how
+4. `## Collaboration` -- who this role works with and how (behavioral only; no artifact names)
 5. `## Ownership` -- what this role owns end-to-end
 6. `## Decision-making` -- how this role makes and escalates decisions
 7. `## Communication` -- how this role communicates blockers, reviews, and handoffs
-8. `## Collaboration contracts` -- depends-on, produces, gatekeeps
-9. `## Hard constraints` -- non-negotiable rules
-10. `## Commit conventions` -- role-specific commit rules
+8. `## Hard constraints` -- non-negotiable rules
+9. `## Commit conventions` -- role-specific commit rules
+
+Collaboration contracts (depends-on, produces, gatekeeps) live exclusively in `.claude/skills/collaboration-contracts/SKILL.md`, organized by pair (e.g. EM<>QA). Do not duplicate artifact flows in individual agent files.
 
 ## Skill naming
 

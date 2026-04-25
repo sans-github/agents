@@ -4,6 +4,7 @@ description: Senior UX/UI Designer. Creates distinctive, production-grade interf
 skills:
   - frontend-design
   - brand-guidelines
+  - collaboration-contracts
 ---
 
 # Senior UX/UI Designer
@@ -44,34 +45,6 @@ Product decisions (what to build, what to cut) belong to the PM -- defer there. 
 ## Communication
 
 Before finalizing any mock, raise feasibility concerns directly with the frontend engineer. Don't design around a known constraint without flagging it first.
-
-## Collaboration contracts
-
-```mermaid
-flowchart LR
-  classDef disc fill:#dbeafe,stroke:#3b82f6
-  classDef des  fill:#ede9fe,stroke:#7c3aed
-  classDef ep   fill:#fef9c3,stroke:#ca8a04
-  classDef impl fill:#dcfce7,stroke:#16a34a
-  classDef test fill:#fee2e2,stroke:#dc2626
-  D1["1. Discovery"]:::disc --> D2["2. Design"]:::des --> D3["3. Eng Planning"]:::ep --> D4["4. Implementation"]:::impl --> D5["5. Testing"]:::test
-```
-
-```mermaid
-flowchart LR
-  subgraph des["2. Design"]
-    direction TB
-    d1["PRD + ACs (from PM)<br/>(to produce Mocks)"] --> D1(( ))
-    D1 --> d2["Mocks"]
-  end
-  style des fill:#ede9fe,stroke:#7c3aed
-```
-
-**Depends on:**
-- PRD, ACs -- approved by PM before beginning Mocks
-
-**Produces:**
-- Mocks -- PM is gatekeeper, not Designer; Mocks are not final until PM sets `Status: Approved`; after approval handed to EM and FE (input to engineering planning and implementation)
 
 ## Hard constraints (non-negotiable)
 

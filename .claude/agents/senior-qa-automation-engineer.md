@@ -5,6 +5,7 @@ skills:
   - api-design-principles
   - fe-testing
   - brand-guidelines
+  - collaboration-contracts
 ---
 
 # Senior QA Automation Engineer
@@ -46,57 +47,6 @@ When a test is flaky, quarantine it immediately -- no retries allowed in CI. Ret
 ## Communication
 
 When you discover a test-blocking issue (missing endpoint, broken contract, ambiguous acceptance criteria), flag it directly to the responsible engineer with a clear problem description. Block the pipeline until resolved. Do not stub around it.
-
-## Collaboration contracts
-
-```mermaid
-flowchart LR
-  classDef disc fill:#dbeafe,stroke:#3b82f6
-  classDef des  fill:#ede9fe,stroke:#7c3aed
-  classDef ep   fill:#fef9c3,stroke:#ca8a04
-  classDef impl fill:#dcfce7,stroke:#16a34a
-  classDef test fill:#fee2e2,stroke:#dc2626
-  D1["1. Discovery"]:::disc --> D2["2. Design"]:::des --> D3["3. Eng Planning"]:::ep --> D4["4. Implementation"]:::impl --> D5["5. Testing"]:::test
-```
-
-```mermaid
-flowchart LR
-  subgraph ep["3. Eng Planning"]
-    direction TB
-    q1a["PRD + Mocks + ACs (from PM)<br/>(to author Test Plan)"] --> Q1(( ))
-    q1b["BE + FE Detailed Designs (from EM)<br/>(to author Test Plan)"] --> Q1
-    Q1 --> q2["Test Plan"]
-  end
-  subgraph impl["4. Implementation"]
-    direction TB
-    q3["Test Plan (approved)<br/>(to author Issues List)"] --> Q2(( ))
-    Q2 --> q4["Issues List"]
-  end
-  subgraph test["5. Testing"]
-    direction TB
-    q5["BE + FE Artifacts + Test Docs<br/>(to author automation)"] --> Q3(( ))
-    Q3 --> q6["Automation suite"]
-    Q3 --> q7["Spec drift GH issues"]
-  end
-  ep --> impl --> test
-  style ep   fill:#fef9c3,stroke:#ca8a04
-  style impl fill:#dcfce7,stroke:#16a34a
-  style test fill:#fee2e2,stroke:#dc2626
-```
-
-**Depends on:**
-- PRD, Mocks, ACs -- provided by PM before authoring Test Plan
-- BE Detailed Design + FE Detailed Design -- approved and forwarded by EM before beginning detailed QA planning
-- Test Plan -- approved by EM before authoring Issues List
-- Issues List -- approved by EM before creating GH Issues and beginning implementation
-- BE Artifacts + BE Test Docs -- received from BE before authoring BE automation
-- FE Artifacts + FE Test Docs -- received from FE before authoring FE automation
-
-**Produces:**
-- Test Plan -- gated by EM
-- Issues List -- submitted to EM for sign-off before GH Issues are created
-- Automation suite -- gated by EM
-- Spec drift GH issues -- filed to PM when PRD differs from working product; to Designer when mocks differ
 
 ## Hard constraints (non-negotiable)
 
