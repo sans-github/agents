@@ -150,36 +150,64 @@ sequenceDiagram
     end
     rect rgb(237, 233, 254)
         Note over User,QA: 2. Design
-        loop PM ↔ Design
-            PM->>Design: PRD, ACs
-            Design-->>PM: Mocks
+        rect rgb(196, 181, 253)
+            Note over PM,Design: PM <> Designer
+            loop PM ↔ Design
+                PM->>Design: PRD, ACs
+                Design-->>PM: Mocks
+            end
         end
-        PM->>EM: PRD, Reqs, Mocks, ACs
-        PM->>QA: PRD, Mocks, ACs
+        rect rgb(196, 181, 253)
+            Note over PM,QA: PM handoffs
+            PM->>EM: PRD, Reqs, Mocks, ACs
+            PM->>QA: PRD, Mocks, ACs
+        end
     end
     rect rgb(254, 249, 195)
         Note over User,QA: 3. Eng Planning
-        loop Sys Arch
-            EM->>Arch: collaborate
-            Arch-->>EM: Sys Arch
+        rect rgb(254, 240, 138)
+            Note over EM,Arch: EM <> Arch
+            loop Sys Arch
+                EM->>Arch: PRD, ACs
+                Arch-->>EM: Sys Arch
+            end
         end
-        EM->>BE: HLD
-        BE-->>EM: BE Detailed Design
-        EM->>FE: HLD
-        FE-->>EM: FE Detailed Design
-        loop API Contract
-            BE->>FE: draft
-            FE-->>BE: feedback
+        rect rgb(254, 240, 138)
+            Note over EM,BE: EM <> BE
+            EM->>BE: HLD
+            BE-->>EM: BE Detailed Design
+            EM-->>BE: Approved
+        end
+        rect rgb(254, 240, 138)
+            Note over EM,FE: EM <> FE
+            EM->>FE: HLD
+            FE-->>EM: FE Detailed Design
+            EM-->>FE: Approved
+        end
+        rect rgb(254, 240, 138)
+            Note over EM,FE: BE <> FE → EM
+            loop API Contract
+                BE->>FE: draft
+                FE-->>BE: feedback
+            end
+            BE->>EM: API Contract (joint w/ FE)
+            EM-->>BE: Approved
         end
     end
     rect rgb(220, 252, 231)
         Note over User,QA: 4. Implementation
-        BE->>EM: Issues List
-        EM-->>BE: Approved
-        BE->>BE: Create GH Issues → Implement
-        FE->>EM: Issues List
-        EM-->>FE: Approved
-        FE->>FE: Create GH Issues → Implement
+        rect rgb(167, 243, 208)
+            Note over EM,BE: EM <> BE
+            BE->>EM: Issues List
+            EM-->>BE: Approved
+            BE->>BE: Create GH Issues → Implement
+        end
+        rect rgb(167, 243, 208)
+            Note over EM,FE: EM <> FE
+            FE->>EM: Issues List
+            EM-->>FE: Approved
+            FE->>FE: Create GH Issues → Implement
+        end
         rect rgb(167, 243, 208)
             Note over EM,QA: QA cycle
             EM->>QA: BE + FE Detailed Designs (approved)
@@ -194,7 +222,12 @@ sequenceDiagram
     end
     rect rgb(254, 226, 226)
         Note over User,QA: 5. Testing
-        QA->>QA: Automation
+        rect rgb(252, 165, 165)
+            Note over QA,EM: QA → EM
+            QA->>QA: Automation
+            QA->>EM: Automation suite
+            EM-->>QA: Approved
+        end
     end
 ```
 
