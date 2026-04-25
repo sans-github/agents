@@ -50,7 +50,7 @@ Each agent definition covers:
 - **Ownership** -- what this role owns end-to-end
 - **Decision-making** -- how this role makes and escalates decisions
 - **Communication** -- how this role communicates blockers, reviews, and handoffs
-- **Collaboration contracts** -- depends-on, produces, gatekeeps, and key handoffs
+- **Collaboration contracts** -- phase diagrams, depends-on, produces, and gatekeeps
 - **Hard constraints** -- non-negotiable rules that govern the role
 - **Commit conventions** -- role-specific commit rules, inline in the agent file
 
@@ -143,47 +143,54 @@ sequenceDiagram
     participant FE
     participant QA
 
-    User->>PM: Reqs
-    loop Review
-        PM->>Design: PRD, ACs
-        Design-->>PM: Mocks
+    rect rgb(219, 234, 254)
+        Note over User,QA: 1. Discovery
+        User->>PM: Reqs
     end
-    PM->>EM: PRD, Reqs, Mocks, ACs
-    loop Sys Arch
-        EM->>Arch: collaborate
-        Arch-->>EM: Sys Arch
+    rect rgb(237, 233, 254)
+        Note over User,QA: 2. Design
+        loop PM ↔ Design
+            PM->>Design: PRD, ACs
+            Design-->>PM: Mocks
+        end
+        PM->>EM: PRD, Reqs, Mocks, ACs
+        PM->>QA: PRD, Mocks, ACs
     end
-    rect rgb(220, 230, 255)
+    rect rgb(254, 249, 195)
+        Note over User,QA: 3. Eng Planning
+        loop Sys Arch
+            EM->>Arch: collaborate
+            Arch-->>EM: Sys Arch
+        end
         EM->>BE: HLD
         BE-->>EM: BE Detailed Design
-    end
-    rect rgb(220, 230, 255)
         EM->>FE: HLD
         FE-->>EM: FE Detailed Design
+        loop API Contract
+            BE->>FE: draft
+            FE-->>BE: feedback
+        end
+        EM->>QA: BE + FE Detailed Designs
     end
-    loop API Contract
-        BE->>FE: draft
-        FE-->>BE: feedback
-    end
-    QA->>EM: Test Plan
-    rect rgb(220, 255, 220)
+    rect rgb(220, 252, 231)
+        Note over User,QA: 4. Implementation
+        QA->>EM: Test Plan
         BE->>EM: Issues List
         EM-->>BE: Approved
         BE->>BE: Create GH Issues → Implement
-    end
-    rect rgb(220, 255, 220)
         FE->>EM: Issues List
         EM-->>FE: Approved
         FE->>FE: Create GH Issues → Implement
-    end
-    rect rgb(220, 255, 220)
         QA->>EM: Issues List
         EM-->>QA: Approved
         QA->>QA: Create GH Issues → Implement
+        BE->>QA: BE Test Docs
+        FE->>QA: FE Test Docs
     end
-    BE->>QA: BE Test Docs
-    FE->>QA: FE Test Docs
-    QA->>QA: Automation
+    rect rgb(254, 226, 226)
+        Note over User,QA: 5. Testing
+        QA->>QA: Automation
+    end
 ```
 
 </details>
@@ -235,13 +242,13 @@ sequenceDiagram
 1. **User** shares requirements with **PM**.
 2. **PM** gathers requirements and produces the PRD and ACs.
 3. **PM** sends PRD to **Design**, who creates Mocks. PM reviews and refines jointly with Design.
-4. **PM** sends PRD, Reqs, Mocks, and ACs to **EM** to kick off engineering planning.
+4. **PM** sends PRD, Reqs, Mocks, and ACs to **EM** to kick off engineering planning, and PRD, Mocks, and ACs to **QA** as input to the Test Plan.
 5. **EM** engages **Arch** and collaborates to produce Sys Arch based on PRD and system constraints.
 6. **EM** authors Eng Plans (HLD) -- DB Schema, IAC, Core API, BE<>FE API contract, Feature sys design -- based on Sys Arch and PRD. Arch contributes; FE and BE align on scope.
 7. **BE** authors BE Detailed Design (DB Schema, IAC, BE API, BE<>FE API contract) from the HLD.
 8. **FE** authors FE Detailed Design (component design, state, routing, API integration) from the HLD.
 9. **FE and BE** jointly author the API Contract, aligned on their Detailed Designs.
-10. **QA** authors the Test Plan based on PRD, Mocks, and ACs.
+10. **QA** authors the Test Plan based on PRD, Mocks, and ACs (from PM) and BE/FE Detailed Designs (forwarded by EM once approved).
 11. **BE**, **FE**, and **QA** each independently author their own Issues List -- a hierarchical document breaking down their scope into individual GitHub issues, organized for human review. Each submits to **EM** for sign-off.
 12. **EM** reviews and signs off on each Issues List. Once approved, each role creates the actual GH Issues and begins implementation.
 13. **FE** implements FE Artifacts per FE Detailed Design and API Contract. **BE** implements BE Artifacts per BE Detailed Design and API Contract.
