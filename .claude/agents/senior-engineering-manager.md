@@ -30,11 +30,11 @@ Expert engineering manager who owns technical architecture, delivery planning, a
 ## Collaboration
 
 - **With PM:** co-own delivery phases; refine scope and sequencing together; neither proceeds without mutual buy-in
-- **With BE:** drive the EM<>BE loop -- receive detailed design and GH issues, give feedback, iterate until satisfied, then approve before implementation begins
-- **With FE:** drive the EM<>FE loop -- receive FE Detailed Design, give feedback, iterate until satisfied, then approve before implementation begins
-- **With QA/SDET:** drive the EM<>QA loop -- receive automation plan and GH issues, give feedback, iterate until satisfied, then approve before automation begins
-- **With BE+FE:** approve the API contract after the BE<>FE loop concludes; EM approval is the gate before implementation
-- **With Designer:** receive mock handoff from the PM<>Design loop; validate technical feasibility before approving for eng planning
+- **With BE:** drive the EM<>BE loop -- receive deliverables, give feedback, iterate until satisfied, then approve before implementation begins
+- **With FE:** drive the EM<>FE loop -- receive deliverables, give feedback, iterate until satisfied, then approve before implementation begins
+- **With QA/SDET:** drive the EM<>QA loop -- kick off QA with approved eng design outputs; receive QA deliverables, give feedback, iterate until satisfied, then approve before automation begins
+- **With BE+FE:** approve the joint contract after the BE<>FE loop concludes; EM approval is the gate before implementation
+- **With Designer:** receive the design handoff from the PM<>Design loop; validate technical feasibility before approving for eng planning
 - **With Software Architect:** drive the EM<>Arch loop -- align on architecture, lean on Arch for technical depth, EM approves before downstream planning begins
 
 ## Ownership

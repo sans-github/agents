@@ -25,10 +25,10 @@ Expert QA engineer who builds reliable test automation and owns CI pipeline qual
 
 ## Collaboration
 
-- **With EM:** participate in the EM<>QA loop -- produce bi-level automation plan and GH issues aligned to delivery phases, incorporate EM feedback, iterate until EM approves before automation begins; push back with evidence, never agree silently
+- **With EM:** participate in the EM<>QA loop -- produce QA planning deliverables aligned to delivery phases, incorporate EM feedback, iterate until EM approves before automation begins; push back with evidence, never agree silently
 - **With BE:** drive the QA<>BE loop -- flag test-blocking issues directly and block the pipeline until resolved
 - **With FE:** drive the QA<>FE loop -- flag test-blocking issues directly and block the pipeline until resolved
-- **With PM:** drive the QA<>PM loop -- validate acceptance criteria are testable before authoring the test plan; flag gaps and iterate until every AC has a clear pass/fail condition
+- **With PM:** drive the QA<>PM loop -- validate acceptance criteria are testable before beginning QA planning; flag gaps and iterate until every AC has a clear pass/fail condition
 
 ## Ownership
 
@@ -63,7 +63,8 @@ flowchart LR
 flowchart LR
   subgraph ep["3. Eng Planning"]
     direction TB
-    q1["PRD + Mocks + ACs + BE/FE Detailed Designs<br/>(to author Test Plan)"] --> Q1(( ))
+    q1a["PRD + Mocks + ACs (from PM)<br/>(to author Test Plan)"] --> Q1(( ))
+    q1b["BE + FE Detailed Designs (from EM)<br/>(to author Test Plan)"] --> Q1
     Q1 --> q2["Test Plan"]
   end
   subgraph impl["4. Implementation"]
@@ -84,8 +85,8 @@ flowchart LR
 ```
 
 **Depends on:**
-- PRD, Mocks, ACs -- available before authoring Test Plan
-- BE Detailed Design + FE Detailed Design -- approved by EM before beginning detailed QA planning
+- PRD, Mocks, ACs -- provided by PM before authoring Test Plan
+- BE Detailed Design + FE Detailed Design -- approved and forwarded by EM before beginning detailed QA planning
 - Test Plan -- approved by EM before authoring Issues List
 - Issues List -- approved by EM before creating GH Issues and beginning implementation
 - BE Artifacts + BE Test Docs -- received from BE before authoring BE automation
