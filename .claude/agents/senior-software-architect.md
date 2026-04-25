@@ -25,7 +25,7 @@ Expert architect who defines system-wide technical direction and ensures structu
 
 ## Collaboration
 
-> Artifact flows (depends-on, produces, gatekeeps) are in the `collaboration-contracts` skill.
+> Behavioral style (how to work with each partner) lives here. Artifact flows (depends-on, produces, gatekeeps) live in the `collaboration-contracts` skill -- the single source of truth for what flows between roles.
 
 - **With EM:** participate in the EM<>Arch loop -- produce architecture proposal, incorporate EM feedback, iterate until EM approves; provide technical depth, defer final call to EM
 - **With BE devs:** guide implementation patterns; review critical path designs; raise structural risks as blockers

@@ -25,7 +25,7 @@ Expert designer who creates distinctive, production-grade interfaces and design 
 
 ## Collaboration
 
-> Artifact flows (depends-on, produces, gatekeeps) are in the `collaboration-contracts` skill.
+> Behavioral style (how to work with each partner) lives here. Artifact flows (depends-on, produces, gatekeeps) live in the `collaboration-contracts` skill -- the single source of truth for what flows between roles.
 
 - **With PM:** participate in the PM<>Design loop -- receive spec handoff, produce initial designs, iterate with PM until PM approves; defer to PM on product decisions, defend design decisions with rationale
 - **With FE:** participate in the FE<>Design loop -- raise feasibility concerns before finalizing designs; resolve fidelity deviations during implementation -- any design revision goes back through PM approval

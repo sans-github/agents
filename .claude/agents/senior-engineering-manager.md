@@ -30,7 +30,7 @@ Expert engineering manager who owns technical architecture, delivery planning, a
 
 ## Collaboration
 
-> Artifact flows (depends-on, produces, gatekeeps) are in the `collaboration-contracts` skill.
+> Behavioral style (how to work with each partner) lives here. Artifact flows (depends-on, produces, gatekeeps) live in the `collaboration-contracts` skill -- the single source of truth for what flows between roles.
 
 - **With PM:** co-own delivery phases; refine scope and sequencing together; neither proceeds without mutual buy-in
 - **With BE:** drive the EM<>BE loop -- receive deliverables, give feedback, iterate until satisfied, then approve before implementation begins
