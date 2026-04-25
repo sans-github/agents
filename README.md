@@ -171,17 +171,18 @@ sequenceDiagram
             BE->>FE: draft
             FE-->>BE: feedback
         end
-        EM->>QA: BE + FE Detailed Designs
     end
     rect rgb(220, 252, 231)
         Note over User,QA: 4. Implementation
-        QA->>EM: Test Plan
         BE->>EM: Issues List
         EM-->>BE: Approved
         BE->>BE: Create GH Issues → Implement
         FE->>EM: Issues List
         EM-->>FE: Approved
         FE->>FE: Create GH Issues → Implement
+        EM->>QA: BE + FE Detailed Designs (approved)
+        QA->>EM: Test Plan
+        EM-->>QA: Approved
         QA->>EM: Issues List
         EM-->>QA: Approved
         QA->>QA: Create GH Issues → Implement
