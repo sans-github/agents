@@ -180,14 +180,17 @@ sequenceDiagram
         FE->>EM: Issues List
         EM-->>FE: Approved
         FE->>FE: Create GH Issues → Implement
-        EM->>QA: BE + FE Detailed Designs (approved)
-        QA->>EM: Test Plan
-        EM-->>QA: Approved
-        QA->>EM: Issues List
-        EM-->>QA: Approved
-        QA->>QA: Create GH Issues → Implement
-        BE->>QA: BE Test Docs
-        FE->>QA: FE Test Docs
+        rect rgb(167, 243, 208)
+            Note over EM,QA: QA cycle
+            EM->>QA: BE + FE Detailed Designs (approved)
+            QA->>EM: Test Plan
+            EM-->>QA: Approved
+            QA->>EM: Issues List
+            EM-->>QA: Approved
+            QA->>QA: Create GH Issues → Implement
+            BE->>QA: BE Artifacts + BE Test Docs
+            FE->>QA: FE Artifacts + FE Test Docs
+        end
     end
     rect rgb(254, 226, 226)
         Note over User,QA: 5. Testing
