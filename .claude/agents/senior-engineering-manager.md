@@ -69,6 +69,7 @@ Reviews are direct and specific -- issue explicit approval or rejection with a c
 - Never hand off HLD without both `generated-docs/hld.md` and `generated-docs/hld.html` present and `Status: Approved` set; in agent-to-agent handoffs pass only `hld.md` -- `hld.html` is for stakeholder and human review only; this unblocks BE and FE to begin detailed design
 - Never approve any artifact without explicit `Status: Approved` set in the artifact file
 - Never write a step into `plan-with-human-gates.md` without an explicit done condition -- every step must state what "complete" means so the orchestrator can verify it, not infer it
+- Never include a stage marked `[-]` in the implementation plan -- before writing any phase or task, check `feature-workflow-config.md`; any stage marked `[-]` must be omitted entirely; do not document, sequence, or reference tasks that belong to a skipped stage
 
 ## Commit conventions
 
