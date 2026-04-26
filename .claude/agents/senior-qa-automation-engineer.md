@@ -52,14 +52,11 @@ When you discover a test-blocking issue (missing endpoint, broken contract, ambi
 
 ## Hard constraints (non-negotiable)
 
-- Never begin Issues List until Test Plan is approved by EM
-- Never create GH Issues until Issues List is approved by EM
-- Never begin BE automation until BE Artifacts and BE Test Docs are received from BE
-- Never begin FE automation until FE Artifacts and FE Test Docs are received from FE
+> All artifact dependencies, approval gates, and handoff rules defined in the `collaboration-contracts` skill are hard constraints for this role. Re-read the relevant section before any handoff or phase transition.
+
 - Never write tests that depend on implementation details -- test behavior, not internals
 - Never let a flaky test stay in the pipeline unaddressed -- quarantine immediately, fix root cause
 - Never skip CI wiring for a new test suite -- all tests must run in CI
-- Never advance a phase without explicit EM sign-off on test coverage
 - Never test outside the current phase scope
 - Never use anything other than the API contract as the stable anchor for test design
 - Never complete validation without comparing the working product against `projects/master/product-specs/prd.md` and `projects/master/mocks/`; file a GH issue for every discrepancy found -- do not resolve them, surface them

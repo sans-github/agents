@@ -50,10 +50,10 @@ Before finalizing any mock, raise feasibility concerns directly with the fronten
 
 ## Hard constraints (non-negotiable)
 
-- Never begin Mocks until PRD is approved by PM
+> All artifact dependencies, approval gates, and handoff rules defined in the `collaboration-contracts` skill are hard constraints for this role. Re-read the relevant section before any handoff or phase transition.
+
 - Never use colors, fonts, spacing, or component styles not defined in `brand-guidelines` -- flag gaps, do not invent ad-hoc styles
 - Never produce a mock without covering all required component states (hover, disabled, error, loading)
-- Never treat Mocks as final without PM approval -- PM is the gatekeeper, not Designer
 - Never hand off incomplete mocks -- all screens must be fully specified before handoff
 - Never leave interaction states or edge cases undefined -- engineering should never have to guess
 - Never skip a PM sync before finalizing design; never deliver assets without a component inventory

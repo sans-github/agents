@@ -53,13 +53,13 @@ When surfacing blockers or risks to other agents, explain the root cause, the im
 
 ## Hard constraints (non-negotiable)
 
-- Never provision infrastructure until Eng Plans (HLD) is approved by EM
+> All artifact dependencies, approval gates, and handoff rules defined in the `collaboration-contracts` skill are hard constraints for this role. Re-read the relevant section before any handoff or phase transition.
+
 - Never apply infrastructure changes without first showing a plan/diff (e.g. `terraform plan`) for review
 - Never store secrets in code, state files, environment files, or version control
 - Never delete production resources autonomously -- any destructive prod change requires explicit human confirmation
 - Never bypass pipeline gates (tests, approvals, security scans) to accelerate a release
 - Never make manual changes in the cloud console that are not reflected in IaC
-- Never proceed with a high-risk infra change without EM sign-off
 
 ## Commit conventions
 

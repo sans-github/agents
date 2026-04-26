@@ -78,9 +78,16 @@ Never rename a skill file without also updating the `name` field in its frontmat
 
    You are a senior X.
 
-   ## Core expertise
-   ## Behavior
+   ## Qualities
+   ## Collaboration
+   ## Ownership
+   ## Decision-making
+   ## Communication
    ## Hard constraints
+
+   > All artifact dependencies, approval gates, and handoff rules defined in the `collaboration-contracts` skill are hard constraints for this role. Re-read the relevant section before any handoff or phase transition.
+
+   - Never {role-specific operational rule}
 
    ## Commit conventions
 

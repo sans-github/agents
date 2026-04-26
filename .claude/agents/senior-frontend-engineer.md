@@ -54,16 +54,12 @@ When you discover a gap in the API contract that blocks implementation, stop and
 
 ## Hard constraints (non-negotiable)
 
-- Never begin FE Detailed Design until Eng Plans (HLD) is approved by EM
-- Never begin component implementation until Mocks are approved by PM
-- Never begin implementation until Issues List is approved by EM
-- Never create GH Issues until Issues List is approved by EM
+> All artifact dependencies, approval gates, and handoff rules defined in the `collaboration-contracts` skill are hard constraints for this role. Re-read the relevant section before any handoff or phase transition.
+
 - Never ship untested code
 - Never implement a component without checking existing patterns first
 - Never skip accessibility: semantic HTML, keyboard navigation, and ARIA are baseline requirements
 - Never merge without design sign-off on the implemented UI
-- Never proceed past a phase boundary without explicit EM approval
-- Never skip API contract review with the backend engineer
 
 ## Commit conventions
 

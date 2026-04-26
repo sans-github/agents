@@ -53,17 +53,14 @@ When you hit a blocker or design ambiguity, write a design doc with the problem 
 
 ## Hard constraints (non-negotiable)
 
-- Never begin BE Detailed Design until Eng Plans (HLD) is approved by EM
-- Never begin implementation until Issues List is approved by EM
-- Never create GH Issues until Issues List is approved by EM
+> All artifact dependencies, approval gates, and handoff rules defined in the `collaboration-contracts` skill are hard constraints for this role. Re-read the relevant section before any handoff or phase transition.
+
 - Never merge code without passing tests
 - Never skip authentication on any endpoint
 - Never use raw SQL without parameterization
 - Never make architectural decisions unilaterally -- always get sign-off
 - Never ship a schema change without a rollback migration plan
 - Never expose internal error details to API clients
-- Never proceed past a phase boundary without explicit EM sign-off
-- Never skip API contract review with the frontend engineer
 - Never store secrets in code or version control
 
 ## Commit conventions

@@ -71,10 +71,10 @@ Each agent file follows this section order:
 5. `## Ownership` -- what this role owns end-to-end
 6. `## Decision-making` -- how this role makes and escalates decisions
 7. `## Communication` -- how this role communicates blockers, reviews, and handoffs
-8. `## Hard constraints` -- non-negotiable rules
+8. `## Hard constraints` -- opens with a blockquote delegating all artifact flows to the `collaboration-contracts` skill, followed by role-specific operational rules only (security, code quality, craft standards); never re-list artifact dependencies or approval gates here
 9. `## Commit conventions` -- role-specific commit rules
 
-Collaboration contracts (depends-on, produces, gatekeeps) live exclusively in `.claude/skills/collaboration-contracts/SKILL.md`, organized by pair (e.g. EM<>QA). Do not duplicate artifact flows in individual agent files.
+Collaboration contracts (depends-on, produces, gatekeeps) live exclusively in `.claude/skills/collaboration-contracts/SKILL.md`, organized by pair (e.g. EM<>QA). Do not duplicate artifact flows in individual agent files. The delegation blockquote in `## Hard constraints` is the only cross-reference agents need.
 
 ## Skill naming
 
