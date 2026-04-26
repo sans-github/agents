@@ -39,8 +39,8 @@ Severity: 🔴 P0 broken/affects users now -- 🟡 P1 degrades quality or blocks
 ## Field conventions
 
 - `ID` -- sequential, never reused: B-001, B-002, ... (leave blank -- EM assigns at triage)
-- `Area` -- BE, FE, DB, Infra, Design, QA
-- `Type` -- `bug` (observable defect), `debt` (internal quality), `ux` (usability without a crash)
+- `Area` -- BE, FE, DB, Infra, Design, QA, Spec, Mocks, Contract
+- `Type` -- `bug` (observable defect), `debt` (internal quality), `ux` (usability without a crash), `gap` (missing or incomplete specification, design, or contract)
 - `Source` -- `User`, `Agent`, `Retro`
 - `Since` -- date item moved to Active; used for staleness tracking
 - Priority (P0/P1/P2) -- assigned by EM+PM at triage only, never by agents
@@ -52,6 +52,12 @@ Severity: 🔴 P0 broken/affects users now -- 🟡 P1 degrades quality or blocks
 - Report even if the item seems minor. EM+PM decide what matters.
 - After 2 iterations in Active with no milestone, prefix with 🟠 to flag for re-triage.
 - When items must ship together, add below the Active table: `_B-001 + B-002 ship together. No stopgap._`
+
+## GitHub labels
+
+Backlog fields map directly to flat GH labels -- no prefixes. Apply one area label and one type label per issue; priority is added at triage. Full label list is in `tech-config.md`.
+
+---
 
 ## Triage process (EM + PM)
 

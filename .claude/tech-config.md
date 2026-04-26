@@ -86,3 +86,17 @@ Mermaid `erDiagram` syntax. Must be updated in the same commit as any schema cha
 ## Backlog
 
 All agents append to the Triage table in `BACKLOG.md`. ID and priority are assigned by EM at triage -- never self-assigned.
+
+---
+
+## GitHub issue labels
+
+Flat labels -- no prefixes. Apply one area label and one type label per issue. Priority is added at triage.
+
+**Area:** `be` `fe` `db` `infra` `design` `qa` `spec` `mocks` `contract`
+
+**Type:** `bug` `debt` `ux` `gap`
+
+**Priority:** `p0` `p1` `p2`
+
+Examples: `be` + `bug` = backend defect. `spec` + `gap` = missing requirement. `mocks` + `gap` = missing design coverage.
