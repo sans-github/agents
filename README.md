@@ -153,51 +153,63 @@ sequenceDiagram
     rect rgb(219, 234, 254)
         Note over User,QA: 1. Discovery
         User->>PM: Reqs
+        Note right of PM: Produces: PRD, ACs
     end
     rect rgb(237, 233, 254)
         Note over User,QA: 2. Design
         rect rgb(196, 181, 253)
             Note over PM,Design: PM <> Designer
-            loop PM ↔ Design
+            loop until PM approves
                 PM->>Design: PRD, ACs
-                Design-->>PM: Mocks
+                Design-->>PM: Mocks (draft)
             end
+            Note right of Design: Produces: Mocks (approved)
         end
         rect rgb(196, 181, 253)
-            Note over PM,QA: PM handoffs
+            Note over PM,EM: PM → EM handoff
             PM->>EM: PRD, Reqs, Mocks, ACs
-            PM->>QA: PRD, Mocks, ACs
         end
     end
     rect rgb(254, 249, 195)
         Note over User,QA: 3. Eng Planning
         rect rgb(254, 240, 138)
             Note over EM,Arch: EM <> Arch
-            loop Sys Arch
+            loop until EM approves
                 EM->>Arch: PRD, ACs
                 Arch-->>EM: Sys Arch
             end
+            Note right of Arch: Produces: Sys Arch
+            EM->>EM: Authors HLD
         end
         rect rgb(254, 240, 138)
             Note over EM,BE: EM <> BE
-            EM->>BE: HLD
-            BE-->>EM: BE Detailed Design
+            EM->>BE: HLD, PRD, Reqs, ACs
+            loop until EM approves
+                BE-->>EM: BE Detailed Design
+                EM-->>BE: feedback
+            end
             EM-->>BE: Approved
+            Note right of BE: Produces: BE Detailed Design
         end
         rect rgb(254, 240, 138)
             Note over EM,FE: EM <> FE
-            EM->>FE: HLD
-            FE-->>EM: FE Detailed Design
+            EM->>FE: HLD, PRD, Reqs, ACs, Mocks
+            loop until EM approves
+                FE-->>EM: FE Detailed Design
+                EM-->>FE: feedback
+            end
             EM-->>FE: Approved
+            Note right of FE: Produces: FE Detailed Design
         end
         rect rgb(254, 240, 138)
-            Note over EM,FE: BE <> FE → EM
-            loop API Contract
-                BE->>FE: draft
+            Note over BE,EM: BE <> FE → EM
+            loop until aligned
+                BE->>FE: API Contract draft
                 FE-->>BE: feedback
             end
             BE->>EM: API Contract (joint w/ FE)
             EM-->>BE: Approved
+            Note right of BE: Produces: API Contract
         end
     end
     rect rgb(220, 252, 231)
@@ -207,17 +219,22 @@ sequenceDiagram
             BE->>EM: Issues List
             EM-->>BE: Approved
             BE->>BE: Create GH Issues → Implement
+            Note right of BE: Produces: BE Artifacts, BE Test Docs
         end
         rect rgb(167, 243, 208)
             Note over EM,FE: EM <> FE
             FE->>EM: Issues List
             EM-->>FE: Approved
             FE->>FE: Create GH Issues → Implement
+            Note right of FE: Produces: FE Artifacts, FE Test Docs
         end
         rect rgb(167, 243, 208)
-            Note over EM,QA: QA cycle
-            EM->>QA: BE + FE Detailed Designs (approved)
-            QA->>EM: Test Plan
+            Note over EM,QA: EM <> QA
+            EM->>QA: PRD, Mocks, ACs, BE + FE Detailed Designs
+            loop until EM approves
+                QA->>EM: Test Plan
+                EM-->>QA: feedback
+            end
             EM-->>QA: Approved
             QA->>EM: Issues List
             EM-->>QA: Approved
@@ -227,12 +244,13 @@ sequenceDiagram
         end
     end
     rect rgb(254, 226, 226)
-        Note over User,QA: 5. Testing
+        Note over User,QA: 5. Validation
         rect rgb(252, 165, 165)
             Note over QA,EM: QA → EM
-            QA->>QA: Automation
+            QA->>QA: Author automation suite
             QA->>EM: Automation suite
             EM-->>QA: Approved
+            Note right of QA: Produces: Automation suite
         end
     end
 ```
@@ -286,18 +304,18 @@ sequenceDiagram
 1. **User** shares requirements with **PM**.
 2. **PM** gathers requirements and produces the PRD and ACs.
 3. **PM** sends PRD to **Design**, who creates Mocks. PM reviews and refines jointly with Design.
-4. **PM** sends PRD, Reqs, Mocks, and ACs to **EM** to kick off engineering planning, and PRD, Mocks, and ACs to **QA** as input to the Test Plan.
+4. **PM** sends PRD, Reqs, Mocks, and ACs to **EM**. EM is the single intake point for engineering -- no direct PM handoff to BE, FE, QA, or DevOps.
 5. **EM** engages **Arch** and collaborates to produce Sys Arch based on PRD and system constraints.
-6. **EM** authors Eng Plans (HLD) -- DB Schema, IAC, Core API, BE<>FE API contract, Feature sys design -- based on Sys Arch and PRD. Arch contributes; FE and BE align on scope.
-7. **BE** authors BE Detailed Design (DB Schema, IAC, BE API, BE<>FE API contract) from the HLD.
-8. **FE** authors FE Detailed Design (component design, state, routing, API integration) from the HLD.
-9. **FE and BE** jointly author the API Contract, aligned on their Detailed Designs.
-10. **QA** authors the Test Plan based on PRD, Mocks, and ACs (from PM) and BE/FE Detailed Designs (forwarded by EM once approved).
-11. **BE**, **FE**, and **QA** each independently author their own Issues List -- a hierarchical document breaking down their scope into individual GitHub issues, organized for human review. Each submits to **EM** for sign-off.
-12. **EM** reviews and signs off on each Issues List. Once approved, each role creates the actual GH Issues and begins implementation.
-13. **FE** implements FE Artifacts per FE Detailed Design and API Contract. **BE** implements BE Artifacts per BE Detailed Design and API Contract.
-14. **FE** and **BE** each produce Test Docs for QA to use in automation.
-15. **QA** authors the automation suite against FE/BE artifacts and test docs.
+6. **EM** authors Eng Plans (HLD) based on Sys Arch and PRD. Arch contributes; FE and BE align on scope.
+7. **EM** kicks off **BE** with HLD, PRD, Reqs, and ACs. BE authors BE Detailed Design and iterates until EM approves.
+8. **EM** kicks off **FE** with HLD, PRD, Reqs, ACs, and Mocks. FE authors FE Detailed Design and iterates until EM approves.
+9. **FE and BE** jointly author the API Contract, aligned on their Detailed Designs. EM approves before implementation begins.
+10. **EM** kicks off **QA** in two waves: first with PRD, Mocks, and ACs (concurrent with BE/FE kickoff) so QA can begin Test Plan authoring; then with approved BE/FE Detailed Designs once available for detailed QA planning. QA iterates the Test Plan with EM until approved.
+11. **BE**, **FE**, and **QA** each independently author their own Issues List and submit to **EM** for sign-off.
+12. **EM** approves each Issues List. Each role then creates GH Issues and begins implementation.
+13. **BE** implements BE Artifacts per BE Detailed Design and API Contract. **FE** implements FE Artifacts per FE Detailed Design and API Contract.
+14. **BE** and **FE** each produce Test Docs for QA to use in automation.
+15. **QA** authors the automation suite against FE/BE artifacts and test docs. EM approves before delivery.
 
 </details>
 
