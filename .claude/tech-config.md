@@ -25,8 +25,8 @@ Design docs and plans live under `generated-docs/`. Production artifacts (code, 
 
 | Artifact | Path | Owner | Source |
 |---|---|---|---|
-| System architecture | `generated-docs/sys-arch.md` + `generated-docs/sys-arch.html` | Arch writes, EM approves | `senior-software-architect.md` |
-| Eng Plans (HLD) | `generated-docs/hld.md` + `generated-docs/hld.html` | EM writes, EM approves | `senior-engineering-manager.md` |
+| System architecture | `generated-docs/architecture/sys-arch.md` + `generated-docs/architecture/sys-arch.html` | Arch writes, EM approves | `senior-software-architect.md` |
+| Eng Plans (HLD) | `generated-docs/architecture/hld.md` + `generated-docs/architecture/hld.html` | EM writes, EM approves | `senior-engineering-manager.md` |
 | BE Detailed Design | `generated-docs/be-detailed-design.md` + `generated-docs/be-detailed-design.html` | BE writes, EM approves | `senior-backend-engineer.md` |
 | FE Detailed Design | `generated-docs/fe-detailed-design.md` + `generated-docs/fe-detailed-design.html` | FE writes, EM approves | `senior-frontend-engineer.md` |
 | ER diagram | `src/db/er-diagram.md` | BE writes, EM verifies | `er-diagram-rule.md` |

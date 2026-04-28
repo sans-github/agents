@@ -28,7 +28,7 @@ Toggle rules:
 ### Stage 2: Design
 
 - [ ] **UI / UX Design**
-  - [ ] **DESIGNER:** produce mocks → `generated-docs/mocks/`
+  - [ ] **DESIGNER:** produce mocks → `generated-docs/design/`
   - [ ] 👤 **HUMAN:** review and approve mocks
 
 ---
@@ -39,11 +39,11 @@ Toggle rules:
   - [ ] **EM:** receive approved PRD and mocks from PM, decide on architecture engagement, record decision in `workflow/feature-setup.md`
 
 - [ ] **System Architecture** *(skip if no new infrastructure or unfamiliar technology)*
-  - [ ] **ARCH:** produce system architecture → `generated-docs/sys-arch.md` + `generated-docs/sys-arch.html`
+  - [ ] **ARCH:** produce system architecture → `generated-docs/architecture/sys-arch.md` + `generated-docs/architecture/sys-arch.html`
   - [ ] 👤 **HUMAN:** review and approve system architecture
 
 - [ ] **High-Level Design**
-  - [ ] **EM:** produce high-level design → `generated-docs/hld.md` + `generated-docs/hld.html`
+  - [ ] **EM:** produce high-level design → `generated-docs/architecture/hld.md` + `generated-docs/architecture/hld.html`
   - [ ] 👤 **HUMAN:** review and approve high-level design
 
 - [ ] **Implementation Plan**
@@ -56,7 +56,7 @@ Toggle rules:
 > Skeleton -- EM fills in these steps during Implementation Planning, only if this stage is `[ ]`. If `[-]`, skip entirely and do not revisit.
 
 - [ ] **API Contract**
-  - [ ] **BE + FE:** align on API contract → `generated-docs/api-contract.md` + `generated-docs/api-contract.html`
+  - [ ] **BE + FE:** align on API contract → `generated-docs/contracts/api-contract.md` + `generated-docs/contracts/api-contract.html`
   - [ ] **EM:** review and approve API contract
 
 - [ ] **Backend Development**
@@ -81,7 +81,7 @@ Toggle rules:
 > Skeleton -- EM fills in these steps during Implementation Planning, only if this stage is `[ ]`. If `[-]`, skip entirely and do not revisit.
 
 - [ ] **Test Planning**
-  - [ ] **QA:** produce test plan aligned to API contract and implementation → `generated-docs/test-plan.md` + `generated-docs/test-plan.html`
+  - [ ] **QA:** produce test plan aligned to API contract and implementation → `generated-docs/qa/test-plan.md` + `generated-docs/qa/test-plan.html`
   - [ ] **EM:** review and approve test plan
 
 - [ ] **Test Execution**

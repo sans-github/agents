@@ -15,7 +15,10 @@ projects/
 │   └── mocks/                          # current UI mocks
 └── YYYYMMDD-feature-name/              # copy per feature from template/feature
     ├── generated-docs/                 # all design/planning artifacts (Designer + EM output)
-    │   └── mocks/                      # design mocks
+    │   ├── design/                     # mocks and diagrams (Designer)
+    │   ├── architecture/               # sys-arch, HLD (Arch + EM)
+    │   ├── contracts/                  # API contract (BE + FE)
+    │   └── qa/                         # test plan (QA)
     ├── product-specs/                  # PRD and other product artifacts (PM input)
     └── workflow/
         ├── feature-setup.md           # human fills in at kickoff

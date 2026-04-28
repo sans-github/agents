@@ -25,9 +25,12 @@ Consumers install this repo into their own project via `install.sh`. They do not
 ├── skills/           -- domain knowledge packs referenced by agents
 ├── template/
 │   ├── feature/      -- scaffolding copied per feature into projects/YYYYMMDD-name/
-│   │   ├── generated-docs/mocks/   -- Designer output (mocks, diagrams)
-│   │   ├── product-specs/prd.md    -- PM input (feature PRD)
-│   │   └── workflow/               -- delivery config and plans
+│   │   ├── generated-docs/design/        -- Designer output (mocks, diagrams)
+│   │   ├── generated-docs/architecture/  -- sys-arch, HLD
+│   │   ├── generated-docs/contracts/     -- API contract
+│   │   ├── generated-docs/qa/            -- test plan
+│   │   ├── product-specs/prd.md          -- PM input (feature PRD)
+│   │   └── workflow/                     -- delivery config and plans
 │   ├── master/       -- copied once to projects/master/ (shared product baseline)
 │   │   ├── product-specs/prd.md    -- full PRD merged across all shipped features
 │   │   └── mocks/                  -- current UI mocks reflecting live product
@@ -42,7 +45,7 @@ Key distinctions:
 - `product-specs/` is PM input (what to build). `generated-docs/` is Designer output (what was produced). Never mix them.
 - `template/feature/` contains things that become part of a feature folder. Kickoff files are one-time prompts, so they stay at `template/` root.
 - `master/` is a shared baseline, not per-feature. It mirrors the `feature/` structure (product-specs, mocks) but is copied once, not per feature.
-- `generated-docs/` uses subfolders (e.g. `mocks/`) so future artifact types can be added without clutter.
+- `generated-docs/` is organized by concern: `design/` (mocks), `architecture/` (sys-arch, HLD), `contracts/` (API contract), `qa/` (test plan).
 - `src/` is a sibling to `.claude/`, `projects/`, and `scripts/` at the consumer project root. All production artifacts go here (source code, db schema, migrations, seeds, IaC). Agent-generated design docs go under `generated-docs/`, never under `src/`.
 
 ## Rules

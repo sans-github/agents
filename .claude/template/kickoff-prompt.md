@@ -32,7 +32,7 @@ Start with a one-paragraph big picture: what will be built and how the pieces fi
 **Folder structure check:** Verify the feature folder contains:
 - `[feature-folder]/workflow/feature-setup.md`
 - `[feature-folder]/product-specs/prd.md`
-- `[feature-folder]/generated-docs/mocks/`
+- `[feature-folder]/generated-docs/design/`
 
 If any are missing, stop and tell the human exactly what is missing.
 
@@ -69,7 +69,7 @@ Do not remove the original question text. Mark all questions resolved before pro
 
 One sentence only. State exactly what happens after I approve: who does what, and what artifact they produce. Must match the first unchecked step in `delivery-tracker.md`.
 
-Example: "Once approved, Designer produces mocks for `[feature-folder]/generated-docs/mocks/` before any engineering work begins."
+Example: "Once approved, Designer produces mocks for `[feature-folder]/generated-docs/design/` before any engineering work begins."
 
 ---
 

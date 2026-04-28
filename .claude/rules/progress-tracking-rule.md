@@ -33,8 +33,8 @@ Every step must include a done condition so the orchestrator can verify completi
 
 1. [x] **PM:** review PRD with human, confirm scope → [product-specs/prd.md](../product-specs/prd.md) -- done when: human approves verbally
 2. [x] 👤 **HUMAN:** review and approve PRD -- done when: human confirms
-3. [x] **DESIGNER:** produce mocks → [generated-docs/mocks/login-flow.html](../generated-docs/mocks/login-flow.html) -- done when: mocks present and PM satisfied
-4. [ ] **ARCH:** produce HLD → `generated-docs/hld.md` -- done when: EM approves
+3. [x] **DESIGNER:** produce mocks → [generated-docs/design/login-flow.html](../generated-docs/design/login-flow.html) -- done when: mocks present and PM satisfied
+4. [ ] **ARCH:** produce HLD → `generated-docs/architecture/hld.md` -- done when: EM approves
 ```
 
 The `→ link` on a checked step is the confirmed artifact link -- written by the agent that produced the artifact when it checks off, not at plan creation. For steps that produce multiple files, list them all: `→ [path/a.md](../path/a.md), [path/b.html](../path/b.html)`.

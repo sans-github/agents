@@ -64,7 +64,7 @@ BE and FE do not receive formal artifact handoffs from PM. EM is the kickoff poi
 - PRD, ACs -- to scope Sys Arch
 
 **Arch provides to EM:**
-- Sys Arch (`generated-docs/sys-arch.md` + `generated-docs/sys-arch.html`) -- EM drives the loop; Arch authors and has final say; in agent-to-agent handoffs pass only the `.md` file
+- Sys Arch (`generated-docs/architecture/sys-arch.md` + `generated-docs/architecture/sys-arch.html`) -- EM drives the loop; Arch authors and has final say; in agent-to-agent handoffs pass only the `.md` file
 
 **EM depends on:**
 - Sys Arch -- approved by Arch before authoring Eng Plans (HLD)
@@ -232,4 +232,4 @@ If a clarification conversation reveals a gap, missing requirement, or needed de
 ## EM produces (standalone)
 
 - Plan with Human Gates (`workflow/delivery-tracker.md`) -- progressively filled by EM; seeded at kickoff with initial steps up to PM→EM handoff; after handoff, EM adds arch steps (if needed), HLD, and then the detailed implementation plan (full phase-by-phase breakdown with numbered steps, responsible agents, artifacts, loop exit conditions, and human checkpoints); always add a 👤 human gate after the implementation plan before execution begins; the orchestrator works through it top-to-bottom and stops when it reaches the end, waiting for EM to add the next batch
-- Eng Plans (HLD) -- delivered as two files: `generated-docs/hld.md` (source of truth) and `generated-docs/hld.html` (self-contained, inline CSS, no external dependencies, renders diagrams and tables for stakeholder review); EM is gatekeeper
+- Eng Plans (HLD) -- delivered as two files: `generated-docs/architecture/hld.md` (source of truth) and `generated-docs/architecture/hld.html` (self-contained, inline CSS, no external dependencies, renders diagrams and tables for stakeholder review); EM is gatekeeper
