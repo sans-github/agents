@@ -14,6 +14,7 @@ For any task that follows a phased workflow, maintain `delivery-tracker.md` thro
 - Never mark a step complete based on memory or assumption. Verify by checking the actual artifact, file, or commit.
 - For steps that produce a file artifact: write the artifact as a relative markdown link `→ [path/to/artifact.md](../path/to/artifact.md)` in the step line before checking it off. Always use a relative markdown link -- not a bare path or code span -- so the artifact is clickable in GitHub and most markdown viewers. Do not check off until the file exists at that path.
 - Do not batch checkoffs. Mark steps one at a time as they complete.
+- After checking off any step, scan its parent phase group (bold label line, e.g. `- [ ] **Backend Development**`). If every child step under that group is `[x]`, mark the parent `[x]` immediately -- in the same edit, not deferred. Phase group checkboxes are derived state: they must always reflect the completion of all children. Do not mark a phase group `[x]` if any child step is still `[ ]` or `[-]` and not yet done. Stage headings (`### Stage N: ...`) have no checkbox and are never rolled up.
 - When the orchestrator reaches the end of the list, stop and wait -- EM will add the next batch of steps.
 
 ## On resume (interrupted session)
