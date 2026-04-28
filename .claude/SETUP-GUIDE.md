@@ -13,6 +13,32 @@ No manual file editing required. Claude produces `workflow/kickoff-plan.md` for 
 
 ---
 
+## What to expect at kickoff
+
+Before any agent work begins, Claude runs two setup steps:
+
+**1. Kickoff plan**
+Claude reads your `feature-setup.md` and PRD, then produces `workflow/kickoff-plan.md` containing:
+- A summary of what it understood
+- Any open questions or missing inputs it needs from you
+- The next step once you approve
+
+Review it and reply "approved" to continue. If there are open questions flagged, answer them first -- Claude will not proceed until all blockers are resolved.
+
+**2. Delivery tracker seeded**
+Once you approve the kickoff plan, Claude writes `workflow/delivery-tracker.md` from your phase config. This is the live execution log for the entire feature -- all stages, steps, human gates, and artifact links will be tracked here as work progresses.
+
+You do not need to edit either file. Claude maintains both throughout the feature.
+
+---
+
+**Human gates**
+At each 👤 step, Claude stops and waits for your explicit approval before proceeding. You will see a summary of what was produced and a prompt to approve.
+
+At each 👤💾 step, Claude commits automatically after your approval before moving on.
+
+---
+
 ## First-time setup
 
 ### Install
