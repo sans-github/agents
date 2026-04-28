@@ -55,21 +55,38 @@ Toggle rules:
 ### Stage 4: Engineering
 > Skeleton -- EM fills in these steps during Implementation Planning, only if this stage is `[ ]`. If `[-]`, skip entirely and do not revisit.
 
+- [ ] **BE Detailed Design**
+  - [ ] **BE:** produce detailed design → `generated-docs/architecture/be-detailed-design.md` + `generated-docs/architecture/be-detailed-design.html` -- done when: Status: Approved — EM set in file
+  - [ ] **EM:** review and approve BE detailed design -- done when: Status: Approved — EM set in file
+
+- [ ] **FE Detailed Design**
+  - [ ] **FE:** produce detailed design → `generated-docs/architecture/fe-detailed-design.md` + `generated-docs/architecture/fe-detailed-design.html` -- done when: Status: Approved — EM set in file
+  - [ ] **EM:** review and approve FE detailed design -- done when: Status: Approved — EM set in file
+
 - [ ] **API Contract**
   - [ ] **BE + FE:** align on API contract → `generated-docs/contracts/api-contract.md` + `generated-docs/contracts/api-contract.html`
   - [ ] **EM:** review and approve API contract
 
+- [ ] **BE Issues List**
+  - [ ] **EM:** produce and approve BE issues list -- done when: Status: Approved — EM set in list; BE creates GH issues and begins implementation
+
 - [ ] **Backend Development**
   - [ ] **BE:** implement database schema → `src/db/schema/`
+  - [ ] **EM + BE:** review and approve DB schema -- done when: Status: Approved — EM set in schema file; blocks migrations and seed work
   - [ ] **BE:** implement API endpoints → `src/`
   - [ ] **BE:** write unit and integration tests
   - [ ] **EM:** review and approve BE implementation
+  - [ ] **EM:** approve BE artifacts + test docs -- done when: Status: Approved noted; unblocks QA automation against BE
+
+- [ ] **FE Issues List**
+  - [ ] **EM:** produce and approve FE issues list -- done when: Status: Approved — EM set in list; FE creates GH issues and begins implementation
 
 - [ ] **Frontend Development**
   - [ ] **FE:** implement UI components per approved mocks → `src/`
   - [ ] **FE:** integrate with API
   - [ ] **FE:** write component and end-to-end tests
   - [ ] **EM:** review and approve FE implementation
+  - [ ] **EM:** approve FE artifacts + test docs -- done when: Status: Approved noted; unblocks QA automation against FE
 
 - [ ] **Infrastructure** *(skip if no new infrastructure)*
   - [ ] **DEVOPS:** provision infrastructure per approved architecture → `src/infra/`
@@ -83,6 +100,9 @@ Toggle rules:
 - [ ] **Test Planning**
   - [ ] **QA:** produce test plan aligned to API contract and implementation → `generated-docs/qa/test-plan.md` + `generated-docs/qa/test-plan.html`
   - [ ] **EM:** review and approve test plan
+
+- [ ] **QA Issues List**
+  - [ ] **EM:** produce and approve QA issues list -- done when: Status: Approved — EM set in list; QA creates GH issues and begins implementation
 
 - [ ] **Test Execution**
   - [ ] **QA:** implement automated tests against BE
