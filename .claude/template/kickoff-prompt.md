@@ -14,6 +14,8 @@ Read these before doing anything:
 4. `[feature-folder]/workflow/feature-setup.md` -- active agents, skipped phases, overrides.
 5. `[feature-folder]/product-specs/prd.md` -- the feature PRD.
 
+Never hardcode artifact paths. Resolve all artifact paths by looking up the artifact name in the File locations table in `tech-config.md`.
+
 ---
 
 ## Produce the kickoff plan

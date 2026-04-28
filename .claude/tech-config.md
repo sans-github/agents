@@ -25,18 +25,23 @@ Design docs and plans live under `generated-docs/`. Production artifacts (code, 
 
 | Artifact | Path | Owner | Source |
 |---|---|---|---|
-| System architecture | `generated-docs/architecture/sys-arch.md` + `generated-docs/architecture/sys-arch.html` | Arch writes, EM approves | `senior-software-architect.md` |
+| PRD | `product-specs/prd.md` | PM writes | `senior-product-manager.md` |
+| Mocks | `generated-docs/design/` | Designer writes, PM approves | `senior-ux-ui-designer.md` |
+| Kickoff Plan | `workflow/kickoff-plan.md` | Orchestrator writes, human approves | `kickoff-prompt.md` |
+| System Architecture | `generated-docs/architecture/sys-arch.md` + `generated-docs/architecture/sys-arch.html` | Arch writes, EM approves | `senior-software-architect.md` |
 | Eng Plans (HLD) | `generated-docs/architecture/hld.md` + `generated-docs/architecture/hld.html` | EM writes, EM approves | `senior-engineering-manager.md` |
-| BE Detailed Design | `generated-docs/be-detailed-design.md` + `generated-docs/be-detailed-design.html` | BE writes, EM approves | `senior-backend-engineer.md` |
-| FE Detailed Design | `generated-docs/fe-detailed-design.md` + `generated-docs/fe-detailed-design.html` | FE writes, EM approves | `senior-frontend-engineer.md` |
-| ER diagram | `src/db/er-diagram.md` | BE writes, EM verifies | `er-diagram-rule.md` |
-| DB schema files | `src/db/schema/` | BE | `db-schema.md` |
-| DB migrations | `src/db/migrations/` | BE | `db-schema.md` |
-| DB seeds (all envs) | `src/db/seeds/common/` | BE | `db-schema.md` |
-| DB seeds (dev only) | `src/db/seeds/dev/` | BE | `db-schema.md` |
-| Tech debt / bug backlog | `BACKLOG.md` | EM triages | `backlog-reporting-rule.md` |
-| Plan with human gates | `workflow/delivery-tracker.md` | Seeded at kickoff; progressively filled by EM; human gates + agent steps in one doc | `contract-first-rule.md`, `progress-tracking-rule.md` |
-| Workflow definition | `workflow/` | EM | `workflow-phases-rule.md` |
+| BE Detailed Design | `generated-docs/architecture/be-detailed-design.md` + `generated-docs/architecture/be-detailed-design.html` | BE writes, EM approves | `senior-backend-engineer.md` |
+| FE Detailed Design | `generated-docs/architecture/fe-detailed-design.md` + `generated-docs/architecture/fe-detailed-design.html` | FE writes, EM approves | `senior-frontend-engineer.md` |
+| API Contract | `generated-docs/contracts/api-contract.md` + `generated-docs/contracts/api-contract.html` | BE + FE write, EM approves | `senior-backend-engineer.md`, `senior-frontend-engineer.md` |
+| Test Plan | `generated-docs/qa/test-plan.md` + `generated-docs/qa/test-plan.html` | QA writes, EM approves | `senior-qa-automation-engineer.md` |
+| ER Diagram | `src/db/er-diagram.md` | BE writes, EM verifies | `er-diagram-rule.md` |
+| DB Schema Files | `src/db/schema/` | BE | `db-schema.md` |
+| DB Migrations | `src/db/migrations/` | BE | `db-schema.md` |
+| DB Seeds (all envs) | `src/db/seeds/common/` | BE | `db-schema.md` |
+| DB Seeds (dev only) | `src/db/seeds/dev/` | BE | `db-schema.md` |
+| Infrastructure | `src/infra/` | DevOps | `senior-devops-engineer.md` |
+| Tech Debt / Bug Backlog | `BACKLOG.md` | EM triages | `backlog-reporting-rule.md` |
+| Delivery Tracker | `workflow/delivery-tracker.md` | Seeded at kickoff; progressively filled by EM | `contract-first-rule.md`, `progress-tracking-rule.md` |
 
 ---
 
