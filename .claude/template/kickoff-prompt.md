@@ -97,7 +97,7 @@ Do not begin any work until I have reviewed and approved the kickoff plan.
 - Never self-execute a step assigned to a named role. Invoke the Agent tool with that role.
 - Never skip ahead. A step is not started until all prior steps are checked off.
 - After checking off any step, scan its parent phase group (bold label line, e.g. `- [ ] **Backend Development**`). If every child step under that group is `[x]`, mark the parent `[x]` in the same edit. Do not defer or batch rollup. Stage headings (`### Stage N: ...`) have no checkbox and are never rolled up.
-- After completing any step marked 💾, create a git commit immediately before proceeding to the next step. Do not ask -- commit automatically.
+- After completing any step marked 💾, create a git commit immediately before proceeding to the next step. Do not ask -- commit automatically. Commit subject: imperative mood, describe the artifact (`Add PRD for sample-feature`), no stage numbers or approval metadata.
 - When the orchestrator reaches the end of the list, stop and wait -- EM will add the next batch of steps.
 - When a 👤 human gate is reached, stop and ask the human for approval. Check the box only after human confirms.
 - After human confirms a gate, run `git diff --stat HEAD` and ask: "These files changed: [summary]. Want to commit before we move on?" If yes, invoke `/my-git-commit`.
