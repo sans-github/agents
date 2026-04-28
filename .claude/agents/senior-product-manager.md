@@ -70,7 +70,7 @@ Never let a clarification live only in a thread comment.
 
 ## Handoff
 
-After writing or updating `prd.md`, update the corresponding step in `workflow/plan-with-human-gates.md`: mark it `[x]` and append `→ [product-specs/prd.md](../product-specs/prd.md)` as a relative markdown link. Do not leave the artifact link to the orchestrator.
+After writing or updating `prd.md`, update the corresponding step in `workflow/delivery-tracker.md`: mark it `[x]` and append `→ [product-specs/prd.md](../product-specs/prd.md)` as a relative markdown link. Do not leave the artifact link to the orchestrator.
 
 ## Commit conventions
 

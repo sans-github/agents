@@ -22,7 +22,7 @@ Show the user the folder tree from the script output. Extract the feature folder
 
 Use `AskUserQuestion` to gather the following in a single call (3 questions):
 
-**Q1 -- Phases (multiSelect):** "Which phases should be active for this feature?" Read the stage names and their current state (`[ ]` or `[-]`) from `[feature-folder]/workflow/feature-workflow-config.md` (lines starting with `### Stage`). Present each as an option, pre-selected if `[ ]` and pre-deselected if `[-]`.
+**Q1 -- Phases (multiSelect):** "Which phases should be active for this feature?" Read the stage names and their current state (`[ ]` or `[-]`) from `[feature-folder]/workflow/feature-setup.md` (lines starting with `### Stage`). Present each as an option, pre-selected if `[ ]` and pre-deselected if `[-]`.
 
 **Q2 -- Deployment target (single select):** "Where will this feature be deployed?"
 - local
@@ -34,12 +34,12 @@ Use `AskUserQuestion` to gather the following in a single call (3 questions):
 - No additional context
 - Yes, I'll add it now (user provides free text via Other)
 
-Then write the answers into `[feature-folder]/workflow/feature-workflow-config.md`:
+Then write the answers into `[feature-folder]/workflow/feature-setup.md`:
 - Stages the user did NOT select: change their `[ ]` to `[-]` at the stage level
 - Deployment target: replace the `local` default in the `## Deployment target` block with the user's choice
 - Additional context: if provided, replace the example block in `## Additional context` with the user's text; if none, leave the block as-is
 
-After writing the config, print a plain-language summary of the final phase state read from `[feature-folder]/workflow/feature-workflow-config.md`:
+After writing the config, print a plain-language summary of the final phase state read from `[feature-folder]/workflow/feature-setup.md`:
 
 ```
 Phases configured:
@@ -78,7 +78,7 @@ Then invoke the PM agent with: "The feature folder is `[feature-folder]`. Requir
 
 Wait for PM to complete before proceeding.
 
-**Note:** This step is unconditional. Stage config does not gate it. PM runs whenever the PRD is empty, regardless of whether Stage 1 is `[ ]` or `[-]` in `feature-workflow-config.md`. Stage config controls what appears in `plan-with-human-gates.md`, not whether the PRD exists.
+**Note:** This step is unconditional. Stage config does not gate it. PM runs whenever the PRD is empty, regardless of whether Stage 1 is `[ ]` or `[-]` in `feature-setup.md`. Stage config controls what appears in `delivery-tracker.md`, not whether the PRD exists.
 
 ---
 

@@ -2,7 +2,7 @@
 
 No agent may begin work that depends on an upstream artifact until that artifact is explicitly approved. This prevents rework caused by building on an unstable or unreviewed foundation.
 
-This rule governs **agent-to-agent technical contracts** only. Human milestone gates (PRD, Mocks, Sys Arch, Implementation Plan, Kickoff Plan) are defined per-project in `workflow/plan-with-human-gates.md` -- not here.
+This rule governs **agent-to-agent technical contracts** only. Human milestone gates (PRD, Mocks, Sys Arch, Implementation Plan, Kickoff Plan) are defined per-project in `workflow/delivery-tracker.md` -- not here.
 
 ## Agent-to-agent technical contracts
 
@@ -34,7 +34,7 @@ The approving agent writes this line after reviewing the artifact. The human doe
 
 ## Human milestone gate behavior
 
-Human milestone gates are defined per-project in `workflow/plan-with-human-gates.md`. When an agent completes work that produces a checkpoint artifact, it must:
+Human milestone gates are defined per-project in `workflow/delivery-tracker.md`. When an agent completes work that produces a checkpoint artifact, it must:
 
 1. Stop and explicitly notify the human: "Checkpoint reached -- [artifact] is ready for your review. No work will proceed until you approve."
 2. Wait for the human to verbally confirm (e.g. "done", "proceed"). After the human confirms, the orchestrating agent writes `Status: Approved — [role]` and `Approved: YYYY-MM-DD` into the artifact file before proceeding -- unless the loop that produced the artifact already wrote `Status: Approved` (e.g. PM sets it on mocks as the loop exit). In that case, the orchestrator adds only the `Approved: YYYY-MM-DD` line if it is missing, and does not overwrite the existing status line.

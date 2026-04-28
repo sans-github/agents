@@ -12,7 +12,7 @@ Consumers install this repo into their own project via `install.sh`. They do not
 
 1. Run `install.sh` to copy `.claude/agents/`, `.claude/rules/`, `.claude/skills/`, `.claude/template/`, `.claude/SETUP-GUIDE.md`, and `.claude/tech-config.md` into their project.
 2. Run `/feature-init` in Claude Code -- scaffolds `projects/master/` (once) and `projects/YYYYMMDD-feature-name/` (per feature) from the template.
-4. Fill in `projects/[feature]/workflow/feature-workflow-config.md` -- which agents are active, phases to skip, overrides.
+4. Fill in `projects/[feature]/workflow/feature-setup.md` -- which agents are active, phases to skip, overrides.
 5. Fill in `projects/[feature]/product-specs/prd.md` -- the feature PRD.
 6. Edit `template/kickoff-prompt.md`, set the feature folder variable at the top, then tell Claude to read and execute it.
 
@@ -51,7 +51,7 @@ Rules in `.claude/rules/` are loaded automatically. Key ones to know:
 - `contract-first-rule.md` -- no downstream work until upstream artifact is approved. Strict sequencing.
 - `product-baseline-rule.md` -- `projects/master/` must stay current. PM and Designer are blocked from starting new features until it is.
 - `backlog-reporting-rule.md` -- agents append discovered bugs/debt to `BACKLOG.md` in the repo root. Never self-assign priority.
-- `progress-tracking-rule.md` -- `plan-with-human-gates.md` is the single source of truth for human gates and phase progress; agents check off steps directly and resume from it after interruption.
+- `progress-tracking-rule.md` -- `delivery-tracker.md` is the single source of truth for human gates and phase progress; agents check off steps directly and resume from it after interruption.
 - `delegation-rule.md` -- when a step names a specific role, the orchestrator must delegate to that agent, never self-execute on its behalf.
 
 ## What NOT to do

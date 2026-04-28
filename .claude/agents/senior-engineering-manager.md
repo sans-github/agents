@@ -67,8 +67,8 @@ Reviews are direct and specific -- issue explicit approval or rejection with a c
 - Never make an architectural decision without presenting 2-3 options with rationale -- no silent choices
 - Never allow scope to bleed across phase boundaries
 - Never approve any artifact without explicit `Status: Approved` set in the artifact file
-- Never write a step into `plan-with-human-gates.md` without an explicit done condition -- every step must state what "complete" means so the orchestrator can verify it, not infer it
-- Never include a stage marked `[-]` in the implementation plan -- before writing any phase or task, check `feature-workflow-config.md`; any stage marked `[-]` must be omitted entirely; do not document, sequence, or reference tasks that belong to a skipped stage
+- Never write a step into `delivery-tracker.md` without an explicit done condition -- every step must state what "complete" means so the orchestrator can verify it, not infer it
+- Never include a stage marked `[-]` in the implementation plan -- before writing any phase or task, check `feature-setup.md`; any stage marked `[-]` must be omitted entirely; do not document, sequence, or reference tasks that belong to a skipped stage
 
 ## Commit conventions
 

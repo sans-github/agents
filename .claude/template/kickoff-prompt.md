@@ -11,7 +11,7 @@ Read these before doing anything:
 1. `CLAUDE.md` (if present) -- existing software stack, conventions, project structure.
 2. `.claude/agents-guide.md` -- agent team orientation, collaboration model, rules. The project config overrides where they differ.
 3. `.claude/tech-config.md` -- file locations, naming conventions, tooling choices.
-4. `[feature-folder]/workflow/feature-workflow-config.md` -- active agents, skipped phases, overrides.
+4. `[feature-folder]/workflow/feature-setup.md` -- active agents, skipped phases, overrides.
 5. `[feature-folder]/product-specs/prd.md` -- the feature PRD.
 
 ---
@@ -30,7 +30,7 @@ Emoji conventions -- use inline on the heading, row, or bullet where the action 
 Start with a one-paragraph big picture: what will be built and how the pieces fit together. Then summarize the PRD and project config in your own words. Call out anything ambiguous or missing that I should clarify before work begins.
 
 **Folder structure check:** Verify the feature folder contains:
-- `[feature-folder]/workflow/feature-workflow-config.md`
+- `[feature-folder]/workflow/feature-setup.md`
 - `[feature-folder]/product-specs/prd.md`
 - `[feature-folder]/generated-docs/mocks/`
 
@@ -39,7 +39,7 @@ If any are missing, stop and tell the human exactly what is missing.
 **Input quality check:** Flag any of:
 - Unfilled placeholders (`[YYYYMMDD-feature-name]`, `TODO`, `TBD`, template defaults)
 - Sections untouched or still containing template defaults
-- Content in `feature-workflow-config.md` or `prd.md` that contradicts the project description
+- Content in `feature-setup.md` or `prd.md` that contradicts the project description
 - Sparse or vague entries (e.g. "active agents: all" with no rationale, one-line PRD)
 - A stage marked as active whose upstream dependency is skipped -- flag the broken dependency and block until resolved. Dependencies: Design requires Discovery; System Design requires Discovery and Design; Technical Planning requires System Design; Engineering requires Technical Planning; QA requires Engineering; Release requires QA
 - `prd.md` is empty -- do not flag this as an open question. Invoke the PM agent to gather requirements from the user and write the PRD, then resume. Stage 1 being `[-]` does not exempt this: a PRD is required for kickoff regardless of stage config.
@@ -67,7 +67,7 @@ Do not remove the original question text. Mark all questions resolved before pro
 
 ### 3. Next step
 
-One sentence only. State exactly what happens after I approve: who does what, and what artifact they produce. Must match the first unchecked step in `plan-with-human-gates.md`.
+One sentence only. State exactly what happens after I approve: who does what, and what artifact they produce. Must match the first unchecked step in `delivery-tracker.md`.
 
 Example: "Once approved, Designer produces mocks for `[feature-folder]/generated-docs/mocks/` before any engineering work begins."
 
@@ -81,14 +81,14 @@ Do not begin any work until I have reviewed and approved the kickoff plan.
 
 1. Write `Status: Approved — Human` and `Approved: YYYY-MM-DD` at the top of `kickoff-plan.md`.
 
-2. Seed `[feature-folder]/workflow/plan-with-human-gates.md` from `## Project phases` in `feature-workflow-config.md`:
+2. Seed `[feature-folder]/workflow/delivery-tracker.md` from `## Project phases` in `feature-setup.md`:
    - First line after the heading: `[ ]  not started   |   [-]  skipped   |   [x]  done`
    - Work through each phase in order.
    - Phase or step `[-]`: mark SKIPPED, append any inline reason if present.
    - Phase or step `[ ]`: include as an active numbered checkbox.
    - Do not resolve contradictions here -- they must be caught during the input quality check before this step is reached.
 
-3. Begin execution: work through `plan-with-human-gates.md` top-to-bottom.
+3. Begin execution: work through `delivery-tracker.md` top-to-bottom.
 
 ### Execution rules
 

@@ -2,14 +2,14 @@
 purpose: >
   Filled in by the human before any agent begins work.
   Configures which phases to include or skip and any deviations from the default collaboration pattern.
-  Agents must read this before doing anything and use it to seed plan-with-human-gates.md.
+  Agents must read this before doing anything and use it to seed delivery-tracker.md.
 ---
 
 # Project Config
 
 ## Project phases
 
-The orchestrator reads this to seed `plan-with-human-gates.md`.
+The orchestrator reads this to seed `delivery-tracker.md`.
 
 Toggle rules:
 - `[ ]` -- active, include in the plan
@@ -36,7 +36,7 @@ Toggle rules:
 ### Stage 3: Technical Planning
 
 - [ ] **Engineering Kickoff**
-  - [ ] **EM:** receive approved PRD and mocks from PM, decide on architecture engagement, record decision in `workflow/feature-workflow-config.md`
+  - [ ] **EM:** receive approved PRD and mocks from PM, decide on architecture engagement, record decision in `workflow/feature-setup.md`
 
 - [ ] **System Architecture** *(skip if no new infrastructure or unfamiliar technology)*
   - [ ] **ARCH:** produce system architecture → `generated-docs/sys-arch.md` + `generated-docs/sys-arch.html`
@@ -114,7 +114,7 @@ local
 
 ## Additional context
 
-Include anything that should inform plan-with-human-gates.md -- handwritten notes, whiteboard photos, Excalidraw diagrams, sketches, or rough ideas. Agents must respect and factor all of this in when generating plan-with-human-gates.md.
+Include anything that should inform delivery-tracker.md -- handwritten notes, whiteboard photos, Excalidraw diagrams, sketches, or rough ideas. Agents must respect and factor all of this in when generating delivery-tracker.md.
 
 ```
 # Example:
