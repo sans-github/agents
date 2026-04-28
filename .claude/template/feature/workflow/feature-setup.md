@@ -14,6 +14,7 @@ The orchestrator reads this to seed `delivery-tracker.md`.
 Toggle rules:
 - `[ ]` -- active, include in the plan
 - `[-]` -- skip. Apply to a stage to exclude all its steps -- no need to mark individual steps inside it. `[-]` is final: no agent may add, restore, or modify steps in a `[-]` stage. Only the human can change it.
+- `💾` -- create a git commit automatically after this step completes, before moving on
 
 ---
 
@@ -21,7 +22,7 @@ Toggle rules:
 
 - [ ] **Requirements Finalization**
   - [ ] **PM:** review PRD with human, surface open questions, confirm scope → [PRD]
-  - [ ] 👤 **HUMAN:** review and approve PRD
+  - [ ] 👤💾 **HUMAN:** review and approve PRD
 
 ---
 
@@ -29,26 +30,26 @@ Toggle rules:
 
 - [ ] **UI / UX Design**
   - [ ] **DESIGNER:** produce mocks → [Mocks]
-  - [ ] 👤 **HUMAN:** review and approve mocks
+  - [ ] 👤💾 **HUMAN:** review and approve mocks
 
 ---
 
 ### Stage 3: Technical Planning
 
 - [ ] **Engineering Kickoff**
-  - [ ] **EM:** receive approved PRD and mocks from PM, decide on architecture engagement, record decision in `workflow/feature-setup.md`
+  - [ ] **EM:** decide on architecture engagement → [Feature Setup]
 
 - [ ] **System Architecture** *(skip if no new infrastructure or unfamiliar technology)*
   - [ ] **ARCH:** produce system architecture → [System Architecture]
-  - [ ] 👤 **HUMAN:** review and approve system architecture
+  - [ ] 👤💾 **HUMAN:** review and approve system architecture
 
 - [ ] **High-Level Design**
   - [ ] **EM:** produce high-level design → [Eng Plans (HLD)]
-  - [ ] 👤 **HUMAN:** review and approve high-level design
+  - [ ] 👤💾 **HUMAN:** review and approve high-level design
 
 - [ ] **Implementation Plan**
   - [ ] **EM:** produce detailed implementation plan, replace Stage 4 and Stage 5 skeleton steps with artifact-specific tasks; every step written must include a done condition (e.g. "done when: Status: Approved written to file" or "done when: human confirms")
-  - [ ] 👤 **HUMAN:** review and approve implementation plan
+  - [ ] 👤💾 **HUMAN:** review and approve implementation plan
 
 ---
 
@@ -57,25 +58,25 @@ Toggle rules:
 
 - [ ] **BE Detailed Design**
   - [ ] **BE:** produce detailed design → [BE Detailed Design] -- done when: Status: Approved — EM set in file
-  - [ ] **EM:** review and approve BE detailed design -- done when: Status: Approved — EM set in file
+  - [ ] 💾 **EM:** review and approve BE detailed design -- done when: Status: Approved — EM set in file
 
 - [ ] **FE Detailed Design**
   - [ ] **FE:** produce detailed design → [FE Detailed Design] -- done when: Status: Approved — EM set in file
-  - [ ] **EM:** review and approve FE detailed design -- done when: Status: Approved — EM set in file
+  - [ ] 💾 **EM:** review and approve FE detailed design -- done when: Status: Approved — EM set in file
 
 - [ ] **API Contract**
   - [ ] **BE + FE:** align on API contract → [API Contract]
-  - [ ] **EM:** review and approve API contract
+  - [ ] 💾 **EM:** review and approve API contract
 
 - [ ] **BE Issues List**
   - [ ] **EM:** produce and approve BE issues list -- done when: Status: Approved — EM set in list; BE creates GH issues and begins implementation
 
 - [ ] **Backend Development**
   - [ ] **BE:** implement database schema → [DB Schema Files]
-  - [ ] **EM + BE:** review and approve DB schema -- done when: Status: Approved — EM set in schema file; blocks migrations and seed work
+  - [ ] 💾 **EM + BE:** review and approve DB schema -- done when: Status: Approved — EM set in schema file; blocks migrations and seed work
   - [ ] **BE:** implement API endpoints → `src/`
   - [ ] **BE:** write unit and integration tests
-  - [ ] **EM:** review and approve BE implementation
+  - [ ] 💾 **EM:** review and approve BE implementation
   - [ ] **EM:** approve BE artifacts + test docs -- done when: Status: Approved noted; unblocks QA automation against BE
 
 - [ ] **FE Issues List**
@@ -85,12 +86,12 @@ Toggle rules:
   - [ ] **FE:** implement UI components per approved mocks → `src/`
   - [ ] **FE:** integrate with API
   - [ ] **FE:** write component and end-to-end tests
-  - [ ] **EM:** review and approve FE implementation
+  - [ ] 💾 **EM:** review and approve FE implementation
   - [ ] **EM:** approve FE artifacts + test docs -- done when: Status: Approved noted; unblocks QA automation against FE
 
 - [ ] **Infrastructure** *(skip if no new infrastructure)*
   - [ ] **DEVOPS:** provision infrastructure per approved architecture → [Infrastructure]
-  - [ ] **EM:** review and approve infrastructure
+  - [ ] 💾 **EM:** review and approve infrastructure
 
 ---
 
@@ -99,7 +100,7 @@ Toggle rules:
 
 - [ ] **Test Planning**
   - [ ] **QA:** produce test plan aligned to API contract and implementation → [Test Plan]
-  - [ ] **EM:** review and approve test plan
+  - [ ] 💾 **EM:** review and approve test plan
 
 - [ ] **QA Issues List**
   - [ ] **EM:** produce and approve QA issues list -- done when: Status: Approved — EM set in list; QA creates GH issues and begins implementation
@@ -109,7 +110,7 @@ Toggle rules:
   - [ ] **QA:** implement automated tests against FE
   - [ ] **QA + BE:** resolve backend test blockers
   - [ ] **QA + FE:** resolve frontend test blockers
-  - [ ] **EM:** review and approve test results
+  - [ ] 💾 **EM:** review and approve test results
 
 ---
 
@@ -117,7 +118,7 @@ Toggle rules:
 
 - [ ] **Phase Sign-off**
   - [ ] **EM:** verify all artifacts complete and approved, confirm deployment target is ready
-  - [ ] 👤 **HUMAN:** review and approve release readiness
+  - [ ] 👤💾 **HUMAN:** review and approve release readiness
 
 ---
 
