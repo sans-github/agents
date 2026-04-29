@@ -102,4 +102,4 @@ Do not begin any work until I have reviewed and approved the kickoff plan.
 - After completing any step marked 💾, create a git commit immediately before proceeding to the next step. Do not ask -- commit automatically. Commit subject: imperative mood, describe the artifact (`Add PRD for sample-feature`), no stage numbers or approval metadata.
 - When the orchestrator reaches the end of the list, stop and wait -- EM will add the next batch of steps.
 - When a 👤 human gate is reached, stop and ask the human for approval. Check the box only after human confirms.
-- After human confirms a gate, run `git diff --stat HEAD` and ask: "These files changed: [summary]. Want to commit before we move on?" If yes, invoke `/my-git-commit`.
+- After human confirms a gate, do not prompt for a commit. Any uncommitted changes (e.g. tracker checkboxes) will be picked up by the next 💾 auto-commit.
