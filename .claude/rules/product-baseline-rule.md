@@ -14,13 +14,13 @@ projects/
 
 ## When to update
 
-`projects/master/` must stay current throughout development -- not just at phase close:
+`projects/master/` is updated as part of **Stage 7: Master Baseline Update** in every feature's `feature-setup.md`. Stage 7 runs after Stage 6 sign-off and is never skippable.
 
-- **PM** updates `projects/master/product-specs/prd.md` whenever the PRD evolves during a phase (scope changes, AC revisions, requirement clarifications)
-- **Designer** updates `projects/master/mocks/` whenever mocks are revised during a phase
-- Both must also update at phase close, in the same commit as EM sign-off
+- **PM** merges the feature PRD into `projects/master/product-specs/prd.md`: add new sections, update changed sections, do not duplicate. If master is empty, copy as-is.
+- **Designer** merges the feature mocks into `projects/master/mocks/`: add new pages, replace updated pages, remove obsolete pages. If master is empty, copy as-is.
+- **Human** confirms master is current before Stage 7 closes.
 
-Do not let the master fall behind the working feature. Update it as changes happen.
+Stage 7 is the enforcement mechanism for this rule. Do not update master ad-hoc during a feature -- consolidate at Stage 7.
 
 ## QA gate
 
@@ -42,6 +42,6 @@ If the master is stale, update it first. Do not use a feature-specific PRD or mo
 
 ## Ownership
 
-- **PM** owns `projects/master/product-specs/prd.md`
-- **Designer** owns `projects/master/mocks/`
-- **EM** verifies both are updated as part of phase sign-off
+- **PM** owns `projects/master/product-specs/prd.md` -- updated in Stage 7
+- **Designer** owns `projects/master/mocks/` -- updated in Stage 7
+- **EM** verifies Stage 7 is complete before signing off on a feature

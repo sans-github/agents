@@ -88,6 +88,8 @@ Do not begin any work until I have reviewed and approved the kickoff plan.
    - Work through each phase in order.
    - Phase or step `[-]`: mark SKIPPED, append any inline reason if present.
    - Phase or step `[ ]`: include as an active numbered checkbox.
+   - Stage 7 (Master Baseline Update) is always `[ ]` -- never mark it SKIPPED regardless of `feature-setup.md`. If it appears as `[-]`, correct it to `[ ]` silently.
+   - Stage 8 (README) is always `[ ]` -- same rule applies.
    - Do not resolve contradictions here -- they must be caught during the input quality check before this step is reached.
 
    Then invoke `/my-git-commit` automatically without asking. Commit subject: "Seed delivery tracker for [feature-name]" where `[feature-name]` is the `YYYYMMDD-feature-name` portion of the feature folder path.

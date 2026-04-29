@@ -122,6 +122,39 @@ Toggle rules:
 
 ---
 
+### Stage 7: Master Baseline Update
+
+> Always `[ ]` -- this stage is never skippable. Runs after Stage 6 sign-off and must complete before any new feature can begin.
+
+- [ ] **PM:** merge this feature's PRD into `projects/master/product-specs/prd.md`
+  - If master PRD exists: consolidate -- add new sections, update changed sections, do not duplicate
+  - If master PRD is empty: copy feature PRD as-is
+  - done when: master PRD reflects all shipped features including this one
+
+- [ ] **DESIGNER:** merge this feature's mocks into `projects/master/mocks/`
+  - If master mocks exist: add new pages, replace updated pages, remove obsolete pages
+  - If master mocks are empty: copy feature mocks as-is
+  - done when: master mocks reflect the current live UI across all shipped features
+
+- [ ] 👤💾 **HUMAN:** confirm master is current
+
+---
+
+### Stage 8: README
+
+> Always `[ ]` -- this stage is never skippable.
+
+- [ ] **EM:** update `README.md` in repo root
+  - If README exists: consolidate -- update project overview, add new features, update setup instructions if stack changed. Do not duplicate.
+  - If README does not exist: create it.
+  - Must include: project overview (1 paragraph), features list, prerequisites, how to run (BE and FE), how to run tests.
+  - Keep it high-level and end-user facing. No internal agent/workflow details.
+  - done when: README.md exists at repo root and reflects all shipped features
+
+- [ ] 👤💾 **HUMAN:** review and approve README
+
+---
+
 ## Deployment target
 
 Declare the deployment intent for this project. Agents use this to determine whether DevOps/IaC work is in scope.
