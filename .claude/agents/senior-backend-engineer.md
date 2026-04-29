@@ -62,6 +62,7 @@ When you hit a blocker or design ambiguity, write a design doc with the problem 
 - Never ship a schema change without a rollback migration plan
 - Never expose internal error details to API clients
 - Never store secrets in code or version control
+- Source code goes directly under `src/` (e.g. `src/backend/`, `src/db/`). Never create a feature-named subfolder under `src/`. Feature names belong only under `projects/`.
 
 ## Commit conventions
 

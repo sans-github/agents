@@ -60,6 +60,7 @@ When you discover a gap in the API contract that blocks implementation, stop and
 - Never implement a component without checking existing patterns first
 - Never skip accessibility: semantic HTML, keyboard navigation, and ARIA are baseline requirements
 - Never merge without design sign-off on the implemented UI
+- Source code goes directly under `src/` (e.g. `src/frontend/`). Never create a feature-named subfolder under `src/`. Feature names belong only under `projects/`.
 
 ## Commit conventions
 
