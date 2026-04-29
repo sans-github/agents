@@ -81,7 +81,7 @@ Do not begin any work until I have reviewed and approved the kickoff plan.
 
 ### When I approve the kickoff plan:
 
-1. Write `Status: Approved — Human` and `Approved: YYYY-MM-DD` at the top of `kickoff-plan.md`.
+1. Write `Status: Approved — Human` and `Approved: YYYY-MM-DD` at the top of `kickoff-plan.md`. Then invoke `/my-git-commit` automatically without asking. Commit subject: "Add kickoff plan for [feature-name]" where `[feature-name]` is the `YYYYMMDD-feature-name` portion of the feature folder path.
 
 2. Seed `[feature-folder]/workflow/delivery-tracker.md` from `## Project phases` in `feature-setup.md`:
    - First line after the heading: `[ ]  not started   |   [-]  skipped   |   [x]  done`
@@ -89,6 +89,8 @@ Do not begin any work until I have reviewed and approved the kickoff plan.
    - Phase or step `[-]`: mark SKIPPED, append any inline reason if present.
    - Phase or step `[ ]`: include as an active numbered checkbox.
    - Do not resolve contradictions here -- they must be caught during the input quality check before this step is reached.
+
+   Then invoke `/my-git-commit` automatically without asking. Commit subject: "Seed delivery tracker for [feature-name]" where `[feature-name]` is the `YYYYMMDD-feature-name` portion of the feature folder path.
 
 3. Begin execution: work through `delivery-tracker.md` top-to-bottom.
 

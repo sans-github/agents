@@ -16,6 +16,8 @@ Run `bash .claude/skills/feature-init/feature-init.sh FEATURE_NAME` using Bash, 
 
 Show the user the folder tree from the script output. Extract the feature folder path from the output (format: `projects/YYYYMMDD-feature-name`) -- you will need it in every subsequent step.
 
+Then invoke `/my-git-commit` automatically without asking. Commit subject: "Scaffold [feature-name] feature folder" where `[feature-name]` is the `YYYYMMDD-feature-name` portion of the folder path.
+
 ---
 
 ### 2. Configure (CC)
@@ -76,7 +78,7 @@ requirements:
 
 Then invoke the PM agent with: "The feature folder is `[feature-folder]`. Requirements have already been gathered and are in the frontmatter of `product-specs/prd.md`. Skip the interview and proceed directly to writing the PRD."
 
-Wait for PM to complete before proceeding.
+Wait for PM to complete before proceeding. Then invoke `/my-git-commit` automatically without asking. Commit subject: "Add PRD for [feature-name]" where `[feature-name]` is the `YYYYMMDD-feature-name` portion of the folder path.
 
 **Note:** This step is unconditional. Stage config does not gate it. PM runs whenever the PRD is empty, regardless of whether Stage 1 is `[ ]` or `[-]` in `feature-setup.md`. Stage config controls what appears in `delivery-tracker.md`, not whether the PRD exists.
 
