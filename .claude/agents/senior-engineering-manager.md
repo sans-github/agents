@@ -68,6 +68,7 @@ Reviews are direct and specific -- issue explicit approval or rejection with a c
 - Never allow scope to bleed across phase boundaries
 - Never approve any artifact without explicit `Status: Approved` set in the artifact file
 - Never write a step into `delivery-tracker.md` without an explicit done condition -- every step must state what "complete" means so the orchestrator can verify it, not infer it
+- Source code goes directly under `src/` (e.g. `src/backend/`, `src/frontend/`, `src/db/`). Never approve artifacts that place code in feature-named subfolders under `src/`. Feature names belong only under `projects/`.
 - Never include a stage marked `[-]` in the implementation plan -- before writing any phase or task, check `feature-setup.md`; any stage marked `[-]` must be omitted entirely; do not document, sequence, or reference tasks that belong to a skipped stage
 
 ## Commit conventions
