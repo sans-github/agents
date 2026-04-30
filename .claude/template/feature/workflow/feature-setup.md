@@ -114,17 +114,9 @@ Toggle rules:
 
 ---
 
-### Stage 6: Release
+### Stage 6: Master Baseline Update
 
-- [ ] **Phase Sign-off**
-  - [ ] **EM:** verify all artifacts complete and approved, confirm deployment target is ready
-  - [ ] 👤💾 **HUMAN:** review and approve release readiness
-
----
-
-### Stage 7: Master Baseline Update
-
-> Always `[ ]` -- this stage is never skippable. Runs after Stage 6 sign-off and must complete before any new feature can begin.
+> Always `[ ]` -- this stage is never skippable. Runs after Stage 5 sign-off and must complete before any new feature can begin.
 
 - [ ] **PM:** merge this feature's PRD into `projects/master/product-specs/prd.md`
   - If master PRD exists: consolidate -- add new sections, update changed sections, do not duplicate
@@ -140,7 +132,7 @@ Toggle rules:
 
 ---
 
-### Stage 8: README
+### Stage 7: README and CLAUDE.md
 
 > Always `[ ]` -- this stage is never skippable.
 
@@ -151,7 +143,21 @@ Toggle rules:
   - Keep it high-level and end-user facing. No internal agent/workflow details.
   - done when: README.md exists at repo root and reflects all shipped features
 
-- [ ] 👤💾 **HUMAN:** review and approve README
+- [ ] **EM:** update `CLAUDE.md` in repo root
+  - If CLAUDE.md exists: consolidate -- update stack references, folder structure, and conventions to reflect any changes in this feature. Do not duplicate.
+  - If CLAUDE.md does not exist: create it.
+  - Must include: tech stack, folder structure, key conventions agents need to follow in this codebase.
+  - done when: CLAUDE.md exists at repo root and reflects current project state
+
+- [ ] 👤💾 **HUMAN:** review and approve README and CLAUDE.md
+
+---
+
+### Stage 8: Release
+
+- [ ] **Phase Sign-off**
+  - [ ] **EM:** verify all artifacts complete and approved, confirm deployment target is ready
+  - [ ] 👤💾 **HUMAN:** review and approve release readiness
 
 ---
 
