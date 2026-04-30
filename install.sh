@@ -38,6 +38,7 @@ GITIGNORE="$ROOT/.gitignore"
 GITIGNORE_ENTRIES=(
   "# Build output"
   "**/target/"
+  "**/dist/"
   ""
   "# Dependencies"
   "**/node_modules/"
@@ -46,13 +47,35 @@ GITIGNORE_ENTRIES=(
   ".env"
   ".env.local"
   ".env.*.local"
+  ""
+  "# Terraform"
+  "**/.terraform/"
+  "*.tfstate"
+  "*.tfstate.backup"
+  "*.tfvars"
+  ""
+  "# Test output"
+  "test-results/"
+  "playwright-report/"
+  ""
+  "# OS"
+  ".DS_Store"
+  ""
+  "# IDE"
+  ".idea/"
+  "*.iml"
+)
+GITIGNORE_CHECK_ENTRIES=(
+  "**/target/" "**/dist/" "**/node_modules/"
+  ".env" "**/.terraform/" "*.tfstate" "*.tfvars"
+  "test-results/" "playwright-report/" ".DS_Store" ".idea/"
 )
 if [ ! -f "$GITIGNORE" ]; then
   printf '%s\n' "${GITIGNORE_ENTRIES[@]}" > "$GITIGNORE"
   echo "  .gitignore created"
 else
   added=0
-  for entry in "**/target/" "**/node_modules/" ".env"; do
+  for entry in "${GITIGNORE_CHECK_ENTRIES[@]}"; do
     if ! grep -qF "$entry" "$GITIGNORE"; then
       echo "$entry" >> "$GITIGNORE"
       added=1
