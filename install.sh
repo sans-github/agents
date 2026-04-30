@@ -34,6 +34,33 @@ if [ ! -f "$ROOT/BACKLOG.md" ] && [ -f "$TMP/BACKLOG.md" ]; then
   echo "  BACKLOG.md -> BACKLOG.md (scaffolded)"
 fi
 
+GITIGNORE="$ROOT/.gitignore"
+GITIGNORE_ENTRIES=(
+  "# Build output"
+  "**/target/"
+  ""
+  "# Dependencies"
+  "**/node_modules/"
+  ""
+  "# Environment"
+  ".env"
+  ".env.local"
+  ".env.*.local"
+)
+if [ ! -f "$GITIGNORE" ]; then
+  printf '%s\n' "${GITIGNORE_ENTRIES[@]}" > "$GITIGNORE"
+  echo "  .gitignore created"
+else
+  added=0
+  for entry in "**/target/" "**/node_modules/" ".env"; do
+    if ! grep -qF "$entry" "$GITIGNORE"; then
+      echo "$entry" >> "$GITIGNORE"
+      added=1
+    fi
+  done
+  [ "$added" -eq 1 ] && echo "  .gitignore updated with missing entries"
+fi
+
 if [ -f "$ROOT/CLAUDE.md" ]; then
   if ! grep -q "@.claude/tech-config.md" "$ROOT/CLAUDE.md"; then
     printf "\n@.claude/tech-config.md\n" >> "$ROOT/CLAUDE.md"
