@@ -97,6 +97,20 @@ Use a dedicated migration tool -- do not hand-roll the tracking logic:
 
 ---
 
+## Migration tool configuration
+
+This project uses a split directory layout that most tools do not assume by default. Configure your tool to discover all three locations in order:
+
+1. `src/db/schema/` -- baseline table definitions (run first)
+2. `src/db/seeds/common/` -- reference data safe for all environments
+3. `src/db/migrations/` -- incremental changes
+
+`src/db/seeds/dev/` is only for dev/staging. Never include it in a prod profile.
+
+The migration tool uses the portion before the first separator character as the version key -- so it knows which scripts have already been applied and skips them. File naming examples: `01_users.sql` (version `01`), `20240315143022_add_phone.sql` (version `20240315143022`).
+
+---
+
 ## ORM and DDL settings
 
 The migration tool owns all schema creation. The ORM must never create or modify tables -- disable any ORM-managed DDL in every environment (dev, test, prod). Examples by stack:

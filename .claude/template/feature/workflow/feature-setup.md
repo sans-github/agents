@@ -144,19 +144,10 @@ Toggle rules:
   - Script is generated fresh from the actual codebase -- never copied from a static template
   - done when: `scripts/dev.sh` exists at repo root, is executable (`chmod +x`), and correctly reflects the detected stack and ports
 
-- [ ] **EM:** update `README.md` in repo root
-  - If README exists: consolidate -- update project overview, add new features, update setup instructions if stack changed. Do not duplicate.
-  - If README does not exist: create it.
-  - Must include: project overview (1 paragraph), features list, prerequisites, how to run (BE and FE), how to run tests.
-  - "Running the app" section must list `bash scripts/dev.sh` as the primary way to start locally; keep manual per-service steps as a fallback below it.
-  - Keep it high-level and end-user facing. No internal agent/workflow details.
-  - done when: README.md exists at repo root, reflects all shipped features, and references `scripts/dev.sh`
-
-- [ ] **EM:** update `CLAUDE.md` in repo root
-  - If CLAUDE.md exists: consolidate -- update stack references, folder structure, and conventions to reflect any changes in this feature. Do not duplicate.
-  - If CLAUDE.md does not exist: create it.
-  - Must include: tech stack, folder structure, key conventions agents need to follow in this codebase.
-  - done when: CLAUDE.md exists at repo root and reflects current project state
+- [ ] **EM:** run `/document-release` skill to update `README.md` and `CLAUDE.md`
+  - README constraints: project overview (1 paragraph), features list, prerequisites, how to run (BE and FE), how to run tests; "Running the app" section must list `bash scripts/dev.sh` as the primary start command with manual per-service steps as fallback; high-level and end-user facing only
+  - CLAUDE.md constraints: tech stack, folder structure, key conventions agents need to follow in this codebase
+  - done when: both files exist at repo root, reflect all shipped features, and README references `scripts/dev.sh`
 
 - [ ] 👤💾 **HUMAN:** review and approve README and CLAUDE.md
 

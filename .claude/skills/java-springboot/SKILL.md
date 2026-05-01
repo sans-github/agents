@@ -51,16 +51,59 @@ Your goal is to help me write high-quality Spring Boot applications by following
 
 Use Flyway (preferred) or Liquibase. The migration tool owns all schema creation -- Hibernate must never create or modify tables.
 
-Required property in every environment (dev, test, prod):
+### Maven dependencies
+
+Add to `pom.xml`:
+
+```xml
+<dependency>
+    <groupId>org.flywaydb</groupId>
+    <artifactId>flyway-core</artifactId>
+</dependency>
+<!-- Pick one: -->
+<dependency>
+    <groupId>org.flywaydb</groupId>
+    <artifactId>flyway-mysql</artifactId>
+</dependency>
+<!-- or -->
+<dependency>
+    <groupId>org.flywaydb</groupId>
+    <artifactId>flyway-database-postgresql</artifactId>
+</dependency>
 ```
+
+### application.properties
+
+Required in every environment (dev, test, prod):
+
+```properties
 spring.jpa.hibernate.ddl-auto=validate
+spring.flyway.locations=filesystem:src/db/schema,filesystem:src/db/seeds/common,filesystem:src/db/migrations
+spring.flyway.sql-migration-prefix=
+spring.flyway.sql-migration-separator=_
 ```
 
-Never use `create`, `create-drop`, or `update`. If Hibernate reports a missing table on startup, the fix is to write a migration -- not to change `ddl-auto`.
+In `application-dev.properties` (dev/staging only -- never prod):
 
-Startup sequence: Flyway applies pending scripts first, then Hibernate validates the schema against entity mappings, then the app starts. Add `spring-boot-starter-flyway` (or equivalent) to `pom.xml` so this happens automatically.
+```properties
+spring.flyway.locations=filesystem:src/db/schema,filesystem:src/db/seeds/common,filesystem:src/db/seeds/dev,filesystem:src/db/migrations
+```
 
-File ownership: The BE agent writes all schema files (`src/db/schema/`) and migration files (`src/db/migrations/`) as part of implementation. The human only creates the database and user.
+Never use `ddl-auto=create`, `create-drop`, or `update`. If Hibernate reports a missing table on startup, the fix is to write a migration -- not to change `ddl-auto`.
+
+Flyway uses the text before the first `_` as the version key (`01` from `01_users.sql`, `20240315143022` from `20240315143022_add_phone.sql`) and skips already-applied scripts.
+
+### Startup sequence
+
+1. Flyway applies any pending scripts (schema, seeds, migrations -- in locations order)
+2. Hibernate validates the schema against entity mappings
+3. Application starts
+
+This happens automatically when the Flyway dependency is on the classpath.
+
+### File ownership
+
+The BE agent writes all schema files (`src/db/schema/`) and migration files (`src/db/migrations/`). The human only creates the database and user.
 
 ## Testing
 
