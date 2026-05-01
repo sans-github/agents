@@ -78,19 +78,21 @@ Required in every environment (dev, test, prod):
 
 ```properties
 spring.jpa.hibernate.ddl-auto=validate
-spring.flyway.locations=filesystem:src/db/schema,filesystem:src/db/seeds/common,filesystem:src/db/migrations
+spring.flyway.locations=filesystem:../db/schema,filesystem:../db/seeds/common,filesystem:../db/migrations
 spring.flyway.sql-migration-prefix=
 spring.flyway.sql-migration-separator=_
 spring.flyway.baseline-on-migrate=true
 spring.flyway.baseline-version=0
 ```
 
-`baseline-on-migrate` and `baseline-version`: when Flyway is added to an existing database that already has tables but no schema history table, Flyway refuses to run. These two properties tell Flyway to create the history table on first run and stamp the existing schema as version 0. After that, any migration scripts with a version higher than 0 are applied normally.
+`filesystem:../db/...` -- Maven's working directory during `mvn spring-boot:run` is the module root (`src/backend/`), not the repo root. Paths must be relative to `src/backend/`, so `../db/schema` reaches `src/db/schema`. Using `src/db/...` is incorrect and causes Flyway to find no scripts silently, which then causes Hibernate to fail with "missing table" on startup.
+
+`baseline-on-migrate` and `baseline-version` -- required when adding Flyway to an existing database that already has tables but no schema history table. Without them, Flyway refuses to run with "Found non-empty schema but no schema history table". Setting `baseline-version=0` ensures all schema files (version `01`+) are applied on first run.
 
 In `application-dev.properties` (dev/staging only -- never prod):
 
 ```properties
-spring.flyway.locations=filesystem:src/db/schema,filesystem:src/db/seeds/common,filesystem:src/db/seeds/dev,filesystem:src/db/migrations
+spring.flyway.locations=filesystem:../db/schema,filesystem:../db/seeds/common,filesystem:../db/seeds/dev,filesystem:../db/migrations
 ```
 
 Never use `ddl-auto=create`, `create-drop`, or `update`. If Hibernate reports a missing table on startup, the fix is to write a migration -- not to change `ddl-auto`.
