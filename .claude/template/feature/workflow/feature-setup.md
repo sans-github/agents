@@ -72,8 +72,8 @@ Toggle rules:
   - [ ] **EM:** produce and approve BE issues list -- done when: Status: Approved — EM set in list; BE creates GH issues and begins implementation
 
 - [ ] **Backend Development**
-  - [ ] **BE:** implement database schema → [DB Schema Files]
-  - [ ] 💾 **EM + BE:** review and approve DB schema -- done when: Status: Approved — EM set in schema file; blocks migrations and seed work
+  - [ ] **BE:** implement database schema and migration scripts → [DB Schema Files], [DB Migrations]
+  - [ ] 💾 **EM + BE:** review and approve DB schema -- done when: Status: Approved — EM set in schema file; ORM DDL generation disabled; migration tool configured to run on startup; blocks migrations and seed work
   - [ ] **BE:** implement API endpoints → `src/`
   - [ ] **BE:** write unit and integration tests
   - [ ] 💾 **EM:** review and approve BE implementation

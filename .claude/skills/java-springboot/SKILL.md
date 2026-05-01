@@ -47,6 +47,20 @@ Your goal is to help me write high-quality Spring Boot applications by following
 - **Custom Queries:** For complex queries, use `@Query` or the JPA Criteria API.
 - **Projections:** Use DTO projections to fetch only the necessary data from the database.
 
+## Database migrations
+
+Use Flyway (preferred) or Liquibase. The migration tool owns all schema creation -- Hibernate must never create or modify tables.
+
+Required property in every environment (dev, test, prod):
+```
+spring.jpa.hibernate.ddl-auto=validate
+```
+
+Never use `create`, `create-drop`, or `update`. If Hibernate reports a missing table on startup, the fix is to write a migration -- not to change `ddl-auto`.
+
+Startup sequence: Flyway applies pending scripts first, then Hibernate validates the schema against entity mappings, then the app starts. Add `spring-boot-starter-flyway` (or equivalent) to `pom.xml` so this happens automatically.
+
+File ownership: The BE agent writes all schema files (`src/db/schema/`) and migration files (`src/db/migrations/`) as part of implementation. The human only creates the database and user.
 
 ## Testing
 

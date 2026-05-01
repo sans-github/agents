@@ -97,6 +97,30 @@ Use a dedicated migration tool -- do not hand-roll the tracking logic:
 
 ---
 
+## ORM and DDL settings
+
+The migration tool owns all schema creation. The ORM must never create or modify tables -- disable any ORM-managed DDL in every environment (dev, test, prod). Examples by stack:
+
+| Stack | Setting |
+|-------|---------|
+| Spring Boot / Hibernate | `spring.jpa.hibernate.ddl-auto=validate` |
+| Django | `MIGRATION_MODULES` -- never run `syncdb` or `migrate --run-syncdb` outside of migrations |
+| Sequelize / TypeORM | `sync: false` / `synchronize: false` |
+| Prisma | Use `prisma migrate deploy`, never `db push` in production |
+
+If the ORM reports a missing table or column, the fix is always to write a migration -- never to re-enable DDL generation.
+
+Startup sequence -- the migration tool runs before the ORM validates or connects:
+1. Migration tool applies any pending scripts
+2. ORM validates the schema (if validation is supported)
+3. Application starts
+
+Responsibility split:
+- The BE agent writes all schema files (`src/db/schema/`) and migration files (`src/db/migrations/`) as part of implementation.
+- The human only creates the database and user (as documented in the README). Schema structure is never a manual human task.
+
+---
+
 ## Standard audit columns
 
 Every table should include these columns unless there is a specific reason not to:
