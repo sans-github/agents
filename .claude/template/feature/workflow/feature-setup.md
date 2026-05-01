@@ -136,12 +136,21 @@ Toggle rules:
 
 > Always `[ ]` -- this stage is never skippable.
 
+- [ ] **EM:** generate `scripts/start.sh` by inspecting the actual `src/` structure
+  - Detect BE type: `src/` contains `pom.xml` → Maven (`mvn spring-boot:run`), `build.gradle` → Gradle (`./gradlew bootRun`), `requirements.txt` or `pyproject.toml` → Python (`uvicorn` / `python -m ...`), `package.json` at BE root → Node (`npm run dev` or `npm start`)
+  - Detect FE type: look for `package.json` under FE root; if `vite` is in `devDependencies` → `npm run dev`; otherwise `npm start`
+  - Derive ports from config files where present: `src/*/src/main/resources/application.properties` (server.port), `vite.config.ts` (server.port), `.env` (PORT / VITE_PORT); fall back to well-known defaults (BE: 8080, FE: 5173)
+  - Script must: use relative paths from repo root, echo what is spawning and on which port, print clickable URLs after both processes are up, trap Ctrl+C to kill both background processes cleanly
+  - Script is generated fresh from the actual codebase -- never copied from a static template
+  - done when: `scripts/start.sh` exists at repo root, is executable (`chmod +x`), and correctly reflects the detected stack and ports
+
 - [ ] **EM:** update `README.md` in repo root
   - If README exists: consolidate -- update project overview, add new features, update setup instructions if stack changed. Do not duplicate.
   - If README does not exist: create it.
   - Must include: project overview (1 paragraph), features list, prerequisites, how to run (BE and FE), how to run tests.
+  - "Running the app" section must list `bash scripts/start.sh` as the primary way to start locally; keep manual per-service steps as a fallback below it.
   - Keep it high-level and end-user facing. No internal agent/workflow details.
-  - done when: README.md exists at repo root and reflects all shipped features
+  - done when: README.md exists at repo root, reflects all shipped features, and references `scripts/start.sh`
 
 - [ ] **EM:** update `CLAUDE.md` in repo root
   - If CLAUDE.md exists: consolidate -- update stack references, folder structure, and conventions to reflect any changes in this feature. Do not duplicate.
