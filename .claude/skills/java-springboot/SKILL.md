@@ -81,7 +81,11 @@ spring.jpa.hibernate.ddl-auto=validate
 spring.flyway.locations=filesystem:src/db/schema,filesystem:src/db/seeds/common,filesystem:src/db/migrations
 spring.flyway.sql-migration-prefix=
 spring.flyway.sql-migration-separator=_
+spring.flyway.baseline-on-migrate=true
+spring.flyway.baseline-version=0
 ```
+
+`baseline-on-migrate` and `baseline-version`: when Flyway is added to an existing database that already has tables but no schema history table, Flyway refuses to run. These two properties tell Flyway to create the history table on first run and stamp the existing schema as version 0. After that, any migration scripts with a version higher than 0 are applied normally.
 
 In `application-dev.properties` (dev/staging only -- never prod):
 
