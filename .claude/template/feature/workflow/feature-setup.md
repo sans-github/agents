@@ -75,8 +75,9 @@ Toggle rules:
   - [ ] **BE:** implement database schema and migration scripts → [DB Schema Files], [DB Migrations]
   - [ ] 💾 **EM + BE:** review and approve DB schema -- done when: Status: Approved — EM set in schema file; ORM DDL generation disabled; migration tool configured to run on startup; blocks migrations and seed work
   - [ ] **BE:** implement API endpoints → `src/`
+  - [ ] **BE:** implement logging -- done when: `be-logging` checklist fully checked off (structured JSON appender, TraceIdFilter, MDC correlation, access log, layer coverage)
   - [ ] **BE:** write unit and integration tests
-  - [ ] 💾 **EM:** review and approve BE implementation
+  - [ ] 💾 **EM:** review and approve BE implementation -- done when: logging checklist verified; Status: Approved — EM set in artifact
   - [ ] **EM:** approve BE artifacts + test docs -- done when: Status: Approved noted; unblocks QA automation against BE
 
 - [ ] **FE Issues List**
@@ -85,8 +86,9 @@ Toggle rules:
 - [ ] **Frontend Development**
   - [ ] **FE:** implement UI components per approved mocks → `src/`
   - [ ] **FE:** integrate with API
+  - [ ] **FE:** implement logging -- done when: `fe-logging` checklist fully checked off (logger module, sessionId, traceId propagation from response headers, API call coverage, error boundary logging)
   - [ ] **FE:** write component and end-to-end tests
-  - [ ] 💾 **EM:** review and approve FE implementation
+  - [ ] 💾 **EM:** review and approve FE implementation -- done when: logging checklist verified; Status: Approved — EM set in artifact
   - [ ] **EM:** approve FE artifacts + test docs -- done when: Status: Approved noted; unblocks QA automation against FE
 
 - [ ] **Infrastructure** *(skip if no new infrastructure)*
