@@ -45,7 +45,7 @@ Include `traceId` at the end so HTTP-layer logs can be joined to application log
 
 ## Correlation IDs (MDC)
 
-Generate or accept a `traceId` at the API entry point and propagate it through every log statement automatically via SLF4J MDC.
+The frontend generates a `traceId` and sends it as `X-Trace-Id` on every request. The backend accepts it and propagates it through all downstream logs. If no header is present (service-to-service calls without FE instrumentation, health checks, etc.), the backend generates a UUID as fallback.
 
 **Filter (runs on every request):**
 

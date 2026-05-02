@@ -11,7 +11,9 @@ Run through every applicable item before declaring logging implementation comple
 
 ## Correlation
 
-- [ ] `X-Trace-Id` read from API response headers and attached to subsequent log events
+- [ ] `generateTraceId()` utility exists in `src/lib/traceId.ts` -- 32 lowercase hex chars, OTel-compatible
+- [ ] `X-Trace-Id` sent as a request header on every outbound API call, using the locally generated traceId
+- [ ] `traceId` present on `api_call_start` log (before the request, not just after)
 - [ ] `sessionId` and `traceId` present on every log line
 
 ## Format and content

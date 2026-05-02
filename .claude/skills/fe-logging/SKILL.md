@@ -1,6 +1,6 @@
 ---
 name: fe-logging
-description: Frontend logging conventions for React/TypeScript -- structured JSON output, trace ID propagation from backend, log levels, error boundaries, API call logging, and Splunk/Datadog compatible format. Use when implementing or reviewing any logging in the frontend.
+description: Frontend logging conventions for React/TypeScript -- structured JSON output, trace ID generation and propagation to backend, log levels, error boundaries, API call logging, and Splunk/Datadog compatible format. Use when implementing or reviewing any logging in the frontend.
 ---
 
 # Frontend Logging Conventions
@@ -39,19 +39,31 @@ const logger = {
 export default logger;
 ```
 
-## Correlation IDs (trace propagation)
+## Correlation IDs (trace generation and propagation)
 
-The FE must propagate the `traceId` issued by the backend so a full request chain (FE action -> API call -> BE layers) can be reconstructed in Splunk or Datadog.
+The FE generates a `traceId` per request and sends it to the backend. This is the conventional approach per the W3C Trace Context spec -- the initiating component (the browser) owns the root trace ID. The backend inherits it, propagates it through all downstream logs, and echoes it back on the response for confirmation.
 
-**On API calls:** read `X-Trace-Id` from the response header and attach it to subsequent logs for that user interaction.
+**Trace ID format:** 128-bit random value as 32 lowercase hex characters -- OTel-compatible, no SDK required.
+
+```ts
+// src/lib/traceId.ts
+export const generateTraceId = (): string =>
+  Array.from(crypto.getRandomValues(new Uint8Array(16)))
+    .map(b => b.toString(16).padStart(2, '0'))
+    .join('');
+```
+
+**On every API call:** generate a traceId before the request, send it as `X-Trace-Id` on the request header, and include it in logs from the start -- not just after the response arrives.
 
 **For user sessions:** generate a `sessionId` at app boot (stored in memory, not localStorage) to correlate all events in a single session.
 
 ```ts
-// Attach traceId from API response to subsequent logs
-const response = await fetch('/api/orders', { ... });
-const traceId = response.headers.get('X-Trace-Id') ?? undefined;
-logger.info('api_response_received', { endpoint: '/api/orders', status: response.status, traceId });
+const traceId = generateTraceId();
+logger.info('api_call_start', { endpoint, method, traceId });
+const response = await fetch('/api/orders', {
+  headers: { 'X-Trace-Id': traceId },
+});
+logger.info('api_call_complete', { endpoint, method, status: response.status, durationMs, traceId });
 ```
 
 Include `sessionId` and `traceId` in every log event.
