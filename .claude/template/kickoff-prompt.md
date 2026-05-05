@@ -104,5 +104,5 @@ Do not begin any work until I have reviewed and approved the kickoff plan.
 - After checking off any step, scan its parent phase group (bold label line, e.g. `- [ ] **Backend Development**`). If every child step under that group is `[x]`, mark the parent `[x]` in the same edit. Do not defer or batch rollup. Stage headings (`### Stage N: ...`) have no checkbox and are never rolled up.
 - After completing any step marked 💾, create a git commit immediately before proceeding to the next step. Do not ask -- commit automatically. Commit subject: imperative mood, describe the artifact (`Add PRD for sample-feature`), no stage numbers or approval metadata.
 - When the orchestrator reaches the end of the list, stop and wait -- EM will add the next batch of steps.
-- When a 👤 human gate is reached, stop and ask the human for approval. Check the box only after human confirms.
+- When a 👤 human gate is reached, follow the review flow in `html-preview-rule.md`: use `AskUserQuestion` to offer opening the HTML preview in the browser, then ask for approval. Check the box only after human confirms.
 - After human confirms a gate, do not prompt for a commit. Any uncommitted changes (e.g. tracker checkboxes) will be picked up by the next 💾 auto-commit.
