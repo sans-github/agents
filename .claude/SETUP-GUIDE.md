@@ -6,7 +6,7 @@ Run `/feature-init` in Claude Code. Claude will guide you through:
 - Toggling phases on/off
 - Setting the deployment target
 - Capturing any additional context
-- Gathering requirements (via PM agent) and writing the PRD
+- Gathering requirements (via PM agent) -- full PRD is written at Stage 1 of the kickoff workflow
 - Kicking off the workflow automatically
 
 No manual file editing required. Claude produces `workflow/kickoff-plan.md` for your review and waits for your approval before any work begins.

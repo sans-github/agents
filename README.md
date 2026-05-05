@@ -21,7 +21,7 @@ projects/
     │   └── qa/                         # test plan (QA)
     ├── product-specs/                  # PRD and other product artifacts (PM input)
     └── workflow/
-        ├── feature-setup.md           # human fills in at kickoff
+        ├── feature-setup.md           # filled in by /feature-init (phase config, deployment target)
         └── delivery-tracker.md    # seeded at kickoff; progressively filled by EM; human gates + agent steps
 src/                                    # all production artifacts (source code, db, migrations, seeds, IaC)
 ```
