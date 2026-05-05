@@ -152,7 +152,10 @@ Use `AskUserQuestion` (single-select):
 > "Phase overview is ready. Want to open it in your browser to configure your project?"
 
 Options:
-- **Open in browser** -- CC runs `open [feature-folder]/workflow/feature-overview.html`
+- **Open in browser** -- CC detects the OS and runs the appropriate command:
+  - macOS: `open [feature-folder]/workflow/feature-overview.html`
+  - Linux: `xdg-open [feature-folder]/workflow/feature-overview.html`
+  - Windows: `start [feature-folder]/workflow/feature-overview.html`
 - **Skip, use defaults** -- skip HTML; all stages remain active, deployment target stays `local`
 
 If "Open in browser": after running the open command, tell the user: "The overview is open. Toggle any stages you want to skip, fill in deployment target, then click Confirm. Come back here and say 'done' when finished."
@@ -161,7 +164,12 @@ Wait for the user to return and say "done" (or similar).
 
 ### Read and apply the result
 
-Run `pbpaste` via Bash to read the JSON the user copied. Write the output to `[feature-folder]/workflow/user-phase-input.json`. Then read that file.
+Read the clipboard using the appropriate command for the OS:
+- macOS: `pbpaste`
+- Linux: `xclip -selection clipboard -o` (fall back to `xsel --clipboard --output` if `xclip` is not installed)
+- Windows: `powershell -command Get-Clipboard`
+
+Write the output to `[feature-folder]/workflow/user-phase-input.json`. Then read that file.
 
 Apply to `[feature-folder]/workflow/feature-setup.md`:
 - For each stage with `false` in `phases`: change its `[ ]` to `[-]` at the stage line
