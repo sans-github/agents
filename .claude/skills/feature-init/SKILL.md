@@ -85,67 +85,34 @@ Then invoke `/my-git-commit` automatically without asking. Commit subject: `"Sca
 
 ### Generate the HTML
 
-Read `[feature-folder]/workflow/feature-setup.md` to extract:
-- Stage names and their default state (`[ ]` active, `[-]` skipped)
-- Which stages are marked as never-skippable (Stages 6 and 7 in the default template)
-- Human checkpoint steps (`👤`) within each stage
+Do NOT write HTML from scratch. Use the pre-built template at `.claude/skills/feature-init/feature-overview-template.html`.
 
-Write `[feature-folder]/workflow/feature-overview.html` with the following structure:
+Read `[feature-folder]/workflow/feature-setup.md` to extract stage data, then read the template and produce `[feature-folder]/workflow/feature-overview.html` by replacing three placeholders:
 
-**1. Header section**
-- Feature name (derived from folder name, formatted as human-readable title)
-- 1-2 sentence project summary from requirements
+**`{{FEATURE_NAME}}`** -- feature name as a human-readable title (e.g. `User Auth Flow`)
 
-**2. "What to expect" intro**
-A short paragraph explaining: this workflow is broken into stages; each stage may include a human review checkpoint before the next stage begins; you can skip stages that don't apply to your project; stages marked "always active" cannot be skipped.
+**`{{PROJECT_SUMMARY}}`** -- 1-2 sentence summary from the requirements frontmatter in `prd.md`
 
-**3. Stage configuration list**
-For each stage from `feature-setup.md`:
-- Checkbox (checked by default if `[ ]`, unchecked if `[-]`)
-- Disabled/locked checkbox for never-skippable stages (Stages 6, 7, and 8), visually marked as "Always active"
-- Stage name as label (e.g. "Stage 1: Discovery")
-- One-line description of what happens in the stage (use the stage content to infer this)
-- Indented below: each `👤` human checkpoint from that stage:
-  - For **skippable stages**: shown as an individually toggleable checkbox (checked by default)
-  - For **never-skippable stages**: shown as a locked/disabled read-only item (same lock treatment as the parent) -- if the stage cannot be skipped, neither can its human gates
-
-Use JavaScript to enforce: unchecking a skippable stage greys out and disables all its child checkpoint checkboxes. Re-checking re-enables them to their previous state. Never-skippable stage checkpoints remain permanently disabled regardless of any interaction.
-
-**4. Deployment target**
-A radio button group with options: `local` / `existing AWS infra` / `new AWS infra` / `TBD`. Default: `local`.
-
-**5. Additional context**
-A textarea with placeholder: "Whiteboard notes, sketches, constraints, preferences... (optional)"
-
-**6. Confirm button**
-On click, silently copies the config JSON to the clipboard using `document.execCommand('copy')` on a hidden `<textarea>` (this works on `file://` URLs without triggering any browser dialog). Do NOT use a download link or `<a href="data:...">` -- those trigger a "Save As" dialog.
-
-The JSON shape to copy:
+**`{{STAGES_JSON}}`** -- a JSON array describing every stage. Each element:
 
 ```json
 {
-  "phases": {
-    "Stage 1: Discovery": true,
-    "Stage 2: Design": false
-  },
-  "checkpoints": {
-    "Stage 1: Discovery": {
-      "HUMAN: review and approve PRD": true
-    },
-    "Stage 3: Technical Planning": {
-      "HUMAN: review and approve system architecture": false,
-      "HUMAN: review and approve high-level design": true,
-      "HUMAN: review and approve implementation plan": true
-    }
-  },
-  "deployment_target": "local",
-  "additional_context": ""
+  "id": "Stage 1: Discovery",
+  "name": "Stage 1: Discovery",
+  "desc": "PM finalizes requirements with you before work begins.",
+  "active": true,
+  "locked": false,
+  "gates": [
+    { "id": "HUMAN: review and approve PRD", "label": "Review and approve the PRD", "active": true }
+  ]
 }
 ```
 
-Only include stages in `checkpoints` that are active (`true` in `phases`) and have at least one `👤` step. Skipped stages are omitted entirely.
-
-Then shows a green "Copied! Return to Claude and type 'done'." message on the page. No file dialog, no download.
+Rules for building `STAGES_JSON`:
+- `active`: `true` if the stage is `[ ]`, `false` if `[-]`
+- `locked`: `true` for Stages 6, 7, and 8 (never-skippable); `false` for all others
+- `gates`: one entry per `👤` line in the stage; `active` defaults to `true`; `label` is plain English (strip "HUMAN:", "review and approve" → "Review and approve ...")
+- Locked stages: set `locked: true` -- the template will automatically disable their gate checkboxes too
 
 ### Present the HTML
 
