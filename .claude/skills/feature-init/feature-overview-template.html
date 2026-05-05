@@ -3,155 +3,342 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{{FEATURE_NAME}} — Workflow Overview</title>
+<title>{{FEATURE_NAME}}</title>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 15px; color: #1a1a1a; background: #f5f5f5; padding: 32px 16px; }
-  .card { background: #fff; border-radius: 12px; padding: 32px; max-width: 680px; margin: 0 auto; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
-  h1 { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
-  .summary { font-size: 14px; color: #555; margin-bottom: 24px; line-height: 1.5; }
-  .intro { background: #f0f4ff; border-radius: 8px; padding: 14px 16px; font-size: 13px; color: #334; line-height: 1.6; margin-bottom: 24px; }
-  .legend { display: flex; gap: 20px; font-size: 12px; color: #666; margin-bottom: 20px; align-items: center; flex-wrap: wrap; }
-  .legend-item { display: flex; align-items: center; gap: 6px; }
-  .legend-stage { width: 15px; height: 15px; border-radius: 3px; background: #2563eb; flex-shrink: 0; }
-  .legend-gate { font-size: 14px; line-height: 1; }
-  h2 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: #888; margin-bottom: 14px; }
-  .stage { margin-bottom: 6px; border: 1px solid #e8e8e8; border-radius: 8px; overflow: hidden; }
-  .stage-row { display: flex; align-items: flex-start; gap: 10px; padding: 12px 14px; background: #fff; cursor: pointer; user-select: none; }
-  .stage-row:hover { background: #fafafa; }
-  .stage.locked .stage-row { cursor: default; background: #fafafa; }
-  .stage-cb { width: 17px; height: 17px; border-radius: 3px; border: 2px solid #2563eb; background: #2563eb; flex-shrink: 0; margin-top: 2px; display: flex; align-items: center; justify-content: center; transition: background .15s, border-color .15s; }
-  .stage-cb.unchecked { background: #fff; }
-  .stage-cb svg { display: block; }
-  .stage.locked .stage-cb { background: #2563eb; border-color: #2563eb; opacity: .45; }
-  .stage-label { flex: 1; min-width: 0; }
-  .stage-name { font-weight: 600; font-size: 14px; }
-  .stage-desc { font-size: 13px; color: #666; margin-top: 2px; }
-  .stage.unchecked .stage-name, .stage.unchecked .stage-desc { color: #aaa; }
-  .always-badge { font-size: 11px; font-weight: 600; color: #7c3aed; background: #f3eeff; border-radius: 4px; padding: 2px 7px; white-space: nowrap; align-self: center; }
-  .gates { border-top: 1px solid #f0f0f0; padding: 0 14px; }
-  .gate-row { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px solid #f8f8f8; }
-  .gate-row:last-child { border-bottom: none; }
-  .gate-cb { font-size: 16px; cursor: pointer; user-select: none; flex-shrink: 0; transition: opacity .15s; }
-  .gate-cb.disabled { opacity: .35; pointer-events: none; }
-  .gate-label { font-size: 13px; color: #444; transition: color .15s; }
-  .gate-label.disabled { color: #bbb; }
-  .section { margin-bottom: 24px; }
-  .field-label { font-size: 13px; font-weight: 600; margin-bottom: 8px; color: #333; }
-  .radios { display: flex; flex-wrap: wrap; gap: 8px; }
-  .radio-opt { display: flex; align-items: center; gap: 6px; font-size: 13px; cursor: pointer; padding: 6px 12px; border: 1px solid #ddd; border-radius: 6px; transition: border-color .15s, background .15s; }
-  .radio-opt:hover { border-color: #2563eb; }
-  .radio-opt input { accent-color: #2563eb; }
-  .radio-opt.selected { border-color: #2563eb; background: #eff6ff; }
-  textarea { width: 100%; border: 1px solid #ddd; border-radius: 8px; padding: 10px 12px; font-size: 13px; font-family: inherit; resize: vertical; min-height: 80px; color: #333; outline: none; transition: border-color .15s; }
-  textarea:focus { border-color: #2563eb; }
-  .confirm-btn { width: 100%; padding: 13px; background: #2563eb; color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; transition: background .15s; }
-  .confirm-btn:hover { background: #1d4ed8; }
-  .success { display: none; margin-top: 14px; padding: 12px 16px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; font-size: 13px; color: #166534; font-weight: 500; text-align: center; }
+:root {
+  --blue: #4f6ef7;
+  --blue-light: #eef1fe;
+  --purple: #7c5cfc;
+  --green: #22c55e;
+  --red: #f87171;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --bg: #f8fafc;
+  --white: #ffffff;
+  --radius: 14px;
+  --shadow: 0 1px 3px rgba(0,0,0,.07), 0 4px 16px rgba(0,0,0,.05);
+  --shadow-lg: 0 8px 32px rgba(79,110,247,.12);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
+
+/* ── Header ── */
+.hero {
+  background: linear-gradient(135deg, #4f6ef7 0%, #7c5cfc 100%);
+  padding: 40px 24px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,.18); backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 99px; padding: 5px 14px;
+  font-size: 12px; font-weight: 600; color: #fff; letter-spacing: .04em;
+  text-transform: uppercase; margin-bottom: 14px;
+}
+.hero h1 {
+  font-size: clamp(24px, 5vw, 36px); font-weight: 800; color: #fff;
+  letter-spacing: -.02em; line-height: 1.2; margin-bottom: 10px;
+}
+.hero p {
+  font-size: 15px; color: rgba(255,255,255,.8); max-width: 480px;
+  margin: 0 auto 20px; line-height: 1.6;
+}
+.stage-counter {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,.15); border-radius: 99px; padding: 6px 16px;
+  font-size: 13px; font-weight: 600; color: #fff;
+}
+.counter-dot { width: 8px; height: 8px; border-radius: 50%; background: #fff; }
+
+/* ── Main card ── */
+.container { max-width: 660px; margin: -24px auto 0; padding: 0 16px; position: relative; }
+.card {
+  background: var(--white); border-radius: var(--radius);
+  box-shadow: var(--shadow); overflow: hidden;
+}
+
+/* ── Legend ── */
+.legend {
+  display: flex; gap: 20px; flex-wrap: wrap; align-items: center;
+  padding: 16px 24px; border-bottom: 1px solid var(--border);
+  background: #fafbff;
+}
+.legend-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-right: 4px; }
+.legend-item { display: flex; align-items: center; gap: 7px; font-size: 13px; color: var(--muted); }
+.swatch-toggle { width: 32px; height: 18px; border-radius: 99px; background: var(--blue); position: relative; flex-shrink: 0; }
+.swatch-toggle::after { content: ''; position: absolute; top: 3px; right: 3px; width: 12px; height: 12px; border-radius: 50%; background: #fff; }
+.swatch-gate { font-size: 15px; line-height: 1; }
+
+/* ── Section header ── */
+.section-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 24px 12px;
+}
+.section-head h2 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.select-all { font-size: 12px; font-weight: 600; color: var(--blue); cursor: pointer; border: none; background: none; padding: 4px 0; }
+.select-all:hover { text-decoration: underline; }
+
+/* ── Stage row ── */
+.stage { border-bottom: 1px solid var(--border); transition: background .15s; }
+.stage:last-child { border-bottom: none; }
+.stage-row {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 24px; cursor: pointer; user-select: none;
+}
+.stage.locked .stage-row { cursor: default; }
+.stage-row:hover:not(.locked *) { background: #fafbff; }
+
+.stage-icon {
+  width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px;
+  background: var(--blue-light);
+  transition: background .2s, transform .15s;
+}
+.stage.inactive .stage-icon { background: #f1f5f9; filter: grayscale(1) opacity(.5); }
+
+.stage-body { flex: 1; min-width: 0; }
+.stage-name { font-size: 14px; font-weight: 700; color: var(--text); transition: color .15s; }
+.stage-desc { font-size: 13px; color: var(--muted); margin-top: 2px; line-height: 1.4; transition: color .15s; }
+.stage.inactive .stage-name { color: #94a3b8; }
+.stage.inactive .stage-desc { color: #cbd5e1; }
+
+.always-badge {
+  font-size: 11px; font-weight: 700; letter-spacing: .03em;
+  color: var(--purple); background: #f3eeff;
+  border-radius: 99px; padding: 3px 10px; white-space: nowrap; flex-shrink: 0;
+}
+
+/* Toggle switch */
+.toggle {
+  width: 40px; height: 22px; border-radius: 99px; flex-shrink: 0;
+  background: var(--blue); border: none; cursor: pointer;
+  position: relative; transition: background .2s;
+  box-shadow: 0 1px 4px rgba(79,110,247,.3);
+}
+.toggle::after {
+  content: ''; position: absolute; top: 3px; right: 3px;
+  width: 16px; height: 16px; border-radius: 50%; background: #fff;
+  transition: transform .2s, right .2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,.2);
+}
+.toggle.off { background: #e2e8f0; box-shadow: none; }
+.toggle.off::after { right: auto; left: 3px; }
+.toggle:disabled { opacity: .45; cursor: default; }
+
+/* ── Gate rows ── */
+.gates { background: #fafbff; }
+.gate-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 24px 10px 74px;
+  border-top: 1px solid var(--border);
+  transition: opacity .15s;
+}
+.gate-row.dimmed { opacity: .35; pointer-events: none; }
+.gate-icon { font-size: 14px; flex-shrink: 0; }
+.gate-label { flex: 1; font-size: 13px; color: #475569; line-height: 1.4; }
+.gate-toggle {
+  width: 32px; height: 18px; border-radius: 99px; flex-shrink: 0;
+  background: var(--blue); border: none; cursor: pointer;
+  position: relative; transition: background .2s;
+}
+.gate-toggle::after {
+  content: ''; position: absolute; top: 2px; right: 2px;
+  width: 14px; height: 14px; border-radius: 50%; background: #fff;
+  transition: transform .2s, right .2s;
+  box-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+.gate-toggle.off { background: #e2e8f0; }
+.gate-toggle.off::after { right: auto; left: 2px; }
+.gate-toggle:disabled { opacity: .45; cursor: default; }
+
+/* ── Config section ── */
+.config-section { padding: 20px 24px; border-top: 1px solid var(--border); }
+.config-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 12px; display: block; }
+.deploy-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.deploy-opt {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 14px; border: 1.5px solid var(--border);
+  border-radius: 10px; cursor: pointer;
+  font-size: 13px; font-weight: 500; color: #475569;
+  transition: border-color .15s, background .15s, color .15s;
+  user-select: none;
+}
+.deploy-opt:hover { border-color: var(--blue); color: var(--blue); }
+.deploy-opt.selected { border-color: var(--blue); background: var(--blue-light); color: var(--blue); font-weight: 700; }
+.deploy-opt input { display: none; }
+.deploy-dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+textarea.context-input {
+  width: 100%; border: 1.5px solid var(--border); border-radius: 10px;
+  padding: 12px 14px; font-size: 13px; font-family: inherit;
+  color: var(--text); resize: vertical; min-height: 72px;
+  outline: none; transition: border-color .15s;
+  background: var(--bg);
+}
+textarea.context-input:focus { border-color: var(--blue); background: #fff; }
+textarea.context-input::placeholder { color: #94a3b8; }
+
+/* ── Footer ── */
+.footer { padding: 20px 24px 24px; border-top: 1px solid var(--border); }
+.confirm-btn {
+  width: 100%; padding: 14px 24px;
+  background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 100%);
+  color: #fff; border: none; border-radius: 12px;
+  font-size: 15px; font-weight: 700; cursor: pointer; letter-spacing: -.01em;
+  transition: opacity .15s, transform .1s, box-shadow .15s;
+  box-shadow: 0 4px 14px rgba(79,110,247,.35);
+  position: relative; overflow: hidden;
+}
+.confirm-btn:hover { opacity: .92; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(79,110,247,.45); }
+.confirm-btn:active { transform: translateY(0); }
+.confirm-btn.done {
+  background: linear-gradient(135deg, #16a34a, #15803d);
+  box-shadow: 0 4px 14px rgba(22,163,74,.35);
+}
+.success-hint {
+  display: none; text-align: center; margin-top: 14px;
+  font-size: 13px; color: var(--muted); line-height: 1.5;
+}
+.success-hint strong { color: var(--text); }
+.success-hint.visible { display: block; }
 </style>
 </head>
 <body>
-<div class="card">
+
+<div class="hero">
+  <div class="hero-badge">⚡ Workflow Setup</div>
   <h1>{{FEATURE_NAME}}</h1>
-  <p class="summary">{{PROJECT_SUMMARY}}</p>
-
-  <div class="intro">
-    This workflow is broken into stages. Toggle off stages you want to skip entirely. Within active stages, you can also toggle individual human checkpoints — uncheck any review gate you want the agents to bypass automatically.
+  <p>{{PROJECT_SUMMARY}}</p>
+  <div class="stage-counter">
+    <span class="counter-dot"></span>
+    <span id="counter-text">Loading...</span>
   </div>
+</div>
 
-  <div class="legend">
-    <span style="font-weight:600;font-size:12px;color:#555;">Legend:</span>
-    <span class="legend-item"><span class="legend-stage"></span> Stage = include/skip the whole stage</span>
-    <span class="legend-item"><span class="legend-gate">👤</span> a human review gate within the stage</span>
-  </div>
+<div class="container">
+  <div class="card">
 
-  <div class="section">
-    <h2>Stages</h2>
-    <div id="stages-list">
-      <!-- injected by CC -->
+    <div class="legend">
+      <span class="legend-label">Legend</span>
+      <span class="legend-item"><span class="swatch-toggle"></span> Toggle a whole stage on / off</span>
+      <span class="legend-item"><span class="swatch-gate">👤</span> Human review gate inside a stage</span>
     </div>
-  </div>
 
-  <div class="section">
-    <div class="field-label">Deployment target</div>
-    <div class="radios" id="deploy-radios">
-      <label class="radio-opt selected"><input type="radio" name="deploy" value="local" checked> local</label>
-      <label class="radio-opt"><input type="radio" name="deploy" value="existing AWS infra"> existing AWS infra</label>
-      <label class="radio-opt"><input type="radio" name="deploy" value="new AWS infra"> new AWS infra</label>
-      <label class="radio-opt"><input type="radio" name="deploy" value="TBD"> TBD</label>
+    <div class="section-head">
+      <h2>Delivery Stages</h2>
+      <button class="select-all" onclick="setAll(true)">Enable all</button>
     </div>
-  </div>
 
-  <div class="section">
-    <div class="field-label">Additional context <span style="font-weight:400;color:#888;">(optional)</span></div>
-    <textarea id="extra-context" placeholder="Whiteboard notes, sketches, constraints, preferences..."></textarea>
-  </div>
+    <div id="stages-list"></div>
 
-  <button class="confirm-btn" onclick="confirm()">Confirm configuration</button>
-  <div class="success" id="success-msg">Copied! Return to Claude and type <strong>done</strong>.</div>
+    <div class="config-section">
+      <span class="config-label">Where does this ship?</span>
+      <div class="deploy-grid" id="deploy-grid">
+        <label class="deploy-opt selected"><input type="radio" name="deploy" value="local" checked><span class="deploy-dot"></span>Local only</label>
+        <label class="deploy-opt"><input type="radio" name="deploy" value="existing AWS infra"><span class="deploy-dot"></span>Existing AWS</label>
+        <label class="deploy-opt"><input type="radio" name="deploy" value="new AWS infra"><span class="deploy-dot"></span>New AWS infra</label>
+        <label class="deploy-opt"><input type="radio" name="deploy" value="TBD"><span class="deploy-dot"></span>TBD</label>
+      </div>
+    </div>
+
+    <div class="config-section" style="padding-top:0">
+      <span class="config-label">Anything Claude should know upfront?</span>
+      <textarea class="context-input" id="extra-context" placeholder="Sketch notes, constraints, tech decisions, team preferences… or leave blank."></textarea>
+    </div>
+
+    <div class="footer">
+      <button class="confirm-btn" id="confirm-btn" onclick="confirmConfig()">Lock in my workflow →</button>
+      <p class="success-hint" id="success-hint">
+        ✅ Copied to clipboard. Switch back to Claude and type <strong>done</strong> to continue.
+      </p>
+    </div>
+
+  </div>
 </div>
 
 <script>
-// Stage data injected by CC — replace this with actual data
+const STAGE_ICONS = ['🔍','🎨','🏗️','⚙️','🧪','📦','📝','🚀'];
+
 const STAGES = {{STAGES_JSON}};
 
-const CHECK_SVG = `<svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-
 function buildStages() {
-  const container = document.getElementById('stages-list');
+  const list = document.getElementById('stages-list');
   STAGES.forEach((s, i) => {
-    const locked = s.locked === true;
     const el = document.createElement('div');
-    el.className = 'stage' + (locked ? ' locked' : '');
+    el.className = 'stage' + (s.locked ? ' locked' : '') + (!s.active ? ' inactive' : '');
     el.dataset.idx = i;
 
-    const gates = (s.gates || []).map((g, gi) => `
-      <div class="gate-row" data-stage="${i}" data-gate="${gi}">
-        <span class="gate-cb${locked ? ' disabled' : ''}" data-stage="${i}" data-gate="${gi}">${locked ? '👤' : (g.active ? '☑' : '☐')}&#xFE0E;</span>
-        <span class="gate-label${locked ? ' disabled' : ''}">${g.label}</span>
+    const gatesHtml = (s.gates || []).map((g, gi) => `
+      <div class="gate-row${!s.active ? ' dimmed' : ''}" id="gate-${i}-${gi}">
+        <span class="gate-icon">👤</span>
+        <span class="gate-label">${g.label}</span>
+        <button class="gate-toggle${g.active ? '' : ' off'}${s.locked ? '' : ''}"
+          ${s.locked ? 'disabled' : ''}
+          onclick="toggleGate(event,${i},${gi})" title="${g.active ? 'Skip this review' : 'Enable this review'}"></button>
       </div>`).join('');
 
     el.innerHTML = `
-      <div class="stage-row" onclick="${locked ? '' : 'toggleStage(' + i + ')'}">
-        <div class="stage-cb${s.active ? '' : ' unchecked'}">${s.active ? CHECK_SVG : ''}</div>
-        <div class="stage-label">
+      <div class="stage-row" onclick="${s.locked ? '' : 'toggleStage(' + i + ')'}">
+        <div class="stage-icon">${STAGE_ICONS[i] || '📌'}</div>
+        <div class="stage-body">
           <div class="stage-name">${s.name}</div>
           <div class="stage-desc">${s.desc}</div>
         </div>
-        ${locked ? '<span class="always-badge">Always active</span>' : ''}
+        ${s.locked
+          ? '<span class="always-badge">Always on</span>'
+          : `<button class="toggle${s.active ? '' : ' off'}" onclick="event.stopPropagation();toggleStage(${i})" title="${s.active ? 'Skip this stage' : 'Enable this stage'}"></button>`}
       </div>
-      ${gates ? '<div class="gates">' + gates + '</div>' : ''}`;
-    container.appendChild(el);
+      ${gatesHtml ? '<div class="gates">' + gatesHtml + '</div>' : ''}`;
+    list.appendChild(el);
   });
-
-  // gate toggle listeners
-  document.getElementById('stages-list').addEventListener('click', function(e) {
-    const cb = e.target.closest('.gate-cb:not(.disabled)');
-    if (!cb) return;
-    const si = +cb.dataset.stage, gi = +cb.dataset.gate;
-    STAGES[si].gates[gi].active = !STAGES[si].gates[gi].active;
-    cb.textContent = STAGES[si].gates[gi].active ? '☑' : '☐';
-  });
-
-  // radio styling
-  document.getElementById('deploy-radios').addEventListener('change', function(e) {
-    document.querySelectorAll('.radio-opt').forEach(o => o.classList.toggle('selected', o.querySelector('input') === e.target));
-  });
+  updateCounter();
 }
 
 function toggleStage(i) {
   const s = STAGES[i];
   s.active = !s.active;
   const el = document.querySelector('.stage[data-idx="' + i + '"]');
-  el.classList.toggle('unchecked', !s.active);
-  const cb = el.querySelector('.stage-cb');
-  cb.classList.toggle('unchecked', !s.active);
-  cb.innerHTML = s.active ? CHECK_SVG : '';
-  el.querySelectorAll('.gate-cb').forEach(g => g.classList.toggle('disabled', !s.active));
-  el.querySelectorAll('.gate-label').forEach(g => g.classList.toggle('disabled', !s.active));
+  el.classList.toggle('inactive', !s.active);
+  el.querySelector('.toggle').classList.toggle('off', !s.active);
+  el.querySelectorAll('.gate-row').forEach(r => r.classList.toggle('dimmed', !s.active));
+  el.querySelectorAll('.gate-toggle').forEach(b => b.disabled = !s.active);
+  updateCounter();
 }
 
-function confirm() {
+function toggleGate(e, si, gi) {
+  e.stopPropagation();
+  const g = STAGES[si].gates[gi];
+  g.active = !g.active;
+  document.getElementById('gate-' + si + '-' + gi).querySelector('.gate-toggle').classList.toggle('off', !g.active);
+}
+
+function setAll(val) {
+  STAGES.forEach((s, i) => { if (!s.locked && s.active !== val) toggleStage(i); });
+}
+
+function updateCounter() {
+  const active = STAGES.filter(s => s.active).length;
+  const total = STAGES.length;
+  document.getElementById('counter-text').textContent = active + ' of ' + total + ' stages active';
+}
+
+function confirmConfig() {
   const phases = {}, checkpoints = {};
   STAGES.forEach(s => {
     phases[s.id] = s.active;
@@ -165,7 +352,6 @@ function confirm() {
   const ctx = document.getElementById('extra-context').value.trim();
   const payload = JSON.stringify({ phases, checkpoints, deployment_target: deploy, additional_context: ctx }, null, 2);
 
-  // Silent clipboard copy — works on file:// without Save As dialog
   const ta = document.createElement('textarea');
   ta.value = payload;
   ta.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0';
@@ -174,11 +360,19 @@ function confirm() {
   document.execCommand('copy');
   document.body.removeChild(ta);
 
-  const msg = document.getElementById('success-msg');
-  msg.style.display = 'block';
-  document.querySelector('.confirm-btn').textContent = '✓ Copied';
-  document.querySelector('.confirm-btn').style.background = '#16a34a';
+  const btn = document.getElementById('confirm-btn');
+  btn.textContent = '✓ Workflow locked in';
+  btn.classList.add('done');
+  btn.disabled = true;
+  document.getElementById('success-hint').classList.add('visible');
 }
+
+// Deploy option styling
+document.getElementById('deploy-grid').addEventListener('change', e => {
+  document.querySelectorAll('.deploy-opt').forEach(o => {
+    o.classList.toggle('selected', o.querySelector('input') === e.target);
+  });
+});
 
 buildStages();
 </script>
