@@ -105,7 +105,9 @@ For each stage from `feature-setup.md`:
 - Disabled/locked checkbox for never-skippable stages (Stages 6 and 7), visually marked as "Always active"
 - Stage name as label (e.g. "Stage 1: Discovery")
 - One-line description of what happens in the stage (use the stage content to infer this)
-- Indented below: each `👤` human checkpoint from that stage, shown as a read-only item with a 👤 icon and text like "You'll review and approve the PRD"
+- Indented below: each `👤` human checkpoint from that stage, shown as an **individually toggleable checkbox** (checked by default). Label it in plain language (e.g. "You review and approve the PRD"). When the parent stage is unchecked, visually disable all its child checkpoints (greyed out, non-interactive) since the whole stage is skipped.
+
+Use JavaScript to enforce: unchecking a stage greys out and disables all its child checkpoint checkboxes. Re-checking a stage re-enables them to their previous state.
 
 **4. Deployment target**
 A radio button group with options: `local` / `existing AWS infra` / `new AWS infra` / `TBD`. Default: `local`.
@@ -122,10 +124,22 @@ On click, writes the following to `[feature-folder]/workflow/user-phase-input.js
     "Stage 1: Discovery": true,
     "Stage 2: Design": false
   },
+  "checkpoints": {
+    "Stage 1: Discovery": {
+      "HUMAN: review and approve PRD": true
+    },
+    "Stage 3: Technical Planning": {
+      "HUMAN: review and approve system architecture": false,
+      "HUMAN: review and approve high-level design": true,
+      "HUMAN: review and approve implementation plan": true
+    }
+  },
   "deployment_target": "local",
   "additional_context": ""
 }
 ```
+
+Only include stages in `checkpoints` that are active (`true` in `phases`) and have at least one `👤` step. Skipped stages are omitted entirely.
 
 Then shows a green "Saved! Return to Claude and type 'done'." message on the page.
 
@@ -148,7 +162,8 @@ Wait for the user to return and say "done" (or similar).
 Read `[feature-folder]/workflow/user-phase-input.json`.
 
 Apply to `[feature-folder]/workflow/feature-setup.md`:
-- For each stage with `false`: change its `[ ]` to `[-]` at the stage line
+- For each stage with `false` in `phases`: change its `[ ]` to `[-]` at the stage line
+- For each checkpoint with `false` in `checkpoints`: find the matching `👤` step line within that stage and change its `[ ]` to `[-]`
 - Replace the deployment target `local` default in the `## Deployment target` block with the user's choice
 - If `additional_context` is non-empty: replace the example block in `## Additional context` with the user's text
 
@@ -159,12 +174,16 @@ Print a plain-language summary:
 ```
 Phases configured:
 - Stage 1: Discovery        [ active ]
+    👤 review and approve PRD          [ active ]
 - Stage 2: Design           [ skipped ]
+- Stage 3: Technical Planning  [ active ]
+    👤 review and approve system architecture  [ skipped ]
+    👤 review and approve high-level design    [ active ]
 ...
 Deployment target: local
 ```
 
-Use `[ active ]` for `[ ]` stages and `[ skipped ]` for `[-]` stages.
+Use `[ active ]` for `[ ]` items and `[ skipped ]` for `[-]` items. Only show checkpoint rows for active stages.
 
 Then ask: "Does this look right before we continue?" with options "Yes, continue" and "No, reopen browser". If reopen, re-run the HTML flow from "Present the HTML" and repeat until the user confirms.
 
