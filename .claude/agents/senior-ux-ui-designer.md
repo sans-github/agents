@@ -4,6 +4,7 @@ description: Senior UX/UI Designer. Creates distinctive, production-grade interf
 skills:
   - frontend-design
   - brand-guidelines
+  - ui-simplicity
   - collaboration-contracts
 ---
 
