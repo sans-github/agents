@@ -1,7 +1,6 @@
 ---
 name: feature-init
 description: Scaffold a new feature folder under projects/. Creates projects/master/ (once) and projects/YYYYMMDD-feature-name/ from the template. Use when starting work on a new feature.
-argument-hint: 20260417-sample-feature
 ---
 
 # Feature Init
