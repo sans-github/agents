@@ -102,12 +102,14 @@ A short paragraph explaining: this workflow is broken into stages; each stage ma
 **3. Stage configuration list**
 For each stage from `feature-setup.md`:
 - Checkbox (checked by default if `[ ]`, unchecked if `[-]`)
-- Disabled/locked checkbox for never-skippable stages (Stages 6 and 7), visually marked as "Always active"
+- Disabled/locked checkbox for never-skippable stages (Stages 6, 7, and 8), visually marked as "Always active"
 - Stage name as label (e.g. "Stage 1: Discovery")
 - One-line description of what happens in the stage (use the stage content to infer this)
-- Indented below: each `👤` human checkpoint from that stage, shown as an **individually toggleable checkbox** (checked by default). Label it in plain language (e.g. "You review and approve the PRD"). When the parent stage is unchecked, visually disable all its child checkpoints (greyed out, non-interactive) since the whole stage is skipped.
+- Indented below: each `👤` human checkpoint from that stage:
+  - For **skippable stages**: shown as an individually toggleable checkbox (checked by default)
+  - For **never-skippable stages**: shown as a locked/disabled read-only item (same lock treatment as the parent) -- if the stage cannot be skipped, neither can its human gates
 
-Use JavaScript to enforce: unchecking a stage greys out and disables all its child checkpoint checkboxes. Re-checking a stage re-enables them to their previous state.
+Use JavaScript to enforce: unchecking a skippable stage greys out and disables all its child checkpoint checkboxes. Re-checking re-enables them to their previous state. Never-skippable stage checkpoints remain permanently disabled regardless of any interaction.
 
 **4. Deployment target**
 A radio button group with options: `local` / `existing AWS infra` / `new AWS infra` / `TBD`. Default: `local`.
