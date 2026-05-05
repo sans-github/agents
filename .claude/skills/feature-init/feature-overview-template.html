@@ -10,7 +10,6 @@
   --accent-light: #dcfce7;
   --accent-mid: #bbf7d0;
   --green: #15803d;
-  --green-light: #f0fdf4;
   --text: #0f172a;
   --muted: #64748b;
   --subtle: #94a3b8;
@@ -34,98 +33,90 @@ body {
 /* ── Header ── */
 .hero {
   background: #14532d;
-  padding: 40px 24px 58px;
+  padding: 20px 24px 36px;
   text-align: center;
   position: relative;
   overflow: hidden;
 }
-/* subtle dot grid */
 .hero::before {
   content: '';
   position: absolute; inset: 0;
   background-image: radial-gradient(rgba(255,255,255,.12) 1px, transparent 1px);
   background-size: 22px 22px;
 }
-/* bottom fade into bg */
 .hero::after {
   content: '';
   position: absolute; bottom: 0; left: 0; right: 0; height: 32px;
   background: linear-gradient(to bottom, transparent, rgba(22,163,74,.18));
 }
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: rgba(255,255,255,.18); backdrop-filter: blur(6px);
-  border: 1px solid rgba(255,255,255,.28);
-  border-radius: 99px; padding: 4px 13px;
-  font-size: 11px; font-weight: 700; color: #fff; letter-spacing: .06em;
-  text-transform: uppercase; margin-bottom: 14px; position: relative;
-}
 .hero h1 {
-  font-size: clamp(22px, 5vw, 32px); font-weight: 800; color: #fff;
-  letter-spacing: -.02em; line-height: 1.2; margin-bottom: 8px; position: relative;
+  font-size: clamp(18px, 4vw, 26px); font-weight: 800; color: #fff;
+  letter-spacing: -.02em; line-height: 1.2; margin-bottom: 6px; position: relative;
 }
 .hero p {
-  font-size: 14px; color: rgba(255,255,255,.82); max-width: 440px;
-  margin: 0 auto 20px; line-height: 1.65; position: relative;
+  font-size: 13px; color: rgba(255,255,255,.82); max-width: 440px;
+  margin: 0 auto; line-height: 1.6; position: relative;
 }
-.stage-counter {
-  display: inline-flex; align-items: center; gap: 7px;
-  background: rgba(255,255,255,.18); border-radius: 99px; padding: 5px 14px;
-  font-size: 12px; font-weight: 600; color: #fff; position: relative;
-}
-.counter-dot { width: 7px; height: 7px; border-radius: 50%; background: #fff; }
 
 /* ── Main card ── */
-.container { max-width: 640px; margin: -24px auto 0; padding: 0 16px; position: relative; }
+.container { max-width: 920px; margin: -24px auto 0; padding: 0 16px; position: relative; }
 .card {
   background: var(--white); border-radius: var(--radius);
   box-shadow: var(--shadow); overflow: hidden;
   border: 1px solid var(--border);
 }
 
-/* ── Legend ── */
-.legend {
-  display: flex; gap: 18px; flex-wrap: wrap; align-items: center;
-  padding: 13px 22px; border-bottom: 1px solid var(--border);
+/* ── Column headers (also serve as legend) ── */
+.col-headers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--border);
   background: var(--surface);
 }
-.legend-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--subtle); margin-right: 2px; }
-.legend-item { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--muted); }
-.swatch-toggle { width: 28px; height: 16px; border-radius: 99px; background: var(--accent); position: relative; flex-shrink: 0; }
-.swatch-toggle::after { content: ''; position: absolute; top: 2px; right: 2px; width: 12px; height: 12px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.15); }
-.swatch-gate { font-size: 13px; line-height: 1; }
-
-/* ── Section header ── */
-.section-head {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 18px 22px 10px;
+.col-header-left {
+  display: flex; align-items: center; gap: 8px;
+  padding: 11px 18px;
+  border-right: 1px solid var(--border);
 }
-.section-head h2 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--subtle); }
-.select-all { font-size: 12px; font-weight: 600; color: var(--accent); cursor: pointer; border: none; background: none; padding: 4px 0; }
-.select-all:hover { text-decoration: underline; }
+.col-header-right {
+  display: flex; align-items: center; gap: 8px;
+  padding: 11px 18px;
+}
+.col-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--subtle); flex: 1; }
 
-/* ── Stage row ── */
-.stage { border-bottom: 1px solid var(--border); }
+
+/* ── Stage two-column grid ── */
+.stage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--border);
+}
 .stage:last-child { border-bottom: none; }
-.stage-row {
-  display: flex; align-items: center; gap: 14px;
-  padding: 13px 22px; cursor: pointer; user-select: none;
+
+/* Left: phase control */
+.stage-left {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 18px;
+  border-right: 1px solid var(--border);
+  cursor: pointer;
+  user-select: none;
   transition: background .12s;
 }
-.stage.locked .stage-row { cursor: default; }
-.stage-row:hover { background: var(--surface); }
+.stage-left:hover { background: #fafcf9; }
+.stage.locked .stage-left { cursor: default; }
+.stage.locked .stage-left:hover { background: transparent; }
 
 .stage-icon {
   width: 34px; height: 34px; border-radius: 9px; flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
   font-size: 16px; background: var(--accent-light);
-  transition: background .2s;
+  transition: background .2s, filter .2s;
 }
 .stage.inactive .stage-icon { background: #f1f5f9; filter: grayscale(1) opacity(.45); }
 
 .stage-body { flex: 1; min-width: 0; }
-.stage-name { font-size: 13px; font-weight: 700; color: var(--text); }
-.stage-desc { font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.4; }
+.stage-name { font-size: 13px; font-weight: 700; color: var(--text); transition: color .15s; }
+.stage-desc { font-size: 11px; color: var(--muted); margin-top: 2px; line-height: 1.4; transition: color .15s; }
 .stage.inactive .stage-name { color: var(--subtle); }
 .stage.inactive .stage-desc { color: #cbd5e1; }
 
@@ -135,7 +126,7 @@ body {
   border-radius: 99px; padding: 3px 9px; white-space: nowrap; flex-shrink: 0;
 }
 
-/* Toggle switch */
+/* Toggle switch (phase) */
 .toggle {
   width: 38px; height: 21px; border-radius: 99px; flex-shrink: 0;
   background: var(--accent); border: none; cursor: pointer;
@@ -150,34 +141,50 @@ body {
 }
 .toggle.off { background: #e2e8f0; box-shadow: none; }
 .toggle.off::after { right: auto; left: 3px; }
-.toggle:disabled { opacity: .4; cursor: default; }
 
-/* ── Gate rows ── */
-.gates { background: var(--surface); }
-.gate-row {
-  display: flex; align-items: center; gap: 12px;
-  padding: 9px 22px 9px 70px;
-  border-top: 1px solid var(--border);
-  transition: opacity .15s;
+/* Right: gate checkboxes */
+.stage-right {
+  padding: 12px 18px;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: opacity .2s;
 }
-.gate-row.dimmed { opacity: .3; pointer-events: none; }
-.gate-icon { font-size: 13px; flex-shrink: 0; }
-.gate-label { flex: 1; font-size: 12px; color: #475569; line-height: 1.4; }
-.gate-toggle {
-  width: 30px; height: 17px; border-radius: 99px; flex-shrink: 0;
-  background: var(--accent); border: none; cursor: pointer;
-  position: relative; transition: background .2s;
-  box-shadow: 0 1px 3px rgba(22,163,74,.3);
+.stage.inactive .stage-right { opacity: .28; pointer-events: none; }
+
+.gate-item {
+  display: flex; align-items: center; gap: 9px;
+  padding: 5px 0;
+  cursor: pointer;
+  user-select: none;
 }
-.gate-toggle::after {
-  content: ''; position: absolute; top: 2px; right: 2px;
-  width: 13px; height: 13px; border-radius: 50%; background: #fff;
-  transition: right .2s, left .2s;
-  box-shadow: 0 1px 2px rgba(0,0,0,.18);
+.gate-item + .gate-item { border-top: 1px solid var(--border); }
+.stage.locked .gate-item { cursor: default; }
+
+.gate-cb {
+  width: 16px; height: 16px;
+  border: 2px solid var(--border);
+  border-radius: 4px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s, border-color .15s;
+  background: var(--white);
 }
-.gate-toggle.off { background: #e2e8f0; box-shadow: none; }
-.gate-toggle.off::after { right: auto; left: 2px; }
-.gate-toggle:disabled { opacity: .4; cursor: default; }
+.gate-cb.checked {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.gate-cb.checked::after {
+  content: ''; display: block;
+  width: 4px; height: 8px;
+  border: 1.5px solid #fff; border-top: none; border-left: none;
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+.stage.locked .gate-cb { opacity: .45; }
+
+.gate-label-text { font-size: 12px; color: #475569; line-height: 1.35; }
+
+.no-gates { font-size: 12px; color: var(--subtle); font-style: italic; }
 
 /* ── Config section ── */
 .config-section { padding: 18px 22px; border-top: 1px solid var(--border); }
@@ -218,10 +225,7 @@ textarea.context-input::placeholder { color: var(--subtle); }
 }
 .confirm-btn:hover { filter: brightness(1.08); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(22,163,74,.38); }
 .confirm-btn:active { transform: translateY(0); }
-.confirm-btn.done {
-  background: var(--green);
-  box-shadow: 0 4px 12px rgba(22,163,74,.28);
-}
+.confirm-btn.done { background: var(--green); box-shadow: 0 4px 12px rgba(22,163,74,.28); }
 .success-hint {
   display: none; text-align: center; margin-top: 12px;
   font-size: 12px; color: var(--muted); line-height: 1.5;
@@ -233,27 +237,21 @@ textarea.context-input::placeholder { color: var(--subtle); }
 <body>
 
 <div class="hero">
-  <div class="hero-badge">⚡ Workflow Setup</div>
   <h1>{{FEATURE_NAME}}</h1>
   <p>{{PROJECT_SUMMARY}}</p>
-  <div class="stage-counter">
-    <span class="counter-dot"></span>
-    <span id="counter-text">Loading...</span>
-  </div>
 </div>
 
 <div class="container">
   <div class="card">
 
-    <div class="legend">
-      <span class="legend-label">Legend</span>
-      <span class="legend-item"><span class="swatch-toggle"></span> Toggle a whole stage on / off</span>
-      <span class="legend-item"><span class="swatch-gate">👤</span> Human review gate inside a stage</span>
-    </div>
-
-    <div class="section-head">
-      <h2>Delivery Stages</h2>
-      <button class="select-all" onclick="setAll(true)">Enable all</button>
+    <div class="col-headers">
+      <div class="col-header-left">
+        <span class="col-label">Phase</span>
+        <span id="counter-text" style="font-size:11px;font-weight:700;color:var(--accent);">8/8</span>
+      </div>
+      <div class="col-header-right">
+        <span class="col-label">Review Gates</span>
+      </div>
     </div>
 
     <div id="stages-list"></div>
@@ -295,27 +293,33 @@ function buildStages() {
     el.className = 'stage' + (s.locked ? ' locked' : '') + (!s.active ? ' inactive' : '');
     el.dataset.idx = i;
 
-    const gatesHtml = (s.gates || []).map((g, gi) => `
-      <div class="gate-row${!s.active ? ' dimmed' : ''}" id="gate-${i}-${gi}">
-        <span class="gate-icon">👤</span>
-        <span class="gate-label">${g.label}</span>
-        <button class="gate-toggle${g.active ? '' : ' off'}${s.locked ? '' : ''}"
-          ${s.locked ? 'disabled' : ''}
-          onclick="toggleGate(event,${i},${gi})" title="${g.active ? 'Skip this review' : 'Enable this review'}"></button>
-      </div>`).join('');
+    const displayName = s.name.replace(/^Stage \d+:\s*/, '');
+    const leftHtml = `
+      <div class="stage-icon">${STAGE_ICONS[i] || '📌'}</div>
+      <div class="stage-body">
+        <div class="stage-name">${displayName}</div>
+        <div class="stage-desc">${s.desc}</div>
+      </div>
+      ${s.locked
+        ? '<span class="always-badge">Always on</span>'
+        : `<button class="toggle${s.active ? '' : ' off'}" onclick="event.stopPropagation();toggleStage(${i})" title="${s.active ? 'Skip this stage' : 'Enable this stage'}"></button>`}`;
+
+    const gates = s.gates || [];
+    let rightHtml = '';
+    if (gates.length) {
+      const items = gates.map((g, gi) => `
+        <div class="gate-item" id="gate-${i}-${gi}" onclick="toggleGate(event,${i},${gi})">
+          <span class="gate-cb${g.active ? ' checked' : ''}"></span>
+          <span class="gate-label-text">${g.label}</span>
+        </div>`).join('');
+      rightHtml = items;
+    } else {
+      rightHtml = '<span class="no-gates">No review gates</span>';
+    }
 
     el.innerHTML = `
-      <div class="stage-row" onclick="${s.locked ? '' : 'toggleStage(' + i + ')'}">
-        <div class="stage-icon">${STAGE_ICONS[i] || '📌'}</div>
-        <div class="stage-body">
-          <div class="stage-name">${s.name}</div>
-          <div class="stage-desc">${s.desc}</div>
-        </div>
-        ${s.locked
-          ? '<span class="always-badge">Always on</span>'
-          : `<button class="toggle${s.active ? '' : ' off'}" onclick="event.stopPropagation();toggleStage(${i})" title="${s.active ? 'Skip this stage' : 'Enable this stage'}"></button>`}
-      </div>
-      ${gatesHtml ? '<div class="gates">' + gatesHtml + '</div>' : ''}`;
+      <div class="stage-left" onclick="${s.locked ? '' : 'toggleStage(' + i + ')'}">${leftHtml}</div>
+      <div class="stage-right">${rightHtml}</div>`;
     list.appendChild(el);
   });
   updateCounter();
@@ -326,27 +330,23 @@ function toggleStage(i) {
   s.active = !s.active;
   const el = document.querySelector('.stage[data-idx="' + i + '"]');
   el.classList.toggle('inactive', !s.active);
-  el.querySelector('.toggle').classList.toggle('off', !s.active);
-  el.querySelectorAll('.gate-row').forEach(r => r.classList.toggle('dimmed', !s.active));
-  el.querySelectorAll('.gate-toggle').forEach(b => b.disabled = !s.active);
+  const toggle = el.querySelector('.toggle');
+  if (toggle) toggle.classList.toggle('off', !s.active);
   updateCounter();
 }
 
 function toggleGate(e, si, gi) {
   e.stopPropagation();
+  if (STAGES[si].locked) return;
   const g = STAGES[si].gates[gi];
   g.active = !g.active;
-  document.getElementById('gate-' + si + '-' + gi).querySelector('.gate-toggle').classList.toggle('off', !g.active);
+  document.getElementById('gate-' + si + '-' + gi).querySelector('.gate-cb').classList.toggle('checked', g.active);
 }
 
-function setAll(val) {
-  STAGES.forEach((s, i) => { if (!s.locked && s.active !== val) toggleStage(i); });
-}
 
 function updateCounter() {
   const active = STAGES.filter(s => s.active).length;
-  const total = STAGES.length;
-  document.getElementById('counter-text').textContent = active + ' of ' + total + ' stages active';
+  document.getElementById('counter-text').textContent = active + '/' + STAGES.length;
 }
 
 function confirmConfig() {
@@ -378,7 +378,6 @@ function confirmConfig() {
   document.getElementById('success-hint').classList.add('visible');
 }
 
-// Deploy option styling
 document.getElementById('deploy-grid').addEventListener('change', e => {
   document.querySelectorAll('.deploy-opt').forEach(o => {
     o.classList.toggle('selected', o.querySelector('input') === e.target);
