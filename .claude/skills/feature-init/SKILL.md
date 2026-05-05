@@ -116,7 +116,9 @@ A radio button group with options: `local` / `existing AWS infra` / `new AWS inf
 A textarea with placeholder: "Whiteboard notes, sketches, constraints, preferences... (optional)"
 
 **6. Confirm button**
-On click, writes the following to `[feature-folder]/workflow/user-phase-input.json`:
+On click, silently copies the config JSON to the clipboard using `document.execCommand('copy')` on a hidden `<textarea>` (this works on `file://` URLs without triggering any browser dialog). Do NOT use a download link or `<a href="data:...">` -- those trigger a "Save As" dialog.
+
+The JSON shape to copy:
 
 ```json
 {
@@ -141,7 +143,7 @@ On click, writes the following to `[feature-folder]/workflow/user-phase-input.js
 
 Only include stages in `checkpoints` that are active (`true` in `phases`) and have at least one `👤` step. Skipped stages are omitted entirely.
 
-Then shows a green "Saved! Return to Claude and type 'done'." message on the page.
+Then shows a green "Copied! Return to Claude and type 'done'." message on the page. No file dialog, no download.
 
 ### Present the HTML
 
@@ -159,7 +161,7 @@ Wait for the user to return and say "done" (or similar).
 
 ### Read and apply the result
 
-Read `[feature-folder]/workflow/user-phase-input.json`.
+Run `pbpaste` via Bash to read the JSON the user copied. Write the output to `[feature-folder]/workflow/user-phase-input.json`. Then read that file.
 
 Apply to `[feature-folder]/workflow/feature-setup.md`:
 - For each stage with `false` in `phases`: change its `[ ]` to `[-]` at the stage line
