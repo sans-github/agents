@@ -85,6 +85,7 @@ mindmap
     [UX Designer]
       )frontend-design(
       )brand-guidelines(
+      )ui-simplicity(
       )collaboration-contracts(
     [Product Manager]
       )prd-craft(
