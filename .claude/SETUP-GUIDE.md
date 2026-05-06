@@ -2,6 +2,8 @@
 
 ## Every feature
 
+**New to the workflow?** Run `/feature-init-dry-run` first. Every agent writes a one-line placeholder instead of real content, but all gates, commits, and tracker steps fire for real. Use this to verify wiring before your first real feature.
+
 Run `/feature-init` in Claude Code. Claude will guide you through:
 - Toggling phases on/off
 - Setting the deployment target
