@@ -19,18 +19,44 @@ Use `AskUserQuestion` to settle these before drafting anything:
 - EC2 instance size and monthly budget ceiling?
 - Region?
 - HTTPS now or later? (ACM cannot issue certs for raw AWS hostnames -- HTTPS requires a custom domain)
+- Database name and DB username the app should connect as? (needed to generate `scripts/db-init.sql`)
 
 ### Step 2: Code changes required before provisioning
 
 Call out required code changes in the plan before any AWS work. For a Java/React/MySQL stack:
 
-- Externalize `spring.datasource.url`, `spring.datasource.username`, `spring.datasource.password` to environment variables
+- Externalize datasource credentials to environment variables per the `java-springboot` skill
 - Externalize frontend API base URL to a Vite env var (`VITE_API_URL`)
-- Maven build: `mvn package -DskipTests` produces a fat jar
-- Frontend build: `npm run build` produces `dist/`
 - Nginx config required if serving FE from EC2
 
-### Step 3: Always present two options
+### Step 3: Build strategy
+
+Build locally, deploy artifacts. Run `mvn package -DskipTests` (fat jar) and `npm run build` (`dist/`) on the developer machine, then upload to EC2. Do not install build tools on EC2 -- keeps the instance lean and avoids burning t3.small CPU on Maven. For teams that need CI/CD pipelines, that is a separate infrastructure concern beyond this plan.
+
+### Step 4: Secrets management
+
+Credentials must never be hardcoded in `application.properties`, Terraform, or `user_data`. Store all secrets in AWS SSM Parameter Store (free tier):
+
+- `SPRING_DATASOURCE_URL`
+- `SPRING_DATASOURCE_USERNAME`
+- `SPRING_DATASOURCE_PASSWORD`
+
+Terraform reads these from SSM at provision time and injects them as environment variables into the BE app via a systemd unit file. The app reads them as standard Spring Boot env vars.
+
+### Step 5: DB initialisation (on-EC2 MySQL only)
+
+After MySQL is installed, a one-time setup script creates the database and app user. Generate `scripts/db-init.sql` using the database name and username collected in Step 1:
+
+```sql
+CREATE DATABASE <db_name>;
+CREATE USER '<db_user>'@'localhost' IDENTIFIED BY '<db_password>';
+GRANT ALL PRIVILEGES ON <db_name>.* TO '<db_user>'@'localhost';
+FLUSH PRIVILEGES;
+```
+
+The password is never hardcoded -- it comes from SSM Parameter Store. Run this script once manually after provisioning; do not commit credentials into it.
+
+### Step 6: Always present two options
 
 The plan must offer both:
 
@@ -45,12 +71,13 @@ The plan must offer both:
 | BE hosting | Same EC2 as FE | Separate EC2 |
 | DB | MySQL on EC2 | RDS MySQL db.t3.micro |
 | EC2 size | t3.small | t3.small |
+| Secrets | SSM Parameter Store | SSM Parameter Store |
 | HTTPS | HTTP only | Add when custom domain exists |
 | Region | us-west-1 | us-west-1 |
 
 Rationale for production extras: S3 + CloudFront separates static asset serving from compute (independent scaling, CDN caching, no EC2 restarts affecting FE); RDS gives automated backups, point-in-time recovery, and eliminates manual MySQL administration on the instance.
 
-### Step 4: Mermaid diagrams
+### Step 7: Mermaid diagrams
 
 Include a `graph TD` diagram for each option in the plan MD showing components and traffic flow. Example:
 
