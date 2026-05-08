@@ -11,6 +11,7 @@ Every time an agent writes **or updates** any of the following artifacts, it mus
 | BE Detailed Design | `[feature-folder]/generated-docs/architecture/be-detailed-design.md` |
 | FE Detailed Design | `[feature-folder]/generated-docs/architecture/fe-detailed-design.md` |
 | API Contract | `[feature-folder]/generated-docs/contracts/api-contract.md` |
+| Deployment Plan | `[feature-folder]/generated-docs/architecture/deployment-plan.md` |
 | Test Plan | `[feature-folder]/generated-docs/qa/test-plan.md` |
 
 The HTML file lives in the same folder as the MD, with the same base name (e.g. `prd.md` → `prd.html`).
