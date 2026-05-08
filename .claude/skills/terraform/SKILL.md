@@ -5,6 +5,72 @@ description: Terraform IaC conventions covering module structure, parameterizati
 
 # Terraform Standards
 
+## Deployment Planning
+
+Before writing any Terraform, produce a deployment plan at `generated-docs/architecture/deployment-plan.md` (+ HTML via pandoc per `html-preview-rule.md`). This is a human gate -- no Terraform code until the human approves.
+
+### Step 1: Resolve decisions with the human
+
+Use `AskUserQuestion` to settle these before drafting anything:
+
+- Custom domain or raw AWS URLs?
+- Same server or separate BE/FE?
+- DB: managed (RDS) or on-EC2 MySQL?
+- EC2 instance size and monthly budget ceiling?
+- Region?
+- HTTPS now or later? (ACM cannot issue certs for raw AWS hostnames -- HTTPS requires a custom domain)
+
+### Step 2: Code changes required before provisioning
+
+Call out required code changes in the plan before any AWS work. For a Java/React/MySQL stack:
+
+- Externalize `spring.datasource.url`, `spring.datasource.username`, `spring.datasource.password` to environment variables
+- Externalize frontend API base URL to a Vite env var (`VITE_API_URL`)
+- Maven build: `mvn package -DskipTests` produces a fat jar
+- Frontend build: `npm run build` produces `dist/`
+- Nginx config required if serving FE from EC2
+
+### Step 3: Always present two options
+
+The plan must offer both:
+
+- **Minimalist** -- lowest cost, fewest AWS services, suitable for testing
+- **Production-grade** -- reasonable operational quality, with explicit rationale for each service added beyond minimalist
+
+#### Concrete example: Java + React + MySQL on AWS (us-west-1, past free tier, raw AWS URLs, $30/mo ceiling)
+
+| Decision | Minimalist (~$15/mo) | Production-grade (~$30/mo) |
+|---|---|---|
+| FE hosting | Nginx on single EC2 | S3 + CloudFront |
+| BE hosting | Same EC2 as FE | Separate EC2 |
+| DB | MySQL on EC2 | RDS MySQL db.t3.micro |
+| EC2 size | t3.small | t3.small |
+| HTTPS | HTTP only | Add when custom domain exists |
+| Region | us-west-1 | us-west-1 |
+
+Rationale for production extras: S3 + CloudFront separates static asset serving from compute (independent scaling, CDN caching, no EC2 restarts affecting FE); RDS gives automated backups, point-in-time recovery, and eliminates manual MySQL administration on the instance.
+
+### Step 4: Mermaid diagrams
+
+Include a `graph TD` diagram for each option in the plan MD showing components and traffic flow. Example:
+
+````markdown
+```mermaid
+graph TD
+  User -->|HTTP| EC2[EC2 t3.small<br/>Nginx + Spring Boot + MySQL]
+```
+
+```mermaid
+graph TD
+  User -->|HTTPS| CF[CloudFront]
+  CF --> S3[S3 bucket<br/>React dist/]
+  User -->|HTTPS| BE[EC2 t3.small<br/>Spring Boot]
+  BE --> RDS[RDS MySQL<br/>db.t3.micro]
+```
+````
+
+---
+
 ## Module structure
 
 Split resources into focused modules by concern. Each module uses the standard HashiCorp file layout:
