@@ -92,6 +92,8 @@ Toggle rules:
   - [ ] **EM:** approve FE artifacts + test docs -- done when: Status: Approved noted; unblocks QA automation against FE
 
 - [ ] **Infrastructure** *(skip if no new infrastructure)*
+  - [ ] **DEVOPS:** produce deployment plan → [Deployment Plan]
+  - [ ] 👤💾 **HUMAN:** review and approve deployment plan
   - [ ] **DEVOPS:** provision infrastructure per approved architecture → [Infrastructure]
   - [ ] 💾 **EM:** review and approve infrastructure
 
