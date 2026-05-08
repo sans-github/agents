@@ -197,12 +197,14 @@ FE does not receive a formal Mocks handoff from Designer. EM forwards approved M
 - Eng Plans (HLD) -- approved by EM; unblocks infrastructure provisioning
 
 **DevOps provides to EM:**
+- Deployment Plan (`generated-docs/architecture/deployment-plan.md`) -- produced before any provisioning; human-approved gate
 - IaC (Terraform) -- EM is gatekeeper for high-risk or cost-significant changes
 - CI/CD pipelines -- EM is gatekeeper for high-risk or cost-significant changes
 
 **DevOps depends on:**
 - Arch approval -- any new AWS component or infrastructure service DevOps wants to introduce requires Arch sign-off before provisioning
 - Eng Plans (HLD) -- approved by EM before provisioning infrastructure
+- Human-approved Deployment Plan -- required before provisioning any infrastructure
 - Any high-risk or cost-significant infra change -- requires explicit EM approval before proceeding
 
 ---
