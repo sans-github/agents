@@ -77,7 +77,7 @@ Toggle rules:
   - [ ] **BE:** implement API endpoints → `src/`
   - [ ] **BE:** implement logging -- done when: `be-logging` checklist fully checked off (structured JSON appender, TraceIdFilter, MDC correlation, access log, layer coverage)
   - [ ] **BE:** write unit and integration tests
-  - [ ] 💾 **EM:** review and approve BE implementation -- done when: logging checklist verified; Status: Approved — EM set in artifact
+  - [ ] 💾 **EM:** review and approve BE implementation -- done when: logging checklist verified; openapi.json exported and committed (Spring Boot only); Status: Approved — EM set in artifact
   - [ ] **EM:** approve BE artifacts + test docs -- done when: Status: Approved noted; unblocks QA automation against BE
 
 - [ ] **FE Issues List**
