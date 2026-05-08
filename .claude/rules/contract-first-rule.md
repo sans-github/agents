@@ -10,6 +10,7 @@ This rule governs **agent-to-agent technical contracts** only. Human milestone g
 |---|---|---|
 | Tech stack / AWS component adoption | Arch | Proposing role (EM, BE, FE, DevOps) cannot include it in any artifact or begin provisioning |
 | Deployment Plan (`deployment-plan.md`) | Human | DevOps cannot begin provisioning any infrastructure |
+| HLD infra sections -- EM<>DevOps aligned *(non-local deployment only)* | EM | DevOps cannot begin Deployment Plan until EM and DevOps have completed their sync loop and EM has finalised the HLD |
 | Eng Plans (HLD) (`hld.md` + `hld.html`) | EM | BE (Detailed Design), FE (Detailed Design) |
 | DB Schema | EM | BE data layer, migrations, queries |
 | BE Detailed Design (`be-detailed-design.md`) | EM | BE API implementation, BE<>FE contract |

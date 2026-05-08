@@ -45,6 +45,7 @@ Toggle rules:
 
 - [ ] **High-Level Design**
   - [ ] **EM:** produce high-level design → [Eng Plans (HLD)]
+  - [ ] **EM <> DevOps:** collaboration loop -- review infra decisions in HLD, align on Terraform approach and AWS component choices *(skip if deployment target is local)*
   - [ ] 👤💾 **HUMAN:** review and approve high-level design
 
 - [ ] **Implementation Plan**

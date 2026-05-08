@@ -76,6 +76,24 @@ BE and FE do not receive formal artifact handoffs from PM. EM is the kickoff poi
 
 ---
 
+## EM <> DevOps (HLD)
+
+When the deployment target is not local, EM runs a sync loop with DevOps during HLD authoring to validate infra decisions before presenting the HLD for human approval.
+
+**EM provides to DevOps:**
+- Draft HLD (infra sections) -- for DevOps review and alignment during authoring
+
+**DevOps provides to EM:**
+- Feedback on AMI choices, user_data complexity, SSM wiring, security group rules, and Terraform feasibility -- EM incorporates before finalising HLD
+
+**EM gatekeeps:**
+- HLD finalisation -- EM and DevOps must be aligned on infra sections before HLD is submitted for human approval
+
+**DevOps depends on:**
+- Finalised HLD -- EM<>DevOps aligned before DevOps begins Deployment Plan
+
+---
+
 ## EM <> BE
 
 **EM provides to BE:**
