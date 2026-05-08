@@ -126,8 +126,12 @@ The BE agent writes all schema files (`src/db/schema/`) and migration files (`sr
 
 ## API Documentation (SpringDoc OpenAPI)
 
-- **Dependency:** Add `springdoc-openapi-starter-webmvc-ui:2.8.8` to `pom.xml`. Zero config needed for Spring Boot 3.x.
+- **Dependency:** Add `springdoc-openapi-starter-webmvc-ui` to `pom.xml`. Zero config needed for Spring Boot 3.x. Version must match the Spring Boot minor version: Spring Boot 3.2.x → `2.3.0`, Spring Boot 3.3.x → `2.5.0`, Spring Boot 3.4.x → `2.8.8`. Using a version newer than the Spring Boot version will cause a `NoClassDefFoundError` at startup.
 - **Auto-generated endpoints:** `/v3/api-docs` (OpenAPI JSON), `/swagger-ui.html` (UI) -- no controller changes required.
+- **Spring Security:** If the project uses Spring Security, permit the SpringDoc endpoints explicitly or they return `{"error":"Unauthorized"}`. Add to `authorizeHttpRequests` before `.anyRequest().authenticated()`:
+  ```java
+  .requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
+  ```
 - **Optional annotations:** `@Tag`, `@Operation`, `@ApiResponse`, `@Schema` enrich the spec with descriptions and examples but are not required.
 - **Spec export:** After implementation, run `curl http://localhost:8080/v3/api-docs -o generated-docs/contracts/openapi.json` and commit with message `export openapi spec for <feature> #<issue>`.
 
