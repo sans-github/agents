@@ -1,19 +1,19 @@
 # Rule: HTML Preview for Human-Gate Artifacts
 
-Every time an agent writes **or updates** any of the following artifacts, it must immediately generate a co-located HTML preview using pandoc:
+Every time an agent writes **or updates** any of the following artifacts, it must immediately generate a co-located HTML preview using pandoc. Resolve the actual file path from `tech-config.md` (see `artifact-paths-rule.md`) -- the names below are lookup keys, not canonical paths.
 
-| Artifact | Path |
-|---|---|
-| PRD | `[feature-folder]/product-specs/prd.md` |
-| Kickoff Plan | `[feature-folder]/workflow/kickoff-plan.md` |
-| Implementation Plan | `[feature-folder]/workflow/implementation-plan.md` |
-| System Architecture | `[feature-folder]/generated-docs/architecture/sys-arch.md` |
-| High-Level Design | `[feature-folder]/generated-docs/architecture/hld.md` |
-| BE Detailed Design | `[feature-folder]/generated-docs/architecture/be-detailed-design.md` |
-| FE Detailed Design | `[feature-folder]/generated-docs/architecture/fe-detailed-design.md` |
-| API Contract | `[feature-folder]/generated-docs/contracts/api-contract.md` |
-| Deployment Plan | `[feature-folder]/generated-docs/architecture/deployment-plan.md` |
-| Test Plan | `[feature-folder]/generated-docs/qa/test-plan.md` |
+| Artifact |
+|---|
+| PRD |
+| Kickoff Plan |
+| Implementation Plan |
+| System Architecture |
+| High-Level Design |
+| BE Detailed Design |
+| FE Detailed Design |
+| API Contract |
+| Deployment Plan |
+| Test Plan |
 
 The HTML file lives in the same folder as the MD, with the same base name (e.g. `prd.md` → `prd.html`).
 
