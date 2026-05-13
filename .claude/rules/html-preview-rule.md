@@ -2,18 +2,16 @@
 
 Every time an agent writes **or updates** any of the following artifacts, it must immediately generate a co-located HTML preview using pandoc. Resolve the actual file path from `tech-config.md` (see `artifact-paths-rule.md`) -- the names below are lookup keys, not canonical paths.
 
-| Artifact |
-|---|
-| PRD |
-| Kickoff Plan |
-| Implementation Plan |
-| System Architecture |
-| High-Level Design |
-| BE Detailed Design |
-| FE Detailed Design |
-| API Contract |
-| Deployment Plan |
-| Test Plan |
+- PRD
+- Kickoff Plan
+- Implementation Plan
+- System Architecture
+- High-Level Design
+- BE Detailed Design
+- FE Detailed Design
+- API Contract
+- Deployment Plan
+- Test Plan
 
 The HTML file lives in the same folder as the MD, with the same base name (e.g. `prd.md` → `prd.html`).
 
