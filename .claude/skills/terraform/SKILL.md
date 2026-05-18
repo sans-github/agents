@@ -9,6 +9,24 @@ description: Terraform IaC conventions covering module structure, parameterizati
 
 Before writing any Terraform, produce a deployment plan at `generated-docs/architecture/deployment-plan.md` (+ HTML via pandoc per `html-preview-rule.md`). This is a human gate -- no Terraform code until the human approves.
 
+### Document structure
+
+The plan must open with a consolidated AWS components table immediately after the status header -- before any narrative sections (prerequisites, apply steps, etc.). This is the only place cost information appears; do not add a separate cost section later in the document.
+
+| Component | AWS Service | Configuration | Est. Monthly Cost |
+|-----------|-------------|---------------|-------------------|
+| App server | EC2 | t3.small, us-west-1 | $15.18 |
+| Block storage | EBS | 20 GB gp3, root volume | $1.60 |
+| Static IP | Elastic IP | Attached to running instance | $0 |
+| Secrets | SSM Parameter Store | Standard tier | $0 |
+| **Total** | | | **$16.78** |
+
+Rules for this table:
+- One row per provisioned component.
+- Use `$0` for free-tier or zero-cost resources -- never write "free" or omit the row.
+- Include a **Total** row at the bottom.
+- Costs are estimates based on the region and instance type chosen in Step 1.
+
 ### Step 1: Resolve decisions with the human
 
 Use `AskUserQuestion` to settle these before drafting anything:
