@@ -291,6 +291,7 @@ sequenceDiagram
 | Artifact | Owner | Key collaborators | Gatekeeper |
 |---|---|---|---|
 | CI/CD Pipeline + IaC | DevOps | EM monitors; intercepts and collaborates to resolve on red flag | EM |
+| Deployment Smoke Check | QA | DevOps hands off live URL; QA runs API-level + E2E checks; failures loop back to DevOps for remediation | EM |
 | BE Artifacts | BE | QA tests, Arch reviews, EM monitors; intercepts and collaborates to resolve on red flag | EM |
 | FE Artifacts | FE | QA tests, EM monitors; intercepts and collaborates to resolve on red flag | EM |
 | BE Test Docs | BE | QA consumes | EM |

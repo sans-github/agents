@@ -97,6 +97,11 @@ Toggle rules:
   - [ ] **DEVOPS:** produce deployment plan → [Deployment Plan]
   - [ ] 👤💾 **HUMAN:** review and approve deployment plan
   - [ ] **DEVOPS:** provision infrastructure per approved architecture → [Infrastructure]
+  - [ ] **QA + DEVOPS:** smoke test loop *(skip if deployment target is local)*
+    - [ ] **DEVOPS:** hand off live server URL to QA
+    - [ ] **QA:** run API-level and E2E smoke checks against live server
+    - If any check fails: QA reports failing test case and error details to DevOps → DevOps remediates → QA re-runs; loop repeats until all pass
+    - Done when: all smoke checks exit 0
   - [ ] 💾 **EM:** review and approve infrastructure
 
 ---

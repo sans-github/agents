@@ -238,6 +238,31 @@ FE does not receive a formal Mocks handoff from Designer. EM forwards approved M
 
 ---
 
+## QA <> DevOps (smoke testing)
+
+Applies to non-local deployments only. After infrastructure is provisioned, DevOps and QA run a smoke test loop before the infra-verification human gate.
+
+**DevOps provides to QA:**
+- Live server URL -- handed off after deployment; triggers QA smoke run
+
+**QA provides to DevOps:**
+- Failing test case name + full error details -- reported directly when any smoke check fails; DevOps remediates before QA re-runs
+
+**QA owns:**
+- API-level smoke check -- scripted HTTP calls against the live server covering key flows (e.g. auth, health)
+- E2E smoke spec -- headless browser run covering critical UI paths
+
+**Loop exit condition:**
+- All smoke checks pass (exit 0) -- QA confirms to DevOps and EM; infra-verification gate opens
+
+**DevOps depends on:**
+- QA smoke pass confirmation -- required before Infrastructure Verification artifact is produced and the human gate is opened
+
+**QA depends on:**
+- Live server URL from DevOps -- required before smoke run begins
+
+---
+
 ## Arch gatekeeping
 
 Arch must approve before any role proceeds with a new tech stack or AWS component.
