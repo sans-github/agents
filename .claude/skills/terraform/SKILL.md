@@ -27,6 +27,21 @@ Rules for this table:
 - Include a **Total** row at the bottom.
 - Costs are estimates based on the region and instance type chosen in Step 1.
 
+The plan must also include a `### Local artifacts created` subsection as the **last subsection under the prerequisites section** (`## 1. Prerequisites`). DevOps populates this table as the plan is written -- one row per artifact created locally during setup, whether by the agent or by the human following instructions. This table is the authoritative teardown checklist.
+
+| Artifact | Path / Location | Created by | Notes |
+|----------|-----------------|------------|-------|
+| SSH private key | `~/.ssh/<key-name>` | Human (section 1.X) | Never commit |
+| SSH public key | `~/.ssh/<key-name>.pub` | Human (section 1.X) | Referenced by Terraform |
+| terraform.tfvars | `src/infra/terraform.tfvars` | Human (section 1.X) | Gitignored; may contain credentials |
+| SSM parameter: `<name>` | `/<prefix>/<name>` (region: X) | Human (section 1.X) | One row per parameter |
+
+Rules for this table:
+- Replace all `<placeholders>` with the actual names, paths, and section numbers used in the plan.
+- Use "Agent" or "Human (section N)" in the Created by column so the teardown owner knows the origin of each artifact.
+- Include every local artifact -- SSH keys, `terraform.tfvars`, SSM parameters, Secrets Manager secrets, any other manually provisioned items.
+- Do not omit rows to keep the table tidy. An incomplete table is worse than a long one.
+
 ### Step 1: Resolve decisions with the human
 
 Use `AskUserQuestion` to settle these before drafting anything:
@@ -476,7 +491,7 @@ terraform destroy -auto-approve
 
 ### Step 2: Delete external resources not tracked in Terraform state
 
-Resources commonly created alongside infra but not managed by Terraform (e.g. SSM Parameter Store entries, Secrets Manager secrets, manually created IAM policies or roles outside the module). Identify these from the deployment plan or project config and delete them explicitly using the cloud provider CLI.
+Resources commonly created alongside infra but not managed by Terraform (e.g. SSM Parameter Store entries, Secrets Manager secrets, manually created IAM policies or roles outside the module). Use the **Local artifacts created** table in the deployment plan's prerequisites section as the authoritative checklist -- delete each item listed there explicitly using the cloud provider CLI.
 
 Example (AWS):
 ```bash
