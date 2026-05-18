@@ -6,12 +6,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 A collection of reusable Claude Code agent definitions for a software engineering team. There is no application code here. The repo contains only agent definitions, domain skills, session rules, and project scaffolding templates.
 
-Consumers install this repo into their own project via `install.sh`. They do not fork or modify this repo -- they pull it as a versioned dependency and commit the result.
+Consumers install this repo into their own project via `install.sh`. They do not fork or modify this repo; they pull it as a versioned dependency and commit the result.
 
 ## How consumers use it
 
 1. Run `install.sh` to copy `.claude/agents/`, `.claude/rules/`, `.claude/skills/`, `.claude/template/`, `.claude/SETUP-GUIDE.md`, and `.claude/tech-config.md` into their project.
-2. Run `/feature-init` in Claude Code -- handles everything: requirements gathering (via PM agent), folder scaffolding, phase config (via HTML overview), and kickoff. No manual file editing required.
+2. Run `/feature-init` in Claude Code (handles everything: requirements gathering via PM agent, folder scaffolding, phase config via HTML overview, and kickoff). No manual file editing required.
 
 ## Folder structure and the reasoning behind it
 
@@ -48,11 +48,11 @@ Key distinctions:
 ## Rules
 
 Rules in `.claude/rules/` are loaded automatically. Key ones to know:
-- `contract-first-rule.md` -- no downstream work until upstream artifact is approved. Strict sequencing.
-- `product-baseline-rule.md` -- `projects/master/` must stay current. PM and Designer are blocked from starting new features until it is.
-- `backlog-reporting-rule.md` -- agents append discovered bugs/debt to `BACKLOG.md` in the repo root. Never self-assign priority.
-- `progress-tracking-rule.md` -- `delivery-tracker.md` is the single source of truth for human gates and phase progress; agents check off steps directly and resume from it after interruption.
-- `delegation-rule.md` -- when a step names a specific role, the orchestrator must delegate to that agent, never self-execute on its behalf.
+- `contract-first-rule.md`: no downstream work until upstream artifact is approved. Strict sequencing.
+- `product-baseline-rule.md`: `projects/master/` must stay current. PM and Designer are blocked from starting new features until it is.
+- `backlog-reporting-rule.md`: agents append discovered bugs/debt to `BACKLOG.md` in the repo root. Never self-assign priority.
+- `progress-tracking-rule.md`: `delivery-tracker.md` is the single source of truth for human gates and phase progress; agents check off steps directly and resume from it after interruption.
+- `delegation-rule.md`: when a step names a specific role, the orchestrator must delegate to that agent, never self-execute on its behalf.
 
 ## What NOT to do
 
@@ -61,18 +61,22 @@ Rules in `.claude/rules/` are loaded automatically. Key ones to know:
 - Do not rename or restructure without grepping the full repo for references and updating all of them.
 - Do not commit without the user explicitly asking.
 
+## Writing style
+
+Never use em dashes, en dashes, or double hyphens (`--`) in prose: responses, design documents, skill files, rule files, agent files, or any other written output. Use parentheses or restructure the sentence instead. This prohibition does not apply to `--` used as a technical separator inside code blocks (e.g. directory tree annotations, shell flags).
+
 ## Agent conventions
 
 Each agent file follows this section order:
-1. Frontmatter (`name`, `description`, optional `skills`) -- all agents include `collaboration-contracts` skill
+1. Frontmatter (`name`, `description`, optional `skills`) (all agents include `collaboration-contracts` skill)
 2. One-line identity (`You are a senior X.`)
-3. `## Qualities` -- intro line, mindset, and role-specific quality bullets
-4. `## Collaboration` -- who this role works with and how (behavioral only; no artifact names)
-5. `## Ownership` -- what this role owns end-to-end
-6. `## Decision-making` -- how this role makes and escalates decisions
-7. `## Communication` -- how this role communicates blockers, reviews, and handoffs
-8. `## Hard constraints` -- opens with a blockquote delegating all artifact flows to the `collaboration-contracts` skill, followed by role-specific operational rules only (security, code quality, craft standards); never re-list artifact dependencies or approval gates here
-9. `## Commit conventions` -- role-specific commit rules
+3. `## Qualities`: intro line, mindset, and role-specific quality bullets
+4. `## Collaboration`: who this role works with and how (behavioral only; no artifact names)
+5. `## Ownership`: what this role owns end-to-end
+6. `## Decision-making`: how this role makes and escalates decisions
+7. `## Communication`: how this role communicates blockers, reviews, and handoffs
+8. `## Hard constraints`: opens with a blockquote delegating all artifact flows to the `collaboration-contracts` skill, followed by role-specific operational rules only (security, code quality, craft standards); never re-list artifact dependencies or approval gates here
+9. `## Commit conventions`: role-specific commit rules
 
 Collaboration contracts (depends-on, produces, gatekeeps) live exclusively in `.claude/skills/collaboration-contracts/SKILL.md`, organized by pair (e.g. EM<>QA). Do not duplicate artifact flows in individual agent files. The delegation blockquote in `## Hard constraints` is the only cross-reference agents need.
 
