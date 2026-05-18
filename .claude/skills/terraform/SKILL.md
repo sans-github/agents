@@ -223,9 +223,57 @@ After one recovery attempt, re-run the relevant verification checks. If they pas
 > Current state: [what the logs/systemctl show]
 > Manual action needed: [specific next step for the human]
 
-### Step 5: Only then mark steps complete
+### Step 5: Generate the infra verification artifact and open it for human review
 
-Do not check off any delivery tracker step, write `Status: Approved`, or advance the stage until all verification checks pass. Terraform exit 0 is a necessary condition, not a sufficient one.
+Once all verification checks pass, generate `generated-docs/architecture/infra-verification.md` and its HTML preview (pandoc, per `html-preview-rule.md`), then open the HTML in the browser and wait for explicit human approval before advancing the stage.
+
+#### Required sections
+
+**1. Verify these links**
+
+A table of every human-accessible endpoint, populated with the actual provisioned IP or hostname (never placeholders). Derive endpoints from the HLD and API contract -- omit rows that do not apply to the stack.
+
+| What | URL | Expected |
+|------|-----|----------|
+| Frontend | http://\<ip\> | Login/home page loads |
+| API health | http://\<ip\>/api/actuator/health | `{"status":"UP"}` |
+| Swagger UI | http://\<ip\>/api/swagger-ui/index.html | Swagger UI loads |
+
+If an endpoint is not yet accessible because app deployment has not happened, note it explicitly (e.g. "Pending app deployment -- expected 403 until JAR is uploaded").
+
+**2. Infrastructure status**
+
+Populated from the verification checks already performed. Flag any failed or missing component.
+
+| Component | Expected | Actual |
+|-----------|----------|--------|
+| EC2 instance | Running | [from terraform output] |
+| Elastic IP | Allocated | [ip] |
+| MariaDB | Active | [active / failed] |
+| Nginx | Active | [active / failed] |
+| Java 21 | Installed | [version or missing] |
+| app.service | Registered | [registered / missing] |
+
+**3. Human verification checklist**
+
+```markdown
+- [ ] SSH access confirmed
+- [ ] Each service listed above is active
+- [ ] Each URL in the links table returns the expected result
+```
+
+**4. Known issues**
+
+Document any automated check that failed and was recovered, or any component intentionally not yet set up. Plain language, one paragraph per item.
+
+#### Gate behavior
+
+1. Open the HTML file: `open generated-docs/architecture/infra-verification.html` (macOS) or `xdg-open` (Linux).
+2. Use `AskUserQuestion` to present the artifact and ask for approval (options: **Approve** / **Request changes**).
+3. On approval: write `Status: Approved — Human` and `Approved: YYYY-MM-DD` at the top of `infra-verification.md`.
+4. Only then check off the provisioning stage in the delivery tracker.
+
+Do not check off any delivery tracker step or advance the stage until the human explicitly approves this artifact.
 
 ---
 

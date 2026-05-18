@@ -216,6 +216,7 @@ FE does not receive a formal Mocks handoff from Designer. EM forwards approved M
 
 **DevOps provides to EM:**
 - Deployment Plan (`generated-docs/architecture/deployment-plan.md`) -- produced before any provisioning; human-approved gate
+- Infrastructure Verification (`generated-docs/architecture/infra-verification.md`) -- produced after provisioning and automated checks pass; human-approved gate before stage sign-off
 - IaC (Terraform) -- EM is gatekeeper for high-risk or cost-significant changes
 - CI/CD pipelines -- EM is gatekeeper for high-risk or cost-significant changes
 

@@ -11,6 +11,7 @@ Every time an agent writes **or updates** any of the following artifacts, it mus
 - FE Detailed Design
 - API Contract
 - Deployment Plan
+- Infrastructure Verification
 - Test Plan
 
 The HTML file lives in the same folder as the MD, with the same base name (e.g. `prd.md` → `prd.html`).
