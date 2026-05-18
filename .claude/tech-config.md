@@ -32,6 +32,7 @@ Design docs and plans live under `generated-docs/`. Production artifacts (code, 
 | Implementation Plan | `workflow/implementation-plan.md` + `workflow/implementation-plan.html` | EM writes, human approves; steps then seeded into delivery-tracker.md | `senior-engineering-manager.md` |
 | System Architecture | `generated-docs/architecture/sys-arch.md` + `generated-docs/architecture/sys-arch.html` | Arch writes, EM approves | `senior-software-architect.md` |
 | Deployment Plan | `generated-docs/architecture/deployment-plan.md` + `generated-docs/architecture/deployment-plan.html` | DevOps writes, Human approves | `senior-devops-engineer.md` |
+| Infrastructure Verification | `generated-docs/ops/infra-verification.md` + `generated-docs/ops/infra-verification.html` | DevOps writes after smoke tests pass, Human approves | `senior-devops-engineer.md` |
 | Eng Plans (HLD) | `generated-docs/architecture/hld.md` + `generated-docs/architecture/hld.html` | EM writes, EM approves | `senior-engineering-manager.md` |
 | BE Detailed Design | `generated-docs/architecture/be-detailed-design.md` + `generated-docs/architecture/be-detailed-design.html` | BE writes, EM approves | `senior-backend-engineer.md` |
 | FE Detailed Design | `generated-docs/architecture/fe-detailed-design.md` + `generated-docs/architecture/fe-detailed-design.html` | FE writes, EM approves | `senior-frontend-engineer.md` |
