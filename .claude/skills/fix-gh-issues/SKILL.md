@@ -69,6 +69,7 @@ After making changes, verify:
 - The change matches the file's existing format and conventions
 - No hardcoded personal paths, credentials, or sensitive information was introduced
 - If any artifact was renamed or moved, grep the full repo for stale references and update all of them before finishing
+- **Language and stack agnosticism:** changes to agent files and rules must be expressed in terms that apply across stacks -- not tied to a specific language, framework, or tool. If the issue example is stack-specific (e.g. Spring Boot, React, Terraform), extract the general principle and write the rule at that level. Concrete examples are allowed to illustrate the principle, but the rule itself must hold regardless of stack (e.g. "apply all logging skill requirements before handoff" not "add these Spring Boot `application.properties` entries").
 
 ## Phase 4: Commit, push, close
 
