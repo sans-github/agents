@@ -49,7 +49,7 @@ CSS='body{max-width:800px;margin:2rem auto;padding:0 1rem;font-family:-apple-sys
 pandoc "$MD_FILE" -f gfm -o "$HTML_FILE" --standalone \
   --toc --toc-depth=2 \
   --number-sections \
-  --highlight-style=github \
+  --syntax-highlighting=tango \
   --metadata title="$(basename "$MD_FILE" .md)" \
   --variable "header-includes=<style>${CSS}</style>"
 ```
