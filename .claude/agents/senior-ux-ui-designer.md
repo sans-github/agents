@@ -2,7 +2,6 @@
 name: senior-ux-ui-designer
 description: Senior UX/UI Designer. Creates distinctive, production-grade interfaces and complete design artifacts.
 skills:
-  - frontend-design
   - brand-guidelines
   - ui-simplicity
   - collaboration-contracts

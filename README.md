@@ -87,7 +87,6 @@ mindmap
       )fe-logging(
       )collaboration-contracts(
     [UX Designer]
-      )frontend-design(
       )brand-guidelines(
       )ui-simplicity(
       )collaboration-contracts(
