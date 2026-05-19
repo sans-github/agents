@@ -158,16 +158,18 @@ Follow the CLAUDE.md structural change verification checklist exactly. Specifica
 Run from the directory containing `CLAUDE.md` and the `.claude/` folder:
 
 ```bash
-grep -irn "<new-term>" .
+grep -irn "<term>" .
 ```
 
-Run this for every term from Step 1 and every baseline term from Step 2. Never pipe through `grep -v`. Every hit gets evaluated.
+Run this for every term from Step 1 AND every baseline term from Step 2. Never pipe through `grep -v`. Never scope to a subdirectory. Every hit gets evaluated.
 
-**Step 4 -- Compare locations.** Every location a baseline appears is a candidate the new term must also appear. Document each gap.
+**Step 4 -- Compare locations.** Paste the grep output for each baseline alongside the new term's output. If ANY baseline appears in a location, that location is a candidate for the new term too. Document every location the new term is missing. If a gap is deliberate (the new term genuinely does not belong there), state the reason explicitly -- do not silently skip it.
 
-**Step 5 -- Fix all gaps.** Edit each file individually.
+**Step 5 -- Fix all gaps.** Edit each file individually. Do not batch.
 
-**Step 6 -- Show the evidence.** Paste the full final `grep -irn "<new-term>" .` output before declaring done. The user confirms.
+**Step 6 -- Re-run and show evidence.** After fixing all gaps, re-run `grep -irn "<new-term>" .` (all forms from Step 1). Paste the complete output. The user confirms.
+
+**Never substitute a prose confidence claim for grep output.** "I'm confident this is complete" without pasted evidence is not verification.
 
 ## Definition of done
 
@@ -175,5 +177,7 @@ Run this for every term from Step 1 and every baseline term from Step 2. Never p
 - [ ] All new skill files exist at `.claude/skills/<skill-slug>/SKILL.md`
 - [ ] `collaboration-contracts/SKILL.md` updated with new role pairings
 - [ ] All 12 dependent files checked and updated where needed
-- [ ] Full structural verification grep run and pasted
+- [ ] Baseline greps run and compared against new-term locations
+- [ ] All gaps fixed and documented (with reason if deliberately skipped)
+- [ ] Re-run grep after fixes; full output pasted
 - [ ] User has confirmed the grep output
