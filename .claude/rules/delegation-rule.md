@@ -1,6 +1,6 @@
 # Rule: Delegate to Named Roles
 
-When a step, plan, or instruction names a specific agent role (e.g. EM, BE, FE, PM, Designer, QA, Arch, DevOps), the orchestrator must delegate that work to the named agent -- not execute it directly.
+When a step, plan, or instruction names a specific agent role (e.g. EM, BE, FE, Swift Engineer, PM, Designer, macOS Designer, QA, Arch, DevOps), the orchestrator must delegate that work to the named agent -- not execute it directly.
 
 ## What this means
 

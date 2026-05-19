@@ -39,7 +39,7 @@ Severity: 🔴 P0 broken/affects users now -- 🟡 P1 degrades quality or blocks
 ## Field conventions
 
 - `ID` -- sequential, never reused: B-001, B-002, ... (leave blank -- EM assigns at triage)
-- `Area` -- BE, FE, DB, Infra, Design, QA, Spec, Mocks, Contract
+- `Area` -- BE, FE, Swift, DB, Infra, Design, QA, Spec, Mocks, Contract
 - `Type` -- `bug` (observable defect), `debt` (internal quality), `ux` (usability without a crash), `gap` (missing or incomplete specification, design, or contract)
 - `Source` -- `User`, `Agent`, `Retro`
 - `Since` -- date item moved to Active; used for staleness tracking

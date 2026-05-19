@@ -8,20 +8,23 @@ This rule governs **agent-to-agent technical contracts** only. Human milestone g
 
 | Upstream artifact | Approver | Downstream work blocked |
 |---|---|---|
-| Tech stack / AWS component adoption | Arch | Proposing role (EM, BE, FE, DevOps) cannot include it in any artifact or begin provisioning |
+| Tech stack / AWS component adoption | Arch | Proposing role (EM, BE, FE, Swift Engineer, DevOps) cannot include it in any artifact or begin provisioning |
 | Deployment Plan (`deployment-plan.md`) | Human | DevOps cannot begin provisioning any infrastructure |
 | HLD infra sections -- EM<>DevOps aligned *(non-local deployment only)* | EM | DevOps cannot begin Deployment Plan until EM and DevOps have completed their sync loop and EM has finalised the HLD |
-| Eng Plans (HLD) (`hld.md` + `hld.html`) | EM | BE (Detailed Design), FE (Detailed Design) |
+| Eng Plans (HLD) (`hld.md` + `hld.html`) | EM | BE (Detailed Design), FE (Detailed Design), Swift Engineer (Detailed Design) |
 | DB Schema | EM | BE data layer, migrations, queries |
 | BE Detailed Design (`be-detailed-design.md`) | EM | BE API implementation, BE<>FE contract |
 | FE Detailed Design (`fe-detailed-design.md`) | EM | FE component implementation, BE<>FE contract |
+| Swift Detailed Design (`swift-detailed-design.md`) | EM | Swift Engineer implementation |
 | API Contract | EM | BE endpoint implementation, FE integration |
 | Test Plan | EM | QA Issues List, automation work |
 | Issues List (BE) | EM | BE creates GH Issues and begins implementation |
 | Issues List (FE) | EM | FE creates GH Issues and begins implementation |
+| Issues List (Swift Engineer) | EM | Swift Engineer creates GH Issues and begins implementation |
 | Issues List (QA) | EM | QA creates GH Issues and begins implementation |
 | BE Artifacts + BE Test Docs | EM | QA automation against BE |
 | FE Artifacts + FE Test Docs | EM | QA automation against FE |
+| Swift Engineer Artifacts + Swift Test Docs | EM | QA automation against Swift Engineer output |
 
 ## What "approved" means
 

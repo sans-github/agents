@@ -62,7 +62,7 @@ Open [tech-config.md](tech-config.md) and update it to match your project: folde
 
 A default brand is included at [skills/brand-guidelines/SKILL.md](skills/brand-guidelines/SKILL.md) (Off-White + Deep Teal, Plus Jakarta Sans, full light/dark token set). Preview it at [skills/brand-guidelines/previews/default-brand.html](skills/brand-guidelines/previews/default-brand.html).
 
-To use your own: replace `SKILL.md` with your color palette, typography, spacing, and component states. Designer, FE, PM, and QA agents all read it before producing any UI work.
+To use your own: replace `SKILL.md` with your color palette, typography, spacing, and component states. Designer, FE, PM, and QA agents all read it before producing any UI work. Note: the macOS Designer uses `macos-hig` instead of `brand-guidelines` -- the HIG defines the platform's design system.
 
 ---
 

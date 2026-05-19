@@ -66,6 +66,10 @@ Toggle rules:
   - [ ] **FE:** produce detailed design → [FE Detailed Design] -- done when: Status: Approved — EM set in file
   - [ ] 💾 **EM:** review and approve FE detailed design -- done when: Status: Approved — EM set in file
 
+- [ ] **Swift Detailed Design** *(skip if no macOS app)*
+  - [ ] **SWIFT ENGINEER:** produce detailed design → [Swift Detailed Design] -- done when: Status: Approved — EM set in file
+  - [ ] 💾 **EM:** review and approve Swift detailed design -- done when: Status: Approved — EM set in file
+
 - [ ] **API Contract**
   - [ ] **BE + FE:** align on API contract → [API Contract]
   - [ ] 💾 **EM:** review and approve API contract
@@ -93,6 +97,16 @@ Toggle rules:
   - [ ] 💾 **EM:** review and approve FE implementation -- done when: logging checklist verified; Status: Approved — EM set in artifact
   - [ ] **EM:** approve FE artifacts + test docs -- done when: Status: Approved noted; unblocks QA automation against FE
 
+- [ ] **Swift Engineer Issues List** *(skip if no macOS app)*
+  - [ ] **EM:** produce and approve Swift Engineer issues list -- done when: Status: Approved — EM set in list; Swift Engineer creates GH issues and begins implementation
+
+- [ ] **macOS Development** *(skip if no macOS app)*
+  - [ ] **SWIFT ENGINEER:** implement SwiftUI views per approved mocks and component spec → `src/`
+  - [ ] **SWIFT ENGINEER:** implement data layer (SwiftData / Core Data / networking) → `src/`
+  - [ ] **SWIFT ENGINEER:** write unit tests and XCUITests -- done when: `swift-testing` checklist fully checked off
+  - [ ] 💾 **EM:** review and approve Swift Engineer implementation -- done when: Status: Approved — EM set in artifact
+  - [ ] **EM:** approve Swift Engineer artifacts + test docs -- done when: Status: Approved noted; unblocks QA automation against Swift Engineer output
+
 - [ ] **Infrastructure** *(skip if no new infrastructure)*
   - [ ] **DEVOPS:** produce deployment plan → [Deployment Plan]
   - [ ] 👤💾 **HUMAN:** review and approve deployment plan
@@ -119,8 +133,10 @@ Toggle rules:
 - [ ] **Test Execution**
   - [ ] **QA:** implement automated tests against BE
   - [ ] **QA:** implement automated tests against FE
+  - [ ] **QA:** implement automated tests against Swift Engineer output *(skip if no macOS app)*
   - [ ] **QA + BE:** resolve backend test blockers
   - [ ] **QA + FE:** resolve frontend test blockers
+  - [ ] **QA + SWIFT ENGINEER:** resolve macOS test blockers *(skip if no macOS app)*
   - [ ] 💾 **EM:** review and approve test results
 
 ---
@@ -134,7 +150,7 @@ Toggle rules:
   - If master PRD is empty: copy feature PRD as-is
   - done when: master PRD reflects all shipped features including this one
 
-- [ ] **DESIGNER:** merge this feature's mocks into `projects/master/mocks/`
+- [ ] **DESIGNER / macOS DESIGNER:** merge this feature's mocks into `projects/master/mocks/`
   - If master mocks exist: add new pages, replace updated pages, remove obsolete pages
   - If master mocks are empty: copy feature mocks as-is
   - done when: master mocks reflect the current live UI across all shipped features

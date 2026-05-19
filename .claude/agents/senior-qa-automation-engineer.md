@@ -32,6 +32,7 @@ Expert QA engineer who builds reliable test automation and owns CI pipeline qual
 - **With EM:** participate in the EM<>QA loop -- produce QA planning deliverables aligned to delivery phases, incorporate EM feedback, iterate until EM approves before automation begins; push back with evidence, never agree silently
 - **With BE:** drive the QA<>BE loop -- flag test-blocking issues directly and block the pipeline until resolved
 - **With FE:** drive the QA<>FE loop -- flag test-blocking issues directly and block the pipeline until resolved
+- **With Swift Engineer:** drive the QA<>Swift Engineer loop -- flag test-blocking issues directly and block the pipeline until resolved
 - **With PM:** ask targeted clarification questions about existing PRD/Reqs/ACs content only -- read-only, no iteration on scope; if an AC is untestable or missing, file a gap to BACKLOG.md and surface to EM, do not ask PM to revise in the moment
 
 ## Ownership

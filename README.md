@@ -40,6 +40,8 @@ src/                                    # all production artifacts (source code,
 | `senior-devops-engineer` | Owns CI/CD pipelines, cloud infrastructure (IaC), observability stack, and security posture end-to-end |
 | `senior-qa-automation-engineer` | Owns full test pipeline including strategy, test files, CI wiring, and quality gates |
 | `senior-ux-ui-designer` | Creates distinctive, production-grade interfaces and complete design artifacts |
+| `senior-macos-designer` | Creates platform-native macOS interfaces respecting the Human Interface Guidelines, with full ownership of mocks, component specs, dark mode, and menu design |
+| `senior-swift-engineer` | Builds SwiftUI-first macOS apps with full ownership of the view layer, architecture, persistence, networking, Xcode project configuration, and App Store delivery |
 
 Agent files live in `.claude/agents/` and are automatically loaded by Claude Code.
 
@@ -109,6 +111,14 @@ mindmap
       )api-design-principles(
       )fe-testing(
       )brand-guidelines(
+      )collaboration-contracts(
+    [macOS Designer]
+      )macos-hig(
+      )ui-simplicity(
+      )collaboration-contracts(
+    [Swift Engineer]
+      )swiftui-macos(
+      )swift-testing(
       )collaboration-contracts(
 ```
 

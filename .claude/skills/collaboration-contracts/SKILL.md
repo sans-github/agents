@@ -13,7 +13,7 @@ When this skill is loaded, treat every contract in this file as a hard constrain
 
 ## HTML previews
 
-Every time an agent writes or updates a human-gate artifact (PRD, kickoff plan, sys-arch, HLD, BE/FE detailed design, API contract, test plan), it must immediately generate a co-located `.html` preview via pandoc. At each 👤 review gate, offer to open the HTML in the browser using `AskUserQuestion`. Full details in `html-preview-rule.md`.
+Every time an agent writes or updates a human-gate artifact (PRD, kickoff plan, sys-arch, HLD, BE/FE/Swift detailed design, API contract, test plan), it must immediately generate a co-located `.html` preview via pandoc. At each 👤 review gate, offer to open the HTML in the browser using `AskUserQuestion`. Full details in `html-preview-rule.md`.
 
 ---
 
@@ -158,7 +158,7 @@ When the deployment target is not local, EM runs a sync loop with DevOps during 
 
 **EM provides to QA:**
 - PRD, Mocks, ACs -- forwarded from PM and Designer at kickoff; input to Test Plan authoring
-- BE + FE Detailed Designs -- forwarded by EM once approved; input to detailed QA planning
+- BE + FE + Swift Detailed Designs -- forwarded by EM once approved; input to detailed QA planning
 
 **QA provides to EM:**
 - Test Plan (`generated-docs/qa/test-plan.md` + `generated-docs/qa/test-plan.html`) -- for approval before Issues List authoring; HTML generated via pandoc per `html-preview-rule.md`; in agent-to-agent handoffs pass only the `.md` file
@@ -171,7 +171,7 @@ When the deployment target is not local, EM runs a sync loop with DevOps during 
 
 **QA depends on:**
 - PRD, Mocks, ACs -- forwarded by EM at kickoff before authoring Test Plan
-- BE Detailed Design + FE Detailed Design -- approved and forwarded by EM before beginning detailed QA planning
+- BE Detailed Design + FE Detailed Design + Swift Detailed Design -- approved and forwarded by EM before beginning detailed QA planning
 - Test Plan -- approved by EM before authoring Issues List
 - Issues List -- approved by EM before creating GH Issues and beginning implementation
 
@@ -197,7 +197,7 @@ When the deployment target is not local, EM runs a sync loop with DevOps during 
 **QA depends on from FE:**
 - FE Artifacts + FE Test Docs -- received from FE before authoring FE automation
 
-**QA produces (from BE + FE combined):**
+**QA produces (from BE + FE + Swift Engineer combined):**
 - Automation suite -- gated by EM
 - Spec drift GH issues -- filed to PM when PRD differs from working product; to Designer when mocks differ
 
@@ -268,16 +268,94 @@ Applies to non-local deployments only. After infrastructure is provisioned, DevO
 Arch must approve before any role proceeds with a new tech stack or AWS component.
 
 **Gatekeeps (must approve before downstream proceeds):**
-- Tech stack adoption -- any new language, framework, or major library proposed by EM, BE, or FE requires Arch approval before use
+- Tech stack adoption -- any new language, framework, or major library proposed by EM, BE, FE, or Swift Engineer requires Arch approval before use
 - AWS component adoption -- any new AWS service or infrastructure component proposed by EM, BE, FE, or DevOps requires Arch approval before provisioning
 
 ---
 
 ## Clarification access
 
-During planning and implementation, BE, FE, QA, and DevOps may ask PM targeted questions about existing PRD/Reqs/ACs content, and ask Designer targeted questions about existing Mocks content. These are read-only clarifications on artifacts already in scope -- not requirement gathering, not scope discussions, not design revision requests.
+During planning and implementation, BE, FE, Swift Engineer, QA, and DevOps may ask PM targeted questions about existing PRD/Reqs/ACs content, and ask Designer or macOS Designer targeted questions about existing Mocks content. These are read-only clarifications on artifacts already in scope -- not requirement gathering, not scope discussions, not design revision requests.
 
 If a clarification conversation reveals a gap, missing requirement, or needed design revision, the agent must stop, file it to `BACKLOG.md` per the backlog-reporting-rule (use `type: gap` with the appropriate area: `Spec`, `Mocks`, or `Contract`), and surface it to EM. Agents must not self-resolve or ask PM/Designer to revise artifacts in the moment -- any change to scope or design goes back through EM.
+
+---
+
+## PM <> macOS Designer
+
+**PM provides to macOS Designer:**
+- PRD, ACs -- approved by PM; triggers Mock creation
+
+**macOS Designer provides to PM:**
+- Mocks (draft) -- iterated until PM approves
+
+**PM produces (joint with macOS Designer):**
+- Mocks -- PM is gatekeeper; not final until PM sets `Status: Approved`
+
+---
+
+## EM <> macOS Designer
+
+**EM provides to macOS Designer:**
+- PRD, Reqs, ACs -- forwarded from PM at kickoff; informs mock scope
+- Mocks -- approved by PM; forwarded by EM at kickoff before any Swift Engineer component work begins
+
+**macOS Designer provides to EM:**
+- Component spec (window-level breakdown with AppKit/SwiftUI control mapping) -- for approval before Swift Engineer implementation; delivered alongside or embedded in mocks
+- Issues List -- submitted for sign-off before GH Issues are created
+
+**EM gatekeeps:**
+- Mocks -- must be approved by PM before Swift Engineer component implementation begins
+- Component spec -- must identify the AppKit/SwiftUI control for every UI element before handoff to Swift Engineer
+- Issues List (macOS Designer) -- must be approved before GH Issues are created
+
+**macOS Designer depends on:**
+- PRD, ACs -- forwarded by EM at kickoff before authoring mocks
+- Issues List -- approved by EM before creating GH Issues and beginning implementation
+
+---
+
+## EM <> Swift Engineer
+
+**EM provides to Swift Engineer:**
+- Eng Plans (HLD) -- approved by EM; unblocks Swift Engineer Detailed Design
+- PRD, Reqs, ACs -- forwarded from PM at kickoff; informs scope
+- Mocks + component spec -- forwarded from macOS Designer at kickoff; required before view implementation
+
+**Swift Engineer provides to EM:**
+- Detailed Design (`generated-docs/architecture/swift-detailed-design.md` + `generated-docs/architecture/swift-detailed-design.html`) -- for approval; HTML generated via pandoc per `html-preview-rule.md`; in agent-to-agent handoffs pass only the `.md` file
+- Issues List -- submitted for sign-off before GH Issues are created
+
+**EM gatekeeps:**
+- Swift Engineer Detailed Design -- must be approved before implementation begins
+- Issues List (Swift Engineer) -- must be approved before GH Issues are created and implementation begins
+
+**Swift Engineer depends on:**
+- Arch approval -- any new framework or external dependency requires Arch sign-off before inclusion in Detailed Design
+- Eng Plans (HLD) -- approved by EM before authoring Detailed Design
+- Mocks + component spec -- approved by PM and forwarded by EM before view implementation
+- Detailed Design -- approved by EM before beginning implementation
+- Issues List -- approved by EM before creating GH Issues and beginning implementation
+
+---
+
+## macOS Designer <> Swift Engineer
+
+Swift Engineer does not receive a formal Mocks handoff from macOS Designer. EM forwards approved Mocks and component spec to Swift Engineer at kickoff. Swift Engineer may ask macOS Designer targeted questions about existing Mocks -- read-only clarification only (see Clarification access).
+
+When Swift Engineer identifies a control or behavior that cannot be implemented as specified (SwiftUI limitation, AppKit interop required), they raise a feasibility issue to macOS Designer before implementing a workaround. Any design revision goes back through EM.
+
+---
+
+## Swift Engineer <> QA
+
+**Swift Engineer provides to QA:**
+- Swift Engineer Artifacts + Swift Test Docs -- required before QA can author Swift automation
+- `accessibilityIdentifier` map -- documents identifiers used in the view layer so QA can write reliable XCUITest selectors
+
+**QA depends on from Swift Engineer:**
+- Swift Engineer Artifacts + Swift Test Docs -- received from Swift Engineer before authoring automation
+- `accessibilityIdentifier` map -- required before writing XCUITest selectors
 
 ---
 

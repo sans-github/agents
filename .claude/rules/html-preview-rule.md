@@ -9,6 +9,7 @@ Every time an agent writes **or updates** any of the following artifacts, it mus
 - High-Level Design
 - BE Detailed Design
 - FE Detailed Design
+- Swift Detailed Design
 - API Contract
 - Deployment Plan
 - Infrastructure Verification
@@ -35,6 +36,7 @@ The table of contents is auto-generated from all `##` and `###` headings by pand
 | High-Level Design | `## Architecture Summary` | Architecture summary and key technical decisions |
 | BE Detailed Design | `## API Surface` | API endpoints at a glance: method, path, purpose |
 | FE Detailed Design | `## Component Overview` | Component tree at a glance |
+| Swift Detailed Design | `## View Overview` | SwiftUI view tree at a glance |
 | API Contract | `## Contract Summary` | Endpoint count, auth model, key constraints |
 | Deployment Plan | `## What Will Be Provisioned` | Component list, service, config, and estimated cost table |
 | Infrastructure Verification | `## Verification Summary` | What was checked and pass/fail result per check |

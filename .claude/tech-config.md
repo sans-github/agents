@@ -14,6 +14,7 @@ These are available technology choices per layer, not a mandatory full stack. Ea
 |-------|------------|
 | BE | Java 21 + Spring Boot (REST API, Spring Data JPA + Hibernate 6, H2 for dev/test, PostgreSQL/MySQL for prod) |
 | FE | React 18 + TypeScript (Redux Toolkit, TanStack Query, React Router v6, Vite) |
+| macOS | Swift 5.10 + SwiftUI (Observation framework, SwiftData, URLSession) |
 | Infra | Terraform on AWS |
 | QA | Playwright (E2E + API) |
 
@@ -26,7 +27,7 @@ Design docs and plans live under `generated-docs/`. Production artifacts (code, 
 | Artifact | Path | Owner | Source |
 |---|---|---|---|
 | PRD | `product-specs/prd.md` | PM writes | `senior-product-manager.md` |
-| Mocks | `generated-docs/design/` | Designer writes, PM approves | `senior-ux-ui-designer.md` |
+| Mocks | `generated-docs/design/` | Designer writes, PM approves | `senior-ux-ui-designer.md`, `senior-macos-designer.md` |
 | Feature Setup | `workflow/feature-setup.md` | Filled in by `/feature-init` (phase config, deployment target, context) | `feature-init` skill |
 | Kickoff Plan | `workflow/kickoff-plan.md` | Orchestrator writes, human approves | `kickoff-prompt.md` |
 | Implementation Plan | `workflow/implementation-plan.md` + `workflow/implementation-plan.html` | EM writes, human approves; steps then seeded into delivery-tracker.md | `senior-engineering-manager.md` |
@@ -36,6 +37,7 @@ Design docs and plans live under `generated-docs/`. Production artifacts (code, 
 | Eng Plans (HLD) | `generated-docs/architecture/hld.md` + `generated-docs/architecture/hld.html` | EM writes, EM approves | `senior-engineering-manager.md` |
 | BE Detailed Design | `generated-docs/architecture/be-detailed-design.md` + `generated-docs/architecture/be-detailed-design.html` | BE writes, EM approves | `senior-backend-engineer.md` |
 | FE Detailed Design | `generated-docs/architecture/fe-detailed-design.md` + `generated-docs/architecture/fe-detailed-design.html` | FE writes, EM approves | `senior-frontend-engineer.md` |
+| Swift Detailed Design | `generated-docs/architecture/swift-detailed-design.md` + `generated-docs/architecture/swift-detailed-design.html` | Swift Engineer writes, EM approves | `senior-swift-engineer.md` |
 | API Contract | `generated-docs/contracts/api-contract.md` + `generated-docs/contracts/api-contract.html` | BE + FE write, EM approves | `senior-backend-engineer.md`, `senior-frontend-engineer.md` |
 | Test Plan | `generated-docs/qa/test-plan.md` + `generated-docs/qa/test-plan.html` | QA writes, EM approves | `senior-qa-automation-engineer.md` |
 | ER Diagram | `src/db/er-diagram.md` | BE writes, EM verifies | `db-schema-change-rule.md` |
@@ -55,7 +57,7 @@ Agent-to-agent technical contracts that block downstream work until approved. Ap
 
 | Artifact | Approver | Blocks |
 |---|---|---|
-| PRD | PM | Designer (mocks, flows) |
+| PRD | PM | Designer / macOS Designer (mocks, flows) |
 | DB schema | EM + BE | BE data layer, migrations, queries |
 | API contract | EM + BE + FE | BE endpoint implementation, FE integration |
 
