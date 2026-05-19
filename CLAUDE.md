@@ -92,3 +92,42 @@ bash install.sh v1.2.0   # pin a tag or branch
 ```
 
 Copies `.claude/agents/`, `.claude/rules/`, `.claude/skills/`, `.claude/template/`, `.claude/SETUP-GUIDE.md`, and `.claude/tech-config.md` into the consumer project. Also scaffolds `BACKLOG.md` in the consumer root if it doesn't exist. Consumers commit the result to lock the version.
+
+## Structural change verification (mandatory)
+
+This triggers automatically on every structural change. The user must never need to ask. Do not skip it. Do not substitute a confidence claim for the grep output.
+
+### What counts as a structural change
+
+- Adding, renaming, deleting, or moving an agent file in `.claude/agents/`
+- Adding, renaming, deleting, or moving a skill folder in `.claude/skills/`
+- Adding, renaming, deleting, or moving a rule file in `.claude/rules/`
+- Renaming or relocating an artifact path (e.g. `fe-detailed-design.md`)
+- Adding, renaming, or deleting a template file in `.claude/template/`
+- Introducing a new role name, artifact type, or convention referenced elsewhere
+
+If unsure whether a change qualifies, run the checklist anyway.
+
+### Checklist
+
+1. **Enumerate all terms to verify.** For each new/renamed/deleted thing, list every form it might be referenced as:
+   - Technical identifier (e.g. `senior-macos-designer`, `macos-hig`)
+   - File name (e.g. `senior-macos-designer.md`)
+   - Human-readable form (e.g. `macOS Designer`, `Mac designer`)
+   - Role abbreviation if any (e.g. `BE`, `FE`, `Swift Engineer`)
+   - For renames/deletes: also list every form of the OLD name
+2. **Pick 2-3 baselines of the same type.** Use multiple to avoid matching a minimal baseline:
+   - New skill: e.g. `prd-craft`, `fe-testing`, `react-typescript`
+   - New agent: e.g. `senior-frontend-engineer`, `senior-backend-engineer`, `senior-ux-ui-designer`
+   - New rule: e.g. `contract-first-rule`, `progress-tracking-rule`, `delegation-rule`
+   - If no existing equivalent exists: grep for the new name alone and reason about every hit; document the lack of baseline in the response
+3. **Grep from the repo root, no filters.**
+   - Run `cd <repo-root>` first (the directory containing `CLAUDE.md` and the `.claude/` folder)
+   - Run `grep -irn "<term>" .` for every term from step 1, and for every baseline term from step 2
+   - NEVER pipe through `grep -v` to exclude folders. NEVER skip a directory because "it's probably domain-specific." Every hit gets evaluated, not filtered.
+4. **Compare locations.**
+   - For ADDS: every location any baseline appears is a candidate the new name must also appear (or have a deliberate reason not to)
+   - For RENAMES: every location the old name appears must be updated to the new name (or deliberately retained for compatibility)
+   - For DELETES: every location the old name appears must be removed or updated to a replacement
+5. **Fix all gaps.** Edit each file individually. Do not batch.
+6. **Show the evidence.** Before saying done, paste the full final `grep -irn "<new-name>" .` output (and `grep -irn "<old-name>" .` for renames/deletes, which should be empty or deliberately retained). The user reads the output and confirms.
